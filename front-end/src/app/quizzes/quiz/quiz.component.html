@@ -1,0 +1,16 @@
+<div class="quiz-card" *ngIf="quiz">
+    <div class="quiz-card-header">
+        <img src="./assets/animal.jpg" alt="animaux">
+        <p>{{ quiz.name }}</p>
+    </div>
+    <div class="quiz-card-footer">
+        <p>{{ quiz.description }}</p>
+        <p>{{ quiz.questions?.length }}</p> <!-- Utilisation de l'opérateur ?. pour accéder à la longueur des questions de manière sécurisée -->
+    </div>
+    <div class="quiz-card-button">
+        <a routerLink="/quiz"><button (click)="selectQuiz()">Select</button></a>
+        <button (click)="delete()">Delete</button>
+        <button>Edit</button>
+    </div>
+</div>
+
