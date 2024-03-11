@@ -5,10 +5,11 @@ import { Component} from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
   public title: string = 'Hello world!';
   public showSuccess = false;
-  
+
   showHideSuccess() {
     this.showSuccess = !this.showSuccess;
   }

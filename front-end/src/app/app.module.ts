@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { QuizComponent } from './quizzes/quiz/quiz.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizComponent,
-    QuizListComponent
+    QuizListComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
