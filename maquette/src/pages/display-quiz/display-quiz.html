@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="english">
+
+<head>
+    <title>Quiz</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Jacquarda+Bastarda+9&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+
+<body>
+    <matrio path="components/navbar/navbar"></matrio>
+    <matrio path="components/title/title">
+        <matrio-content>
+            <div class="title">
+                <h1>Quiz</h1>
+                <img src="./assets/emoji.png" alt="emoji">
+            </div>
+        </matrio-content>
+        <matrio path="components/search/search">
+            <matrio-content>
+                <input type="text" placeholder="Saisir le quiz à rechercher"></input>
+            </matrio-content>
+        </matrio>
+        <div class="content-quiz">
+            <matrio path="components/quiz-card/quiz-card">
+                <matrio-content>
+                    <div class="quiz-card-header">
+                        <img src="./assets/animal.jpg" alt="animaux">
+                        <p>Les cris des animaux</p>
+                    </div>
+                    <div class="quiz-card-footer">
+                        <p>Découvre les cris des animaux</p>
+                        <p>5</p>
+                    </div>
+                </matrio-content>
+            </matrio>
+            <matrio path="components/quiz-card/quiz-card">
+                <matrio-content>
+                    <div class="quiz-card-header">
+                        <img src="./assets/basket.jpg" alt="fille">
+                        <p>Le Basket</p>
+                    </div>
+                    <div class="quiz-card-footer">
+                        <p>Découvre le basket</p>
+                        <p>15</p>
+                    </div>
+                </matrio-content>
+            </matrio>
+            <matrio path="components/quiz-card/quiz-card">
+                <matrio-content>
+                    <div class="quiz-card-header">
+                        <img src="./assets/addition.jpg" alt="fille">
+                        <p>L'addition</p>
+                    </div>
+                    <div class="quiz-card-footer">
+                        <p>Faisons l'addition</p>
+                        <p>5</p>
+                    </div>
+                </matrio-content>
+            </matrio>
+            <matrio path="components/quiz-card/quiz-card">
+                <matrio-content>
+                    <div class="quiz-card-header">
+                        <img src="./assets/etoile.jpg" alt="fille">
+                        <p>Les étoiles</p>
+                    </div>
+                    <div class="quiz-card-footer">
+                        <p>Découvrons les étoiles</p>
+                        <p>5</p>
+                    </div>
+                </matrio-content>
+            </matrio>
+            <matrio path="components/add-profil/add-profil">
+                <matrio-content>
+                    <p>Ajouter un nouveau quiz</p>
+                </matrio-content>
+            </matrio>
+            <matrio path="components/form-add/form-add">
+                <matrio-content>
+                    <form id="addMemberForm">
+                        <div class="display-input">
+                            <label for="quizTitle">Titre du quiz:</label><br>
+                            <input type="text" id="quizTitle" name="quizTitle"><br>
+                        </div>
+                        <div class="display-input">
+                            <label for="quizTheme">Thème:</label><br>
+                            <select id="quizTheme" name="quizTheme">
+                                <option value="">Sélectionner le thème du quiz</option>
+                                <option value="litterature">Littérature</option>
+                                <option value="maths">Mathématiques</option>
+                                <option value="animal">Les animaux</option>
+                                <option value="astronomie">Astronomie</option>
+                            </select><br>
+                        </div>
+                        <div class="display-input">
+                            <label for="quizNiveau">Niveau:</label><br>
+                            <select id="quizNiveau" name="quizNiveau">
+                                <option value="">Sélectionner le niveau du quiz</option>
+                                <option value="facile">Facile</option>
+                                <option value="moyen">Moyen</option>
+                                <option value="difficile">Difficile</option>
+                            </select><br>
+                        </div>
+                        <div class="display-input">
+                            <label for="quizDescription">Description:</label><br>
+                            <textarea id="quizDescription" name="quizDescription" rows="5"></textarea><br>
+                        </div>
+                        <div class="display-input">
+                            <label for="quizQuestions">Questions:</label><br>
+                            <select id="quizQuestions" name="quizQuestions" size="4" multiple>
+                                <option value="">Sélectionner les questions</option>
+                                <optgroup label="Choix multiple">
+                                    <option value="question1">Question 1</option>
+                                    <option value="question2">Question 2</option>
+                                    <option value="question3">Question 3</option>
+                                </optgroup>
+                                <optgroup label="Vrai/Faux">
+                                    <option value="question1">Question 1</option>
+                                    <option value="question2">Question 2</option>
+                                    <option value="question3">Question 3</option>
+                                </optgroup>
+                                <optgroup label="Réponse unique">
+                                    <option value="question1">Question 1</option>
+                                    <option value="question2">Question 2</option>
+                                    <option value="question3">Question 3</option>
+                                </optgroup>
+                            </select><br>
+                        </div>
+
+                        <button type="submit">Créer le quiz</button>
+                    </form>
+                </matrio-content>
+            </matrio>
+            <matrio path="components/form-update/form-update">
+                <matrio-content>
+                    <form id="updateMemberForm">
+                        <div class="display-input">
+                            <label for="quizTitle">Titre du quiz:</label><br>
+                            <input type="text" id="quizTitle" name="quizTitle"><br>
+                        </div>
+                        <div class="display-input">
+                            <label for="quizTheme">Thème:</label><br>
+                            <select id="quizTheme" name="quizTheme">
+                                <option value="">Sélectionner le thème du quiz</option>
+                                <option value="litterature">Littérature</option>
+                                <option value="maths">Mathématiques</option>
+                                <option value="animal">Les animaux</option>
+                                <option value="astronomie">Astronomie</option>
+                            </select><br>
+                        </div>
+                        <div class="display-input">
+                            <label for="quizNiveau">Niveau:</label><br>
+                            <select id="quizNiveau" name="quizNiveau">
+                                <option value="">Sélectionner le niveau du quiz</option>
+                                <option value="facile">Facile</option>
+                                <option value="moyen">Moyen</option>
+                                <option value="difficile">Difficile</option>
+                            </select><br>
+                        </div>
+                        <div class="display-input">
+                            <label for="quizDescription">Description:</label><br>
+                            <textarea id="quizDescription" name="quizDescription" rows="5"></textarea><br>
+                        </div>
+                        <div class="display-input">
+                            <label for="quizQuestions">Questions:</label><br>
+                            <select id="quizQuestions" name="quizQuestions" size="4" multiple>
+                                <option value="">Sélectionner les questions</option>
+                                <optgroup label="Choix multiple">
+                                    <option value="question1">Question 1</option>
+                                    <option value="question2">Question 2</option>
+                                    <option value="question3">Question 3</option>
+                                </optgroup>
+                                <optgroup label="Vrai/Faux">
+                                    <option value="question1">Question 1</option>
+                                    <option value="question2">Question 2</option>
+                                    <option value="question3">Question 3</option>
+                                </optgroup>
+                                <optgroup label="Réponse unique">
+                                    <option value="question1">Question 1</option>
+                                    <option value="question2">Question 2</option>
+                                    <option value="question3">Question 3</option>
+                                </optgroup>
+                            </select><br>
+                        </div>
+
+                        <button type="submit" style="width: 150px;">Modifier le quiz</button>
+                    </form>
+                </matrio-content>
+            </matrio>
+        </div>
+
+        <script defer>
+            document.addEventListener('DOMContentLoaded', function () {
+                var nav = document.querySelector('.nav-vertical');
+                var icon = document.querySelector('#menu');
+                icon.addEventListener('click', function () {
+                    if (nav.style.display === 'none') {
+                        nav.style.display = 'block';
+                        document.querySelector('.content-quiz').style.marginLeft = '220px';
+                        document.querySelector('.content-quiz').style.width = 'calc(100% - 220px)';
+
+                    } else {
+                        nav.style.display = 'none';
+                        document.querySelector('.content-quiz').style.marginLeft = '0';
+                        document.querySelector('.content-quiz').style.width = '100%';
+                    }
+                });
+            });
+
+            function displayModal() {
+                var modal = document.getElementById("myModal");
+
+                modal.style.display = "block";
+
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            }
+
+            function closeModal() {
+                var modal = document.getElementById("myModal");
+                modal.style.display = "none";
+            }
+
+            function displayModalModification() {
+                var modal = document.getElementById("myModalModification");
+
+                modal.style.display = "block";
+
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            }
+
+            function closeModalModification() {
+                var modal = document.getElementById("myModalModification");
+                modal.style.display = "none";
+            }
+
+            function displayModalSuppression() {
+                var modal = document.getElementById("myModalSuppression");
+
+                modal.style.display = "block";
+
+
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            }
+
+            function closeModalSuppression() {
+                var modal = document.getElementById("myModalSuppression");
+                modal.style.display = "none";
+            }
+
+
+
+        </script>
+</body>
+
+</html>

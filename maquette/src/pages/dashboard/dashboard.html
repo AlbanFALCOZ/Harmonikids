@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="english">
+
+<head>
+    <title>Dashboard</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Jacquarda+Bastarda+9&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+
+<body>
+    <matrio path="components/navbar/navbar"></matrio>
+    <matrio path="components/title/title">
+        <matrio-content>
+            <div class="title">
+                <h1>Bonjour Lucas</h1>
+                <img src="./assets/emoji.png" alt="emoji">
+            </div>
+        </matrio-content>
+    </matrio>
+    <div class="content-quiz">
+        <section class="content-stats">
+            <matrio path="components/dash-stats/dash-stats">
+                <matrio-content class="stat">
+                    <span class="material-symbols-outlined">
+                        trophy
+                    </span>
+                    <h3>gagnés/total: 20/30</h3>
+                </matrio-content>
+            </matrio>
+            <matrio path="components/dash-stats/dash-stats">
+                <matrio-content class="stat">
+                    <span class="material-icons">sports_score</span>
+                    <h3>Score : 130xp</h3>
+                </matrio-content>
+            </matrio>
+            <matrio path="components/dash-stats/dash-stats">
+                <matrio-content class="stat">
+                    <span class="material-icons">timer</span>
+                    <h3>Durée moyenne : 2h40min</h3>
+                </matrio-content>
+            </matrio>
+        </section>
+        <section class="content-themes-preferes">
+            <a href="./display-theme.html" class="title-dash">
+                <h2>Vos thèmes préférés</h2>
+                <span class="material-icons">east</span>
+            </a>
+            <div class="content-dash-theme">
+                <a href="./niveau.html">
+                    <matrio path="components/dash-theme/dash-theme">
+                        <matrio-content>
+                            <div class="card-dash-theme-header">
+                                <img src="./assets/animal.jpg" alt="animaux">
+                                <p>Les animaux</p>
+                            </div>
+                            <div class="card-dash-theme-footer">
+                                <p>5 quiz</p>
+                            </div>
+                        </matrio-content>
+                    </matrio>
+                </a>
+                <a href="./niveau.html">
+                    <matrio path="components/dash-theme/dash-theme">
+                        <matrio-content>
+                            <div class="card-dash-theme-header">
+                                <img src="./assets/sport.jpg" alt="animaux">
+                                <p>Les sports</p>
+                            </div>
+                            <div class="card-dash-theme-footer">
+                                <p>5 quiz</p>
+                            </div>
+                        </matrio-content>
+                    </matrio>
+                </a>
+                <a href="./niveau.html">
+                    <matrio path="components/dash-theme/dash-theme">
+                        <matrio-content>
+                            <div class="card-dash-theme-header">
+                                <img src="./assets/maths2.jpg" alt="animaux">
+                                <p>Les mathématiques</p>
+                            </div>
+                            <div class="card-dash-theme-footer">
+                                <p>5 quiz</p>
+                            </div>
+                        </matrio-content>
+                    </matrio>
+                </a>
+                <a href="./niveau.html">
+                    <matrio path="components/dash-theme/dash-theme">
+                        <matrio-content>
+                            <div class="card-dash-theme-header">
+                                <img src="./assets/astro.jpg" alt="animaux">
+                                <p>L'astronomie</p>
+                            </div>
+                            <div class="card-dash-theme-footer">
+                                <p>5 quiz</p>
+                            </div>
+                        </matrio-content>
+                    </matrio>
+                </a>
+            </div>
+        </section>
+        <section class="content-derniers-quiz">
+            <a href="./display-quiz.html" class="title-dash">
+                <h2>Vos derniers quiz</h2>
+                <span class="material-icons">east</span>
+            </a>
+            <div class="content-dash-quiz">
+                <a href="./quiz.html">
+                    <matrio path="components/dash-theme/dash-theme">
+                        <matrio-content>
+                            <div class="card-dash-theme-header">
+                                <img src="./assets/animaux.jpg" alt="animaux">
+                                <p>Les cris des animaux</p>
+                            </div>
+                            <div class="card-dash-theme-footer progress-footer">
+                                <matrio path="components/progress-circle/progress-circle"></matrio>
+                                <p>En cours</p>
+                                <p>...</p>
+                            </div>
+                        </matrio-content>
+                    </matrio>
+                </a>
+                <a href="./display-quiz.html">
+                    <matrio path="components/dash-theme/dash-theme">
+                        <matrio-content>
+                            <div class="card-dash-theme-header">
+                                <img src="./assets/basket.jpg" alt="animaux">
+                                <p>Le basket</p>
+                            </div>
+                            <div class="card-dash-theme-footer progress-footer">
+                                <matrio path="components/progress-circle/progress-circle"></matrio>
+                                <p>Terminé</p>
+                                <p>5/5</p>
+                            </div>
+                        </matrio-content>
+                    </matrio>
+                </a>
+                <a href="./display-quiz.html">
+                    <matrio path="components/dash-theme/dash-theme">
+                        <matrio-content>
+                            <div class="card-dash-theme-header">
+                                <img src="./assets/addition.jpg" alt="animaux">
+                                <p>L'addition</p>
+                            </div>
+                            <div class="card-dash-theme-footer progress-footer">
+                                <matrio path="components/progress-circle/progress-circle"></matrio>
+                                <p>Terminé</p>
+                                <p>5/5</p>
+                            </div>
+                        </matrio-content>
+                    </matrio>
+                </a>
+                <a href="./display-quiz.html">
+                    <matrio path="components/dash-theme/dash-theme">
+                        <matrio-content>
+                            <div class="card-dash-theme-header">
+                                <img src="./assets/etoile.jpg" alt="animaux">
+                                <p>Les étoiles</p>
+                            </div>
+                            <div class="card-dash-theme-footer progress-footer">
+                                <matrio path="components/progress-circle/progress-circle"></matrio>
+                                <p>Terminé</p>
+                                <p>5/5</p>
+                            </div>
+                        </matrio-content>
+                    </matrio>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function () {
+            var nav = document.querySelector('.nav-vertical');
+            var icon = document.querySelector('#menu');
+            icon.addEventListener('click', function () {
+                if (nav.style.display === 'none') {
+                    nav.style.display = 'block';
+                    document.querySelector('.content-quiz').style.marginLeft = '220px';
+                    document.querySelectorAll('.card-dash-stats').forEach(element => element.style.width = '300px');
+                    document.querySelectorAll('.card-dash-stats').forEach(element => element.style.height = '80px');
+                    document.querySelector('.content-quiz').style.width = 'calc(100% - 220px)';
+                    document.querySelectorAll('.card-dash-theme').forEach(element => element.style.width = '230px');
+
+
+                } else {
+                    nav.style.display = 'none';
+                    document.querySelector('.content-quiz').style.marginLeft = '0';
+                    document.querySelectorAll('.card-dash-stats').forEach(element => element.style.width = '370px');
+                    document.querySelectorAll('.card-dash-stats').forEach(element => element.style.height = '70px');
+                    document.querySelector('.content-quiz').style.width = '100%';
+                    document.querySelectorAll('.card-dash-theme').forEach(element => element.style.width = '270px');
+
+                }
+            });
+        });
+
+        function setProgress(percent) {
+            const circle = document.querySelector('.progress-circle__progress');
+            const text = document.querySelector('.progress-circle__text');
+
+            const radius = circle.r.baseVal.value;
+            const circumference = 2 * Math.PI * radius;
+            const offset = circumference - percent / 100 * circumference;
+
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = offset;
+
+            text.textContent = `${percent}%`;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const circle1 = document.querySelector('.progress-circle:nth-of-type(1)');
+            const text1 = circle1.querySelector('.progress-circle__text');
+            setProgress(50, circle1, text1);
+        });
+
+    </script>
+</body>
+
+</html>

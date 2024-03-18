@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="english">
+
+<head>
+    <title>Paramètres</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Jacquarda+Bastarda+9&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+    <matrio path="components/navbar/navbar"></matrio>
+    <matrio path="components/nav-vertical/nav-vertical"></matrio>
+    <matrio path="components/title/title">
+        <matrio-content>
+            <div class="title">
+                <h1>Paramètres</h1>
+            </div>
+        </matrio-content>
+    </matrio>
+    <div class="buttons-container">
+        <matrio path="components/on-off/on-off">
+        </matrio>
+        <matrio path="components/on-off/on-off">
+
+        </matrio>
+        <matrio path="components/on-off/on-off">
+
+        </matrio>
+        <matrio path="components/on-off/on-off">
+
+
+        </matrio>
+        <matrio path="components/on-off/on-off">
+
+
+        </matrio>
+        <matrio path="components/on-off/on-off">
+
+        </matrio>
+
+
+    </div>
+
+    <div class="button-labels">
+        <ul>
+            <li>Son</li>
+            <li>Music</li>
+            <li>Avancement</li>
+            <li>Indice</li>
+            <li>Score</li>
+            <li>Daltonisme</li>
+        </ul>
+    </div>
+
+    <div class="button-labels-two">
+        <ul>
+            <li>Taille Police</li>
+            <li>Couleurs</li>
+            <li>Police d'écriture</li>
+
+        </ul>
+    </div>
+
+
+
+
+    <div class="slider">
+        <matrio path="components/slider/slider">
+            </matrio-content class="slider">
+            </matrio-content>
+        </matrio>
+
+    </div>
+
+    <div class="color-picker">
+        <matrio path="components/color-picker/color-picker">
+            </matrio-content class="color-picker">
+            </matrio-content>
+        </matrio>
+    </div>
+
+    <div class="select-bar">
+        <matrio path="components/select-bar/select-bar">
+            </matrio-content class="select-bar">
+            </matrio-content>
+        </matrio>
+    </div>
+
+    <div class="vl"></div>
+
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function () {
+            var nav = document.querySelector('.nav-vertical');
+            var icon = document.querySelector('#menu');
+            icon.addEventListener('click', function () {
+                if (nav.style.display === 'none') {
+                    nav.style.display = 'block';
+                    document.querySelector('.content-profile').style.marginLeft = '220px';
+                    document.querySelector('.content-profile').style.width = 'calc(100% - 220px)';
+
+
+                } else {
+                    nav.style.display = 'none';
+                    document.querySelector('.content-profile').style.marginLeft = '0';
+                    document.querySelector('.content-profile').style.width = '100%';
+
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+.card-dash-theme{
+    width: 270px;
+    height: 200px;
+    border: 5px solid #FAA300;
+    border-radius: 30px;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
+    padding-top: 10px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.card-dash-theme-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 2px solid #FAA300;
+    height: 130px;
+}
+
+.card-dash-theme-header img{
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    height: 100px;
+    width: 100%;
+}
+
+.card-dash-theme-footer{
+    text-align: center;
+    font-style: italic;
+}

@@ -1,0 +1,64 @@
+.core-page {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+}
+
+.left {
+  grid-column: 1/2;
+  grid-template-rows: 50% 50%;
+  margin-left: -20px;
+}
+
+.right {
+  grid-column: 2/2;
+  grid-template-rows: 10% 40% 10% 40%;
+  margin-right: 30px;
+}
+
+.vertical-line {
+  border-left: 4px solid black;
+  height: 900px;
+  margin-right: 20px;
+}
+
+hr {
+  margin-top: -30px;
+  margin-bottom: 60px;
+  width: 70%;
+  border: 1px solid black;
+}
+
+.profil {
+  grid-row: 1/2;
+  margin-left: 15%;
+}
+
+.courbe-de-progres img{
+    grid-row: 2/2;
+    margin-top: 3%;
+    margin-left:15%;
+    width: 50%;
+    height: 50%;
+}
+
+.graph-comparaison img {
+    grid-row: 2/2;
+    margin-top: 3%;
+    margin-left:15%;
+    width: 50%;
+    height: 50%;
+}
+
+.description-theme {
+  grid-row: 1/4;
+}
+
+.quiz-result-display {
+  grid-row: 2/4;
+}
+
+.description-quiz{
+  grid-row: 4/4;
+}

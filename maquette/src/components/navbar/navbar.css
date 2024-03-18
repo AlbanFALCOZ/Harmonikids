@@ -1,0 +1,33 @@
+.navbar{
+    height: 100px;
+    background-color: #59D5E0;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    border-bottom: 2px solid #FAA300;
+}
+
+.navbar .material-icons{
+    color: white;
+    font-size: 40px;
+    margin-left: 20px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.navbar .material-icons:hover {
+    transform: scale(1.1); 
+}
+
+.navbar div{
+    display: flex;
+    color: white;
+    align-items: center;
+    margin-left: 40%;
+}
+
+.navbar img{
+    margin-top: 10px;
+    width: 250px;
+    height: 200px;
+}

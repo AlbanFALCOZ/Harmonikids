@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="english">
+
+<head>
+  <title>Bienvenue</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Jacquarda+Bastarda+9&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+  <matrio path="components/navbar/navbar"></matrio>
+  <matrio path="components/title/title">
+    <matrio-content>
+      <div class="title">
+        <h1>Bienvenue</h1>
+        <img src="./assets/emoji.png" alt="emoji">
+      </div>
+    </matrio-content>
+  </matrio>
+  <matrio path="components/search/search">
+    <matrio-content>
+      <input type="text" placeholder="Saisir le profil à rechercher"></input>
+    </matrio-content>
+  </matrio>
+  <div class="content">
+    <a href="./dashboard.html">
+      <matrio path="components/profil-card/profil-card">
+        <matrio-content>
+          <div class="card-header">
+            <img src="./assets/alice.jpg" alt="fille">
+            <div>
+              <p>Nom : Routine</p>
+              <p>Prénom : Alice</p>
+              <p>Âge : 8 ans</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <p>"Je me sens mieux quand je sais à quoi m'attendre"</p>
+          </div>
+        </matrio-content>
+      </matrio>
+    </a>
+    <a href="./dashboard.html">
+      <matrio path="components/profil-card/profil-card">
+        <matrio-content>
+          <div class="card-header">
+            <img src="./assets/léo.jpg" alt="fille">
+            <div>
+              <p>Nom : Vivace</p>
+              <p>Prénom : Léo</p>
+              <p>Âge : 7 ans</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <p>"Toujours prêt pour une partie d'échec"</p>
+          </div>
+        </matrio-content>
+      </matrio>
+    </a>
+    <a href="./dashboard.html">
+      <matrio path="components/profil-card/profil-card">
+        <matrio-content>
+          <div class="card-header">
+            <img src="./assets/lucas.jpg" alt="fille">
+            <div>
+              <p>Nom : Distrait</p>
+              <p>Prénom : Lucas</p>
+              <p>Âge : 10 ans</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <p>"J'ai du mal à me concentrer mais je veux apprendre"</p>
+          </div>
+        </matrio-content>
+      </matrio>
+    </a>
+    <matrio path="components/add-profil/add-profil">
+      <matrio-content>
+        <p>Ajouter un nouvel enfant</p>
+      </matrio-content>
+    </matrio>
+    <matrio path="components/form-add/form-add">
+      <matrio-content>
+        <form id="addMemberForm">
+          <div class="display-input">
+            <label for="name">Nom:</label><br>
+            <input type="text" id="name" name="name"><br>
+          </div>
+          <div class="display-input">
+            <label for="surname">Prénom:</label><br>
+            <input type="text" id="surname" name="surname"><br>
+          </div>
+          <div class="display-input">
+            <label for="age">Age:</label><br>
+            <input type="number" id="age" name="age"><br>
+          </div>
+
+          <div class="display-input">
+            <label for="">Description:</label>
+            <textarea name="description" id="description" cols="40" rows="5"></textarea>
+          </div>
+          <button type="submit">Ajouter</button>
+        </form>
+      </matrio-content>
+    </matrio>
+  </div>
+
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function () {
+      var nav = document.querySelector('.nav-vertical');
+      var icon = document.querySelector('#menu');
+      icon.addEventListener('click', function () {
+        if (nav.style.display === 'none') {
+          nav.style.display = 'block';
+          document.querySelector('.content').style.marginLeft = '220px';
+          document.querySelector('.content').style.marginTop = '40px';
+          document.querySelector('.add-card').style.marginTop = '20px';
+          document.querySelector('.content').style.width = 'calc(100% - 220px)';
+
+        } else {
+          nav.style.display = 'none';
+          document.querySelector('.content').style.marginLeft = '0';
+          document.querySelector('.content').style.width = '100%';
+        }
+      });
+    });
+
+    var modal = document.getElementById("myModal");
+
+    var btn = document.getElementById("myBtn");
+
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>

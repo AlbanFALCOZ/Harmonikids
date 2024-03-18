@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="english">
+
+<head>
+    <title>Thèmes</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Jacquarda+Bastarda+9&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+
+<body>
+    <matrio path="components/navbar/navbar"></matrio>
+    <matrio path="components/title/title"></matrio>
+    <matrio-content>
+        <div class="title">
+            <h1>Statistiques</h1>
+            <img src="./assets/emoji.png" alt="emoji">
+        </div>
+        <hr>
+    </matrio-content>
+    <div class="core-page">
+      <div class="left">
+        <div class="profil">
+          <matrio path="components/profil-statistique/profil-statistique">
+              <matrio-content>
+                <div class="card-left">
+                  <img src="./assets/alice.jpg" alt="fille">
+                </div>
+                <div class="profil-name">
+                  <p>Prénom : Alice</p>
+                  <p>Nom : Routine</p>
+                </div>
+                <div class="exp">
+                  <p>Exp : 140xp</p>
+                </div>
+                <div class="time-played">
+                  <p>Temps de jeu : 2h 20 min</p>
+                </div>
+              </matrio-content>
+            </matrio>
+        </div>
+        <div class="courbe-de-progres">
+          <img src="./assets/graph.jpg">
+        </div>
+        <div class="graph-comparaison">
+          <img src="./assets/graph-comparaison.png">
+        </div>
+      </div>
+      <div class="vertical-line"></div>
+      <div class="right">
+        <div class="description-theme">
+          <p>Taux de quiz effectués par thème</p>
+        </div>
+        <matrio-content>
+          <div class="quiz-result-display">
+            <matrio-content>
+              <div class="first-quiz-result">
+                <matrio path="components/statistique-card/statistique-card">
+                  <matrio-content>
+                    <div class="quiz-result">
+                      <div class="left-side-quiz-result">
+                        <p class="theme-title">Titre du thème</p>
+                        <p class="number-quiz">Nombre de quiz : 6</p>
+                      </div>
+                      <img src="./assets/graph-camembert.png" class="graph-camembert">
+                      <p class="question-results">Quiz choisi 6 fois sur 10</p>
+                    </div>
+                  </matrio-content>
+                </matrio>
+              </div>
+              <div class="second-quiz-result">
+                <matrio path="components/statistique-card/statistique-card">
+                  <div class="quiz-result">
+                    <div class="left-side-quiz-result">
+                      <p class="theme-title">Titre du thème</p>
+                      <p class="number-quiz">Nombre de quiz : 3</p>
+                    </div>
+                    <img src="./assets/graph-camembert.png" class="graph-camembert">
+                    <p class="question-results">Quiz choisi 3 fois sur 10</p>
+                  </div>
+                </matrio>
+              </div>
+              <div class="third-quiz-result">
+                <matrio path="components/statistique-card/statistique-card">
+                  <div class="quiz-result">
+                    <div class="left-side-quiz-result">
+                      <p class="theme-title">Titre du thème</p>
+                      <p class="number-quiz">Nombre de quiz : 1</p>
+                    </div>
+                    <img src="./assets/graph-camembert.png" class="graph-camembert">
+                    <p class="question-results">Quiz choisi 1 fois sur 10</p>
+                  </div>
+                </matrio>
+              </div>
+            </matrio-content>
+          </div>
+        </matrio-content>
+        <div class="description-quiz">
+          <p>Taux de bonnes réponses par quiz</p>
+        </div>
+        <matrio-content>
+          <div class="question-result-display">
+            <matrio-content>
+              <div class="first-quiz-result">
+                <matrio path="components/statistique-card/statistique-card">
+                  <div class="quiz-result">
+                    <div class="left-side-quiz-result">
+                      <p class="theme-title">Titre du thème</p>
+                      <p class="number-quiz">Nombre de questions : 6</p>
+                    </div>
+                    <img src="./assets/graph-camembert.png" class="graph-camembert">
+                    <p class="question-results">60% de bonnes réponses</p>
+                  </div>
+                </matrio>
+              </div>
+              <div class="second-quiz-result">
+                <matrio path="components/statistique-card/statistique-card">
+                  <div class="quiz-result">
+                    <div class="left-side-quiz-result">
+                      <p class="theme-title">Titre du thème</p>
+                      <p class="number-quiz">Nombre de questions : 6</p>
+                    </div>
+                    <img src="./assets/graph-camembert.png" class="graph-camembert">
+                    <p class="question-results">60% de bonnes réponses</p>
+                  </div>
+                </matrio>
+              </div>
+              <div class="third-quiz-result">
+                <matrio path="components/statistique-card/statistique-card">
+                  <div class="quiz-result">
+                    <div class="left-side-quiz-result">
+                      <p class="theme-title">Titre du thème</p>
+                      <p class="number-quiz">Nombre de questions : 6</p>
+                    </div>
+                    <img src="./assets/graph-camembert.png" class="graph-camembert">
+                    <p class="question-results">60% de bonnes réponses</p>
+                  </div>
+                </matrio>
+              </div>
+            </matrio-content>
+          </div>
+        </matrio-content>
+      </div>
+    </div>  
+     <script defer>
+            document.addEventListener('DOMContentLoaded', function () {
+            var nav = document.querySelector('.nav-vertical');
+            var icon = document.querySelector('#menu');
+            icon.addEventListener('click', function () {
+              if (nav.style.display === 'none') {
+                nav.style.display = 'block';
+                document.querySelector('.core-page').style.marginLeft = '200px';
+                document.querySelectorAll('.quiz-result').forEach(function(item){item.style.width = '400px'});
+                document.querySelector('.core-page').style.width = 'calc(100% - 220px)';
+
+              } else {
+                nav.style.display = 'none';
+                document.querySelector('.core-page').style.marginLeft = '0';
+                document.querySelectorAll('.quiz-result').forEach(function(item){item.style.width = '550px'});
+                document.querySelector('.core-page').style.width = '100%';
+              }
+            });
+          });
+        </script>
+</body>
+
+</html>

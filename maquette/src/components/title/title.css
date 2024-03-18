@@ -1,0 +1,19 @@
+.title {
+    color: #000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    color: #FAA300;
+    font-family: "Finger Paint", sans-serif;
+    margin-top: -40px;
+}
+  
+
+.title img {
+    width: 150px;
+    height: 150px;
+    margin-left: -15px;
+    margin-top: 20px;
+}

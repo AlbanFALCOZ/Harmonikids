@@ -1,0 +1,79 @@
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-right: 250px !important; 
+}
+
+
+
+.slider {
+    position: fixed;
+    top: 270px; 
+    right: 270px; 
+    z-index: 9999; 
+}
+
+.color-picker{
+    position: fixed;
+    top: 320px; 
+    right: 350px; 
+    z-index: 998;
+}
+
+.select-bar {
+    position: fixed;
+    top: 370px;
+    right: 90px;
+    z-index: 999;
+    width: 300px; 
+    height: 10px; 
+}
+
+.button-labels {
+    position: absolute;
+    top: 252px;
+    left: 230px;
+}
+
+.button-labels ul {
+    list-style-type: none; 
+    padding: 0;
+}
+
+.button-labels ul li {
+    margin-bottom: 31px; 
+}
+
+.button-labels-two {
+    position: absolute;
+    top: 252px;
+    right: 550px;
+}
+
+
+.vl {
+    border-left: 3px solid rgb(152, 155, 152);
+    height: 400px;
+    position: fixed;
+    top : 220px ; 
+    bottom : 200px;
+    right : 700px ; 
+}
+
+
+.button-labels-two ul {
+    list-style-type: none; 
+    padding: 0;
+}
+
+.button-labels-two ul li {
+    margin-bottom: 31px; 
+}
+
+
+
+
+
+
