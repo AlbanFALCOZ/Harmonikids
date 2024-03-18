@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="english">
+
+<head>
+  <title>Niveau</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Jacquarda+Bastarda+9&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+  <matrio path="components/navbar/navbar"></matrio>
+  <matrio path="components/title/title">
+    <matrio-content>
+      <div class="title">
+        <h1>Niveau</h1>
+        <img src="./assets/emoji.png" alt="emoji">
+      </div>
+    </matrio-content>
+    <div class="content-niveau">
+      <a href="./display-quiz.html">
+        <matrio path="components/niveau-card/niveau-card">
+          <matrio-content>
+            <h1 class="niveau-text">Facile</h1>
+          </matrio-content>
+        </matrio>
+      </a>
+      <a href="./display-quiz.html">
+        <matrio path="components/niveau-card/niveau-card">
+          <matrio-content>
+            <h1 class="niveau-text">Moyen</h1>
+          </matrio-content>
+        </matrio>
+      </a>
+      <a href="./display-quiz.html">
+        <matrio path="components/niveau-card/niveau-card">
+          <matrio-content>
+            <h1 class="niveau-text">Difficile</h1>
+          </matrio-content>
+        </matrio>
+      </a>
+    </div>
+
+    <script defer>
+      document.addEventListener('DOMContentLoaded', function () {
+        var nav = document.querySelector('.nav-vertical');
+        var icon = document.querySelector('#menu');
+        icon.addEventListener('click', function () {
+          if (nav.style.display === 'none') {
+            nav.style.display = 'block';
+            document.querySelector('.content-niveau').style.marginLeft = '220px';
+            document.querySelectorAll('.card-niveau').forEach(element => element.style.width = '300px');
+            document.querySelector('.content-niveau').style.width = 'calc(100% - 220px)';
+
+          } else {
+            nav.style.display = 'none';
+            document.querySelector('.content-niveau').style.marginLeft = '0';
+            document.querySelectorAll('.card-niveau').forEach(element => element.style.width = '370px');
+            document.querySelector('.content-niveau').style.width = '100%';
+          }
+        });
+      });
+    </script>
+
+</body>
+
+</html>

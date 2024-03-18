@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="english">
+
+<head>
+    <title>Thèmes</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Jacquarda+Bastarda+9&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+
+<body>
+    <matrio path="components/navbar/navbar"></matrio>
+    <matrio path="components/title/title">
+        <matrio-content>
+            <div class="title">
+                <h1>Thèmes</h1>
+                <img src="./assets/emoji.png" alt="emoji">
+            </div>
+        </matrio-content>
+        <matrio path="components/search/search">
+            <matrio-content>
+                <input type="text" placeholder="Saisir le thème à rechercher"></input>
+            </matrio-content>
+        </matrio>
+        <div class="content-quiz">
+            <matrio path="components/theme-card/theme-card">
+                <matrio-content>
+                    <div class="theme-card-header">
+                        <img src="./assets/animal.jpg" alt="animaux">
+                        <p>Les animaux</p>
+                    </div>
+                    <div class="theme-card-footer">
+                        <p>Découvre les animaux et leurs caractéristiques</p>
+                        <p>5</p>
+                    </div>
+                </matrio-content>
+            </matrio>
+            <matrio path="components/theme-card/theme-card">
+                <matrio-content>
+                    <div class="theme-card-header">
+                        <img src="./assets/sport.jpg" alt="fille">
+                        <p>Les sports</p>
+                    </div>
+                    <div class="theme-card-footer">
+                        <p>Découvre les différents sports</p>
+                        <p>15</p>
+                    </div>
+                </matrio-content>
+            </matrio>
+            <matrio path="components/theme-card/theme-card">
+                <matrio-content>
+                    <div class="theme-card-header">
+                        <img src="./assets/maths2.jpg" alt="fille">
+                        <p>Les Mathématiques</p>
+                    </div>
+                    <div class="theme-card-footer">
+                        <p>Faisons les maths</p>
+                        <p>5</p>
+                    </div>
+                </matrio-content>
+            </matrio>
+            <matrio path="components/theme-card/theme-card">
+                <matrio-content>
+                    <div class="theme-card-header">
+                        <img src="./assets/astro.jpg" alt="fille">
+                        <p>L'Astronomie</p>
+                    </div>
+                    <div class="theme-card-footer">
+                        <p>Découvrons l'astronomie</p>
+                        <p>5</p>
+                    </div>
+                </matrio-content>
+            </matrio>
+            <matrio path="components/add-profil/add-profil">
+                <matrio-content>
+                    <p>Ajouter un nouveau thème</p>
+                </matrio-content>
+            </matrio>
+            <matrio path="components/form-add/form-add">
+                <matrio-content>
+                    <form id="addMemberForm">
+                        <div class="display-input">
+                            <label for="themeTitle">Titre du thème:</label><br>
+                            <input type="text" id="themeTitle" name="themeTitle"><br>
+                        </div>
+                        <div class="display-input">
+                            <label for="themeDescription">Description:</label><br>
+                            <textarea id="themeDescription" name="themeDescription" rows="5"></textarea><br>
+                        </div>
+                        <button type="submit">Créer le theme</button>
+                    </form>
+                </matrio-content>
+            </matrio>
+            <matrio path="components/form-update/form-update">
+                <matrio-content>
+                    <form id="updateMemberForm">
+                        <div class="display-input">
+                            <label for="themeTitle">Titre du thème:</label><br>
+                            <input type="text" id="themeTitle" name="themeTitle"><br>
+                        </div>
+                        <div class="display-input">
+                            <label for="themeDescription">Description:</label><br>
+                            <textarea id="themeDescription" name="themeDescription" rows="5"></textarea><br>
+                        </div>
+
+                        <button type="submit" style="width: 150px;">Modifier le theme</button>
+                    </form>
+                </matrio-content>
+            </matrio>
+        </div>
+
+        <script defer>
+            document.addEventListener('DOMContentLoaded', function () {
+                var nav = document.querySelector('.nav-vertical');
+                var icon = document.querySelector('#menu');
+                icon.addEventListener('click', function () {
+                    if (nav.style.display === 'none') {
+                        nav.style.display = 'block';
+                        document.querySelector('.content-quiz').style.marginLeft = '220px';
+                        document.querySelector('.content-quiz').style.width = 'calc(100% - 220px)';
+
+                    } else {
+                        nav.style.display = 'none';
+                        document.querySelector('.content-quiz').style.marginLeft = '0';
+                        document.querySelector('.content-quiz').style.width = '100%';
+                    }
+                });
+            });
+
+            function displayModal() {
+                var modal = document.getElementById("myModal");
+
+                modal.style.display = "block";
+
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            }
+
+            function closeModal() {
+                var modal = document.getElementById("myModal");
+                modal.style.display = "none";
+            }
+
+            function displayModalModification() {
+                var modal = document.getElementById("myModalModification");
+
+                modal.style.display = "block";
+
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            }
+
+            function closeModalModification() {
+                var modal = document.getElementById("myModalModification");
+                modal.style.display = "none";
+            }
+
+            function displayModalSuppression() {
+                var modal = document.getElementById("myModalSuppression");
+
+                modal.style.display = "block";
+
+
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            }
+
+            function closeModalSuppression() {
+                var modal = document.getElementById("myModalSuppression");
+                modal.style.display = "none";
+            }
+
+
+
+        </script>
+</body>
+
+</html>

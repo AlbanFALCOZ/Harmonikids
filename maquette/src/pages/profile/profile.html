@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="english">
+
+<head>
+    <title>Profile</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Jacquarda+Bastarda+9&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+
+<body>
+    <matrio path="components/navbar/navbar"></matrio>
+    <matrio path="components/title/title">
+        <matrio-content>
+            <div class="title">
+                <h1>Bonjour Léo</h1>
+                <img src="./assets/emoji.png" alt="emoji">
+            </div>
+        </matrio-content>
+        <div class="content-profile">
+            <section class="content-profile-header">
+                <img src="./assets/léo.jpg" alt="léo">
+                <div class="profile-story">
+                    <h2>Distrait Léo</h2>
+                    <div class="progress-container">
+                        <progress value="50" max="100"></progress>
+                        <div class="progress-text">50/100xp</div>
+                    </div>
+
+                    <div class="profile-story-stats">
+                        <matrio path="components/dash-stats/dash-stats">
+                            <matrio-content class="stat">
+                                <span class="material-symbols-outlined">
+                                    history_edu
+                                </span>
+                                <h3>Thèmes: 10/20</h3>
+                            </matrio-content>
+                        </matrio>
+                        <matrio path="components/dash-stats/dash-stats">
+                            <matrio-content class="stat">
+                                <span class="material-icons">quiz</span>
+                                <h3>Quiz : 40/100</h3>
+                            </matrio-content>
+                        </matrio>
+                        <matrio path="components/dash-stats/dash-stats">
+                            <matrio-content class="stat">
+                                <span class="material-icons">equalizer</span>
+                                <h3>Stats et historiques</h3>
+                            </matrio-content>
+                        </matrio>
+                    </div>
+                </div>
+            </section>
+            <section class="profil-footer">
+                <matrio path="components/profil-footer/profil-footer">
+                    <matrio-content>
+                        <div class="profil-footer-title">
+                            <span class="material-icons">description</span>
+                            <h3>Description des troubles</h3>
+                        </div>
+                        <div class="profil-footer-description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, necessitatibus. Neque,
+                                culpa aspernatur distinctio excepturi necessitatibus saepe, rem fugiat est cupiditate
+                                reprehenderit ipsum? Ea, deleniti. Ut optio dolores illum velit. Lorem ipsum dolor sit
+                                amet consectetur adipisicing elit. Esse officia cumque veritatis! Natus incidunt soluta
+                                dignissimos esse, vitae explicabo, quia, veniam vero iure velit unde blanditiis officiis
+                                ab facere. Modi? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae,
+                                perspiciatis? A quaerat itaque quis, dolores dolorum fugiat aliquam accusantium autem,
+                                iure impedit magni quia asperiores minus esse architecto quos maxime.</p>
+                        </div>
+                        <div>
+                            <p id="plus">Voir tout</p>
+                        </div>
+                    </matrio-content>
+                </matrio>
+                <div class="trophy-card">
+                        <div class="profil-footer-title">
+                            <span class="material-icons">
+                                military_tech
+                                </span>
+                            <h3>Réussites et avancements</h3>
+                        </div>
+                        <div class="profil-footer-trophy">
+                            <matrio path="components/profil-trophy/profil-trophy">
+                                <matrio-content>
+                                    1
+                                </matrio-content>
+                            </matrio>
+                            <matrio path="components/profil-trophy/profil-trophy">
+                                <matrio-content>
+                                    2
+                                </matrio-content>
+                            </matrio>
+                            <matrio path="components/profil-trophy/profil-trophy">
+                                <matrio-content>
+                                    3
+                                </matrio-content>
+                            </matrio>
+                            <matrio path="components/profil-trophy/profil-trophy">
+                                <matrio-content>
+                                    4
+                                </matrio-content>
+                            </matrio>
+                        </div>
+                        <div>
+                            <p id="plus_2">Voir tout</p>
+                        </div>
+                    </div>
+            </section>
+        </div>
+
+        <script defer>
+            document.addEventListener('DOMContentLoaded', function () {
+                var nav = document.querySelector('.nav-vertical');
+                var icon = document.querySelector('#menu');
+                icon.addEventListener('click', function () {
+                    if (nav.style.display === 'none') {
+                        nav.style.display = 'block';
+                        document.querySelector('.content-profile').style.marginLeft = '220px';
+                        document.querySelector('.content-profile').style.width = 'calc(100% - 220px)';
+
+
+                    } else {
+                        nav.style.display = 'none';
+                        document.querySelector('.content-profile').style.marginLeft = '0';
+                        document.querySelector('.content-profile').style.width = '100%';
+
+                    }
+                });
+            });
+
+            document.addEventListener('DOMContentLoaded', function () {
+            
+                var plus = document.getElementById('plus');
+                plus.addEventListener('click', function () {
+                    var description = document.querySelector('.profil-footer-description');
+                    if (description.style.height === '250px') {
+                        description.style.height = 'auto';
+                        plus.textContent = 'Voir moins';
+                        document.querySelector('.card-profil-footer').style.height = 'auto';
+                    } else {
+                        description.style.height = '250px';
+                        plus.textContent = 'Voir tout';
+                    }
+                });
+
+                
+                var plus_2 = document.getElementById('plus_2');
+                plus_2.addEventListener('click', function () {
+                    var description = document.querySelector('.profil-footer-trophy');
+                    if (description.style.height === '250px') {
+                        description.style.height = 'auto';
+                        plus.textContent = 'Voir moins';
+                        document.querySelector('.trophy-card').style.height = 'auto';
+                    } else {
+                        description.style.height = '250px';
+                        plus.textContent = 'Voir tout';
+                    }
+                });
+
+            });
+
+
+        </script>
+</body>
+
+</html>

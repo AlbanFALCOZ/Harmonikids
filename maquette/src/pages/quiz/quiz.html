@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="english">
+
+<head>
+    <title>Quiz</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Jacquarda+Bastarda+9&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+
+<body>
+    <matrio path="components/navbar/navbar"></matrio>
+    <div class="question_1">
+        <div class="content-question">
+
+            <matrio path="components/question/question">
+                <matrio-content>
+                    <img src="./assets/chien.jpeg" alt="image_question">
+                    <h3>Quel est le nom de cet animal?</h3>
+                    <div class="question-answers">
+                        <div>
+                            <button class="answer good-answer">Chien</button>
+                            <button class="answer bad-answer">Chat</button>
+                        </div>
+                        <div>
+                            <button class="answer bad-answer">Lion</button>
+                            <button class="answer bad-answer">Tigre</button>
+                        </div>
+
+                    </div>
+                </matrio-content>
+            </matrio>
+            <div class="progress-container">
+                <progress value="1" max="5"></progress>
+            </div>
+            <div class="quiz_setting">
+                <div>
+                    <span class="material-symbols-outlined toggle toggle_on">toggle_on</span>
+                    <span class="material-symbols-outlined toggle toggle_off">toggle_off</span>
+                    <p>indice</p>
+
+                </div>
+                <div>
+                    <span class="material-symbols-outlined volume volume_up">volume_up</span>
+                    <span class="material-symbols-outlined volume volume_off">volume_off</span>
+                    <p>son</p>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="quiz-btn">
+            <button class="precedent">Precedent</button>
+            <button type="submit" class="suivant">Suivant</button>
+        </div>
+    </div>
+    <div class="question_2" style="display: none;">
+        <div class="content-question">
+
+            <matrio path="components/question/question">
+                <matrio-content>
+                    <video src="./assets/chat.mp4" loop autoplay controls></video>
+                    <h3>Quel est le nom de l'animal sur cette vidéo?</h3>
+                    <div class="question-answers">
+                        <div>
+                            <button class="answer bad-answer">Chien</button>
+                            <button class="answer good-answer">Chat</button>
+                        </div>
+                        <div>
+                            <button class="answer bad-answer">Lion</button>
+                            <button class="answer bad-answer">Tigre</button>
+                        </div>
+
+                    </div>
+                </matrio-content>
+            </matrio>
+            <div class="progress-container">
+                <progress value="2" max="5"></progress>
+            </div>
+            <div class="quiz_setting">
+                <div>
+                    <span class="material-symbols-outlined toggle toggle_on">toggle_on</span>
+                    <span class="material-symbols-outlined toggle toggle_off">toggle_off</span>
+                    <p>indice</p>
+
+                </div>
+                <div>
+                    <span class="material-symbols-outlined volume volume_up">volume_up</span>
+                    <span class="material-symbols-outlined volume volume_off">volume_off</span>
+                    <p>son</p>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="quiz-btn">
+            <button class="precedent">Precedent</button>
+            <button type="submit" class="suivant">Suivant</button>
+        </div>
+    </div>
+    <div class="question_3" style="display: none;">
+        <div class="content-question">
+
+            <matrio path="components/question/question">
+                <matrio-content>
+                    <audio src="./assets/miaule.mp3" autoplay loop controls>Audio</audio>
+                    <h3>Quel est le son dans cet audio?</h3>
+                    <div class="question-answers">
+                        <div>
+                            <button class="answer bad-answer">Aboiement</button>
+                            <button class="answer good-answer">Miaulement</button>
+                        </div>
+                        <div>
+                            <button class="answer bad-answer">Rugissement</button>
+                            <button class="answer bad-answer">Hennissement</button>
+                        </div>
+
+                    </div>
+                </matrio-content>
+            </matrio>
+            <div class="progress-container">
+                <progress value="3" max="5"></progress>
+            </div>
+            <div class="quiz_setting">
+                <div>
+                    <span class="material-symbols-outlined toggle toggle_on">toggle_on</span>
+                    <span class="material-symbols-outlined toggle toggle_off">toggle_off</span>
+                    <p>indice</p>
+
+                </div>
+                <div>
+                    <span class="material-symbols-outlined volume volume_up">volume_up</span>
+                    <span class="material-symbols-outlined volume volume_off">volume_off</span>
+                    <p>son</p>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="quiz-btn">
+            <button class="precedent">Precedent</button>
+            <button type="submit" class="suivant">Suivant</button>
+        </div>
+    </div>
+    <div class="question_4" style="display: none;">
+        <div class="content-question">
+
+            <matrio path="components/question/question">
+                <matrio-content>
+                    <img src="./assets/chien.jpeg" alt="image_question">
+                    <h3>Le chien aboie? Vrai ou Faux</h3>
+                    <div class="question-answers">
+                        <div>
+                            <button class="answer good-answer">Vrai</button>
+                            <button class="answer bad-answer">Faux</button>
+                        </div>
+
+
+                    </div>
+                </matrio-content>
+            </matrio>
+            <div class="progress-container">
+                <progress value="4" max="5"></progress>
+            </div>
+            <div class="quiz_setting">
+                <div>
+                    <span class="material-symbols-outlined toggle toggle_on">toggle_on</span>
+                    <span class="material-symbols-outlined toggle toggle_off">toggle_off</span>
+                    <p>indice</p>
+
+                </div>
+                <div>
+                    <span class="material-symbols-outlined volume volume_up">volume_up</span>
+                    <span class="material-symbols-outlined volume volume_off">volume_off</span>
+                    <p>son</p>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="quiz-btn">
+            <button class="precedent">Precedent</button>
+            <button type="submit" class="suivant">Suivant</button>
+        </div>
+    </div>
+    <div class="question_5" style="display: none;">
+        <div class="content-question">
+
+            <matrio path="components/question/question">
+                <matrio-content>
+                    <img src="./assets/chien.jpeg" alt="image_question">
+                    <h3>Choisissez les animaux domestiques?</h3>
+                    <div class="question-answers">
+                        <div>
+                            <button class="answer good-answer"><input type="checkbox" class="answer good-answer"
+                                    value="Chien">Chien</button>
+                            <button class="answer good-answer"><input type="checkbox" class="answer good-answer"
+                                    value="Chat">Chat</button>
+                        </div>
+                        <div>
+                            <button class="answer bad-answer"><input type="checkbox" class="answer bad-answer"
+                                    value="Lion">Lion</button>
+                            <button class="answer bad-answer"><input type="checkbox" class="answer bad-answer"
+                                    value="Tigre">Tigre</button>
+                        </div>
+                    </div>
+                </matrio-content>
+
+            </matrio>
+            <div class="progress-container">
+                <progress value="5" max="5"></progress>
+            </div>
+            <div class="quiz_setting">
+                <div>
+                    <span class="material-symbols-outlined toggle toggle_on">toggle_on</span>
+                    <span class="material-symbols-outlined toggle toggle_off">toggle_off</span>
+                    <p>indice</p>
+
+                </div>
+                <div>
+                    <span class="material-symbols-outlined volume volume_up">volume_up</span>
+                    <span class="material-symbols-outlined volume volume_off">volume_off</span>
+                    <p>son</p>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="quiz-btn">
+            <button class="precedent">Precedent</button>
+            <button type="submit" class="suivant termine">Terminer</button>
+        </div>
+    </div>
+
+    <matrio path="components/answer-feedback/answer-feedback">
+    </matrio>
+
+
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function () {
+            var nav = document.querySelector('.nav-vertical');
+            var icon = document.querySelector('#menu');
+            icon.addEventListener('click', function () {
+                if (nav.style.display === 'none') {
+                    nav.style.display = 'block';
+                    document.querySelectorAll('.content-question').forEach(function(item) {item.style.marginLeft = '220px'});
+                    document.querySelectorAll('.content-question').forEach(function(item) {item.style.width = 'calc(100% - 220px)'});
+
+
+                } else {
+                    nav.style.display = 'none';
+                    document.querySelectorAll('.content-question').forEach(function(item) {item.style.marginLeft = '0'});
+                    document.querySelectorAll('.content-question').forEach(function(item) {item.style.width = '100%'});
+
+                }
+            });
+        });
+
+        document.querySelectorAll('.toggle').forEach(function (toggle) {
+            toggle.addEventListener('click', function () {
+                document.querySelectorAll('.toggle_on').forEach(function (item) {
+                    item.style.display = (toggle.classList.contains('toggle_off')) ? 'inline' : 'none';
+                });
+                document.querySelectorAll('.toggle_off').forEach(function (item) {
+                    item.style.display = (toggle.classList.contains('toggle_on')) ? 'inline' : 'none';
+                });
+            });
+        });
+
+        document.querySelectorAll('.volume').forEach(function (volume) {
+            volume.addEventListener('click', function () {
+                document.querySelectorAll('.volume_up').forEach(function (item) {
+                    item.style.display = (volume.classList.contains('volume_off')) ? 'inline' : 'none';
+                });
+                document.querySelectorAll('.volume_off').forEach(function (item) {
+                    item.style.display = (volume.classList.contains('volume_up')) ? 'inline' : 'none';
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const answerButtons = document.querySelectorAll('.answer');
+            const feedbackSound = document.getElementById('feedback-sound');
+
+            answerButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    const feedbackText = document.querySelector('.feedback-text');
+                    const indice = document.querySelector('.indice');
+                    if (button.classList.contains('good-answer')) {
+                        playSound('./assets/good.mp3');
+                        button.style.backgroundColor = '#FAA300';
+                        indice.textContent = "";
+                        feedbackText.textContent = "Bravo!! Mais quel génie continue sur cette bonne lancée! 🥳";
+                        showFeedback('good');
+                    } else {
+                        playSound('./assets/bad.mp3');
+                        feedbackText.textContent = "Olala!! Encore un petit effort tu vas y arriver! 😉";
+                        indice.textContent = "Voici un petit indice pour t'aider : on dit qu'il est le meilleur ami de l'homme";
+                        showFeedback('bad');
+                        button.style.display = 'none';
+                    }
+                });
+            });
+
+            function showFeedback(type) {
+                const answerFeedback = document.querySelector('.answer-feedback');
+                answerFeedback.classList.add('show', type);
+                setTimeout(function () {
+                    answerFeedback.classList.remove('show', type);
+                }, 6000);
+            }
+
+            function playSound(soundFile) {
+                feedbackSound.src = soundFile;
+                feedbackSound.play();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const nextButtons = document.querySelectorAll('.suivant');
+            const previousButtons = document.querySelectorAll('.precedent');
+            const questions = document.querySelectorAll('.content-question');
+
+            let currentQuestionIndex = 0;
+
+            nextButtons.forEach(function (nextButton) {
+                nextButton.addEventListener('click', function () {
+                    if (currentQuestionIndex < questions.length - 1) {
+                        questions[currentQuestionIndex].parentNode.style.display = 'none'; // Masque la question actuelle
+                        currentQuestionIndex++;
+                        questions[currentQuestionIndex].parentNode.style.display = 'block'; // Affiche la prochaine question
+                    }
+                });
+            });
+
+            previousButtons.forEach(function (previousButton) {
+                previousButton.addEventListener('click', function () {
+                    if (currentQuestionIndex > 0) {
+                        questions[currentQuestionIndex].parentNode.style.display = 'none'; // Masque la question actuelle
+                        currentQuestionIndex--;
+                        questions[currentQuestionIndex].parentNode.style.display = 'block'; // Affiche la question précédente
+                    }
+                });
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+.profil-statistique{
+    grid-column-start: 1 / span 1;
+    width: 500px;
+    height: 280px;
+    border: 5px solid #FAA300;
+    border-radius: 10px;
+    padding-top: 10px;
+    background-color: #fff;
+    cursor: pointer;
+    background-color: lightgoldenrodyellow;
+}
+
+
+.card-left img{
+    float: left;
+    margin-left: 10px;
+    height: 100%;
+    width: 50%;
+}
+
+.profil-name{
+    margin-top: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+.exp {
+    display: block;
+    position: absolute; 
+    margin-top: 100px;
+    margin-left: 100px;
+    border: 3px solid black;
+    border-radius: 30px;
+}
+
+.time-played {
+    display: block;
+    position: absolute; 
+    margin-top: 100px;
+    margin-left: 250px;
+    border: 3px solid black;
+    border-radius: 30px;
+}
+
