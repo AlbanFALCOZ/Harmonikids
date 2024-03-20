@@ -40,3 +40,18 @@
     justify-content: space-around;
     margin-top: 10px;
 }
+
+
+
+.membre-card-button button {
+    border: 1px solid #6ecbd2;
+    border-radius: 10px;
+    background-color: #6ecbd2;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 80px;
+    text-align: center;
+    cursor: pointer;
+}
