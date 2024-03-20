@@ -25,7 +25,11 @@ export class MembreComponent {
     }
 
  
-    
+    selectMembre(): void {
+      this.membreSelected.emit(true);
+  }
+
+
 
 }
 
