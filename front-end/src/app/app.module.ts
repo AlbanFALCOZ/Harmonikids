@@ -12,6 +12,7 @@ import { TitleComponent } from './head-title/title.component';
 import { QuizAddComponent } from './quizzes/quiz-add/quiz-add.component';
 import { QuizEditComponent } from './quizzes/quiz-edit/quiz-edit.component';
 import { QuizDeleteComponent } from './quizzes/quiz-delete/quiz-delete.component';
+import { TypeQuestionComponent } from './questions/type-question/type-question/type-question.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { QuizDeleteComponent } from './quizzes/quiz-delete/quiz-delete.component
     TitleComponent,
     QuizAddComponent,
     QuizEditComponent,
-    QuizDeleteComponent
+    QuizDeleteComponent,
+    TypeQuestionComponent
   ],
   imports: [
     BrowserModule,
