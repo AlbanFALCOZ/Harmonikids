@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Membre } from '../../../../models/membre.model';
+import { Membre } from '../../../models/membre.model';
 
 @Component({
   selector: 'app-membre',
