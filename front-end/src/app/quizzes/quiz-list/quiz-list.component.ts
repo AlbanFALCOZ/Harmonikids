@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Quiz } from '../../../models/quiz.model';
 import { QuizService } from '../../../services/quiz.service';
+import { TitleService } from '../../../services/title.service';
+
 
 @Component({
   selector: 'app-quiz-list',
@@ -12,10 +14,12 @@ export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
 
-  constructor(private router: Router, public quizService: QuizService) {
+  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
     });
+    this.titleService.title = 'Liste des quiz';
+    this.titleService.search = 'Rechercher dans les quiz...';
   }
 
   ngOnInit(): void {
