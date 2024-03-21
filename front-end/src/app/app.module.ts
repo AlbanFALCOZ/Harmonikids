@@ -9,9 +9,9 @@ import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TitleComponent } from './head-title/title.component';
-import { QuizAddComponent } from './quizzes/quiz-add/quiz-add/quiz-add.component';
+import { QuizAddComponent } from './quizzes/quiz-add/quiz-add.component';
 import { QuizEditComponent } from './quizzes/quiz-edit/quiz-edit.component';
-import { QuizDeleteComponent } from './quizzes/quiz-delete/quiz-delete/quiz-delete.component';
+import { QuizDeleteComponent } from './quizzes/quiz-delete/quiz-delete.component';
 
 @NgModule({
   declarations: [
