@@ -12,21 +12,8 @@ export class QuizEditComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  displayModal() {
-    var modal = document.getElementById("myModal");
-    if (modal) {
-      modal.style.display = "block";
-
-      window.onclick = function (event) {
-        if (event.target == modal && (modal)) {
-          modal.style.display = "none";
-        }
-      }
-    }
-  }
-
-  closeModal() {
-    var modal = document.getElementById("myModal");
+  closeModalUpdate() {
+    var modal = document.getElementById("myModalUpdate");
     if (modal) {
       modal.style.display = "none";
     }

@@ -1,11 +1,11 @@
 <app-navbar></app-navbar>
 <app-title></app-title>
 <div class="content-quiz">
-    <app-quiz *ngFor="let quiz of quizList"
-            [quiz]="quiz"
-            (quizSelected)="quizSelected($event)"
-            (editQuiz)="editQuiz($event)"
-            (deleteQuiz)="deleteQuiz($event)">
+  <app-quiz *ngFor="let quiz of quizList" [quiz]="quiz" (quizSelected)="quizSelected($event)"
+    (editQuiz)="editQuiz($event)" (deleteQuiz)="deleteQuiz($event)">
   </app-quiz>
   <app-quiz-add></app-quiz-add>
+
 </div>
+<app-quiz-edit></app-quiz-edit>
+<app-quiz-delete></app-quiz-delete>

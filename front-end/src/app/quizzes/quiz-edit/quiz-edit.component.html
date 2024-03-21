@@ -1,12 +1,7 @@
-<div class="add-card">
-    <p>Ajouter un nouveau quiz</p>
-    <span class="material-icons add" id="myBtn" (click)="displayModal()">add</span>
-</div>
-
-<div id="myModal" class="modal">
+<div id="myModalUpdate" class="modal">
     <div class="modal-content">
-        <span class="close material-icons" (click)="closeModal()">close</span>
-        <form id="addMemberForm">
+        <span class="close material-icons" (click)="closeModalUpdate()">close</span>
+        <form id="updateMemberForm">
             <div class="display-input">
                 <label for="quizTitle">Titre du quiz:</label><br>
                 <input type="text" id="quizTitle" name="quizTitle"><br>
@@ -53,13 +48,10 @@
                         <option value="question2">Question 2</option>
                         <option value="question3">Question 3</option>
                     </optgroup>
-                    <option value=""><button>Ajouter une nouvelle question</button></option>
                 </select><br>
             </div>
 
-            <button type="submit">Créer le quiz</button>
+            <button type="submit" style="width: 150px;">Modifier le quiz</button>
         </form>
     </div>
-
 </div>
-

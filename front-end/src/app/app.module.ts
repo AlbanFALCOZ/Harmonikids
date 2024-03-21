@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TitleComponent } from './head-title/title.component';
 import { QuizAddComponent } from './quizzes/quiz-add/quiz-add/quiz-add.component';
 import { QuizEditComponent } from './quizzes/quiz-edit/quiz-edit.component';
+import { QuizDeleteComponent } from './quizzes/quiz-delete/quiz-delete/quiz-delete.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { QuizEditComponent } from './quizzes/quiz-edit/quiz-edit.component';
     NavbarComponent,
     TitleComponent,
     QuizAddComponent,
-    QuizEditComponent
+    QuizEditComponent,
+    QuizDeleteComponent
   ],
   imports: [
     BrowserModule,
