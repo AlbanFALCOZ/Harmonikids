@@ -11,8 +11,15 @@ import { Membre } from 'src/models/membre.model';
 export class MembreListeComponent implements OnInit {
 
   public membreListe: Membre[] = [];
+  public displayForm: boolean = false;
+ 
+
+ 
+  
 
   constructor(private router: Router) {
+
+
     this.membreListe = [
         {
           id: '1',
@@ -40,12 +47,18 @@ export class MembreListeComponent implements OnInit {
           description: 'Je veux manger',
           image : './../../../../assets/img/léo.jpg'
         },
-       
+        
+      
       ];
   }
   
   ngOnInit(): void {
   }
 
+  toggleForm() {
+    this.displayForm = !this.displayForm;
+  }
+
+ 
 
 }
