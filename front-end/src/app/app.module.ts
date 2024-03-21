@@ -6,16 +6,21 @@ import { AppComponent } from './app.component';
 
 import { QuizComponent } from './quizzes/quiz/quiz.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
+import { MembreComponent } from './membres/membre/membre.component';
+import { MembreListeComponent } from './membres/membres-liste/membre-liste.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ThemeComponent} from './themes/theme/theme.component';
 import { ThemeListComponent } from './themes/theme-list/theme-list.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizComponent,
     QuizListComponent,
+    MembreComponent,
+    MembreListeComponent,
     NavbarComponent,
     ThemeComponent,
     ThemeListComponent,

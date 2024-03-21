@@ -1,4 +1,4 @@
-.content-theme {
+.content-membre {
     width: 100%;
     height: 100%;
     display: flex;
@@ -6,13 +6,14 @@
     align-items: top;
     justify-content: space-around;
     flex-wrap: wrap;  
+    margin-top : 0 px;
   }
 
   h4 {
     color: #FAA300; 
     font-size: 50px; 
     animation: bounce 1s infinite alternate; 
-    margin-left : 650px;
+    margin-left : 500px
   }
 
   @keyframes bounce {

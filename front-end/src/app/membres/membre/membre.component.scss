@@ -1,61 +1,49 @@
-.theme-card{
+.card{
     width: 270px;
-    height: 340px;
+    height: 200px;
     border: 5px solid #FAA300;
     border-radius: 30px;
     box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
+    padding-top: 10px;
     background-color: #fff;
-    font-family: "Finger Paint", sans-serif;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.theme-card-header{
+.card:hover {
+    transform: translateX(-5px) translateY(-5px); 
+}
+
+.card-header{
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     border-bottom: 2px solid #FAA300;
-    height: 210px;
-    width: 100%;
+    height: 130px;
 }
 
-.theme-card-header p{
-    font-size: 24px;
-    text-align: center;
-
-}
-
-.theme-card-header img{
+.card-header img{
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     height: 120px;
-    width: 100%;
+    width: 120px;
+    border-radius: 50%;
 }
 
-.theme-card-footer{
-    display: flex;
-    justify-content: space-around;
+.card-footer{
     text-align: center;
     font-style: italic;
-    border-bottom: 2px solid #FAA300;
-    height: 70px;
 }
 
-.theme-card-footer p:nth-child(2){
-    border: 1px solid #000;
-    width: 60px;
-    padding: 5px;
-    background-color: #F4538A;
-    color: #fff;
-    border-radius: 50%;
-    margin-right: 5px;
-}
-
-.theme-card-button{
+.membre-card-button{
     display: flex;
     justify-content: space-around;
     margin-top: 10px;
 }
-.theme-card-button button {
+
+
+
+.membre-card-button button {
     border: 1px solid #6ecbd2;
     border-radius: 10px;
     background-color: #6ecbd2;
@@ -63,7 +51,7 @@
     padding: 10px;
     font-size: 14px;
     font-weight: bold;
+    width: 80px;
     text-align: center;
     cursor: pointer;
 }
-

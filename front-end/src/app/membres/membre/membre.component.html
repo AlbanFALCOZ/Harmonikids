@@ -1,0 +1,21 @@
+<div class="card"  *ngIf="membre">
+    <div class="card-header">   
+       <img [src]="membre.image" alt="Member Image">
+        <div>
+          <p>Nom : {{membre.lastName}}</p>
+          <p>Prenom : {{membre.firstName}}</p>
+          <p>Age : {{membre.age}}</p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <p>{{membre.description}}</p>
+    </div>
+    
+    <div class="membre-card-button">
+      <a routerLink="/quiz-list"><button (click)="selectMembre()">Select</button></a>
+  </div>
+    </div>
+
+    
+  
+  
