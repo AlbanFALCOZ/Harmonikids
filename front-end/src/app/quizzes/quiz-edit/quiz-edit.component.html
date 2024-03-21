@@ -1,0 +1,65 @@
+<div class="add-card">
+    <p>Ajouter un nouveau quiz</p>
+    <span class="material-icons add" id="myBtn" (click)="displayModal()">add</span>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close material-icons" (click)="closeModal()">close</span>
+        <form id="addMemberForm">
+            <div class="display-input">
+                <label for="quizTitle">Titre du quiz:</label><br>
+                <input type="text" id="quizTitle" name="quizTitle"><br>
+            </div>
+            <div class="display-input">
+                <label for="quizTheme">Thème:</label><br>
+                <select id="quizTheme" name="quizTheme">
+                    <option value="">Sélectionner le thème du quiz</option>
+                    <option value="litterature">Littérature</option>
+                    <option value="maths">Mathématiques</option>
+                    <option value="animal">Les animaux</option>
+                    <option value="astronomie">Astronomie</option>
+                </select><br>
+            </div>
+            <div class="display-input">
+                <label for="quizNiveau">Niveau:</label><br>
+                <select id="quizNiveau" name="quizNiveau">
+                    <option value="">Sélectionner le niveau du quiz</option>
+                    <option value="facile">Facile</option>
+                    <option value="moyen">Moyen</option>
+                    <option value="difficile">Difficile</option>
+                </select><br>
+            </div>
+            <div class="display-input">
+                <label for="quizDescription">Description:</label><br>
+                <textarea id="quizDescription" name="quizDescription" rows="5"></textarea><br>
+            </div>
+            <div class="display-input">
+                <label for="quizQuestions">Questions:</label><br>
+                <select id="quizQuestions" name="quizQuestions" size="4" multiple>
+                    <option value="">Sélectionner les questions</option>
+                    <optgroup label="Choix multiple">
+                        <option value="question1">Question 1</option>
+                        <option value="question2">Question 2</option>
+                        <option value="question3">Question 3</option>
+                    </optgroup>
+                    <optgroup label="Vrai/Faux">
+                        <option value="question1">Question 1</option>
+                        <option value="question2">Question 2</option>
+                        <option value="question3">Question 3</option>
+                    </optgroup>
+                    <optgroup label="Réponse unique">
+                        <option value="question1">Question 1</option>
+                        <option value="question2">Question 2</option>
+                        <option value="question3">Question 3</option>
+                    </optgroup>
+                    <option value=""><button>Ajouter une nouvelle question</button></option>
+                </select><br>
+            </div>
+
+            <button type="submit">Créer le quiz</button>
+        </form>
+    </div>
+
+</div>
+

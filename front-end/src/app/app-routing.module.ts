@@ -6,7 +6,7 @@ import { QuizComponent } from './quizzes/quiz/quiz.component';
 
 const routes: Routes = [
   { path: 'quiz-list', component: QuizListComponent },
-  { path: 'quiz', component: QuizComponent },
+  { path: 'quiz', component: QuizComponent },  
   { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },
 ];
 
