@@ -1,0 +1,16 @@
+<div class="theme-card" *ngIf="theme">
+    <div class="theme-card-header">
+        <img src="assets/img/animal.jpg" alt="animaux">
+        <p>{{ theme.name }}</p>
+    </div>
+    <div class="theme-card-footer">
+        <p>{{ theme.description }}</p>
+        <p>{{ theme.numberOfQuizzes }}</p>
+    </div>
+    <div class="theme-card-button">
+        <a href="./niveau.html"><button>Ouvrir</button></a>
+        <button onclick="displayModalModification()">Modifier</button>
+        <button onclick="displayModalSuppression()">Supprimer</button>
+    </div>
+</div>
+
