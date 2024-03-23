@@ -11,4 +11,6 @@ export class NavbarComponent {
   toggleNav(): void {
     this.isNavVisible = !this.isNavVisible;
   }
+
+  
 }

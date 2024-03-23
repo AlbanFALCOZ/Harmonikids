@@ -1,6 +1,6 @@
 <div class="quiz-card" *ngIf="quiz">
     <div class="quiz-card-header">
-        <img src="assets/img/animal.jpg" alt="animaux">
+        <img src="{{ quiz.image }}" alt="animaux">
         <p>{{ quiz.name }}</p>
     </div>
     <div class="quiz-card-footer">
@@ -9,8 +9,8 @@
     </div>
     <div class="quiz-card-button">
         <a routerLink="/quiz"><button (click)="selectQuiz()">Select</button></a>
-        <button (click)="delete()">Delete</button>
-        <button>Edit</button>
+        <button (click)="displayModalUpdate()">Edit</button>
+        <button (click)="displayModalDelete()">Delete</button>
     </div>
 </div>
 

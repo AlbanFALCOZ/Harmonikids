@@ -4,7 +4,6 @@ import { Membre } from '../../../models/membre.model';
 @Component({
   selector: 'app-membre',
   templateUrl: './membre.component.html',
-  
   styleUrl: './membre.component.scss'
 })
 export class MembreComponent {
