@@ -15,7 +15,7 @@ import { ThemeAddComponent} from './themes/theme-add/theme-add.component';
 import { ThemeEditComponent} from './themes/theme-edit/theme-edit.component';
 import { ThemeDeleteComponent } from './themes/theme-delete/theme-delete.component';
 import { ThemeListComponent } from './themes/theme-list/theme-list.component';
-
+import { LevelCardComponent } from './levels/level-card/level-card.component';
 import { TitleComponent } from './head-title/title.component';
 import { QuizAddComponent } from './quizzes/quiz-add/quiz-add.component';
 import { QuizEditComponent } from './quizzes/quiz-edit/quiz-edit.component';
@@ -35,6 +35,7 @@ import { TypeQuestionComponent } from './questions/type-question/type-question.c
     ThemeEditComponent,
     ThemeDeleteComponent,
     ThemeListComponent,
+    LevelCardComponent,
     NavbarComponent,
     TitleComponent,
     QuizAddComponent,
