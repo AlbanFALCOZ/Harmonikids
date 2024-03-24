@@ -8,6 +8,7 @@
     background-color: #fff;
     cursor: pointer;
     transition: transform 0.3s ease;
+    font-family: "Finger Paint", sans-serif;
 }
 
 .card:hover {
@@ -20,6 +21,7 @@
     justify-content: space-around;
     border-bottom: 2px solid #FAA300;
     height: 130px;
+    font-family: "Finger Paint", sans-serif;
 }
 
 .card-header img{
@@ -32,7 +34,7 @@
 
 .card-footer{
     text-align: center;
-    font-style: italic;
+    font-family: "Finger Paint", sans-serif;
 }
 
 .membre-card-button{
