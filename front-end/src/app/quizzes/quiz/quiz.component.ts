@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
-import { compileDeclareNgModuleFromMetadata } from '@angular/compiler';
 
 @Component({
     selector: 'app-quiz',

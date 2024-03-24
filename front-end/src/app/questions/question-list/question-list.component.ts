@@ -1,0 +1,28 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Question } from '../../../models/question.model';
+import { QuestionService } from '../../../services/question.service';
+import { TitleService } from '../../../services/title.service';
+
+
+@Component({
+  selector: 'app-question-list',
+  templateUrl: './question-list.component.html',
+  styleUrls: ['./question-list.component.scss']
+})
+export class QuestionListComponent implements OnInit {
+
+  public questionList: Question[] = [];
+
+  constructor(private router: Router, public questionService: QuestionService) {
+    this.questionService.questions$.subscribe((questions: Question[]) => {
+      this.questionList = questions;
+    });
+
+  }
+
+  ngOnInit(): void {
+    console.log(this.questionList)
+  }
+
+}

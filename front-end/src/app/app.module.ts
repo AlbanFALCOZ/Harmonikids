@@ -18,6 +18,8 @@ import { QuizAddComponent } from './quizzes/quiz-add/quiz-add.component';
 import { QuizEditComponent } from './quizzes/quiz-edit/quiz-edit.component';
 import { QuizDeleteComponent } from './quizzes/quiz-delete/quiz-delete.component';
 import { TypeQuestionComponent } from './questions/type-question/type-question.component';
+import { MultiChoiceComponent } from './questions/multi-choice/multi-choice.component';
+import { QuestionListComponent } from './questions/question-list/question-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { TypeQuestionComponent } from './questions/type-question/type-question.c
     QuizAddComponent,
     QuizEditComponent,
     QuizDeleteComponent,
-    TypeQuestionComponent
+    TypeQuestionComponent,
+    MultiChoiceComponent,
+    QuestionListComponent
   ],
   imports: [
     BrowserModule,

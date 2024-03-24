@@ -1,0 +1,8 @@
+<div class="question" *ngIf="multi">
+    <img src="{{ multi.image }}" alt="image_question">
+    <h3>{{ multi.label }}</h3>
+    <div class="question-answers">
+        <button class="answer good-answer" *ngFor="let answer of multi.answers"><input type="checkbox"
+                class="answer good-answer" value="Chien">{{ answer.value }}</button>
+    </div>
+</div>
