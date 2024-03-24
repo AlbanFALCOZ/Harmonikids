@@ -4,12 +4,12 @@ import { Theme } from '../../../models/theme.model';
 import { TitleService } from 'src/services/title.service';
 import { ThemeService } from 'src/services/theme.service';
 
+
 @Component({
   selector: 'app-theme-list',
   templateUrl: './theme-list.component.html',
   styleUrl: './theme-list.component.scss'
 })
-
 
 export class ThemeListComponent implements OnInit{
 

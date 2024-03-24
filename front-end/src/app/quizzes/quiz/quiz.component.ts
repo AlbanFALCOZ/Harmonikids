@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
-import { compileDeclareNgModuleFromMetadata } from '@angular/compiler';
 
 @Component({
     selector: 'app-quiz',
@@ -10,7 +9,7 @@ import { compileDeclareNgModuleFromMetadata } from '@angular/compiler';
 export class QuizComponent implements OnInit {
 
     @Input()
-    quiz?: Quiz
+    quiz!: Quiz
 
     @Output()
     quizSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
