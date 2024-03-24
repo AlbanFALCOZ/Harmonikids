@@ -22,6 +22,7 @@ export class MembreListeComponent implements OnInit {
       this.membreListe = membres;
     });
     this.titleService.title = 'Bienvenue';
+    this.titleService.search = 'Rechercher un enfant';
 
   }
   

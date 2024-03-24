@@ -13,10 +13,11 @@ import { TitleComponent } from './head-title/title.component';
 import { QuizAddComponent } from './quizzes/quiz-add/quiz-add.component';
 import { QuizEditComponent } from './quizzes/quiz-edit/quiz-edit.component';
 import { QuizDeleteComponent } from './quizzes/quiz-delete/quiz-delete.component';
-import { TypeQuestionComponent } from './questions/type-question/type-question.component';
-import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
-import { ThemeComponent} from './themes/theme/theme.component';
+import { MultiChoiceComponent } from './questions/multi-choice/multi-choice.component';
+import { QuestionListComponent } from './questions/question-list/question-list.component';
+import { ThemeComponent } from './themes/theme/theme.component';
 import { ThemeListComponent } from './themes/theme-list/theme-list.component';
+import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
 
 
 
@@ -35,7 +36,8 @@ import { ThemeListComponent } from './themes/theme-list/theme-list.component';
     QuizAddComponent,
     QuizEditComponent,
     QuizDeleteComponent,
-    TypeQuestionComponent,
+    MultiChoiceComponent,
+    QuestionListComponent,
     DragDropComponent
 
   ],

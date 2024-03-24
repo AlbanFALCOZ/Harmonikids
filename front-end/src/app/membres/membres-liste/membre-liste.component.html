@@ -1,6 +1,5 @@
 <app-navbar></app-navbar>
-
-<h4>Heureux de te revoir!</h4>
+<app-title></app-title>
 
 <div class="content-membre">
   <app-membre *ngFor="let membre of membreListe" [membre]="membre"></app-membre>
@@ -9,15 +8,7 @@
     <p>Ajouter un nouvel enfant</p> 
     <span class="material-icons add" id="myBtn" (click)="toggleForm()">add</span>
   </div>
-<!-- 
-    Bouton pour ajouter un personnage , je vais l'implémenter quand on aura un barre de recherche , c'est pour le cas ou 
-    la page est trop chargée de cartes
-  <div class="add-membre">
-    <p>Ajouter un nouvel enfant</p> 
-    <span class="material-icons add" id="myBtn" (click)="toggleForm()">add</span>
-  </div>
 
--->
 
   <div id="myModal" class="modal" *ngIf="displayForm"> 
     <div class="modal-content">

@@ -14,4 +14,16 @@ export class NavbarComponent {
 
   
 }
+/* displayNav() {
+  let nav = document.getElementById('nav-vertical') as HTMLElement;
+  let icon = document.getElementById('menu') as HTMLElement;
 
+  if (icon) {
+    if (nav.style.display === 'none') {
+      nav.style.display = 'block';
+
+    } else {
+      nav.style.display = 'none';
+    }
+  };
+} */

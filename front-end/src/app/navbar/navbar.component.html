@@ -7,7 +7,7 @@
 
 
 
-<div class="nav-vertical" [ngClass]="{'visible': isNavVisible}">
+<div class="nav-vertical" [ngStyle]="{'visibility': isNavVisible ? 'visible' : 'hidden'}">
 
     <a routerLink="/membres-liste">Accueil</a>
     <a routerLink="/quiz-list">Listes des Quiz</a>
