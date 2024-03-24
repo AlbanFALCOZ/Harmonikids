@@ -1,11 +1,8 @@
 export interface DragDrop {
     id: string;
-    complement: string;
-    piece1 : String ;
-    piece2 : String ;
-    piece3 : String ;
-    piece4 : String ;
-    cadre:string;
-    
- 
+    item1 : String ;
+    item2 : String ;
+    item3 : String ;
+    rightAnswer : String ;
+    question :string;
 }
