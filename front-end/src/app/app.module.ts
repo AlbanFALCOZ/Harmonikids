@@ -6,8 +6,13 @@ import { AppComponent } from './app.component';
 
 import { QuizComponent } from './quizzes/quiz/quiz.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
+import { MembreComponent } from './membres/membre/membre.component';
+import { MembreListeComponent } from './membres/membres-liste/membre-liste.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ThemeComponent} from './themes/theme/theme.component';
+import { ThemeListComponent } from './themes/theme-list/theme-list.component';
+
 import { TitleComponent } from './head-title/title.component';
 import { QuizAddComponent } from './quizzes/quiz-add/quiz-add.component';
 import { QuizEditComponent } from './quizzes/quiz-edit/quiz-edit.component';
@@ -19,6 +24,11 @@ import { TypeQuestionComponent } from './questions/type-question/type-question.c
     AppComponent,
     QuizComponent,
     QuizListComponent,
+    MembreComponent,
+    MembreListeComponent,
+    NavbarComponent,
+    ThemeComponent,
+    ThemeListComponent,
     NavbarComponent,
     TitleComponent,
     QuizAddComponent,
