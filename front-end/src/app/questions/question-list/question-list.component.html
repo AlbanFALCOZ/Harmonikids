@@ -1,7 +1,17 @@
 <app-navbar></app-navbar>
 <div class="content-question">
-  <app-multi-choice *ngFor="let question of questionList" [multi]="question">
-  </app-multi-choice>
+  <ng-container *ngIf="questionList.length > 0 && currentQuestionIndex < questionList.length">
+
+    <app-multi-choice *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop'"
+      [multi]="questionList[currentQuestionIndex]">
+    </app-multi-choice>
+
+    <app-drag-drop *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === 'drag-and-drop'"
+      [drag]="questionList[currentQuestionIndex]">
+    </app-drag-drop>
+  </ng-container>
+
+
 
   <div class="progress-container">
     <progress value="2" max="5"></progress>
@@ -24,6 +34,6 @@
 </div>
 
 <div class="quiz-btn">
-  <button class="precedent">Precedent</button>
-  <button type="submit" class="suivant termine">Suivant</button>
+  <button class="precedent" (click)="previousQuestion()">Precedent</button>
+  <button type="submit" class="suivant" (click)="nextQuestion()">Suivant</button>
 </div>

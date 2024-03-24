@@ -1,16 +1,10 @@
 import { Quiz } from '../models/quiz.model';
-import { Question } from '../models/question.model';
-import { TypeQuestion } from 'src/models/typeQuestion.model';
-
-export const type: TypeQuestion = {
-    id: '1',
-    name: 'Multiple choice'
-}
+import { Question, QuestionType } from '../models/question.model';
 
 export const QUESTION_ACTOR: Question = {
     id: '1',
     label: 'Jean Gabin a joué dans...',
-    typeOfQuestion: type,
+    typeOfQuestion: QuestionType.UniqueChoice,
     niveau: 'facile',
     image: '',
     answers: [

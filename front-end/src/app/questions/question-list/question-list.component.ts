@@ -14,6 +14,9 @@ export class QuestionListComponent implements OnInit {
 
   public questionList: Question[] = [];
 
+  currentQuestionIndex: number = 0;
+
+
   constructor(private router: Router, public questionService: QuestionService) {
     this.questionService.questions$.subscribe((questions: Question[]) => {
       this.questionList = questions;
@@ -24,5 +27,19 @@ export class QuestionListComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.questionList)
   }
+
+  nextQuestion() {
+    if (this.currentQuestionIndex < this.questionList.length - 1) {
+      this.currentQuestionIndex++;
+    }
+  }
+
+  previousQuestion() {
+    if (this.currentQuestionIndex > 0) {
+      this.currentQuestionIndex--;
+    }
+  }
+  
+  
 
 }

@@ -1,4 +1,10 @@
-import { TypeQuestion } from "./typeQuestion.model";
+export enum QuestionType {
+    MultipleChoice = 'multiple-choice',
+    DragAndDrop = 'drag-and-drop',
+    UniqueChoice = 'unique-choice',
+    TrueOrFalse = 'true-or-false',
+}
+
 
 export interface Answer {
     type?: string;
@@ -9,7 +15,7 @@ export interface Answer {
 export interface Question {
     id: string;
     label: string;
-    typeOfQuestion: TypeQuestion;
+    typeOfQuestion: QuestionType;
     niveau: string;
     image?: string;
     answers: Answer[];

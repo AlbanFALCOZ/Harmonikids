@@ -6,6 +6,8 @@ import { Question } from 'src/models/question.model';
   templateUrl: './multi-choice.component.html',
   styleUrl: './multi-choice.component.scss'
 })
+
+
 export class MultiChoiceComponent implements OnInit {
 
   @Input()
@@ -17,6 +19,5 @@ export class MultiChoiceComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 
 }

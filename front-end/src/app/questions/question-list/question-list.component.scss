@@ -7,12 +7,12 @@
 .content-question .progress-container {
   width: 20px;
   transform: rotate(-90deg);
-  margin-top: 120px;
+  margin-top: 140px;
 
 }
 
 progress {
-  width: 400px;
+  width: 300px;
   height: 20px;
 }
 
@@ -26,6 +26,7 @@ progress {
 }
 
 .toggle_on, .volume_up, .toggle_off, .volume_off{
+  color: #FA3;
   cursor: pointer;
 }
 

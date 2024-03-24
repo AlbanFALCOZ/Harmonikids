@@ -6,10 +6,13 @@ import { ThemeListComponent } from './themes/theme-list/theme-list.component';
 import { MembreListeComponent } from './membres/membres-liste/membre-liste.component';
 import { MembreComponent } from './membres/membre/membre.component';
 import { QuestionListComponent } from './questions/question-list/question-list.component';
+import { DragDrop } from '@angular/cdk/drag-drop';
+import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
 
 
 const routes: Routes = [
   { path: 'quiz-list', component: QuizListComponent },
+
   { path: 'quiz', component: QuizComponent },
   { path: 'theme-list', component: ThemeListComponent },
   { path: 'question-list', component: QuestionListComponent },
@@ -19,6 +22,15 @@ const routes: Routes = [
     path: 'membres-liste',
     component: MembreListeComponent,
   },
+
+
+
+  {
+    path: 'drag-drop',
+    component: DragDropComponent,
+  },
+
+
 ];
 
 
