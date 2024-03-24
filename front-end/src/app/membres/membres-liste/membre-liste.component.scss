@@ -8,6 +8,7 @@
     flex-wrap: wrap;  
     margin-top : 0 px;
     font-family: "Finger Paint", sans-serif;
+    margin-top: 80px;
   }
 
   h4 {
@@ -16,6 +17,7 @@
     animation: bounce 1s infinite alternate; 
     margin-left : 500px;
     font-family: "Finger Paint", sans-serif;
+    margin-top: 80px;
   }
 
   @keyframes bounce {
@@ -34,6 +36,7 @@
     background-color: #59D5E0;
     border-radius: 30px;
     box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
+    
 }
 
 .add-card .add{
@@ -71,6 +74,7 @@
   margin-top: 50px;
   width: 50%;
   align-items: center;
+  margin-top: 80px;
 
 }
 
@@ -112,6 +116,7 @@
   border: 1px solid #6ecbd2;
   border-radius: 10px;
   box-sizing: border-box;
+  
 }
 
 
