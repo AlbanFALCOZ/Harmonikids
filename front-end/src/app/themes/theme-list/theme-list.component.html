@@ -1,8 +1,10 @@
 <app-navbar></app-navbar>
-<h4>Thèmes</h4>
+<app-title></app-title>
 <div class="content-theme">
-    <app-theme *ngFor="let theme of themeList"
-        [theme]="theme">
-
+    <app-theme *ngFor="let theme of themeList" [theme]="theme" (themeSelected)="themeSelected($event)"
+        (editTheme)="editTheme($event)" (deleteTheme)="deleteTheme($event)">
     </app-theme>
+<app-theme-add></app-theme-add>
 </div>
+<app-theme-edit></app-theme-edit>
+<app-theme-delete></app-theme-delete>

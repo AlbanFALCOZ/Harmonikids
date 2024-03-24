@@ -11,6 +11,9 @@ import { MembreListeComponent } from './membres/membres-liste/membre-liste.compo
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ThemeComponent} from './themes/theme/theme.component';
+import { ThemeAddComponent} from './themes/theme-add/theme-add.component';
+import { ThemeEditComponent} from './themes/theme-edit/theme-edit.component';
+import { ThemeDeleteComponent } from './themes/theme-delete/theme-delete.component';
 import { ThemeListComponent } from './themes/theme-list/theme-list.component';
 
 import { TitleComponent } from './head-title/title.component';
@@ -28,13 +31,17 @@ import { TypeQuestionComponent } from './questions/type-question/type-question.c
     MembreListeComponent,
     NavbarComponent,
     ThemeComponent,
+    ThemeAddComponent,
+    ThemeEditComponent,
+    ThemeDeleteComponent,
     ThemeListComponent,
     NavbarComponent,
     TitleComponent,
     QuizAddComponent,
     QuizEditComponent,
     QuizDeleteComponent,
-    TypeQuestionComponent
+    TypeQuestionComponent,
+    
   ],
   imports: [
     BrowserModule,
