@@ -1,0 +1,31 @@
+.card-niveau{
+    width: 30%;
+    height: 80%;
+    border: 5px solid #F4538A;
+    border-radius: 30px;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 5%;
+    text-align: center;
+    padding: auto;
+    cursor: pointer;
+}
+
+.content-niveau {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;  
+  }
+
+.niveau-text{
+    font-weight: bold;
+    padding-top: 20%;
+    font-size: xxx-large;
+}
+
+.content-niveau a{
+    text-decoration: none;
+    color: #000;
+}

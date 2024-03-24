@@ -6,16 +6,5 @@
     align-items: top;
     justify-content: space-around;
     flex-wrap: wrap;  
-  }
-
-  h4 {
-    color: #FAA300; 
-    font-size: 50px; 
-    animation: bounce 1s infinite alternate; 
-    margin-left : 650px;
-  }
-
-  @keyframes bounce {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
+    margin-top: 2%;
   }

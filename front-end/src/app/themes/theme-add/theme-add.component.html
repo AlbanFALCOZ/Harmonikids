@@ -1,0 +1,23 @@
+<div class="add-card">
+    <p>Ajouter un nouveau theme</p>
+    <span class="material-icons add" id="myBtn" (click)="displayModal()">add</span>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close material-icons" (click)="closeModal()">close</span>
+        <form id="addMemberForm">
+            <div class="display-input">
+                <label for="themeTitle">Titre du theme:</label><br>
+                <input type="text" id="themeTitle" name="themeTitle"><br>
+            </div>
+            <div class="display-input">
+                <label for="themeDescription">Description:</label><br>
+                <textarea id="themeDescription" name="themeDescription" rows="5"></textarea><br>
+            </div>
+            <button type="submit">Créer le theme</button>
+        </form>
+    </div>
+
+</div>
+

@@ -6,4 +6,5 @@ export interface Theme {
     description: string;
     numberOfQuizzes: number;
     quizzes: Quiz[];
+    image: String;
 }
