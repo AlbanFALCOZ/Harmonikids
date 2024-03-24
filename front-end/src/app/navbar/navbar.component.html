@@ -1,18 +1,17 @@
 <div class="navbar">
-    <span class="material-icons" id="menu" (click)="toggleNav()">menu</span>
-    <div>
-      <img src="assets/img/logo3.png" alt="logo">
-    </div>
+  <span class="material-icons" id="menu" (click)="toggleNav()">menu</span>
+  <div>
+    <img src="assets/img/logo3.png" alt="logo">
   </div>
-  
-  <div class="nav-vertical" [ngClass]="{'visible': isNavVisible}">
+</div>
 
-      <a routerLink="/membres-liste">Accueil</a>
-      <a routerLink="/quiz-list">Listes des Quiz</a>
-      <a routerLink="/theme-list">Thèmes</a>
-      
-      <a routerLink="/statistiques">Statistiques</a>
-      <a routerLink="/parametres">Paramètres</a>
+<div class="nav-vertical" [ngClass]="{'visible': isNavVisible}">
+
+    <a routerLink="/membres-liste">Accueil</a>
+    <a routerLink="/quiz-list">Listes des Quiz</a>
+    <a routerLink="/theme-list">Thèmes</a>
     
-  </div>
+    <a routerLink="/statistiques">Statistiques</a>
+    <a routerLink="/parametres">Paramètres</a>
   
+</div>

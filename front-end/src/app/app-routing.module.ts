@@ -17,9 +17,6 @@ const routes: Routes = [
     path: 'membres-liste',
     component: MembreListeComponent,
   },
-
-
-
 ];
 
 

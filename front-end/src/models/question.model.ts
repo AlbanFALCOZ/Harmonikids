@@ -1,3 +1,5 @@
+import { TypeQuestion } from "./typeQuestion";
+
 export interface Answer {
     type?: string;
     value: string;
@@ -7,5 +9,6 @@ export interface Answer {
 export interface Question {
     id: string;
     label: string;
+    typeOfQuestion: TypeQuestion;
     answers: Answer[];
 }

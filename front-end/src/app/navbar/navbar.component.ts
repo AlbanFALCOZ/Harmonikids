@@ -5,10 +5,11 @@ import { Component } from '@angular/core';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
+
 export class NavbarComponent {
   isNavVisible: boolean = false;
-
   toggleNav(): void {
     this.isNavVisible = !this.isNavVisible;
   }
 }
+
