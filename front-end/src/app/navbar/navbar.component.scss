@@ -25,6 +25,7 @@
     color: white;
     align-items: center;
     margin-left: 40%;
+    margin-bottom:5px;
 }
 
 .navbar img{
@@ -45,7 +46,9 @@
     transition: width 0.3s ease;
     overflow: auto;
     padding-top: 100px;
-    border-top: 2px solid #FAA300;
+    border-bottom: 2px solid #FAA300;
+    margin-bottom: 10px;
+   
 }
 
 .nav-vertical a {
@@ -54,7 +57,11 @@
     font-size: 25px;
     color: #ffffff;
     display: block;
+    font-family: "Finger Paint", sans-serif;
+    margin-bottom: 10px;
 }
+
+
 
 .nav-vertical a:hover {
     color: #f1f1f1;

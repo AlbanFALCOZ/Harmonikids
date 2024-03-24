@@ -1,0 +1,35 @@
+<h2>{{ question }}</h2>
+
+<div cdkDropListGroup>
+    <div class="example-container">
+        <h2>Je me demande quelle réponse vas-tu choisir?</h2>
+
+        <div
+            cdkDropList
+            [cdkDropListData]="items"
+            class="example-list"
+            cdkDropListSortingDisabled
+            (cdkDropListDropped)="drop($event)">
+            <div *ngFor="let item of items" class="example-box" cdkDrag>{{ item }}</div>
+        </div>
+    </div>
+
+    <div class="example-container">
+        <h2>Panier de réponses</h2>
+
+        <div
+            cdkDropList
+            [cdkDropListData]="basket"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div *ngFor="let item of basket" class="example-box" cdkDrag>{{ item }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="rightAnswer" *ngIf="basket.includes(rightAnswer)">
+    Bravo, vous avez trouvé la bonne réponse! Tu as gagné 20 étoiles
+</div>
+
+
+
