@@ -19,6 +19,7 @@ import { ThemeComponent} from './themes/theme/theme.component';
 import { ThemeListComponent } from './themes/theme-list/theme-list.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,6 @@ import { ThemeListComponent } from './themes/theme-list/theme-list.component';
     ThemeComponent,
     ThemeListComponent,
     NavbarComponent,
-
     TitleComponent,
     QuizAddComponent,
     QuizEditComponent,

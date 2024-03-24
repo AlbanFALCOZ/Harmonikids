@@ -22,12 +22,11 @@ const routes: Routes = [
   },
 
 
+
   {
     path: 'drag-drop',
     component: DragDropComponent,
   },
-
-
 
 
 ];
