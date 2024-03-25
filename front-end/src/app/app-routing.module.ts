@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { QuizComponent } from './quizzes/quiz/quiz.component';
+import { LevelComponent } from './niveau/level/level.component';
 import { ThemeListComponent } from './themes/theme-list/theme-list.component';
 import { MembreListeComponent } from './membres/membres-liste/membre-liste.component';
 import { MembreComponent } from './membres/membre/membre.component';
-import { LevelCardComponent } from './levels/level-card/level-card.component';
 import { QuestionListComponent } from './questions/question-list/question-list.component';
 import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
 
@@ -14,8 +14,9 @@ const routes: Routes = [
   { path: 'quiz-list', component: QuizListComponent },
 
   { path: 'quiz', component: QuizComponent },
+  { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },
+  { path: 'niveau', component: LevelComponent },
   { path: 'theme-list', component: ThemeListComponent },
-  { path: 'level-card', component: LevelCardComponent },
   { path: 'question-list', component: QuestionListComponent },
   { path: '', redirectTo: '/membres-liste', pathMatch: 'full' },
   { path: 'membres' , component: MembreComponent},

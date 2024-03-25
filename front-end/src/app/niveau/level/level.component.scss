@@ -1,0 +1,52 @@
+.content-niveau {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;  
+    margin-top: -60px;
+  }
+
+.niveau-text{
+    font-weight: bold;
+    margin-top: 20%;
+}
+
+.content-niveau a{
+    text-decoration: none;
+    color: #000;
+}
+
+.title {
+    color: #000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    color: #FAA300;
+    font-family: "Finger Paint", sans-serif;
+    animation: bounce 1s infinite alternate;
+    margin-top: -30px;
+  
+  }
+  
+  
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+  
+    100% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  
+  .title img {
+    width: 150px;
+    height: 150px;
+    margin-left: -15px;
+    margin-top: 20px;
+  }
