@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Question } from '../../../models/question.model';
+import { Question, Answer } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
 import { TitleService } from '../../../services/title.service';
 
@@ -13,7 +13,7 @@ import { TitleService } from '../../../services/title.service';
 export class QuestionListComponent implements OnInit {
 
   public questionList: Question[] = [];
-
+  public selectedAnswer?: Answer;
   currentQuestionIndex: number = 0;
 
 
@@ -42,10 +42,19 @@ export class QuestionListComponent implements OnInit {
   
   
   validateQuestion() {
-    console.log('Validation de la réponse pour la question actuelle');
+    if (this.selectedAnswer) {
+      // Validez la réponse ici
+      console.log('Réponse validée:', this.selectedAnswer);
+      // Puis passez à la prochaine question ou affichez les résultats
+    } else {
+      // Si aucune réponse n'est sélectionnée, informez l'utilisateur
+      alert('Veuillez sélectionner une réponse avant de valider.');
+    }
     
-    // Ajoutez ici la logique de validation des réponses pour la question actuelle.
-    // Par exemple, vous pouvez envoyer la réponse à un service et vérifier si elle est correcte.
-    
+  }
+
+  // Cette méthode est appelée lorsque l'enfant émet une réponse sélectionnée
+  onAnswerSelected(answer: Answer) {
+    this.selectedAnswer = answer;
   }
 }

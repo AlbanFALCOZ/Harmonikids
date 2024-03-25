@@ -31,6 +31,11 @@
     cursor: pointer;
     padding: 10px;
     margin: 10px;
+
+    &.selected {
+        background-color: #ddd; /* Couleur pour indiquer une réponse sélectionnée */
+        border-color: #F4538A; /* Changez la couleur de la bordure si vous le souhaitez */
+      }
 }
 
 .question-answers .answer:hover {

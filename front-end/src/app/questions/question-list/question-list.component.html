@@ -3,7 +3,7 @@
   <ng-container *ngIf="questionList.length > 0 && currentQuestionIndex < questionList.length">
 
     <app-multi-choice *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop'"
-      [multi]="questionList[currentQuestionIndex]">
+      [multi]="questionList[currentQuestionIndex]" (answerSelected)="onAnswerSelected($event)">
     </app-multi-choice>
 
     <app-drag-drop *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === 'drag-and-drop'"
