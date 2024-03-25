@@ -8,13 +8,18 @@ import { QuizComponent } from './quizzes/quiz/quiz.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
+import { LevelComponent } from './niveau/level/level.component';
+import { NiveauCardComponent } from './niveau/niveau-card/niveau-card.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizComponent,
     QuizListComponent,
-    NavbarComponent
+    NavbarComponent,
+    LevelComponent,
+    NiveauCardComponent
   ],
   imports: [
     BrowserModule,
