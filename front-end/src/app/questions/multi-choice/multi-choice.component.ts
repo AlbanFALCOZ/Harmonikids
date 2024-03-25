@@ -1,23 +1,32 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Question } from 'src/models/question.model';
+import { Component, Input } from '@angular/core';
+import { Question, Answer } from 'src/models/question.model';
 
 @Component({
   selector: 'app-multi-choice',
   templateUrl: './multi-choice.component.html',
-  styleUrl: './multi-choice.component.scss'
+  styleUrls: ['./multi-choice.component.scss']
 })
+export class MultiChoiceComponent {
 
+  @Input() multi?: Question;
 
-export class MultiChoiceComponent implements OnInit {
+  showMessage: boolean = false;
+  message: string = '';
 
-  @Input()
-  multi?: Question;
+  checkAnswer(selectedAnswer: Answer) {
+    const correctAnswer = this.multi?.answers.find((answer: { isCorrect: any; }) => answer.isCorrect);
 
-  constructor() {
+    if (selectedAnswer.isCorrect) {
+      this.showMessage = true;
+      this.message = 'Bravo, mais tu es super fort et tu viens de gagner 15 étoiles!!!';
+    } else {
+      this.showMessage = true;
+      this.message = 'Tu es sûr? Tu peux toujours changer de avis.';
+    }
 
+    
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 3000);
   }
-
-  ngOnInit(): void {
-  }
-
 }
