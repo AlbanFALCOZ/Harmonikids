@@ -41,5 +41,11 @@ export class QuestionListComponent implements OnInit {
   }
   
   
-
+  validateQuestion() {
+    console.log('Validation de la réponse pour la question actuelle');
+    
+    // Ajoutez ici la logique de validation des réponses pour la question actuelle.
+    // Par exemple, vous pouvez envoyer la réponse à un service et vérifier si elle est correcte.
+    
+  }
 }
