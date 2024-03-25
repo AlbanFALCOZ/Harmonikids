@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Quiz } from '../../../models/quiz.model';
+import { QuizService } from '../../../services/quiz.service';
+import { TitleService } from '../../../services/title.service';
+
 
 @Component({
   selector: 'app-quiz-list',
@@ -11,37 +14,12 @@ export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
 
-  constructor(private router: Router) {
-    this.quizList = [
-        {
-          id: '1',
-          name: 'Quiz 1',
-          description: 'Description du quiz 1',
-          theme: 'Theme 1',
-          questions: []
-        },
-        {
-          id: '2',
-          name: 'Quiz 2',
-          description: 'Description du quiz 2',
-          theme: 'Theme 2',
-          questions: []
-        },
-        {
-          id: '3',
-          name: 'Quiz 3',
-          description: 'Description du quiz 3',
-          theme: 'Theme 3',
-          questions: []
-        },
-        {
-            id: '4',
-            name: 'Quiz 4',
-            description: 'Description du quiz 4',
-            theme: 'Theme 4',
-            questions: []
-          }
-      ];
+  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService) {
+    this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
+      this.quizList = quizzes;
+    });
+    this.titleService.title = 'Liste des quiz';
+    this.titleService.search = 'Rechercher dans les quiz...';
   }
 
   ngOnInit(): void {
@@ -56,6 +34,6 @@ export class QuizListComponent implements OnInit {
   }
 
   deleteQuiz(quiz : Quiz): void{
-
+    this.quizService.deleteQuiz(quiz);
   }
 }

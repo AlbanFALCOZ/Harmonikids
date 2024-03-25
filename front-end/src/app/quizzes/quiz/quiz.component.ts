@@ -9,8 +9,7 @@ import { Quiz } from '../../../models/quiz.model';
 export class QuizComponent implements OnInit {
 
     @Input()
-    quiz? : Quiz
-
+    quiz!: Quiz
 
     @Output()
     quizSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -22,7 +21,7 @@ export class QuizComponent implements OnInit {
     deleteQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
     constructor() {
-        
+
     }
 
     ngOnInit(): void {
@@ -38,5 +37,32 @@ export class QuizComponent implements OnInit {
 
     delete(): void {
         this.deleteQuiz.emit(this.quiz);
+    }
+
+    displayModalUpdate() {
+        this.editQuiz.emit(this.quiz);
+        var modal = document.getElementById("myModalUpdate");
+        if (modal) {
+            modal.style.display = "block";
+              
+            window.onclick = function (event) {
+                if (event.target == modal && (modal)) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+    }
+
+    displayModalDelete() {
+        var modal = document.getElementById("myModalDelete");
+        if (modal) {
+            modal.style.display = "block";
+
+            window.onclick = function (event) {
+                if (event.target == modal && (modal)) {
+                    modal.style.display = "none";
+                }
+            }
+        }
     }
 }

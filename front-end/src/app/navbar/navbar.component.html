@@ -1,14 +1,20 @@
 <div class="navbar">
-    <span class="material-icons" id="menu">menu</span>
-    <div>
-        <img src="./assets/logo3.png" alt="logo">
-    </div>
+  <span class="material-icons" id="menu" (click)="toggleNav()">menu</span>
+  <div>
+    <img src="assets/img/logo3.png" alt="logo">
+  </div>
 </div>
-<div class="nav-vertical">
-    <a href="./index.html">Accueil</a>
-    <a href="./profile.html">Mon profil</a>
-    <a href="./display-theme.html">Thèmes</a>
-    <a href="#questions">Questions</a>
-    <a href="./statistiques.html">Statistiques</a>
-    <a href="./configuration.html">Paramètres</a>
+
+
+
+<div class="nav-vertical" [ngStyle]="{'visibility': isNavVisible ? 'visible' : 'hidden'}">
+
+    <a routerLink="/membres-liste">Accueil</a>
+    <a routerLink="/quiz-list">Listes des Quiz</a>
+    <a routerLink="/theme-list">Thèmes</a> 
+    <a routerLink="/statistiques">Statistiques</a>
+    <a routerLink="/parametres">Paramètres</a>
+  
 </div>
+
+

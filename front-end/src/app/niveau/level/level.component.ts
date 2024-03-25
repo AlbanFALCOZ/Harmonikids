@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TitleService } from 'src/services/title.service';
 
 @Component({
   selector: 'app-level',
@@ -6,4 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './level.component.scss'
 })
 export class LevelComponent {
-}
+
+  }

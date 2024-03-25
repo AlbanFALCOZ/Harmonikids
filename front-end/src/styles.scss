@@ -1,20 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 html {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    font-family: "Finger Paint", sans-serif;
-    background-color: #ECDDBF;
-  }
-  
-  body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-  }
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Finger Paint", sans-serif;
+  background-color: #ECDDBF;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}

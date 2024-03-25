@@ -1,0 +1,16 @@
+<div class="theme-card" *ngIf="theme">
+    <div class="theme-card-header">
+        <img src="{{ theme.image }}" alt="animaux">
+        <p>{{ theme.name }}</p>
+    </div>
+    <div class="theme-card-footer">
+        <p>{{ theme.description }}</p>
+        <p>{{ theme.numberOfQuizzes }}</p>
+    </div>
+    <div class="theme-card-button">
+        <a routerLink="/quiz-list"><button (click)="selectTheme()">Select </button></a>
+        <button (click)="displayModalUpdate()">Edit</button>
+        <button (click)="displayModalDelete()">Delete</button>
+    </div>
+</div>
+

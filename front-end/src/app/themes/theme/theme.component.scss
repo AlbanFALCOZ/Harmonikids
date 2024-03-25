@@ -1,0 +1,68 @@
+.theme-card{
+    width: 270px;
+    height: 340px;
+    border: 5px solid #FAA300;
+    border-radius: 30px;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    font-family: "Finger Paint", sans-serif;
+}
+
+.theme-card-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid #FAA300;
+    height: 210px;
+    width: 100%;
+}
+
+.theme-card-header p{
+    font-size: 24px;
+    text-align: center;
+
+}
+
+.theme-card-header img{
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    height: 120px;
+    width: 100%;
+}
+
+.theme-card-footer{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    font-style: italic;
+    border-bottom: 2px solid #FAA300;
+    height: 70px;
+}
+
+.theme-card-footer p:nth-child(2){
+    border: 1px solid #000;
+    width: 60px;
+    padding: 5px;
+    background-color: #F4538A;
+    color: #fff;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.theme-card-button{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+.theme-card-button button {
+    border: 1px solid #6ecbd2;
+    border-radius: 10px;
+    background-color: #6ecbd2;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
