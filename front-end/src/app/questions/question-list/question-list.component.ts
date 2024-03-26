@@ -13,7 +13,7 @@ import { TitleService } from '../../../services/title.service';
 export class QuestionListComponent implements OnInit {
 
   public questionList: Question[] = [];
-  public selectedAnswer?: Answer;
+  selectedAnswer: Answer[] = [];
   currentQuestionIndex: number = 0;
 
 
@@ -41,20 +41,21 @@ export class QuestionListComponent implements OnInit {
   }
   
   
-  validateQuestion() {
-    if (this.selectedAnswer) {
-      // Validez la réponse ici
-      console.log('Réponse validée:', this.selectedAnswer);
-      // Puis passez à la prochaine question ou affichez les résultats
+  validateQuestion(): void {
+    if (this.selectedAnswer.length === 0) {
+      alert('Veuillez sélectionner au moins une réponse avant de valider.');
     } else {
-      // Si aucune réponse n'est sélectionnée, informez l'utilisateur
-      alert('Veuillez sélectionner une réponse avant de valider.');
+      // Parcourez le tableau des réponses sélectionnées pour vérifier leur exactitude
+      const isCorrect = this.selectedAnswer.every(ans => ans.isCorrect); // Supposons que Answer a un attribut isCorrect
+      if(isCorrect) {
+        console.log('Bravo ! Les réponses sont correctes.');
+      } else {
+        console.log('Dommage. Certaines réponses sont fausses.');
+      }
     }
-    
   }
 
-  // Cette méthode est appelée lorsque l'enfant émet une réponse sélectionnée
-  onAnswerSelected(answer: Answer) {
+  onAnswerSelected(answer: Answer[]): void {
     this.selectedAnswer = answer;
   }
 }

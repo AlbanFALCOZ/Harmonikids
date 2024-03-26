@@ -10,6 +10,7 @@ export interface Answer {
     type?: string;
     value: string;
     isCorrect: boolean;
+    isSelected?: boolean;
 }
 
 export interface Question {
