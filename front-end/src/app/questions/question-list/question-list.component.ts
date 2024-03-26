@@ -44,14 +44,18 @@ export class QuestionListComponent implements OnInit {
   validateQuestion(): void {
     if (this.selectedAnswer.length === 0) {
       alert('Veuillez sélectionner au moins une réponse avant de valider.');
+      return;
+    }
+    
+    const allCorrect = this.selectedAnswer.every(answer => answer.isCorrect);
+    const anyIncorrect = this.selectedAnswer.some(answer => !answer.isCorrect);
+
+    if (allCorrect && !anyIncorrect) {
+      console.log('Toutes les réponses sélectionnées sont correctes.');
+      // Logique pour le succès, comme passer à la question suivante
     } else {
-      // Parcourez le tableau des réponses sélectionnées pour vérifier leur exactitude
-      const isCorrect = this.selectedAnswer.every(ans => ans.isCorrect); // Supposons que Answer a un attribut isCorrect
-      if(isCorrect) {
-        console.log('Bravo ! Les réponses sont correctes.');
-      } else {
-        console.log('Dommage. Certaines réponses sont fausses.');
-      }
+      console.log('Certaines réponses sélectionnées sont incorrectes.');
+      // Logique pour la réponse incorrecte, comme donner une autre chance
     }
   }
 
