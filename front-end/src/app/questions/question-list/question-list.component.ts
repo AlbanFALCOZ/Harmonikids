@@ -46,15 +46,18 @@ export class QuestionListComponent implements OnInit {
       alert('Veuillez sélectionner au moins une réponse avant de valider.');
       return;
     }
-    const correctAnswers = this.questionList[this.currentQuestionIndex].answers.filter(a => a.isCorrect);
-    const selectedIsCorrect = this.selectedAnswer.every(answer => 
-      correctAnswers.some(correctAnswer => correctAnswer.value === answer.value && correctAnswer.isCorrect)
-    );
 
-    if (selectedIsCorrect) {
+    const correctAnswers = this.questionList[this.currentQuestionIndex].answers.filter(a => a.isCorrect);
+
+    const selectedAreAllCorrect = this.selectedAnswer.every(selected => selected.isCorrect);
+
+    const allCorrectAnswersSelected = correctAnswers.every(correct => 
+      this.selectedAnswer.some(selected => selected.value === correct.value));
+
+    if (selectedAreAllCorrect && allCorrectAnswersSelected) {
       alert('Bravo ! La réponse est correcte.');
     } else {
-      alert('Dommage. La réponse est incorrecte.');
+      alert('Dommage. La réponse est incorrecte ou incomplète.');
     }
   }
 
