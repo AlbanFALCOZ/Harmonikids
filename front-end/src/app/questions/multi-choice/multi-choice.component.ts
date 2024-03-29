@@ -24,9 +24,14 @@ export class MultiChoiceComponent implements OnInit {
   }
 
   onSelectAnswer(answer: Answer): void {
-  if (this.multi) { // Ajoutez cette vérification pour vous assurer que `multi` est défini
-    answer.isSelected = !answer.isSelected; // Bascule l'état de sélection
-    // Filtrez les réponses sélectionnées et émettez-les
+   if (this.multi && this.multi.answers) {
+    if (this.multi.answers.length === 2) {
+      this.multi.answers.forEach(ans => ans.isSelected = false);
+      answer.isSelected = true;
+    } else {
+      answer.isSelected = !answer.isSelected;
+    }
+
     const selectedAnswers = this.multi.answers.filter(a => a.isSelected);
     this.answerSelected.emit(selectedAnswers);
   }
