@@ -1,0 +1,12 @@
+<app-navbar></app-navbar>
+
+
+  <div class="dropdown" [ngClass]="{ 'show': isDropdownOpen }">
+    <ng-container *ngFor="let option of colorOptions">
+      <div *ngFor="let color of option.colors" class="color-option" [style.background-color]="color" (click)="selectColor(color)"></div>
+    </ng-container>
+  </div>
+
+
+  
+  
