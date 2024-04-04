@@ -12,8 +12,11 @@
     </div>
     
     <div class="membre-card-button">
-      <a routerLink="/theme-list"><button (click)="selectMembre()">Select</button></a>
+      <button>
+          <a [routerLink]="['/dashboard', membre.id]">select</a>
+      </button>
   </div>
+  
     </div>
 
     

@@ -16,6 +16,15 @@ export class MembreService {
 
     constructor() { }
 
+    getWelcomeMessage(memberId: string): string {
+        const membre = this.membres.find(m => m.id === memberId);
+        if (membre) {
+          return `Bonjour ${membre.firstName}!`;
+        } else {
+          return "Membre introuvable.";
+        }
+      }
+
    
 }
 

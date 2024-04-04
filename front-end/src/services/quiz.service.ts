@@ -9,6 +9,11 @@ import { Question } from '../models/question.model';
   providedIn: 'root'
 })
 export class QuizService {
+  //   this.quizzes$.next(this.quizzes);
+  // });
+  getQuizzes(): Quiz[] {
+    return this.quizzes;
+  }
   /*
    Services Documentation:
    https://angular.io/docs/ts/latest/tutorial/toh-pt4.html

@@ -25,6 +25,7 @@ import { QuestionListComponent } from './questions/question-list/question-list.c
 import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
 import { PersonnalisationComponent } from './personnalisation/personnalisation.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
     QuestionListComponent,
     PersonnalisationComponent,
     ConfigurationComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

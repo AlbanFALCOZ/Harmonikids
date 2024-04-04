@@ -3,6 +3,8 @@
     display: inline-block;
     width: 60px;
     height: 34px;
+    margin-top: 30px;
+    margin-left:150px;
   }
   
   .switch input {
@@ -59,4 +61,5 @@
   .slider.round:before {
     border-radius: 50%;
   }
+  
   

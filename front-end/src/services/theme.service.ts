@@ -24,6 +24,10 @@ export class ThemeService {
     this.themes$.next(this.themes);
     }
 
+    getThemes(): Theme[] {
+      return this.themes$.getValue(); 
+  }
+
     addTheme(theme: Theme): void {
         this.themes
         this.themes$.next(this.themes);

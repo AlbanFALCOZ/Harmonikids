@@ -10,6 +10,7 @@ import { QuestionListComponent } from './questions/question-list/question-list.c
 import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
 import { PersonnalisationComponent } from './personnalisation/personnalisation.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,10 @@ const routes: Routes = [
   },
   {
     path:'configuration',component:ConfigurationComponent,
+  },
+  {
+    path: 'dashboard/:id',
+    component: DashboardComponent
   }
 
 
