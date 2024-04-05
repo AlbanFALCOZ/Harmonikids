@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Question, Answer } from 'src/models/question.model';
+import { Component, Input , Inject} from '@angular/core';
+import { DOCUMENT } from '@angular/common'
+import { Question, Answer , QuestionType} from 'src/models/question.model';
 
 @Component({
   selector: 'app-multi-choice',
@@ -12,21 +13,31 @@ export class MultiChoiceComponent {
 
   showMessage: boolean = false;
   message: string = '';
+  
+  
 
   checkAnswer(selectedAnswer: Answer) {
     const correctAnswer = this.multi?.answers.find((answer: { isCorrect: any; }) => answer.isCorrect);
+    
 
     if (selectedAnswer.isCorrect) {
       this.showMessage = true;
       this.message = 'Bravo, mais tu es super fort et tu viens de gagner 15 étoiles!!!';
+      
     } else {
-      this.showMessage = true;
+      //this.showMessage = true;
       this.message = 'Tu es sûr? Tu peux toujours changer de avis.';
+      this.multi?.answers.forEach( (item, index) => {
+        if(item === selectedAnswer) {
+          const answer = document.getElementById("answer" + index);
+          answer?.classList.add("wrong-anwser");
+        }
+      });
     }
 
     
     setTimeout(() => {
       this.showMessage = false;
-    }, 3000);
+    }, 4000);
   }
 }

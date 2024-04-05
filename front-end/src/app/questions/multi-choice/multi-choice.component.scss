@@ -37,6 +37,10 @@
     background-color: #ddd;
 }
 
+.wrong-anwser {
+    visibility: hidden;
+}
+
 .right-answer-message {
     position: fixed;
     top: 50%;
