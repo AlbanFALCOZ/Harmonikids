@@ -7,6 +7,8 @@ export class TitleService {
     title: string = 'Bienvenue';
     search: string = 'Recherche...';
 
+    
+
     constructor() { }
 
     getTitle(): string {

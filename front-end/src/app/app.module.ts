@@ -26,6 +26,7 @@ import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
 import { PersonnalisationComponent } from './personnalisation/personnalisation.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,37 @@
 <app-navbar></app-navbar>
-<div>
-  <label class="switch">
-    <input type="checkbox" (click)="toggleSound()" [checked]="isSoundOn">
-    <span class="slider"></span>
-  </label>
+
+<div class="container">
+  <div class="toggle-container">
+    <span>Son  </span>
+    <label class="switch">
+      <input type="checkbox" (click)="toggleSound()" [checked]="isSoundOn">
+      <span class="slider"></span>
+    </label>
+    
+  </div>
+
+  <div class="toggle-container">
+    <span>Music</span>
+    <label class="switch">
+      <input type="checkbox" (click)="toggleMusic()" [checked]="isMusicOn"> 
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="toggle-container">
+    <span>Indice</span>
+    <label class="switch">
+      <input type="checkbox" (click)="toggleIndice()" [checked]="isIndiceOn"> 
+      <span class="slider"></span>
+    </label>
+  </div>
+
+
+  
+
+
+
+
 </div>
 
 

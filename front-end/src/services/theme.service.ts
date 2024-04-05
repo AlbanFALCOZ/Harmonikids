@@ -8,6 +8,9 @@ import { Theme } from 'src/models/theme.model';
   providedIn: 'root'
 })
 export class ThemeService {
+  getAllThemes(): string[] {
+    throw new Error('Method not implemented.');
+  }
 
     private themes: Theme[] = THEME_LIST;
 
