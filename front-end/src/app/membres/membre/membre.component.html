@@ -12,7 +12,7 @@
     </div>
     
     <div class="membre-card-button">
-      <button>
+      <button (click)="onSelectMembre(membre.id)">
           <a [routerLink]="['/dashboard', membre.id]">select</a>
       </button>
   </div>

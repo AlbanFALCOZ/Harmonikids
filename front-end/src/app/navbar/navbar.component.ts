@@ -1,6 +1,7 @@
 // navbar.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ColorService } from 'src/services/color-service.service';
+import { MembreService } from 'src/services/membre.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +10,12 @@ import { ColorService } from 'src/services/color-service.service';
 })
 export class NavbarComponent implements OnInit {
   isNavVisible: boolean = false; 
+  memberId: string | null = '2';
 
-  constructor(public colorService: ColorService) { }
+  constructor(public colorService: ColorService , public membreService: MembreService) { }
 
   ngOnInit(): void {
+    this.memberId = this.membreService.getMemberId(); 
   }
 
   toggleNav() {
