@@ -3,6 +3,7 @@ export enum QuestionType {
     DragAndDrop = 'drag-and-drop',
     UniqueChoice = 'unique-choice',
     TrueOrFalse = 'true-or-false',
+    GuessTheSound = "guess-the-sound",
 }
 
 

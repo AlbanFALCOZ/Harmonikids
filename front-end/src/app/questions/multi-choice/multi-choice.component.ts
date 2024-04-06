@@ -25,12 +25,16 @@ export class MultiChoiceComponent {
       this.message = 'Bravo, mais tu es super fort et tu viens de gagner 15 étoiles!!!';
       
     } else {
-      //this.showMessage = true;
       this.message = 'Tu es sûr? Tu peux toujours changer de avis.';
       this.multi?.answers.forEach( (item, index) => {
         if(item === selectedAnswer) {
-          const answer = document.getElementById("answer" + index);
-          answer?.classList.add("wrong-anwser");
+          if (this.multi && this.multi.answers) {
+            if (this.multi.answers.length > 2) {
+              const answer = document.getElementById("answer" + index);
+              answer?.classList.add("wrong-anwser");
+            }
+          }
+          
         }
       });
     }
