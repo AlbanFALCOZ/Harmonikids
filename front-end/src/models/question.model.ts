@@ -19,5 +19,6 @@ export interface Question {
     typeOfQuestion: QuestionType;
     niveau: string;
     image?: string;
+    audio?:string;
     answers: Answer[];
 }

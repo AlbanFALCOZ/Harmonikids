@@ -1,21 +1,29 @@
 <app-navbar></app-navbar>
 <div class="content-question">
-  <ng-container *ngIf="questionList.length > 0 && currentQuestionIndex < questionList.length">
 
-    <app-multi-choice *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop'"
-      [multi]="questionList[currentQuestionIndex]">
-    </app-multi-choice>
+  
+  <ng-container *ngIf="questionList.length > 0 && currentQuestionIndex < questionList.length">
 
     <app-drag-drop *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === 'drag-and-drop'"
       [drag]="questionList[currentQuestionIndex]">
     </app-drag-drop>
+
+    <app-multi-choice *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop' && questionList[currentQuestionIndex]?.typeOfQuestion !== 'guess-the-sound'"
+      [multi]="questionList[currentQuestionIndex]">
+    </app-multi-choice>
+
+    <app-sound-question *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop' && questionList[currentQuestionIndex]?.typeOfQuestion === 'guess-the-sound'"
+      [sound]="questionList[currentQuestionIndex]">
+    </app-sound-question>
+    
   </ng-container>
 
-
-
   <div class="progress-container">
-    <progress value="2" max="5"></progress>
+    <progress [value]="currentQuestionIndex+1" [max]="questionList.length"></progress>
   </div>
+
+
+  
 
   <div class="quiz_setting">
     <!--
