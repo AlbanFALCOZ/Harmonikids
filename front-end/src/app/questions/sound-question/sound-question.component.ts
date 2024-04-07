@@ -14,15 +14,26 @@ export class SoundQuestionComponent {
   message: string = '';
   audio = new Audio();
   audioFirstTime: boolean = true;
-
+  anwsersChosen: Answer[] = new Array();
 
 
   checkAnswer(selectedAnswer: Answer) {
     const correctAnswer = this.sound?.answers.find((answer: { isCorrect: any; }) => answer.isCorrect);
 
     if (selectedAnswer.isCorrect) {
-      this.showMessage = true;
-      this.message = 'Bravo, mais tu es super fort et tu viens de gagner 15 étoiles!!!';
+      if (!this.anwsersChosen.includes(selectedAnswer)) {
+        this.showMessage = true;
+        this.message = 'Bravo, mais tu es super fort et tu viens de gagner 15 étoiles!!!';
+        this.anwsersChosen.push(selectedAnswer);
+        this.sound?.answers.forEach((item, index) => {
+          if (item === selectedAnswer) {
+            if (this.sound && this.sound.answers) {
+              const answer = document.getElementById("answer" + index);
+              answer?.classList.add("right-answer");
+            }
+          }
+        });
+      }
 
     } else {
       this.sound?.answers.forEach((item, index) => {

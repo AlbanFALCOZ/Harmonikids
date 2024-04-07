@@ -1,5 +1,5 @@
-import { Component, Input} from '@angular/core';
-import { Question, Answer} from 'src/models/question.model';
+import { Component, Input } from '@angular/core';
+import { Question, Answer } from 'src/models/question.model';
 
 @Component({
   selector: 'app-multi-choice',
@@ -12,21 +12,29 @@ export class MultiChoiceComponent {
 
   showMessage: boolean = false;
   message: string = '';
-  
-  
+  anwsersChosen: Answer[] = new Array();
+
 
   checkAnswer(selectedAnswer: Answer) {
-    const correctAnswer = this.multi?.answers.find((answer: { isCorrect: any; }) => answer.isCorrect);
-    
-
     if (selectedAnswer.isCorrect) {
-      this.showMessage = true;
-      this.message = 'Bravo, mais tu es super fort et tu viens de gagner 15 étoiles!!!';
-      
+      if (!this.anwsersChosen.includes(selectedAnswer)) {
+        this.showMessage = true;
+        this.message = 'Bravo, mais tu es super fort et tu viens de gagner 15 étoiles!!!';
+        this.anwsersChosen.push(selectedAnswer);
+        this.multi?.answers.forEach((item, index) => {
+          if (item === selectedAnswer) {
+            if (this.multi && this.multi.answers) {
+              const answer = document.getElementById("answer" + index);
+              answer?.classList.add("right-answer");
+            }
+          }
+        });
+      }
+
+
     } else {
-      //this.message = 'Tu es sûr? Tu peux toujours changer de avis.';
-      this.multi?.answers.forEach( (item, index) => {
-        if(item === selectedAnswer) {
+      this.multi?.answers.forEach((item, index) => {
+        if (item === selectedAnswer) {
           if (this.multi && this.multi.answers) {
             if (this.multi.answers.length > 2) {
               const answer = document.getElementById("answer" + index);
@@ -37,12 +45,12 @@ export class MultiChoiceComponent {
               this.showMessage = true;
             }
           }
-          
+
         }
       });
     }
 
-    
+
     setTimeout(() => {
       this.showMessage = false;
     }, 4000);

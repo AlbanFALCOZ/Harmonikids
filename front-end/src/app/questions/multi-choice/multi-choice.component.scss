@@ -33,8 +33,14 @@
     margin: 10px;
 }
 
-.question-answers .answer:hover {
-    background-color: #ddd;
+
+
+.right-answer {
+    background-color: rgb(120, 255, 120);
+
+    &:hover {
+        background-color: rgb(160, 255, 160);
+    }
 }
 
 .wrong-anwser {
