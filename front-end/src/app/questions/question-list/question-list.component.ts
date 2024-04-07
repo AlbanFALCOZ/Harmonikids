@@ -27,6 +27,7 @@ export class QuestionListComponent implements OnInit {
 
   private messageTimeout: any;
 
+  private successAudio = new Audio('assets/img/good.mp3');
 
   constructor(private router: Router, public questionService: QuestionService) {
     this.questionService.questions$.subscribe((questions: Question[]) => {
@@ -72,6 +73,7 @@ export class QuestionListComponent implements OnInit {
   
     if (selectedAreAllCorrect && allCorrectAnswersSelected) {
       this.showSuccessMessage = true;
+      this.successAudio.play();
     } else {
       this.showFailureMessage = true;
       const hint = this.questionList[this.currentQuestionIndex].hint;
