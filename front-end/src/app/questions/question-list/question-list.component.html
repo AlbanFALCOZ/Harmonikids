@@ -43,3 +43,12 @@
 
   <button type="submit" class="suivant" (click)="nextQuestion()">Suivant</button>
 </div>
+
+
+<div class="messageSuccess" *ngIf="showSuccessMessage" >
+  Bravo ! La réponse est correcte.
+</div>
+
+<div class="messageFailure" *ngIf="showFailureMessage" >
+  Dommage. La réponse est incorrecte ou incomplète.
+</div>

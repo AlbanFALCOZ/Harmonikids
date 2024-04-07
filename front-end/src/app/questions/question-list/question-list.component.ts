@@ -17,6 +17,8 @@ export class QuestionListComponent implements OnInit {
   selectedAnswer: Answer[] = [];
   currentQuestionIndex: number = 0;
   QuestionType = QuestionType;
+  showSuccessMessage: boolean = false;
+  showFailureMessage: boolean = false;
 
 
   constructor(private router: Router, public questionService: QuestionService) {
@@ -33,6 +35,8 @@ export class QuestionListComponent implements OnInit {
   nextQuestion() {
     if (this.currentQuestionIndex < this.questionList.length - 1) {
       this.currentQuestionIndex++;
+      this.showSuccessMessage = false;
+      this.showFailureMessage = false;
     }
   }
 
@@ -48,20 +52,30 @@ export class QuestionListComponent implements OnInit {
       alert('Veuillez sélectionner au moins une réponse avant de valider.');
       return;
     }
-
-    const correctAnswers = this.questionList[this.currentQuestionIndex].answers.filter(a => a.isCorrect);
-
-    const selectedAreAllCorrect = this.selectedAnswer.every(selected => selected.isCorrect);
-
-    const allCorrectAnswersSelected = correctAnswers.every(correct => 
-      this.selectedAnswer.some(selected => selected.value === correct.value));
-
+  
+    const currentQuestion = this.questionList[this.currentQuestionIndex];
+    const correctAnswers = currentQuestion.answers.filter(a => a.isCorrect);
+    
+    this.showSuccessMessage = false;
+    this.showFailureMessage = false;
+  
+    const selectedAreAllCorrect = this.selectedAnswer.every(sa => sa.isCorrect);
+    const allCorrectAnswersSelected = correctAnswers.length === this.selectedAnswer.length &&
+                                      correctAnswers.every(ca => this.selectedAnswer.some(sa => sa.value === ca.value));
+  
     if (selectedAreAllCorrect && allCorrectAnswersSelected) {
-      alert('Bravo ! La réponse est correcte.');
+      this.showSuccessMessage = true;
     } else {
-      alert('Dommage. La réponse est incorrecte ou incomplète.');
+      this.showFailureMessage = true;
     }
+  
+    setTimeout(() => {
+      this.showSuccessMessage = false;
+      this.showFailureMessage = false;
+    }, 5000); // Cache les messages après 5 secondes
   }
+  
+  
 
 
   onAnswerSelected(answer: Answer[]): void {
