@@ -43,6 +43,8 @@ export class QuestionListComponent implements OnInit {
   previousQuestion() {
     if (this.currentQuestionIndex > 0) {
       this.currentQuestionIndex--;
+      this.showSuccessMessage = false;
+      this.showFailureMessage = false;
     }
   }
   
