@@ -1,11 +1,11 @@
-/* Sound and Music Switch */
+
 .switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
   margin-top: 30px;
-  margin-left: 150px; /* Adjust as needed */
+  margin-left: 150px; 
 }
 
 .switch input {
@@ -50,11 +50,160 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Adjust for Music Switch */
+
 .music-switch .slider {
-  background-color: #ccc; /* Adjust background color as needed */
+  background-color: #ccc; 
 }
 
 .music-switch input:checked + .slider {
-  background-color: #5cb85c; /* Adjust background color as needed */
+  background-color: #5cb85c; 
+}
+
+
+
+
+.dropdown-container-theme {
+  margin-top: 20px;
+  margin-right:20px; 
+}
+
+
+.dropdown-container-theme h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+
+.dropdown-container-theme select {
+  margin-right:20px; 
+  width: 40%; 
+  padding: 10px; 
+  border: 2px solid #FAA300; 
+  font-family: "Finger Paint", sans-serif;
+  border-radius: 5px; 
+  font-size: 16px; 
+  background-color: #59D5E0; 
+  cursor: pointer; 
+}
+
+
+.dropdown-container-theme select option {
+  font-size: 16px; 
+}
+
+
+.toggle-container {
+  margin-left: 210px;
+}
+
+.dropdown-container-theme {
+  margin-left: 210px; 
+}
+
+
+
+.palette-button {
+  background-color: var(--button-background-color, #28a745); 
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 80px;
+  margin-top: 80px;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(20%);
+  margin-top: 220px;
+  margin-right: 220px;
+  display: flex; 
+  flex-direction: row; 
+}
+
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+.color-option {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+}
+
+.title {
+  color: #FAA300;
+  font-size: 33px;
+  font-family: "Finger Paint", sans-serif;
+  
+  margin-left: 270px;
+}
+
+.title2 {
+  color: #FAA300;
+  font-size: 33px;
+  font-family: "Finger Paint", sans-serif;
+  margin-right: 270px; 
+}
+
+.line {
+  width: 2px; 
+  height: 90vh; 
+  background-color: #FAA300;
+  position: fixed; 
+  top: 25; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+
+
+.button-size-slider {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(20%);
+  margin-top: 280px;
+  margin-right: 220px;
+  display: flex; 
+  flex-direction: row;
+}
+
+.toggle-container .switch {
+  font-size: medium; 
+}
+
+
+.button-size-slider span {
+  margin-right: 30px; 
+}
+
+
+.dropdown span {
+  margin-right: 70px; 
 }

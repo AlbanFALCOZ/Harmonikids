@@ -23,7 +23,7 @@ export class MembreService {
         if (membre) {
           return `Bonjour ${membre.firstName}!`;
         } else {
-          return "Membre introuvable.";
+          return "Heureux de te revoir.";
         }
       }
 

@@ -1,8 +1,17 @@
 <app-navbar></app-navbar>
 
+<div class="line"></div>
+
+<div class = "Configuration">
+  <div class="title-container">
+    <h1 class="title">Configurations</h1>
+    <h1 class="title2">Personnalisations</h1>
+  </div>
+  
+
 <div class="container">
   <div class="toggle-container">
-    <span>Son  </span>
+    <span>Son&nbsp;&nbsp;</span>
     <label class="switch">
       <input type="checkbox" (click)="toggleSound()" [checked]="isSoundOn">
       <span class="slider"></span>
@@ -27,10 +36,54 @@
   </div>
 
 
-  
+  <div class="dropdown-container-theme">
+     <h2>Recommender des thèmes</h2>
+      <select>
+        <option value="theme1">Thème 1</option>
+        <option value="theme2">Thème 2</option>
+        <option value="theme3">Thème 3</option>
+        <option value="theme1">Thème 1</option>
+        <option value="theme2">Thème 2</option>
+        <option value="theme3">Thème 3</option>
+        <option value="theme1">Thème 1</option>
+        <option value="theme2">Thème 2</option>
+        <option value="theme3">Thème 3</option>
+      </select>
+    
+  </div>
+
+  <div class="dropdown-container-theme">
+    <h2>Gérer les questions par type</h2>
+     <select>
+       <option value="son">Avec son</option>
+       <option value="video">Avec vidéo</option>
+       <option value="multiple">Choix mutliples</option>
+       <option value="dragdrop">Drag Drop</option>
+       <option value="moi">Avec moi</option>
+       
+     </select>
+   
+ </div>
+</div>
+
+<div class = "Personnalisation">
+ 
+
+ <div class="dropdown" [ngClass]="{ 'show': isDropdownOpen }">
+  <span>Couleurs</span>
+  <ng-container *ngFor="let option of colorOptions">
+    <div *ngFor="let color of option.colors" class="color-option" [style.background-color]="color" (click)="selectColor(color)"></div>
+  </ng-container>
+</div>
+
+<div class="button-size-slider">
+  <span>Taille bouttons</span>
+  <input type="range" min="0" max="2" step="1" value="1" id="button-size-range" oninput="changeButtonSize()">
+</div>
 
 
 
+</div>
 
 </div>
 
