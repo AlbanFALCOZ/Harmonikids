@@ -72,12 +72,15 @@ export class QuestionListComponent implements OnInit {
     setTimeout(() => {
       this.showSuccessMessage = false;
       this.showFailureMessage = false;
-    }, 5000); // Cache les messages après 5 secondes
+    }, 6000); 
   }
   
   
 
 
   onAnswerSelected(answer: Answer[]): void {
-    this.selectedAnswer = answer.filter(a => a.isSelected);  }
+    this.selectedAnswer = answer.filter(a => a.isSelected);  
+    this.showSuccessMessage = false;
+    this.showFailureMessage = false;
+  }
 }
