@@ -17,10 +17,14 @@ export class QuestionListComponent implements OnInit {
   selectedAnswer: Answer[] = [];
   currentQuestionIndex: number = 0;
   QuestionType = QuestionType;
+  
   showSuccessMessage: boolean = false;
   showFailureMessage: boolean = false;
+
   hintText: string | undefined;
   hintImageUrl: string | undefined;
+  private hintAudio: HTMLAudioElement | null = null;
+
 
 
   constructor(private router: Router, public questionService: QuestionService) {
@@ -37,17 +41,16 @@ export class QuestionListComponent implements OnInit {
   nextQuestion() {
     if (this.currentQuestionIndex < this.questionList.length - 1) {
       this.currentQuestionIndex++;
-      this.showSuccessMessage = false;
-      this.showFailureMessage = false;
     }
+    this.resetMessages();
   }
 
   previousQuestion() {
     if (this.currentQuestionIndex > 0) {
       this.currentQuestionIndex--;
-      this.showSuccessMessage = false;
-      this.showFailureMessage = false;
     }
+    this.resetMessages();
+
   }
   
   
@@ -59,10 +62,9 @@ export class QuestionListComponent implements OnInit {
   
     const currentQuestion = this.questionList[this.currentQuestionIndex];
     const correctAnswers = currentQuestion.answers.filter(a => a.isCorrect);
-    
-    this.showSuccessMessage = false;
-    this.showFailureMessage = false;
   
+    this.resetMessages();
+
     const selectedAreAllCorrect = this.selectedAnswer.every(sa => sa.isCorrect);
     const allCorrectAnswersSelected = correctAnswers.length === this.selectedAnswer.length &&
                                       correctAnswers.every(ca => this.selectedAnswer.some(sa => sa.value === ca.value));
@@ -81,11 +83,16 @@ export class QuestionListComponent implements OnInit {
     }, 7000); 
   }
 
+
   showHint(hint: any) {
+    if (this.hintAudio) {
+      this.hintAudio.pause();
+    }
+
     if (hint) {
       if (hint.audioUrl) {
-        const audio = new Audio(hint.audioUrl);
-        audio.play();
+        this.hintAudio = new Audio(hint.audioUrl);
+        this.hintAudio.play();
       }
       this.hintText = hint.text;
       this.hintImageUrl = hint.imageUrl;
@@ -93,13 +100,19 @@ export class QuestionListComponent implements OnInit {
   }
   
   
-
-
-  onAnswerSelected(answer: Answer[]): void {
-    this.selectedAnswer = answer.filter(a => a.isSelected);  
+  resetMessages() {
     this.showSuccessMessage = false;
     this.showFailureMessage = false;
     this.hintText = undefined;
     this.hintImageUrl = undefined;
+    if (this.hintAudio) {
+      this.hintAudio.pause();
+      this.hintAudio.currentTime = 0;
+    }
+  }
+
+  onAnswerSelected(answer: Answer[]): void {
+    this.selectedAnswer = answer.filter(a => a.isSelected);  
+    this.resetMessages();
   }
 }

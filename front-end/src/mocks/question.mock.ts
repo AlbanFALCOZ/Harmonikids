@@ -52,7 +52,10 @@ export const UNIQUE_CHOICE: Question = {
             value: 'Le tigre',
             isCorrect: false,
         }
-    ]
+    ],
+    hint: {
+        audioUrl: 'assets/img/miaule.mp3'
+    }
 };
 
 export const TRUE_FALSE: Question = {
