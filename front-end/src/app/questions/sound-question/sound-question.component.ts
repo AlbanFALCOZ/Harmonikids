@@ -18,8 +18,6 @@ export class SoundQuestionComponent {
 
 
   checkAnswer(selectedAnswer: Answer) {
-    const correctAnswer = this.sound?.answers.find((answer: { isCorrect: any; }) => answer.isCorrect);
-
     if (selectedAnswer.isCorrect) {
       if (!this.anwsersChosen.includes(selectedAnswer)) {
         this.showMessage = true;

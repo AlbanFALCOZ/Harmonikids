@@ -13,6 +13,7 @@ import { TitleService } from '../../../services/title.service';
 export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
+  isDisabled: boolean = false;
 
   constructor(private router: Router, public quizService: QuizService, public titleService: TitleService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {

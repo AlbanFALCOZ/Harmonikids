@@ -14,6 +14,7 @@ import { ThemeService } from 'src/services/theme.service';
 export class ThemeListComponent implements OnInit{
 
   public themeList: Theme[] = [];
+  isDisabled: boolean = false;
 
   constructor(private router: Router, public themeService: ThemeService, public titleService: TitleService) {
     this.themeService.themes$.subscribe((themes: Theme[]) => {

@@ -15,6 +15,7 @@ export class MembreListeComponent implements OnInit {
 
   public membreListe: Membre[] = [];
   public displayForm: boolean = false;
+  isDisabled: boolean = false;
  
 
   constructor(private router: Router, public membreService: MembreService , public titleService: TitleService) {
