@@ -7,13 +7,7 @@
 </div>
 
   <div class="content-niveau">
-    <a routerLink="/display-quiz">
-      <app-niveau-card niveauName="Facile"></app-niveau-card>
-    </a>
-    <a routerLink="/display-quiz">
-      <app-niveau-card niveauName="Moyen"></app-niveau-card>
-    </a>
-    <a routerLink="/display-quiz">
-      <app-niveau-card niveauName="Difficile"></app-niveau-card>
-    </a>
+    <app-niveau-card niveauName="Facile" (niveauSelected)="filterQuestionsByLevel($event)"></app-niveau-card>
+    <app-niveau-card niveauName="Moyen" (niveauSelected)="filterQuestionsByLevel($event)"></app-niveau-card>
+    <app-niveau-card niveauName="Difficile" (niveauSelected)="filterQuestionsByLevel($event)"></app-niveau-card>
   </div>

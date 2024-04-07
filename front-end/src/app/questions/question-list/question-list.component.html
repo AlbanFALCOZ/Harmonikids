@@ -1,16 +1,17 @@
 <app-navbar></app-navbar>
 <div class="content-question">
+
   <ng-container *ngIf="questionList.length > 0 && currentQuestionIndex < questionList.length">
-
-    <app-multi-choice *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop'"
-      [multi]="questionList[currentQuestionIndex]">
-    </app-multi-choice>
-
-    <app-drag-drop *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === 'drag-and-drop'"
-      [drag]="questionList[currentQuestionIndex]">
-    </app-drag-drop>
+    <ng-container *ngIf="questionList[currentQuestionIndex]">
+      <app-multi-choice *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop'"
+        [question]="questionList[currentQuestionIndex]">
+      </app-multi-choice>
+  
+      <app-drag-drop *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === 'drag-and-drop'"
+        [drag]="questionList[currentQuestionIndex]">
+      </app-drag-drop>
+    </ng-container>
   </ng-container>
-
 
 
   <div class="progress-container">

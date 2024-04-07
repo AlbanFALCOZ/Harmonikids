@@ -1,5 +1,5 @@
 <a routerLink="/question-list">
-    <div class="card-niveau">
+    <div class="card-niveau" (click)="onNiveauSelected(niveauName)">
         <h1 class="niveau-text">{{ niveauName }}</h1>
     </div>
 </a>

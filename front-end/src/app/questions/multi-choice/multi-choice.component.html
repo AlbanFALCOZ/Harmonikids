@@ -1,8 +1,8 @@
-<div class="question" *ngIf="multi">
-    <img src="{{ multi.image }}" alt="image_question">
-    <h3>{{ multi.label }}</h3>
+<div class="question">
+    <img src="{{ question.image }}" alt="image_question">
+    <h3>{{ question.label }}</h3>
     <div class="question-answers">
-        <button class="answer" *ngFor="let answer of multi.answers">{{ answer.value }}</button>
+        <button class="answer" *ngFor="let answer of question.answers">{{ answer.value }}</button>
     </div>
 
 </div>

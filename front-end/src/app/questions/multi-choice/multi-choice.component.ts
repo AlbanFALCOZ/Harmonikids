@@ -10,14 +10,10 @@ import { Question } from 'src/models/question.model';
 
 export class MultiChoiceComponent implements OnInit {
 
-  @Input()
-  multi?: Question;
-
-  constructor() {
-
-  }
+  @Input() question!: Question;
 
   ngOnInit(): void {
+    console.log(this.question);
   }
 
 }

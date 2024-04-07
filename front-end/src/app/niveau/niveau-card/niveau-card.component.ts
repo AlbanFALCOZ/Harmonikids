@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-niveau-card',
@@ -7,4 +7,12 @@ import { Component, Input } from '@angular/core';
 })
 export class NiveauCardComponent {
   @Input() niveauName: string = '';
+
+  @Output() niveauSelected: EventEmitter<string> = new EventEmitter<string>();
+
+  constructor() { }
+
+  onNiveauSelected(niveau: string): void {
+    this.niveauSelected.emit(niveau);
+  } 
 }

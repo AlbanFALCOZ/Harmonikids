@@ -19,4 +19,5 @@ export interface Question {
     niveau: string;
     image?: string;
     answers: Answer[];
+    isCorrectQuestion: boolean;
 }

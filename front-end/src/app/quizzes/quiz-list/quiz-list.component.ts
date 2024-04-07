@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Quiz } from '../../../models/quiz.model';
 import { QuizService } from '../../../services/quiz.service';
 import { TitleService } from '../../../services/title.service';
+import { QuestionService } from 'src/services/question.service';
 
 
 @Component({
@@ -14,7 +15,9 @@ export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
 
-  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService) {
+  public selectedQuiz: Quiz | null = null;
+
+  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService, public questionService: QuestionService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
     });
@@ -23,10 +26,12 @@ export class QuizListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
-  quizSelected(selected: boolean): void {
-    console.log('event received from child:', selected);
+  quizSelected(quiz: Quiz): void {
+    const quizQuestions = quiz.questions;
+    this.questionService.updateQuestionsForQuiz(quizQuestions); 
   }
 
   editQuiz(quiz: Quiz): void {

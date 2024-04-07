@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
-import { TitleService } from '../../../services/title.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -16,13 +16,17 @@ export class QuestionListComponent implements OnInit {
 
   currentQuestionIndex: number = 0;
 
-
-  constructor(private router: Router, public questionService: QuestionService) {
-    this.questionService.questions$.subscribe((questions: Question[]) => {
-      this.questionList = questions;
+  constructor(private questionService: QuestionService) { 
+    this.questionService.questions$.subscribe((sortedQuestions: Question[]) => {
+      this.questionList = sortedQuestions;
     });
-
   }
+
+  // constructor(private filteredQuestionService: FilteredQuestionService) {
+  //   this.filteredQuestionService.filteredQuestions$.subscribe((sortedQuestions: Question[]) => {
+  //     this.questionList = sortedQuestions;
+  //   });
+  // }
 
   ngOnInit(): void {
     console.log(this.questionList)

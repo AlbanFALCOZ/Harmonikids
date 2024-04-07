@@ -50,8 +50,13 @@ export class QuizService {
     this.quizzes
     this.quizzes$.next(this.quizzes);
   }
+  
 
   setSelectedQuiz(quizId: string): void {
+    const selectedQuiz = this.quizzes.find(quiz => quiz.id === quizId);
+    if (selectedQuiz) {
+      this.quizSelected$.next(selectedQuiz);
+    }
     
   }
 
@@ -90,4 +95,6 @@ export class QuizService {
     this.quizzes$.next(this.quizzes);
   }
   */
+
+
 }

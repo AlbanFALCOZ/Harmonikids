@@ -12,10 +12,8 @@ import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
 
 const routes: Routes = [
   { path: 'quiz-list', component: QuizListComponent },
-
   { path: 'quiz', component: QuizComponent },
-  { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },
-  { path: 'niveau', component: LevelComponent },
+  { path: 'niveau/:id', component: LevelComponent },
   { path: 'theme-list', component: ThemeListComponent },
   { path: 'question-list', component: QuestionListComponent },
   { path: '', redirectTo: '/membres-liste', pathMatch: 'full' },
