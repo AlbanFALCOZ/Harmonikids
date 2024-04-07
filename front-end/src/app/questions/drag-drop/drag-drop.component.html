@@ -27,6 +27,10 @@
     </div>
 </div>
 
-<div class="rightAnswer" *ngIf="basket.includes(rightAnswer)">
-    Bravo, vous avez trouvé la bonne réponse! Tu as gagné 20 étoiles
+<div class="messageSuccess" *ngIf="showSuccessMessage">
+    Bravo, tu as trouvé la bonne réponse ! Tu gagnes 20 étoiles !
 </div>
+
+<div class="messageFailure" *ngIf="showFailureMessage" >
+    Réessaye !
+  </div>
