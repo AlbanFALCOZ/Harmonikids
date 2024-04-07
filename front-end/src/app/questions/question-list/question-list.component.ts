@@ -25,6 +25,7 @@ export class QuestionListComponent implements OnInit {
   hintImageUrl: string | undefined;
   private hintAudio: HTMLAudioElement | null = null;
 
+  private messageTimeout: any;
 
 
   constructor(private router: Router, public questionService: QuestionService) {
@@ -77,10 +78,12 @@ export class QuestionListComponent implements OnInit {
       this.showHint(hint);
     }
   
-    setTimeout(() => {
+    this.messageTimeout = setTimeout(() => {
       this.showSuccessMessage = false;
       this.showFailureMessage = false;
-    }, 7000); 
+      this.hintText = undefined;
+      this.hintImageUrl = undefined;
+    }, 8000);
   }
 
 
@@ -101,6 +104,7 @@ export class QuestionListComponent implements OnInit {
   
   
   resetMessages() {
+    clearTimeout(this.messageTimeout);
     this.showSuccessMessage = false;
     this.showFailureMessage = false;
     this.hintText = undefined;
