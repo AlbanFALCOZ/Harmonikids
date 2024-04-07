@@ -13,6 +13,7 @@ export class ThemeService {
   }
 
     private themes: Theme[] = THEME_LIST;
+    private selectedThemes: Theme[] = [];
 
     public themes$: BehaviorSubject<Theme[]>
     = new BehaviorSubject(this.themes);
@@ -43,4 +44,14 @@ export class ThemeService {
       deleteTheme(theme: Theme): void {
         
       }
+
+      addSelectedTheme(theme: Theme) {
+        this.selectedThemes.push(theme);
+      }
+    
+      getSelectedThemes(): Theme[] {
+        return this.selectedThemes;
+      }
+
+      
 }

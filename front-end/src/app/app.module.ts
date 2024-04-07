@@ -23,7 +23,6 @@ import { QuizDeleteComponent } from './quizzes/quiz-delete/quiz-delete.component
 import { MultiChoiceComponent } from './questions/multi-choice/multi-choice.component';
 import { QuestionListComponent } from './questions/question-list/question-list.component';
 import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
-import { PersonnalisationComponent } from './personnalisation/personnalisation.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
@@ -52,7 +51,6 @@ import { FormsModule } from '@angular/forms';
     DragDropComponent,
     MultiChoiceComponent,
     QuestionListComponent,
-    PersonnalisationComponent,
     ConfigurationComponent,
     DashboardComponent
   ],

@@ -35,22 +35,20 @@
     </label>
   </div>
 
-
   <div class="dropdown-container-theme">
-     <h2>Recommender des thèmes</h2>
-      <select>
-        <option value="theme1">Thème 1</option>
-        <option value="theme2">Thème 2</option>
-        <option value="theme3">Thème 3</option>
-        <option value="theme1">Thème 1</option>
-        <option value="theme2">Thème 2</option>
-        <option value="theme3">Thème 3</option>
-        <option value="theme1">Thème 1</option>
-        <option value="theme2">Thème 2</option>
-        <option value="theme3">Thème 3</option>
-      </select>
-    
+    <h2>Recommender des thèmes</h2>
   </div>
+
+
+  <div class="checkbox-container-theme" style="max-height: 62px; overflow-y: auto;">
+    <div *ngFor="let theme of themeList" >
+      <label>
+        <input type="checkbox" [value]="theme.id" (change)="onChange($event)">
+        {{ theme.name }}
+      </label>
+    </div>
+</div>
+
 
   <div class="dropdown-container-theme">
     <h2>Gérer les questions par type</h2>
@@ -64,6 +62,7 @@
      </select>
    
  </div>
+</div>
 </div>
 
 <div class = "Personnalisation">
@@ -84,7 +83,3 @@
 
 
 </div>
-
-</div>
-
-

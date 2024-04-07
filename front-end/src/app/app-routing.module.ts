@@ -8,7 +8,6 @@ import { MembreListeComponent } from './membres/membres-liste/membre-liste.compo
 import { MembreComponent } from './membres/membre/membre.component';
 import { QuestionListComponent } from './questions/question-list/question-list.component';
 import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
-import { PersonnalisationComponent } from './personnalisation/personnalisation.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -32,10 +31,6 @@ const routes: Routes = [
   {
     path: 'drag-drop',
     component: DragDropComponent,
-  },
-
-  {
-    path:'personnalisation',component:PersonnalisationComponent,
   },
   {
     path:'configuration',component:ConfigurationComponent,

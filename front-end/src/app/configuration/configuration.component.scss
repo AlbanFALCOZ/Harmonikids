@@ -74,17 +74,6 @@ input:checked + .slider:before {
 }
 
 
-.dropdown-container-theme select {
-  margin-right:20px; 
-  width: 40%; 
-  padding: 10px; 
-  border: 2px solid #FAA300; 
-  font-family: "Finger Paint", sans-serif;
-  border-radius: 5px; 
-  font-size: 16px; 
-  background-color: #59D5E0; 
-  cursor: pointer; 
-}
 
 
 .dropdown-container-theme select option {
@@ -207,3 +196,22 @@ input:checked + .slider:before {
 .dropdown span {
   margin-right: 70px; 
 }
+
+.checkbox-container-theme {
+  max-height: 55px;
+  margin-left:210px; 
+  width: 32.4%; 
+  padding: 10px; 
+  border: 2px solid #FAA300; 
+  font-family: "Finger Paint", sans-serif;
+  border-radius: 5px; 
+  font-size: 16px; 
+  background-color: #59D5E0; 
+  cursor: pointer;  
+}
+
+
+.Configuration h2 {
+  margin-right:210px;
+}
+
