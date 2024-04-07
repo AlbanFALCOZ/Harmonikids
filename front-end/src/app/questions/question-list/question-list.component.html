@@ -1,21 +1,23 @@
 <app-navbar></app-navbar>
 <div class="content-question">
 
-  
+
   <ng-container *ngIf="questionList.length > 0 && currentQuestionIndex < questionList.length">
 
     <app-drag-drop *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === 'drag-and-drop'"
       [drag]="questionList[currentQuestionIndex]">
     </app-drag-drop>
 
-    <app-multi-choice *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop' && questionList[currentQuestionIndex]?.typeOfQuestion !== 'guess-the-sound'"
+    <app-multi-choice
+      *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop' && questionList[currentQuestionIndex]?.typeOfQuestion !== 'guess-the-sound'"
       [multi]="questionList[currentQuestionIndex]">
     </app-multi-choice>
 
-    <app-sound-question *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop' && questionList[currentQuestionIndex]?.typeOfQuestion === 'guess-the-sound'"
+    <app-sound-question
+      *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop' && questionList[currentQuestionIndex]?.typeOfQuestion === 'guess-the-sound'"
       [sound]="questionList[currentQuestionIndex]">
     </app-sound-question>
-    
+
   </ng-container>
 
   <div class="progress-container">
@@ -23,7 +25,7 @@
   </div>
 
 
-  
+
 
   <div class="quiz_setting">
     <!--
@@ -34,13 +36,16 @@
 
     </div>
     -->
-    
+
     <div>
       <span class="material-symbols-outlined volume volume_up">volume_up</span>
       <span class="material-symbols-outlined volume volume_off">volume_off</span>
       <p>son</p>
     </div>
   </div>
+
+  <div>Étoiles : {{ numberOfCorrectAnswers}}/{{ numberOfQuestionsAnswered }}</div>
+
 
 </div>
 

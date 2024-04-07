@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Question, Answer } from 'src/models/question.model';
+import { ScoreService } from '../question-list/score-service-component';
 
 @Component({
   selector: 'app-sound-question',
@@ -7,6 +8,8 @@ import { Question, Answer } from 'src/models/question.model';
   styleUrl: './sound-question.component.scss'
 })
 export class SoundQuestionComponent {
+
+  constructor(private scoreService: ScoreService) {}
 
   @Input() sound?: Question;
 
@@ -23,6 +26,7 @@ export class SoundQuestionComponent {
         this.showMessage = true;
         this.message = 'Bravo, mais tu es super fort et tu viens de gagner 15 étoiles!!!';
         this.anwsersChosen.push(selectedAnswer);
+        this.scoreService.answerCorrect();
         this.sound?.answers.forEach((item, index) => {
           if (item === selectedAnswer) {
             if (this.sound && this.sound.answers) {
@@ -34,6 +38,7 @@ export class SoundQuestionComponent {
       }
 
     } else {
+      this.scoreService.answerWrong();
       this.sound?.answers.forEach((item, index) => {
         if (item === selectedAnswer) {
           if (this.sound && this.sound.answers) {

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Question, Answer } from 'src/models/question.model';
+import { ScoreService } from '../question-list/score-service-component';
 
 @Component({
   selector: 'app-multi-choice',
@@ -7,6 +8,8 @@ import { Question, Answer } from 'src/models/question.model';
   styleUrls: ['./multi-choice.component.scss']
 })
 export class MultiChoiceComponent {
+
+  constructor(private scoreService: ScoreService) {}
 
   @Input() multi?: Question;
 
@@ -21,6 +24,7 @@ export class MultiChoiceComponent {
         this.showMessage = true;
         this.message = 'Bravo, mais tu es super fort et tu viens de gagner 15 étoiles!!!';
         this.anwsersChosen.push(selectedAnswer);
+        this.scoreService.answerCorrect();
         this.multi?.answers.forEach((item, index) => {
           if (item === selectedAnswer) {
             if (this.multi && this.multi.answers) {
@@ -33,6 +37,12 @@ export class MultiChoiceComponent {
 
 
     } else {
+      if (!this.anwsersChosen.includes(selectedAnswer))
+        {
+          this.anwsersChosen.push(selectedAnswer);
+          this.scoreService.answerWrong();
+        }
+      
       this.multi?.answers.forEach((item, index) => {
         if (item === selectedAnswer) {
           if (this.multi && this.multi.answers) {
