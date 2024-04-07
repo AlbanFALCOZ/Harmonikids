@@ -50,6 +50,9 @@ export class QuestionListComponent implements OnInit {
     }
   }
   
-  
+  generateArray(num: number): any[] {
+    if (num > 12) num = 12;
+    return Array(num);
+  }
 
 }
