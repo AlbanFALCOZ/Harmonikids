@@ -19,6 +19,8 @@ export class QuestionListComponent implements OnInit {
   QuestionType = QuestionType;
   showSuccessMessage: boolean = false;
   showFailureMessage: boolean = false;
+  hintText: string | undefined;
+  hintImageUrl: string | undefined;
 
 
   constructor(private router: Router, public questionService: QuestionService) {
@@ -69,12 +71,25 @@ export class QuestionListComponent implements OnInit {
       this.showSuccessMessage = true;
     } else {
       this.showFailureMessage = true;
+      const hint = this.questionList[this.currentQuestionIndex].hint;
+      this.showHint(hint);
     }
   
     setTimeout(() => {
       this.showSuccessMessage = false;
       this.showFailureMessage = false;
-    }, 6000); 
+    }, 7000); 
+  }
+
+  showHint(hint: any) {
+    if (hint) {
+      if (hint.audioUrl) {
+        const audio = new Audio(hint.audioUrl);
+        audio.play();
+      }
+      this.hintText = hint.text;
+      this.hintImageUrl = hint.imageUrl;
+    }
   }
   
   
@@ -84,5 +99,7 @@ export class QuestionListComponent implements OnInit {
     this.selectedAnswer = answer.filter(a => a.isSelected);  
     this.showSuccessMessage = false;
     this.showFailureMessage = false;
+    this.hintText = undefined;
+    this.hintImageUrl = undefined;
   }
 }

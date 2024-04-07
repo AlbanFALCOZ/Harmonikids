@@ -20,4 +20,9 @@ export interface Question {
     niveau: string;
     image?: string;
     answers: Answer[];
+    hint?: {
+        text?: string;
+        imageUrl?: string;
+        audioUrl?: string;
+      };
 }

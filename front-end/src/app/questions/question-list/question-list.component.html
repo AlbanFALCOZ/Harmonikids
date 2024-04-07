@@ -46,9 +46,15 @@
 
 
 <div class="messageSuccess" *ngIf="showSuccessMessage" >
-  Bravo ! La réponse est correcte.
+  Bravo ! Tu as trouvé la bonne réponse !
 </div>
 
 <div class="messageFailure" *ngIf="showFailureMessage" >
-  Dommage. La réponse est incorrecte ou incomplète.
+  Dommage, la réponse est incorrecte ou incomplète.
+</div>
+
+
+<div *ngIf="showFailureMessage && (hintText || hintImageUrl)" class="hint">
+  <p *ngIf="hintText">{{ hintText }}</p>
+  <img *ngIf="hintImageUrl" [src]="hintImageUrl" alt="Indice">
 </div>

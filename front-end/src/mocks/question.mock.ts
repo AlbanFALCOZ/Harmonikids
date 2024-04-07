@@ -23,7 +23,10 @@ export const MULTI_CHOICE: Question = {
             value: 'Le tigre',
             isCorrect: false,
         }
-    ]
+    ],
+    hint: {
+        text: "Pense à des animaux que les gens peuvent avoir chez eux pour les câliner et jouer avec eux."
+      }
 };
 
 export const UNIQUE_CHOICE: Question = {
