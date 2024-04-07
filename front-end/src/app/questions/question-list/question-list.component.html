@@ -34,7 +34,12 @@
 </div>
 
 <div class="quiz-btn">
-  <button class="precedent" (click)="previousQuestion()">Precedent</button>
-  <button class="validate" (click)="validateQuestion()">Valider</button>
+  <button class="precedent" (click)="previousQuestion()">Précédent</button>
+    <ng-container *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.MultipleChoice || 
+                         questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.UniqueChoice ||
+                         questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.TrueOrFalse">
+    <button class="validate" (click)="validateQuestion()">Valider</button>
+  </ng-container>
+
   <button type="submit" class="suivant" (click)="nextQuestion()">Suivant</button>
 </div>

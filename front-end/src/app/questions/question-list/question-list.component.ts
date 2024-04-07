@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question, Answer } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
+import { QuestionType } from '../../../models/question.model';
 import { TitleService } from '../../../services/title.service';
 
 
@@ -15,6 +16,7 @@ export class QuestionListComponent implements OnInit {
   public questionList: Question[] = [];
   selectedAnswer: Answer[] = [];
   currentQuestionIndex: number = 0;
+  QuestionType = QuestionType;
 
 
   constructor(private router: Router, public questionService: QuestionService) {
