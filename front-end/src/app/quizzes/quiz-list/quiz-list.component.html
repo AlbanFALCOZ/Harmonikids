@@ -1,11 +1,17 @@
 <app-navbar></app-navbar>
 <app-title></app-title>
+
+
 <div class="content-quiz">
   <app-quiz *ngFor="let quiz of quizList" [quiz]="quiz" (quizSelected)="quizSelected($event)"
     (editQuiz)="editQuiz($event)" (deleteQuiz)="deleteQuiz($event)">
   </app-quiz>
-  
-<app-quiz-add></app-quiz-add>
+
+  <app-quiz-add *ngIf="!isDisabled"></app-quiz-add>
 </div>
+
+<button class="switch-mode" (click)="isDisabled = !isDisabled">
+  Mode Ergothérapeute {{ isDisabled ? 'Off' : 'On' }}
+</button>
 <app-quiz-edit></app-quiz-edit>
 <app-quiz-delete></app-quiz-delete>

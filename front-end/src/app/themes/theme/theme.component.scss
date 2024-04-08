@@ -66,3 +66,6 @@
     cursor: pointer;
 }
 
+.the-card:hover {
+    transform: translateX(-5px) translateY(-5px); 
+}

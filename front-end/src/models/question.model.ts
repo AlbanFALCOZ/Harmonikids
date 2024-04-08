@@ -3,6 +3,7 @@ export enum QuestionType {
     DragAndDrop = 'drag-and-drop',
     UniqueChoice = 'unique-choice',
     TrueOrFalse = 'true-or-false',
+    GuessTheSound = "guess-the-sound",
 }
 
 
@@ -19,6 +20,7 @@ export interface Question {
     typeOfQuestion: QuestionType;
     niveau: string;
     image?: string;
+    audio?:string;
     answers: Answer[];
     hint?: {
         text?: string;

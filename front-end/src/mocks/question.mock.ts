@@ -106,7 +106,7 @@ export const DRAG_DROP1: Question = {
 };
 
 export const DRAG_DROP2: Question = {
-    id: '4',
+    id: '5',
     label: 'Une question intéréssante:La reponse est Sara ?',
     typeOfQuestion: QuestionType.DragAndDrop,
     niveau: 'facile',
@@ -131,4 +131,31 @@ export const DRAG_DROP2: Question = {
     ]
 };
 
-export const QUESTION_LIST: Question[] = [MULTI_CHOICE, UNIQUE_CHOICE, TRUE_FALSE, DRAG_DROP1, DRAG_DROP2];
+export const SOUND: Question = {
+    id: '6',
+    label: 'Quel animal fait ce bruit ?',
+    typeOfQuestion: QuestionType.GuessTheSound,
+    niveau: 'facile',
+    audio: 'assets/miaule.mp3',
+    image: 'assets/img/cat.jpeg',
+    answers: [
+        {
+            value: 'Chat',
+            isCorrect: true,
+        },
+        {
+            value: 'Chien',
+            isCorrect: false,
+        },
+        {
+            value: 'Oiseau',
+            isCorrect: false,
+        },
+        {
+            value: 'Vache',
+            isCorrect: false,
+        },
+    ]
+};
+
+export const QUESTION_LIST: Question[] = [MULTI_CHOICE, UNIQUE_CHOICE, TRUE_FALSE, DRAG_DROP1, SOUND];

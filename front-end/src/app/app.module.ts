@@ -23,6 +23,7 @@ import { QuizDeleteComponent } from './quizzes/quiz-delete/quiz-delete.component
 import { MultiChoiceComponent } from './questions/multi-choice/multi-choice.component';
 import { QuestionListComponent } from './questions/question-list/question-list.component';
 import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
+import { SoundQuestionComponent } from './questions/sound-question/sound-question.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
     DragDropComponent,
     MultiChoiceComponent,
     QuestionListComponent,
+    SoundQuestionComponent,
   ],
   imports: [
     BrowserModule,
