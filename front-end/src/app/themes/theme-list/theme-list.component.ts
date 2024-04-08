@@ -15,6 +15,7 @@ import { SonService } from 'src/services/sound.service';
 export class ThemeListComponent implements OnInit{
 
   public themeList: Theme[] = [];
+  isDisabled: boolean = false;
 
   isDisabled: boolean = false;
 
