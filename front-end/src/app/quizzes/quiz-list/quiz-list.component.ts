@@ -14,6 +14,7 @@ import { QuestionService } from 'src/services/question.service';
 export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
+  isDisabled: boolean = false;
 
   public selectedQuiz: Quiz | null = null;
 

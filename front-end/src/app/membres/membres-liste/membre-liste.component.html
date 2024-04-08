@@ -4,7 +4,7 @@
 <div class="content-membre">
   <app-membre *ngFor="let membre of membreListe" [membre]="membre"></app-membre>
 
-  <div class="add-card">
+  <div class="add-card" *ngIf="!isDisabled">
     <p>Ajouter un nouvel enfant</p> 
     <span class="material-icons add" id="myBtn" (click)="toggleForm()">add</span>
   </div>
@@ -38,5 +38,16 @@
     </div>
   </div>
 
+
+  
+  
+
 </div>
+
+<button class="switch-mode" (click)="isDisabled = !isDisabled">
+  Mode Ergothérapeute {{ isDisabled ? 'Off' : 'On' }}
+</button>
+
+
+<button class="boutton" (click)="playSound()">Jouer le son</button>
 

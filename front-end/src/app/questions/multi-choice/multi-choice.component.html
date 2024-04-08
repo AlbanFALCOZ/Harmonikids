@@ -1,8 +1,11 @@
 <div class="question">
-    <img src="{{ question.image }}" alt="image_question">
-    <h3>{{ question.label }}</h3>
+    
+    <img [src]="question.image" alt="image_question">
+    <h3>{{ question.label }}</h3>  
     <div class="question-answers">
-        <button class="answer" *ngFor="let answer of question.answers">{{ answer.value }}</button>
+        <button class="answer" *ngFor="let answer of question.answers; let i = index" id="{{ 'answer' + i }}" (click)="checkAnswer(answer)">{{ answer.value }}</button>
     </div>
+    <div *ngIf="showMessage" class="right-answer-message">{{ message }}</div>
 
 </div>
+

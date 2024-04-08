@@ -1,0 +1,231 @@
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-top: 30px;
+  margin-left: 150px; 
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: background-color 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: transform 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #5cb85c;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+
+.music-switch .slider {
+  background-color: #ccc; 
+}
+
+.music-switch input:checked + .slider {
+  background-color: #5cb85c; 
+}
+
+
+
+
+.dropdown-container-theme {
+  margin-top: 20px;
+  margin-right:20px; 
+}
+
+
+.dropdown-container-theme h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+
+
+
+.dropdown-container-theme select option {
+  font-size: 16px; 
+}
+
+
+.toggle-container {
+  margin-left: 210px;
+}
+
+.dropdown-container-theme {
+  margin-left: 210px; 
+}
+
+
+
+.palette-button {
+  background-color: var(--button-background-color, #28a745); 
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 80px;
+  margin-top: 80px;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(20%);
+  margin-top: 220px;
+  margin-right: 220px;
+  display: flex; 
+  flex-direction: row; 
+}
+
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+.color-option {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+}
+
+.title {
+  color: #FAA300;
+  font-size: 33px;
+  font-family: "Finger Paint", sans-serif;
+  
+  margin-left: 270px;
+}
+
+.title2 {
+  color: #FAA300;
+  font-size: 33px;
+  font-family: "Finger Paint", sans-serif;
+  margin-right: 270px; 
+}
+
+.line {
+  width: 2px; 
+  height: 90vh; 
+  background-color: #FAA300;
+  position: fixed; 
+  top: 25; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+
+
+.button-size-slider {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(20%);
+  margin-top: 280px;
+  margin-right: 220px;
+  display: flex; 
+  flex-direction: row;
+}
+
+.toggle-container .switch {
+  font-size: medium; 
+}
+
+
+.button-size-slider span {
+  margin-right: 30px; 
+}
+
+
+.dropdown span {
+  margin-right: 70px; 
+}
+
+.checkbox-container-theme {
+  max-height: 55px;
+  margin-left:210px; 
+  width: 32.4%; 
+  padding: 10px; 
+  border: 2px solid #FAA300; 
+  font-family: "Finger Paint", sans-serif;
+  border-radius: 5px; 
+  font-size: 16px; 
+  background-color: #59D5E0; 
+  cursor: pointer;  
+}
+
+
+.Configuration h2 {
+  margin-right:210px;
+}
+
+
+.checkbox-container-question {
+  max-height: 55px;
+  margin-left:0px; 
+  width: 38%; 
+  padding: 10px; 
+  border: 2px solid #FAA300; 
+  font-family: "Finger Paint", sans-serif;
+  border-radius: 5px; 
+  font-size: 16px; 
+  background-color: #59D5E0; 
+  cursor: pointer;  
+}
+

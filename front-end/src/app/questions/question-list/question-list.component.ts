@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Question } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
 import { Subscription } from 'rxjs';
+import { TitleService } from '../../../services/title.service';
+import { ScoreService } from './score-service-component';
 
 
 @Component({
@@ -15,11 +17,22 @@ export class QuestionListComponent implements OnInit {
   public questionList: Question[] = [];
 
   currentQuestionIndex: number = 0;
+  
+  public numberOfQuestionsAnswered: number = 0;
+  public numberOfCorrectAnswers: number = 0;
 
-  constructor(private questionService: QuestionService) { 
-    this.questionService.questions$.subscribe((sortedQuestions: Question[]) => {
-      this.questionList = sortedQuestions;
+
+  constructor(private router: Router, public questionService: QuestionService, private scoreService: ScoreService) {
+    this.questionService.questions$.subscribe((questions: Question[]) => {
+      this.questionList = questions;
     });
+    this.scoreService.numberOfQuestionsAnswered$.subscribe(score1 => {
+      this.numberOfQuestionsAnswered = score1;
+    });
+    this.scoreService.numberOfCorrectAnswers$.subscribe(score2 => {
+      this.numberOfCorrectAnswers = score2;
+    })
+
   }
 
   // constructor(private filteredQuestionService: FilteredQuestionService) {
@@ -44,6 +57,9 @@ export class QuestionListComponent implements OnInit {
     }
   }
   
-  
+  generateArray(num: number): any[] {
+    if (num > 12) num = 12;
+    return Array(num);
+  }
 
 }

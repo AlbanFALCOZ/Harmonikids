@@ -30,6 +30,11 @@ import { WeekChartComponent } from './statistiques/week-chart/week-chart.compone
 import { ProgresChartComponent } from './statistiques/progres-chart/progres-chart.component';
 import { ProgresCircleComponent } from './statistiques/progres-circle/progres-circle.component';
 import { StatQuizComponent } from './statistiques/stat-quiz/stat-quiz.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { FormsModule } from '@angular/forms';
+import { SoundQuestionComponent } from './questions/sound-question/sound-question.component';
+
 
 
 @NgModule({
@@ -62,12 +67,17 @@ import { StatQuizComponent } from './statistiques/stat-quiz/stat-quiz.component'
     ProgresChartComponent,
     ProgresCircleComponent,
     StatQuizComponent,
+    ConfigurationComponent,
+    DashboardComponent,
+    SoundQuestionComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

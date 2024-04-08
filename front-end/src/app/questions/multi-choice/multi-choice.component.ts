@@ -1,19 +1,70 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Question } from 'src/models/question.model';
+import { Component, Input } from '@angular/core';
+import { Question, Answer } from 'src/models/question.model';
+import { ScoreService } from '../question-list/score-service-component';
 
 @Component({
   selector: 'app-multi-choice',
   templateUrl: './multi-choice.component.html',
-  styleUrl: './multi-choice.component.scss'
+  styleUrls: ['./multi-choice.component.scss']
 })
+export class MultiChoiceComponent {
 
-
-export class MultiChoiceComponent implements OnInit {
+  constructor(private scoreService: ScoreService) {}
 
   @Input() question!: Question;
 
   ngOnInit(): void {
     console.log(this.question);
   }
+  showMessage: boolean = false;
+  message: string = '';
+  anwsersChosen: Answer[] = new Array();
 
+
+  checkAnswer(selectedAnswer: Answer) {
+    if (selectedAnswer.isCorrect) {
+      if (!this.anwsersChosen.includes(selectedAnswer)) {
+        this.showMessage = true;
+        this.message = 'Bravo, mais tu es super fort et tu viens de gagner 15 étoiles!!!';
+        this.anwsersChosen.push(selectedAnswer);
+        this.scoreService.answerCorrect();
+        this.question?.answers.forEach((item, index) => {
+          if (item === selectedAnswer) {
+            if (this.question && this.question.answers) {
+              const answer = document.getElementById("answer" + index);
+              answer?.classList.add("right-answer");
+            }
+          }
+        });
+      }
+
+    } else {
+      if (!this.anwsersChosen.includes(selectedAnswer))
+        {
+          this.anwsersChosen.push(selectedAnswer);
+          this.scoreService.answerWrong();
+        }
+      
+      this.question?.answers.forEach((item, index) => {
+        if (item === selectedAnswer) {
+          if (this.question && this.question.answers) {
+            if (this.question.answers.length > 2) {
+              const answer = document.getElementById("answer" + index);
+              answer?.classList.add("wrong-anwser");
+            }
+            else if (this.question.answers.length == 2) {
+              this.message = 'Tu es sûr? Tu peux toujours changer de avis.';
+              this.showMessage = true;
+            }
+          }
+
+        }
+      });
+    }
+
+
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 4000);
+  }
 }

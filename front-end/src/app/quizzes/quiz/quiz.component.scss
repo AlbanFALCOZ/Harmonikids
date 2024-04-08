@@ -66,3 +66,7 @@
     text-align: center;
     cursor: pointer;
 }
+
+.quiz-card:hover {
+    transform: translateX(-5px) translateY(-5px); 
+}

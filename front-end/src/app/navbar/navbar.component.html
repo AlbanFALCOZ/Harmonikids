@@ -1,20 +1,23 @@
-<div class="navbar">
-  <span class="material-icons" id="menu" (click)="toggleNav()">menu</span>
-  <div>
-    <img src="assets/img/logo3.png" alt="logo">
+
+
+  <div class="navbar"  [ngStyle]="{ 
+    'background-color': colorService.selectedColor, }">
+    <span class="material-icons" id="menu" (click)="toggleNav()">menu</span>
+    <div>
+      <img src="assets/img/logo3.png" alt="logo">
+    </div>
   </div>
+
+  <div class="nav-vertical" 
+  [ngStyle]="{ 
+     'background-color': colorService.selectedColor, 
+     'visibility': isNavVisible ? 'visible' : 'hidden' 
+  }">
+<a routerLink="/membres-liste">Accueil</a>
+<a [routerLink]="['/dashboard', memberId]">Dashboard</a>
+<a routerLink="/quiz-list">Listes des Quiz</a>
+<a routerLink="/theme-list">Thèmes</a> 
+<a routerLink="/statistiques">Statistiques</a>
+<a routerLink="/configuration">Paramètres</a>
 </div>
-
-
-
-<div class="nav-vertical" [ngStyle]="{'visibility': isNavVisible ? 'visible' : 'hidden'}">
-
-    <a routerLink="/membres-liste">Accueil</a>
-    <a routerLink="/quiz-list">Listes des Quiz</a>
-    <a routerLink="/theme-list">Thèmes</a> 
-    <a routerLink="/statistiques">Statistiques</a>
-    <a routerLink="/parametres">Paramètres</a>
-  
-</div>
-
 

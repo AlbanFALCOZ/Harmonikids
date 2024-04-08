@@ -19,6 +19,7 @@ export class ThemeComponent implements OnInit{
 
   @Output()
   deleteTheme: EventEmitter<Theme> = new EventEmitter<Theme>();
+    sonService: any;
 
   constructor() {
 
@@ -65,4 +66,5 @@ export class ThemeComponent implements OnInit{
           }
       }
   }
+  
 }
