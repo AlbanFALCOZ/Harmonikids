@@ -23,7 +23,10 @@ export const MULTI_CHOICE: Question = {
             value: 'Le tigre',
             isCorrect: false,
         }
-    ]
+    ],
+    hint: {
+        text: "Pense à des animaux que les gens peuvent avoir chez eux pour les câliner et jouer avec eux."
+      }
 };
 
 export const UNIQUE_CHOICE: Question = {
@@ -49,7 +52,10 @@ export const UNIQUE_CHOICE: Question = {
             value: 'Le tigre',
             isCorrect: false,
         }
-    ]
+    ],
+    hint: {
+        audioUrl: 'assets/img/miaule.mp3'
+    }
 };
 
 export const TRUE_FALSE: Question = {
@@ -93,7 +99,10 @@ export const DRAG_DROP1: Question = {
             value: 'Jupiter',
             isCorrect: false,
         },
-    ]
+    ],
+    hint: {
+        imageUrl: 'assets/img/terre.jpg'
+    }
 };
 
 export const DRAG_DROP2: Question = {

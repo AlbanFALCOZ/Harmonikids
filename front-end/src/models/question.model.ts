@@ -10,6 +10,7 @@ export interface Answer {
     type?: string;
     value: string;
     isCorrect: boolean;
+    isSelected?: boolean;
 }
 
 export interface Question {
@@ -19,4 +20,9 @@ export interface Question {
     niveau: string;
     image?: string;
     answers: Answer[];
+    hint?: {
+        text?: string;
+        imageUrl?: string;
+        audioUrl?: string;
+      };
 }
