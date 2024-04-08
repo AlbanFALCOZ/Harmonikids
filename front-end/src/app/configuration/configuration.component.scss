@@ -215,3 +215,17 @@ input:checked + .slider:before {
   margin-right:210px;
 }
 
+
+.checkbox-container-question {
+  max-height: 55px;
+  margin-left:0px; 
+  width: 38%; 
+  padding: 10px; 
+  border: 2px solid #FAA300; 
+  font-family: "Finger Paint", sans-serif;
+  border-radius: 5px; 
+  font-size: 16px; 
+  background-color: #59D5E0; 
+  cursor: pointer;  
+}
+

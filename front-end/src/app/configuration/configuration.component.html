@@ -11,7 +11,7 @@
 
 <div class="container">
   <div class="toggle-container">
-    <span>Son&nbsp;&nbsp;</span>
+    <span>Son&nbsp;         &nbsp;</span>
     <label class="switch">
       <input type="checkbox" (click)="toggleSound()" [checked]="isSoundOn">
       <span class="slider"></span>
@@ -50,24 +50,20 @@
 </div>
 
 
-  <div class="dropdown-container-theme">
-    <h2>Gérer les questions par type</h2>
-     <select>
-       <option value="son">Avec son</option>
-       <option value="video">Avec vidéo</option>
-       <option value="multiple">Choix mutliples</option>
-       <option value="dragdrop">Drag Drop</option>
-       <option value="moi">Avec moi</option>
-       
-     </select>
-   
- </div>
+<div class="dropdown-container-theme">
+  <h2>Gérer les questions par type</h2>
+  <div class="checkbox-container-question" style="max-height: 62px; overflow-y: auto;">
+    <label><input type="checkbox" value="son"> Avec son</label><br>
+    <label><input type="checkbox" value="video"> Avec vidéo</label><br>
+    <label><input type="checkbox" value="multiple"> Choix multiples</label><br>
+    <label><input type="checkbox" value="dragdrop"> Drag Drop</label>
+  </div>
+  
+
 </div>
 </div>
 
 <div class = "Personnalisation">
- 
-
  <div class="dropdown" [ngClass]="{ 'show': isDropdownOpen }">
   <span>Couleurs</span>
   <ng-container *ngFor="let option of colorOptions">
@@ -79,7 +75,4 @@
   <span>Taille bouttons</span>
   <input type="range" min="0" max="2" step="1" value="1" id="button-size-range" oninput="changeButtonSize()">
 </div>
-
-
-
 </div>

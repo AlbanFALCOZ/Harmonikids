@@ -4,6 +4,7 @@ import { ColorService } from 'src/services/color-service.service';
 import { Theme } from '../../models/theme.model';
 import { TitleService } from 'src/services/title.service';
 import { ThemeService } from 'src/services/theme.service';
+import { Question } from 'src/models/question.model';
 
 
 enum ThemePalette {

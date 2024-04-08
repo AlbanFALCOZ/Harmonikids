@@ -1,0 +1,9 @@
+<div class="question" *ngIf="sound">
+    <img [src]="sound.image" alt="image_question" *ngIf="sound.image">
+    <h3>{{ sound.label }}</h3>  
+    <button class="sound-player" id="sound-player" (click)="playSound()"></button>
+    <div class="question-answers">
+        <button class="answer" *ngFor="let answer of sound.answers; let i = index" id="{{ 'answer' + i }}" (click)="checkAnswer(answer)">{{ answer.value }}</button>
+    </div>
+    <div *ngIf="showMessage" class="right-answer-message">{{ message }}</div>
+</div>

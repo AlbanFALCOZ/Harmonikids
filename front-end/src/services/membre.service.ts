@@ -9,7 +9,7 @@ import { Membre } from 'src/models/membre.model';
 export class MembreService {
    
     private membres:Membre[] = Membre_LIST;
-    private memberId: string | null = null;
+    private memberId: string | undefined ;
 
 
     public membres$: BehaviorSubject<Membre[]>
@@ -17,7 +17,7 @@ export class MembreService {
 
     constructor() { }
 
-    getWelcomeMessage(memberId: string): string {
+    getWelcomeMessage(memberId: string |undefined ): string {
        
         const membre = this.membres.find(m => m.id === memberId);
         if (membre) {
@@ -29,12 +29,11 @@ export class MembreService {
 
 
 
-
   setMemberId(id: string): void {
     this.memberId = id;
   }
 
-  getMemberId(): string | null {
+  getMemberId(): string | undefined {
     return this.memberId;
   }
 

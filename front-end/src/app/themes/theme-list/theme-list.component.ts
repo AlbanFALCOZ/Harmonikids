@@ -15,7 +15,9 @@ import { SonService } from 'src/services/sound.service';
 export class ThemeListComponent implements OnInit{
 
   public themeList: Theme[] = [];
-  
+
+  isDisabled: boolean = false;
+
 
   constructor(private router: Router, public themeService: ThemeService, public titleService: TitleService , private sonService: SonService) {
     this.themeService.themes$.subscribe((themes: Theme[]) => {

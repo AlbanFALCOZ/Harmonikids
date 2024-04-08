@@ -13,7 +13,7 @@ export class MembreComponent {
 
 
     membre? : Membre
-    memberId: string | null;
+    memberId: string | undefined;
 
     @Output()
     membreSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
