@@ -99,7 +99,10 @@ export const DRAG_DROP1: Question = {
             value: 'Jupiter',
             isCorrect: false,
         },
-    ]
+    ],
+    hint: {
+        imageUrl: 'assets/img/terre.jpg'
+    }
 };
 
 export const DRAG_DROP2: Question = {
