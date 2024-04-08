@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from  '@angular/cdk/drag-drop';
 import { DragDropService } from 'src/services/drag-drop.service';
 import { Question } from 'src/models/question.model';
 
@@ -16,6 +16,10 @@ export class DragDropComponent implements OnInit {
   basket: string[] = [];
   question: string = '';
   rightAnswer: string = '';
+  showSuccessMessage: boolean = false;
+  showFailureMessage: boolean = false;
+
+
   questionId: string = '';
 
   @Input() drag!: Question;
@@ -23,12 +27,34 @@ export class DragDropComponent implements OnInit {
   constructor(private dragDropService: DragDropService) { }
 
   ngOnInit() {
+    this.addClickOutsideListener();
     if (this.drag) {
-      this.questionId = this.drag.id;
-      this.updateItems(this.questionId);
-      console.log(this.drag);
+      this.updateItems(this.drag.id);
     }
   }
+
+  ngOnDestroy() {
+    document.removeEventListener('click', this.clickOutsideHandler);
+  }
+
+  addClickOutsideListener() {
+    document.addEventListener('click', this.clickOutsideHandler.bind(this));
+  }
+
+  clickOutsideHandler(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    const messageElement = document.querySelector('.messageSuccess, .messageFailure');
+
+    if (messageElement && !messageElement.contains(target)) {
+      this.hideMessages();
+    }
+  }
+
+  hideMessages() {
+    this.showSuccessMessage = false;
+    this.showFailureMessage = false;
+  }
+
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -40,6 +66,16 @@ export class DragDropComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
+    }
+    this.hideMessages();
+
+    if (this.basket.includes(this.rightAnswer)) {
+      this.showSuccessMessage = true;
+      setTimeout(() => this.showSuccessMessage = false, 8000);
+    }
+    else {
+      this.showFailureMessage = true;
+      setTimeout(() => this.showFailureMessage = false, 5000);
     }
   }
 

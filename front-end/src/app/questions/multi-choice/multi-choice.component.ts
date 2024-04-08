@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+
+import { Component, Input, OnInit,  Output, EventEmitter } from '@angular/core';
 import { Question, Answer } from 'src/models/question.model';
 import { ScoreService } from '../question-list/score-service-component';
 
@@ -11,11 +12,14 @@ export class MultiChoiceComponent {
 
   constructor(private scoreService: ScoreService) {}
 
-  @Input() multi?: Question;
-
   showMessage: boolean = false;
   message: string = '';
   anwsersChosen: Answer[] = new Array();
+  @Input()
+  multi?: Question;
+  selectedAnswer: Answer[] = [];
+
+  @Output() answerSelected = new EventEmitter<Answer[]>();
 
 
   checkAnswer(selectedAnswer: Answer) {
@@ -34,8 +38,6 @@ export class MultiChoiceComponent {
           }
         });
       }
-
-
     } else {
       if (!this.anwsersChosen.includes(selectedAnswer))
         {
@@ -64,5 +66,23 @@ export class MultiChoiceComponent {
     setTimeout(() => {
       this.showMessage = false;
     }, 4000);
+    
+    
+  onSelectAnswer(answer: Answer): void {
+   if (this.multi && this.multi.answers) {
+    const correctAnswersCount = this.multi.answers.filter(ans => ans.isCorrect).length;
+
+    if (correctAnswersCount === 1) {
+      this.multi.answers.forEach(ans => {
+        if (ans.value !== answer.value) {
+          ans.isSelected = false; 
+        }
+      });
+      answer.isSelected = true;
+    } else {
+      answer.isSelected = !answer.isSelected;
+    }
+    this.answerSelected.emit(this.multi.answers.filter(a => a.isSelected));
+    }
   }
 }

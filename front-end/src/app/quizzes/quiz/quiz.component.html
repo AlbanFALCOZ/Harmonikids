@@ -8,11 +8,8 @@
         <p>{{ quiz.questions.length }}</p>
     </div>
     <div class="quiz-card-button">
-        <a routerLink="/question-list">
-            <button (click)="selectQuiz()">Select</button>
-        </a>
+        <a routerLink="/niveau"><button (click)="selectQuiz()">Select</button></a>
         <button (click)="displayModalUpdate()">Edit</button>
         <button (click)="displayModalDelete()">Delete</button>
     </div>
 </div>
-

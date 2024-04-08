@@ -1,7 +1,5 @@
 <app-navbar></app-navbar>
 <div class="content-question">
-
-
   <ng-container *ngIf="questionList.length > 0 && currentQuestionIndex < questionList.length">
 
     <app-drag-drop *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === 'drag-and-drop'"
@@ -56,6 +54,27 @@
 </div>
 
 <div class="quiz-btn">
-  <button class="precedent" (click)="previousQuestion()">Precedent</button>
+  <button class="precedent" (click)="previousQuestion()">Précédent</button>
+    <ng-container *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.MultipleChoice || 
+                         questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.UniqueChoice ||
+                         questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.TrueOrFalse">
+    <button class="validate" (click)="validateQuestion()">Valider</button>
+  </ng-container>
+
   <button type="submit" class="suivant" (click)="nextQuestion()">Suivant</button>
+</div>
+
+
+<div class="messageSuccess" *ngIf="showSuccessMessage" >
+  Bravo ! Tu as trouvé la bonne réponse !
+</div>
+
+<div class="messageFailure" *ngIf="showFailureMessage" >
+  Dommage, la réponse est incorrecte ou incomplète.
+</div>
+
+
+<div *ngIf="showFailureMessage && (hintText || hintImageUrl)" class="hint">
+  <p *ngIf="hintText">{{ hintText }}</p>
+  <img *ngIf="hintImageUrl" [src]="hintImageUrl" alt="Indice">
 </div>

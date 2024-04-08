@@ -19,11 +19,11 @@
     text-align: center;
 }
 
-.question-answers{
+.question-answer{
     margin-left: 20px;
 }
 
-.question-answers .answer {
+.question-answer .answer {
     width: 430px;
     font-size: 20px;
     border: 2px solid #000;
@@ -31,9 +31,12 @@
     cursor: pointer;
     padding: 10px;
     margin: 10px;
+
+    &.selected {
+        background-color: #ddd; /* Couleur pour indiquer une réponse sélectionnée */
+        border-color: #F4538A; /* Changez la couleur de la bordure si vous le souhaitez */
+      }
 }
-
-
 
 .right-answer {
     background-color: rgb(120, 255, 120);
@@ -63,4 +66,7 @@
 @keyframes pop {
     0% { transform: scale(0); }
     100% { transform: scale(1); }
+  
+.question-answer .answer:hover {
+    background-color: #ddd;
 }
