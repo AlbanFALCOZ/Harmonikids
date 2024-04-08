@@ -6,5 +6,6 @@ export interface Quiz {
     description : string;
     theme: string;
     questions: Question[];
+    statut: string;
     image: string;
 }

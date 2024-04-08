@@ -23,6 +23,13 @@ import { QuizDeleteComponent } from './quizzes/quiz-delete/quiz-delete.component
 import { MultiChoiceComponent } from './questions/multi-choice/multi-choice.component';
 import { QuestionListComponent } from './questions/question-list/question-list.component';
 import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
+import { ProfilCardStatComponent } from './statistiques/profil-card-stat/profil-card-stat.component';
+import { StatistiqueComponent } from './statistiques/statistique/statistique.component';
+import { StatistiqueCardComponent } from './statistiques/statistique-card/statistique-card.component';
+import { WeekChartComponent } from './statistiques/week-chart/week-chart.component';
+import { ProgresChartComponent } from './statistiques/progres-chart/progres-chart.component';
+import { ProgresCircleComponent } from './statistiques/progres-circle/progres-circle.component';
+import { StatQuizComponent } from './statistiques/stat-quiz/stat-quiz.component';
 
 
 @NgModule({
@@ -48,6 +55,13 @@ import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
     DragDropComponent,
     MultiChoiceComponent,
     QuestionListComponent,
+    ProfilCardStatComponent,
+    StatistiqueComponent,
+    StatistiqueCardComponent,
+    WeekChartComponent,
+    ProgresChartComponent,
+    ProgresCircleComponent,
+    StatQuizComponent,
   ],
   imports: [
     BrowserModule,

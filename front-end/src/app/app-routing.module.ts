@@ -8,6 +8,7 @@ import { MembreListeComponent } from './membres/membres-liste/membre-liste.compo
 import { MembreComponent } from './membres/membre/membre.component';
 import { QuestionListComponent } from './questions/question-list/question-list.component';
 import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
+import { StatistiqueComponent } from './statistiques/statistique/statistique.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'quiz', component: QuizComponent },
   { path: 'niveau/:id', component: LevelComponent },
   { path: 'theme-list', component: ThemeListComponent },
+  { path: 'statistiques', component: StatistiqueComponent },
   { path: 'question-list', component: QuestionListComponent },
   { path: '', redirectTo: '/membres-liste', pathMatch: 'full' },
   { path: 'membres' , component: MembreComponent},

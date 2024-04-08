@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<div>
+    <div class="title">
+        <h1> Statistiques </h1>
+        <img src="assets/img/emoji.png" alt="emoji">
+    </div>
+    <hr class="title-ligne">
+</div>
+<div class="core-page">
+    <div class="left">
+        <app-profil-card-stat></app-profil-card-stat>
+        <app-week-chart></app-week-chart>
+        <app-progres-chart></app-progres-chart>
+    </div>
+    <div class="vertical-line"></div>
+    <div class="right">
+        <div>
+            <div class="description-theme">
+                <p>Taux de quiz effectués par thème</p>
+            </div>
+            <div class="quiz-result-display">
+                <app-statistique-card *ngFor="let theme of themeList" [theme]="theme"></app-statistique-card>            
+            </div>
+        </div>
+        <hr class="divide-ligne">
+        <div>
+            <div class="description-quiz">
+                <p>Taux de bonnes réponses par quiz</p>
+            </div>
+            <div class="question-result-display">
+                <app-stat-quiz *ngFor="let quiz of quizList" [quiz]="quiz"></app-stat-quiz>
+            </div>
+        </div>
+    </div>
+</div>
