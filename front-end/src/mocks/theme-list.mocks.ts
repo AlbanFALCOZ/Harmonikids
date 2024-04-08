@@ -26,6 +26,30 @@ export const THEME_LIST: Theme[] = [
         numberOfQuizzes: 1,
         quizzes: QUIZ_LIST,
         image: 'assets/img/drapeaux.jpg'
+    },
+    {
+        id: '4',
+        name: 'L\'astronomie',
+        description: 'Description du quiz 3',
+        numberOfQuizzes: 1,
+        quizzes: QUIZ_LIST,
+        image: 'assets/img/etoile.jpg'
+    },
+    {
+        id: '4',
+        name: 'Les mathèmatiques',
+        description: 'Description du quiz 3',
+        numberOfQuizzes: 1,
+        quizzes: QUIZ_LIST,
+        image: 'assets/img/math.jpg'
+    },
+    {
+        id: '5',
+        name: 'Les mathèmatiques',
+        description: 'Description du quiz 3',
+        numberOfQuizzes: 1,
+        quizzes: QUIZ_LIST,
+        image: 'assets/img/math.jpg'
     }
 
 ];

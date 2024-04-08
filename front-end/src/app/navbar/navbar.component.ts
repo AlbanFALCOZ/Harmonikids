@@ -1,29 +1,26 @@
-import { Component } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
+import { ColorService } from 'src/services/color-service.service';
+import { MembreService } from 'src/services/membre.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
+export class NavbarComponent implements OnInit {
+  isNavVisible: boolean = false; 
+  memberId: string | undefined;
 
-export class NavbarComponent {
-  isNavVisible: boolean = false;
-  toggleNav(): void {
+  constructor(public colorService: ColorService , public membreService: MembreService) { }
+
+  ngOnInit(): void {
+    this.memberId = this.membreService.getMemberId(); 
+  }
+
+  toggleNav() {
     this.isNavVisible = !this.isNavVisible;
   }
 
   
 }
-/* displayNav() {
-  let nav = document.getElementById('nav-vertical') as HTMLElement;
-  let icon = document.getElementById('menu') as HTMLElement;
-
-  if (icon) {
-    if (nav.style.display === 'none') {
-      nav.style.display = 'block';
-
-    } else {
-      nav.style.display = 'none';
-    }
-  };
-} */

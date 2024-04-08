@@ -4,7 +4,8 @@ import { NavbarComponent } from 'src/app/navbar/navbar.component';
 import { Membre } from 'src/models/membre.model';
 import { MembreService } from 'src/services/membre.service';
 import { TitleService } from 'src/services/title.service';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { SonService } from 'src/services/sound.service';
+
 
 @Component({
   selector: 'app-membre-liste',
@@ -16,14 +17,16 @@ export class MembreListeComponent implements OnInit {
   public membreListe: Membre[] = [];
   public displayForm: boolean = false;
   isDisabled: boolean = false;
+
  
 
-  constructor(private router: Router, public membreService: MembreService , public titleService: TitleService) {
+  constructor(private router: Router, public membreService: MembreService , public titleService: TitleService , private sonService: SonService) {
     this.membreService.membres$.subscribe((membres: Membre[]) => {
       this.membreListe = membres;
     });
     this.titleService.title = 'Bienvenue';
     this.titleService.search = 'Rechercher un enfant';
+    
 
   }
   
@@ -34,6 +37,10 @@ export class MembreListeComponent implements OnInit {
     this.displayForm = !this.displayForm;
   }
 
+
+  playSound(){
+    this.sonService.playSound('./../../../../assets/img/good.mp3');
+  }
  
 
 }

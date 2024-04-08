@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Theme } from '../../../models/theme.model';
 import { TitleService } from 'src/services/title.service';
 import { ThemeService } from 'src/services/theme.service';
+import { SonService } from 'src/services/sound.service';
 
 
 @Component({
@@ -16,7 +17,10 @@ export class ThemeListComponent implements OnInit{
   public themeList: Theme[] = [];
   isDisabled: boolean = false;
 
-  constructor(private router: Router, public themeService: ThemeService, public titleService: TitleService) {
+  isDisabled: boolean = false;
+
+
+  constructor(private router: Router, public themeService: ThemeService, public titleService: TitleService , private sonService: SonService) {
     this.themeService.themes$.subscribe((themes: Theme[]) => {
       this.themeList = themes;
     });
@@ -38,4 +42,9 @@ export class ThemeListComponent implements OnInit{
   deleteTheme(theme : Theme): void{
     this.themeService.deleteTheme(theme);
   }
+
+  playSound(){
+    this.sonService.playSound('./../../../../assets/img/good.mp3');
+  }
+
 }

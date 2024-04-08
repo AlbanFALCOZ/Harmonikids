@@ -8,8 +8,12 @@ import { Theme } from 'src/models/theme.model';
   providedIn: 'root'
 })
 export class ThemeService {
+  getAllThemes(): string[] {
+    throw new Error('Method not implemented.');
+  }
 
     private themes: Theme[] = THEME_LIST;
+    private selectedThemes: Theme[] = [];
 
     public themes$: BehaviorSubject<Theme[]>
     = new BehaviorSubject(this.themes);
@@ -24,6 +28,10 @@ export class ThemeService {
     this.themes$.next(this.themes);
     }
 
+    getThemes(): Theme[] {
+      return this.themes$.getValue(); 
+  }
+
     addTheme(theme: Theme): void {
         this.themes
         this.themes$.next(this.themes);
@@ -36,4 +44,14 @@ export class ThemeService {
       deleteTheme(theme: Theme): void {
         
       }
+
+      addSelectedTheme(theme: Theme) {
+        this.selectedThemes.push(theme);
+      }
+    
+      getSelectedThemes(): Theme[] {
+        return this.selectedThemes;
+      }
+
+      
 }

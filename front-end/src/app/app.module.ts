@@ -23,7 +23,11 @@ import { QuizDeleteComponent } from './quizzes/quiz-delete/quiz-delete.component
 import { MultiChoiceComponent } from './questions/multi-choice/multi-choice.component';
 import { QuestionListComponent } from './questions/question-list/question-list.component';
 import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { FormsModule } from '@angular/forms';
 import { SoundQuestionComponent } from './questions/sound-question/sound-question.component';
+
 
 
 @NgModule({
@@ -49,13 +53,17 @@ import { SoundQuestionComponent } from './questions/sound-question/sound-questio
     DragDropComponent,
     MultiChoiceComponent,
     QuestionListComponent,
+    ConfigurationComponent,
+    DashboardComponent,
     SoundQuestionComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
