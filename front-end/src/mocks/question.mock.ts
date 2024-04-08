@@ -5,6 +5,7 @@ export const MULTI_CHOICE: Question = {
     label: 'Quels sont les animaux domestiques?',
     typeOfQuestion: QuestionType.MultipleChoice,
     niveau: 'facile',
+    isCorrectQuestion: false,
     image: 'assets/img/chien.jpeg',
     answers: [
         {
@@ -35,6 +36,7 @@ export const UNIQUE_CHOICE: Question = {
     typeOfQuestion: QuestionType.UniqueChoice,
     niveau: 'facile',
     image: 'assets/img/chien.jpeg',
+    isCorrectQuestion: false,
     answers: [
         {
             value: 'Le chat',
@@ -62,8 +64,9 @@ export const TRUE_FALSE: Question = {
     id: '3',
     label: 'Le chien aboie?',
     typeOfQuestion: QuestionType.TrueOrFalse,
-    niveau: 'facile',
+    niveau: 'moyen',
     image: 'assets/img/chien.jpeg',
+    isCorrectQuestion: false,
     answers: [
         {
             value: 'Vrai',
@@ -80,8 +83,9 @@ export const DRAG_DROP1: Question = {
     id: '4',
     label: 'Comment se nomme notre planéte?',
     typeOfQuestion: QuestionType.DragAndDrop,
-    niveau: 'facile',
+    niveau: 'moyen',
     image: 'assets/img/chien.jpeg',
+    isCorrectQuestion: false,
     answers: [
         {
             value: 'Terre',
@@ -109,8 +113,9 @@ export const DRAG_DROP2: Question = {
     id: '5',
     label: 'Une question intéréssante:La reponse est Sara ?',
     typeOfQuestion: QuestionType.DragAndDrop,
-    niveau: 'facile',
+    niveau: 'difficile',
     image: 'assets/img/chien.jpeg',
+    isCorrectQuestion: false,
     answers: [
         {
             value: 'Sara',

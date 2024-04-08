@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
+import { Subscription } from 'rxjs';
 import { TitleService } from '../../../services/title.service';
 import { ScoreService } from './score-service-component';
 
@@ -16,7 +17,7 @@ export class QuestionListComponent implements OnInit {
   public questionList: Question[] = [];
 
   currentQuestionIndex: number = 0;
-
+  
   public numberOfQuestionsAnswered: number = 0;
   public numberOfCorrectAnswers: number = 0;
 
@@ -33,6 +34,12 @@ export class QuestionListComponent implements OnInit {
     })
 
   }
+
+  // constructor(private filteredQuestionService: FilteredQuestionService) {
+  //   this.filteredQuestionService.filteredQuestions$.subscribe((sortedQuestions: Question[]) => {
+  //     this.questionList = sortedQuestions;
+  //   });
+  // }
 
   ngOnInit(): void {
     console.log(this.questionList)

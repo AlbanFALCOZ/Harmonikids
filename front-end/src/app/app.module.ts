@@ -23,6 +23,13 @@ import { QuizDeleteComponent } from './quizzes/quiz-delete/quiz-delete.component
 import { MultiChoiceComponent } from './questions/multi-choice/multi-choice.component';
 import { QuestionListComponent } from './questions/question-list/question-list.component';
 import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
+import { ProfilCardStatComponent } from './statistiques/profil-card-stat/profil-card-stat.component';
+import { StatistiqueComponent } from './statistiques/statistique/statistique.component';
+import { StatistiqueCardComponent } from './statistiques/statistique-card/statistique-card.component';
+import { WeekChartComponent } from './statistiques/week-chart/week-chart.component';
+import { ProgresChartComponent } from './statistiques/progres-chart/progres-chart.component';
+import { ProgresCircleComponent } from './statistiques/progres-circle/progres-circle.component';
+import { StatQuizComponent } from './statistiques/stat-quiz/stat-quiz.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
@@ -53,6 +60,13 @@ import { SoundQuestionComponent } from './questions/sound-question/sound-questio
     DragDropComponent,
     MultiChoiceComponent,
     QuestionListComponent,
+    ProfilCardStatComponent,
+    StatistiqueComponent,
+    StatistiqueCardComponent,
+    WeekChartComponent,
+    ProgresChartComponent,
+    ProgresCircleComponent,
+    StatQuizComponent,
     ConfigurationComponent,
     DashboardComponent,
     SoundQuestionComponent,

@@ -1,7 +1,5 @@
 <app-navbar></app-navbar>
 <div class="content-question">
-
-
   <ng-container *ngIf="questionList.length > 0 && currentQuestionIndex < questionList.length">
 
     <app-drag-drop *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === 'drag-and-drop'"
@@ -10,7 +8,7 @@
 
     <app-multi-choice
       *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop' && questionList[currentQuestionIndex]?.typeOfQuestion !== 'guess-the-sound'"
-      [multi]="questionList[currentQuestionIndex]">
+      [question]="questionList[currentQuestionIndex]">
     </app-multi-choice>
 
     <app-sound-question

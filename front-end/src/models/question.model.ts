@@ -22,6 +22,7 @@ export interface Question {
     image?: string;
     audio?:string;
     answers: Answer[];
+    isCorrectQuestion: boolean;
     hint?: {
         text?: string;
         imageUrl?: string;

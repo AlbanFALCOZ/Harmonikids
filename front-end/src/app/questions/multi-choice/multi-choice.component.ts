@@ -11,8 +11,11 @@ export class MultiChoiceComponent {
 
   constructor(private scoreService: ScoreService) {}
 
-  @Input() multi?: Question;
+  @Input() question!: Question;
 
+  ngOnInit(): void {
+    console.log(this.question);
+  }
   showMessage: boolean = false;
   message: string = '';
   anwsersChosen: Answer[] = new Array();
@@ -25,16 +28,15 @@ export class MultiChoiceComponent {
         this.message = 'Bravo, mais tu es super fort et tu viens de gagner 15 étoiles!!!';
         this.anwsersChosen.push(selectedAnswer);
         this.scoreService.answerCorrect();
-        this.multi?.answers.forEach((item, index) => {
+        this.question?.answers.forEach((item, index) => {
           if (item === selectedAnswer) {
-            if (this.multi && this.multi.answers) {
+            if (this.question && this.question.answers) {
               const answer = document.getElementById("answer" + index);
               answer?.classList.add("right-answer");
             }
           }
         });
       }
-
 
     } else {
       if (!this.anwsersChosen.includes(selectedAnswer))
@@ -43,14 +45,14 @@ export class MultiChoiceComponent {
           this.scoreService.answerWrong();
         }
       
-      this.multi?.answers.forEach((item, index) => {
+      this.question?.answers.forEach((item, index) => {
         if (item === selectedAnswer) {
-          if (this.multi && this.multi.answers) {
-            if (this.multi.answers.length > 2) {
+          if (this.question && this.question.answers) {
+            if (this.question.answers.length > 2) {
               const answer = document.getElementById("answer" + index);
               answer?.classList.add("wrong-anwser");
             }
-            else if (this.multi.answers.length == 2) {
+            else if (this.question.answers.length == 2) {
               this.message = 'Tu es sûr? Tu peux toujours changer de avis.';
               this.showMessage = true;
             }

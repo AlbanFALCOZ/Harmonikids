@@ -1,23 +1,5 @@
 import { Quiz } from '../models/quiz.model';
-import { Question, QuestionType } from '../models/question.model';
-
-export const QUESTION_ACTOR: Question = {
-    id: '1',
-    label: 'Jean Gabin a joué dans...',
-    typeOfQuestion: QuestionType.UniqueChoice,
-    niveau: 'facile',
-    image: '',
-    answers: [
-        {
-            value: 'Les tuches II',
-            isCorrect: false,
-        },
-        {
-            value: 'La grande illusion',
-            isCorrect: true,
-        }
-    ]
-};
+import { QUESTION_LIST } from './question.mock';
 
 export const QUIZ_LIST: Quiz[] = [
     {
@@ -25,7 +7,8 @@ export const QUIZ_LIST: Quiz[] = [
         name: 'Les animaux',
         description: 'Description du quiz 1',
         theme: 'Theme 1',
-        questions: [QUESTION_ACTOR],
+        questions: QUESTION_LIST,
+        statut : 'A faire',
         image: 'assets/img/animal.jpg'
     },
     {
@@ -33,7 +16,8 @@ export const QUIZ_LIST: Quiz[] = [
         name: 'L\'addition',
         description: 'Description du quiz 2',
         theme: 'Theme 2',
-        questions: [QUESTION_ACTOR],
+        questions: QUESTION_LIST,
+        statut: 'A faire',
         image: 'assets/img/addition.jpg'
     },
     {
@@ -41,7 +25,8 @@ export const QUIZ_LIST: Quiz[] = [
         name: 'Les étoiles',
         description: 'Description du quiz 3',
         theme: 'Theme 3',
-        questions: [QUESTION_ACTOR],
+        questions: QUESTION_LIST,
+        statut: 'En cours',
         image: 'assets/img/etoile.jpg'
     },
     {
@@ -49,7 +34,8 @@ export const QUIZ_LIST: Quiz[] = [
         name: 'Le basket',
         description: 'Description du quiz 4',
         theme: 'Theme 4',
-        questions: [QUESTION_ACTOR],
+        questions: QUESTION_LIST,
+        statut: 'Terminé',
         image: 'assets/img/basket.jpg'
     }
 
