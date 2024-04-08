@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
     console.log('event received from child:', selected);
   }
 
-  quizSelected(selected: boolean): void {
+  quizSelected(selected: Quiz): void {
     console.log('event received from child:', selected);
   }
 

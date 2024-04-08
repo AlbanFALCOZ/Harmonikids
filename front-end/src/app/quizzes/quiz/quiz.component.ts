@@ -21,7 +21,6 @@ export class QuizComponent implements OnInit {
     deleteQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
     constructor() {
-        this.quiz.statut = "A faire";
 
     }
 

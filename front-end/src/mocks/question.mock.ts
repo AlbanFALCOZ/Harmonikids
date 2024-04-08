@@ -5,7 +5,6 @@ export const MULTI_CHOICE: Question = {
     label: 'Quels sont les animaux domestiques?',
     typeOfQuestion: QuestionType.MultipleChoice,
     niveau: 'facile',
-    isCorrectQuestion: false,
     image: 'assets/img/chien.jpeg',
     answers: [
         {
@@ -36,7 +35,6 @@ export const UNIQUE_CHOICE: Question = {
     typeOfQuestion: QuestionType.UniqueChoice,
     niveau: 'facile',
     image: 'assets/img/chien.jpeg',
-    isCorrectQuestion: false,
     answers: [
         {
             value: 'Le chat',
@@ -66,7 +64,6 @@ export const TRUE_FALSE: Question = {
     typeOfQuestion: QuestionType.TrueOrFalse,
     niveau: 'moyen',
     image: 'assets/img/chien.jpeg',
-    isCorrectQuestion: false,
     answers: [
         {
             value: 'Vrai',
@@ -85,7 +82,6 @@ export const DRAG_DROP1: Question = {
     typeOfQuestion: QuestionType.DragAndDrop,
     niveau: 'moyen',
     image: 'assets/img/chien.jpeg',
-    isCorrectQuestion: false,
     answers: [
         {
             value: 'Terre',
@@ -115,7 +111,6 @@ export const DRAG_DROP2: Question = {
     typeOfQuestion: QuestionType.DragAndDrop,
     niveau: 'difficile',
     image: 'assets/img/chien.jpeg',
-    isCorrectQuestion: false,
     answers: [
         {
             value: 'Sara',
