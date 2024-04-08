@@ -1,29 +1,42 @@
 <app-navbar></app-navbar>
 <div class="content-question">
-  <ng-container *ngIf="questionList.length > 0 && currentQuestionIndex < questionList.length">
 
-    <app-multi-choice *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop'"
-      [multi]="questionList[currentQuestionIndex]" (answerSelected)="onAnswerSelected($event)">
-    </app-multi-choice>
+
+  <ng-container *ngIf="questionList.length > 0 && currentQuestionIndex < questionList.length">
 
     <app-drag-drop *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === 'drag-and-drop'"
       [drag]="questionList[currentQuestionIndex]">
     </app-drag-drop>
+
+    <app-multi-choice
+      *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop' && questionList[currentQuestionIndex]?.typeOfQuestion !== 'guess-the-sound'"
+      [multi]="questionList[currentQuestionIndex]">
+    </app-multi-choice>
+
+    <app-sound-question
+      *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop' && questionList[currentQuestionIndex]?.typeOfQuestion === 'guess-the-sound'"
+      [sound]="questionList[currentQuestionIndex]">
+    </app-sound-question>
+
   </ng-container>
 
-
-
   <div class="progress-container">
-    <progress value="2" max="5"></progress>
+    <progress [value]="currentQuestionIndex+1" [max]="questionList.length"></progress>
   </div>
 
+
+
+
   <div class="quiz_setting">
-    <div>
+    <!--
+      <div>
       <span class="material-symbols-outlined toggle toggle_on">toggle_on</span>
       <span class="material-symbols-outlined toggle toggle_off">toggle_off</span>
       <p>indice</p>
 
     </div>
+    -->
+
     <div>
       <span class="material-symbols-outlined volume volume_up">volume_up</span>
       <span class="material-symbols-outlined volume volume_off">volume_off</span>
@@ -31,30 +44,19 @@
     </div>
   </div>
 
+  <div class="Score">
+    <div>Score : {{ numberOfCorrectAnswers}}/{{ numberOfQuestionsAnswered }}</div>
+  </div>
+  <div>
+    <img class="stars" src="assets/img/star.png" *ngFor="let item of generateArray(numberOfCorrectAnswers)" width="50px"
+      height="50px">
+  </div>
+
+
 </div>
 
 <div class="quiz-btn">
-  <button class="precedent" (click)="previousQuestion()">Précédent</button>
-    <ng-container *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.MultipleChoice || 
-                         questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.UniqueChoice ||
-                         questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.TrueOrFalse">
-    <button class="validate" (click)="validateQuestion()">Valider</button>
-  </ng-container>
-
+  <button class="precedent" (click)="previousQuestion()">Precedent</button>
+  <button class="validate">Valider</button>
   <button type="submit" class="suivant" (click)="nextQuestion()">Suivant</button>
-</div>
-
-
-<div class="messageSuccess" *ngIf="showSuccessMessage" >
-  Bravo ! Tu as trouvé la bonne réponse !
-</div>
-
-<div class="messageFailure" *ngIf="showFailureMessage" >
-  Dommage, la réponse est incorrecte ou incomplète.
-</div>
-
-
-<div *ngIf="showFailureMessage && (hintText || hintImageUrl)" class="hint">
-  <p *ngIf="hintText">{{ hintText }}</p>
-  <img *ngIf="hintImageUrl" [src]="hintImageUrl" alt="Indice">
 </div>
