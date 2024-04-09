@@ -38,7 +38,7 @@
       }
 }
 
-.question-answer .answer:hover {
+.question-answer .answer:hover :not(right-answer) {
     background-color: #ddd;
 }
 

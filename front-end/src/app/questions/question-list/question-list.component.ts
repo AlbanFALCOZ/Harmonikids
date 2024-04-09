@@ -14,8 +14,11 @@ import { TitleService } from '../../../services/title.service';
 export class QuestionListComponent implements OnInit {
 
   public questionList: Question[] = [];
+  questionCleared: number[] = [];
+
   selectedAnswer: Answer[] = [];
   selectedAnswerCorrect : Answer[] = [];
+
   currentQuestionIndex: number = 0;
   QuestionType = QuestionType;
 
@@ -94,10 +97,15 @@ export class QuestionListComponent implements OnInit {
           });
         
       });
-
-    if (selectedAreAllCorrect) {
+    
+    this.selectedAnswerCorrect = this.selectedAnswerCorrect.filter((item,index) => this.selectedAnswerCorrect.indexOf(item) == index);
+    
+    
+    if (correctAnswers.every((item) => this.selectedAnswerCorrect.includes(item))) {
       this.showSuccessMessage = true;
       this.successAudio.play();
+      this.questionCleared.push(this.currentQuestionIndex);
+      
     } else {
       this.showFailureMessage = true;
       const hint = this.questionList[this.currentQuestionIndex].hint;

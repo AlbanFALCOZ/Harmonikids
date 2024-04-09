@@ -14,7 +14,7 @@
 
 
   <div class="progress-container">
-    <progress value="2" max="5"></progress>
+    <progress [value]="currentQuestionIndex+1" [max]="questionList.length"></progress>
   </div>
   
 
@@ -39,7 +39,7 @@
     <ng-container *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.MultipleChoice || 
                          questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.UniqueChoice ||
                          questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.TrueOrFalse">
-    <button class="validate" (click)="validateQuestion()">Valider</button>
+    <button class="validate" [style.visibility]="questionCleared.includes(currentQuestionIndex) ? 'hidden' : 'visible'" (click)="validateQuestion()">Valider</button>
   </ng-container>
 
   <button type="submit" class="suivant" (click)="nextQuestion()">Suivant</button>
