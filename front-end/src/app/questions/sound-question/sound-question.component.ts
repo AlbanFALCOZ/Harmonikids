@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Question, Answer } from 'src/models/question.model';
-import { ScoreService } from '../question-list/score-service-component';
+import { ScoreService } from 'src/services/score-service-component';
 
 @Component({
   selector: 'app-sound-question',
