@@ -2,13 +2,17 @@
 <div class="content-question">
   <ng-container *ngIf="questionList.length > 0 && currentQuestionIndex < questionList.length">
 
-    <app-multi-choice *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop'"
+    <app-multi-choice *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== 'drag-and-drop' && questionList[currentQuestionIndex]?.typeOfQuestion !== 'guess-the-sound'"
       [question]="questionList[currentQuestionIndex]" [answerAlreadySeleted]="selectedAnswer" (answerSelected)="onAnswerSelected($event)">
     </app-multi-choice>
 
     <app-drag-drop *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === 'drag-and-drop'"
       [drag]="questionList[currentQuestionIndex]">
     </app-drag-drop>
+
+    <app-sound-question *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === 'guess-the-sound'"
+      [sound]="questionList[currentQuestionIndex]" (answerSelected)="onAnswerSelected($event)">
+    </app-sound-question>
   </ng-container>
 
 
@@ -36,9 +40,7 @@
 
 <div class="quiz-btn">
   <button class="precedent" (click)="previousQuestion()">Précédent</button>
-    <ng-container *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.MultipleChoice || 
-                         questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.UniqueChoice ||
-                         questionList[currentQuestionIndex]?.typeOfQuestion === QuestionType.TrueOrFalse">
+    <ng-container *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== QuestionType.DragAndDrop">
     <button class="validate" [style.visibility]="questionCleared.includes(currentQuestionIndex) ? 'hidden' : 'visible'" (click)="validateQuestion()">Valider</button>
   </ng-container>
 
