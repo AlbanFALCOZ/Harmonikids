@@ -1,4 +1,4 @@
-import { Component, Input, OnInit,  Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Question, Answer } from 'src/models/question.model';
 
 @Component({
@@ -28,26 +28,29 @@ export class MultiChoiceComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
+
   onSelectAnswer(answer: Answer): void {
-   if (this.question && this.question.answers) {
-    if (answer.alreadySelected) {
-      return;
-    }
-    const correctAnswersCount = this.question.answers.filter(ans => ans.isCorrect).length;
-    
-    if (correctAnswersCount === 1) {
-      this.question.answers.forEach(ans => {
-        if (ans.value !== answer.value) {
-          ans.isSelected = false; 
-        }
-      });
-      answer.isSelected = true;
-    } else {
-      answer.isSelected = !answer.isSelected;
-    }
-    this.answerSelected.emit(this.question.answers.filter(a => a.isSelected));
+    if (this.question && this.question.answers) {
+      if (answer.alreadySelected) {
+        return;
+      }
+      const correctAnswersCount = this.question.answers.filter(ans => ans.isCorrect).length;
+
+      if (correctAnswersCount === 1) {
+        this.question.answers.forEach(ans => {
+          if (ans.value !== answer.value) {
+            ans.isSelected = false;
+          }
+        });
+        answer.isSelected = true;
+      } else {
+        answer.isSelected = !answer.isSelected;
+      }
+      this.selectedAnswer = this.question.answers.filter(a => a.isSelected);
+      this.answerSelected.emit(this.selectedAnswer);
     }
   }
 }

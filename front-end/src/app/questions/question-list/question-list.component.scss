@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-left: 5%;
 }
 
 .content-question .progress-container {
@@ -130,4 +131,12 @@ progress {
   left: 50%;
   transform: translateX(-50%);
   animation: pop 1s ease-in-out forwards;
+}
+
+.score {
+  display: flex;
+}
+
+.stars {
+  display: flex;
 }

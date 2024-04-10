@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Question, Answer } from 'src/models/question.model';
 import { ScoreService } from 'src/services/score-service-component';
 
@@ -9,12 +9,11 @@ import { ScoreService } from 'src/services/score-service-component';
 })
 export class SoundQuestionComponent {
 
-  constructor(private scoreService: ScoreService) { }
-
   @Input() sound?: Question;
 
   showMessage: boolean = false;
   message: string = '';
+  
   audio = new Audio();
   audioFirstTime: boolean = true;
   anwsersChosen: Answer[] = new Array();
@@ -75,6 +74,10 @@ export class SoundQuestionComponent {
     setTimeout(() => {
       this.showMessage = false;
     }, 8000);
+  }
+
+  stopSound() {
+    this.audio.pause();
   }
 
 }

@@ -36,7 +36,17 @@
     </div>
   </div>
 
+  <div class="Score">
+    <div>Score : {{ selectedAnswerCorrect.length}}/{{ selectedAnswerAllQuestions.length }}</div>
+  </div>
+  <div>
+    <img class="stars" src="assets/img/star.png" *ngFor="let item of generateArray(selectedAnswerCorrect.length)" width="50px"
+      height="50px">
+  </div>
+
 </div>
+
+
 
 <div class="quiz-btn">
   <button class="precedent" (click)="previousQuestion()">Précédent</button>

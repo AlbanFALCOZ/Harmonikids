@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question, Answer } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
 import { QuestionType } from '../../../models/question.model';
-import { TitleService } from '../../../services/title.service';
-
+import { SoundQuestionComponent } from '../sound-question/sound-question.component';
+import { ScoreService } from 'src/services/score-service-component';
 
 @Component({
   selector: 'app-question-list',
@@ -13,11 +13,15 @@ import { TitleService } from '../../../services/title.service';
 })
 export class QuestionListComponent implements OnInit {
 
+  @ViewChild(SoundQuestionComponent) soundQuestionComponent: SoundQuestionComponent | undefined;
+
   public questionList: Question[] = [];
   questionCleared: number[] = [];
 
+  selectedAnswerAllQuestions: Answer[] = [];
   selectedAnswer: Answer[] = [];
-  selectedAnswerCorrect : Answer[] = [];
+  selectedAnswerCorrect: Answer[] = [];
+  selectedAnswerWrong: Answer[] = [];
 
   currentQuestionIndex: number = 0;
   QuestionType = QuestionType;
@@ -39,7 +43,7 @@ export class QuestionListComponent implements OnInit {
     if (this.questionList.length === 0) {
       this.questionService.questions$.subscribe((questions: Question[]) => {
         this.questionList = questions;
-        this.questionService.saveQuestionsToLocalStorage(questions); 
+        this.questionService.saveQuestionsToLocalStorage(questions);
       });
     }
 
@@ -53,12 +57,18 @@ export class QuestionListComponent implements OnInit {
     if (this.currentQuestionIndex < this.questionList.length - 1) {
       this.currentQuestionIndex++;
     }
+    if (this.soundQuestionComponent) {
+      this.soundQuestionComponent.stopSound();
+    }
     this.resetMessages();
   }
 
   previousQuestion() {
     if (this.currentQuestionIndex > 0) {
       this.currentQuestionIndex--;
+    }
+    if (this.soundQuestionComponent) {
+      this.soundQuestionComponent.stopSound();
     }
     this.resetMessages();
 
@@ -70,7 +80,11 @@ export class QuestionListComponent implements OnInit {
       alert('Veuillez sélectionner au moins une réponse avant de valider.');
       return;
     }
-    this.selectedAnswer.forEach((item, index) => { item.alreadySelected = true; });
+    this.selectedAnswer.forEach((item, index) => { 
+      item.alreadySelected = true;
+      this.selectedAnswerAllQuestions.push(item);
+     });
+    this.selectedAnswerAllQuestions.filter((item, index) => this.selectedAnswerAllQuestions.indexOf(item) == index);
     const currentQuestion = this.questionList[this.currentQuestionIndex];
     const correctAnswers = currentQuestion.answers.filter(a => a.isCorrect);
 
@@ -80,32 +94,33 @@ export class QuestionListComponent implements OnInit {
     const allCorrectAnswersSelected = correctAnswers.length === this.selectedAnswer.length &&
       correctAnswers.every(ca => this.selectedAnswer.some(sa => sa.value === ca.value));
 
-      this.selectedAnswer.forEach((item, index) => {
-          currentQuestion.answers.forEach((item2,index2) => {
-            if (item == item2) {
-              const answer = document.getElementById("answer" + index2);
-              answer?.classList.remove("selected");
-              
-              if (!item.isCorrect) {     
-                answer?.classList.add("wrong-answer");
-              }
-              else {
-                this.selectedAnswerCorrect.push(item2);
-                answer?.classList.add("right-answer");
-              }
-            }
-          });
-        
+    this.selectedAnswer.forEach((item, index) => {
+      currentQuestion.answers.forEach((item2, index2) => {
+        if (item == item2) {
+          const answer = document.getElementById("answer" + index2);
+          answer?.classList.remove("selected");
+
+          if (!item.isCorrect) {
+            this.selectedAnswerWrong.push(item2);
+            answer?.classList.add("wrong-answer");
+          }
+          else {
+            this.selectedAnswerCorrect.push(item2);
+            answer?.classList.add("right-answer");
+          }
+        }
       });
-    
-    this.selectedAnswerCorrect = this.selectedAnswerCorrect.filter((item,index) => this.selectedAnswerCorrect.indexOf(item) == index);
-    
-    
+
+    });
+
+    this.selectedAnswerCorrect = this.selectedAnswerCorrect.filter((item, index) => this.selectedAnswerCorrect.indexOf(item) == index);
+
+
     if (correctAnswers.every((item) => this.selectedAnswerCorrect.includes(item))) {
       this.showSuccessMessage = true;
       this.successAudio.play();
       this.questionCleared.push(this.currentQuestionIndex);
-      
+
     } else {
       this.showFailureMessage = true;
       const hint = this.questionList[this.currentQuestionIndex].hint;
@@ -152,5 +167,10 @@ export class QuestionListComponent implements OnInit {
   onAnswerSelected(answer: Answer[]): void {
     this.selectedAnswer = answer.filter(a => a.isSelected);
     this.resetMessages();
+  }
+  
+  generateArray(num: number): any[] {
+    if (num > 12) num = 12;
+    return Array(num);
   }
 }
