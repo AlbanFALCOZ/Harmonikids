@@ -47,7 +47,6 @@ export class ThemeListComponent implements OnInit {
       this.themeList = this.themeList.filter( theme => theme != this.themeToDelete);
       console.log('theme deleted:', this.themeToDelete);
     }
-    //this.themeService.deleteTheme(theme);
   }
 
   playSound() {
