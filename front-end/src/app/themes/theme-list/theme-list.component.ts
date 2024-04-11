@@ -12,12 +12,13 @@ import { SonService } from 'src/services/sound.service';
   styleUrl: './theme-list.component.scss'
 })
 
-export class ThemeListComponent implements OnInit{
+export class ThemeListComponent implements OnInit {
 
   public themeList: Theme[] = [];
+  themeToDelete: Theme | null = null;
   isDisabled: boolean = false;
 
-  constructor(private router: Router, public themeService: ThemeService, public titleService: TitleService , private sonService: SonService) {
+  constructor(private router: Router, public themeService: ThemeService, public titleService: TitleService, private sonService: SonService) {
     this.themeService.themes$.subscribe((themes: Theme[]) => {
       this.themeList = themes;
     });
@@ -36,11 +37,20 @@ export class ThemeListComponent implements OnInit{
     this.router.navigate(['/edit-theme/' + theme.name]);
   }
 
-  deleteTheme(theme : Theme): void{
-    this.themeService.deleteTheme(theme);
+  addThemeToDelete(theme: Theme): void {
+    console.log('theme to delete:', theme);
+    this.themeToDelete = theme;
   }
 
-  playSound(){
+  deleteTheme(): void {
+    if (this.themeToDelete) {
+      this.themeList = this.themeList.filter( theme => theme != this.themeToDelete);
+      console.log('theme deleted:', this.themeToDelete);
+    }
+    //this.themeService.deleteTheme(theme);
+  }
+
+  playSound() {
     this.sonService.playSound('./../../../../assets/img/good.mp3');
   }
 
