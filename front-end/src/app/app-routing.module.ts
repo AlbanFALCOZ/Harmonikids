@@ -12,6 +12,8 @@ import { StatistiqueComponent } from './statistiques/statistique/statistique.com
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+import { EndGameComponent } from './end-game/end-game.component';
+
 
 const routes: Routes = [
   { path: 'quiz-list', component: QuizListComponent },
@@ -39,7 +41,9 @@ const routes: Routes = [
   {
     path: 'dashboard/:id',
     component: DashboardComponent
-  }
+  },
+
+  { path: 'end-game', component: EndGameComponent },
 
 
 ];

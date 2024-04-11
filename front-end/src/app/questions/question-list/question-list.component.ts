@@ -38,7 +38,7 @@ export class QuestionListComponent implements OnInit {
   private successAudio = new Audio('assets/img/good.mp3');
   answerSelected: any;
 
-  constructor(private router: Router, public questionService: QuestionService) {
+  constructor(private router: Router, public questionService: QuestionService, private scoreService: ScoreService) {
     this.questionList = this.questionService.getQuestionsFromLocalStorage();
     if (this.questionList.length === 0) {
       this.questionService.questions$.subscribe((questions: Question[]) => {
@@ -93,6 +93,18 @@ export class QuestionListComponent implements OnInit {
     const selectedAreAllCorrect = this.selectedAnswer.every(sa => sa.isCorrect);
     const allCorrectAnswersSelected = correctAnswers.length === this.selectedAnswer.length &&
       correctAnswers.every(ca => this.selectedAnswer.some(sa => sa.value === ca.value));
+
+    if (selectedAreAllCorrect && allCorrectAnswersSelected) {
+        this.showSuccessMessage = true;
+        this.successAudio.play();
+        this.questionCleared.push(this.currentQuestionIndex);
+        this.scoreService.answerCorrect();
+    } else {
+        this.showFailureMessage = true;
+        const hint = this.questionList[this.currentQuestionIndex].hint;
+        this.showHint(hint);
+        this.scoreService.answerWrong();  
+    }
 
     this.selectedAnswer.forEach((item, index) => {
       currentQuestion.answers.forEach((item2, index2) => {
@@ -172,5 +184,9 @@ export class QuestionListComponent implements OnInit {
   generateArray(num: number): any[] {
     if (num > 12) num = 12;
     return Array(num);
+  }
+
+  finishQuiz() {
+    this.router.navigate(['/end-game']);
   }
 }

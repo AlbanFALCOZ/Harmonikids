@@ -5,6 +5,8 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ScoreService {
+  private score = 0;
+
   private numberOfQuestionsAnsweredSubject = new BehaviorSubject<number>(0);
   public numberOfQuestionsAnswered$ = this.numberOfQuestionsAnsweredSubject.asObservable();
 
@@ -23,5 +25,11 @@ export class ScoreService {
     this.numberOfQuestionsAnsweredSubject.next(currentNumberOfQuestionsAnswered + 1);
   }
 
+  setScore(score: number) {
+    this.score = score;
+  }
+  getScore() {
+    return this.numberOfCorrectAnswersSubject.getValue();
+  }
 
 }
