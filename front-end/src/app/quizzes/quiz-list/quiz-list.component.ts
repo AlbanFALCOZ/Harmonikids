@@ -6,6 +6,7 @@ import { TitleService } from '../../../services/title.service';
 import { QuestionService } from 'src/services/question.service';
 
 
+
 @Component({
   selector: 'app-quiz-list',
   templateUrl: './quiz-list.component.html',

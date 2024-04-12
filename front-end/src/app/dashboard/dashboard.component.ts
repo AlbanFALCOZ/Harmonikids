@@ -26,9 +26,10 @@ export class DashboardComponent implements OnInit {
       this.membreService.setMemberId(this.memberId);
       this.welcomeMessage = this.membreService.getWelcomeMessage(this.memberId);
     });
-    this.themeList = this.themeService.getThemes().slice(0, 4); 
+    this.themeList = this.themeService.getSelectedThemes()
     this.quizList = this.quizService.getQuizzes().slice(0, 4); 
     this.memberId=this.membreService.getMemberId();
+    
   }
 
   themeSelected(selected: boolean): void {

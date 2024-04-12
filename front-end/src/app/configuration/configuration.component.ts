@@ -5,6 +5,7 @@ import { Theme } from '../../models/theme.model';
 import { TitleService } from 'src/services/title.service';
 import { ThemeService } from 'src/services/theme.service';
 import { Question } from 'src/models/question.model';
+import { IndiceService } from 'src/services/indice.service';
 
 
 enum ThemePalette {
@@ -26,16 +27,17 @@ export class ConfigurationComponent {
   showDropdown: boolean = false;
   isSoundOn: boolean;
   isMusicOn: boolean =false;
-  isIndiceOn:boolean=false;
+  isIndiceOn:boolean=true;
   selectedOption: string = 'option1';
 
-  constructor(private sonService: SonService , private colorService: ColorService , private themeService: ThemeService) {
+  constructor(private sonService: SonService , private colorService: ColorService , private themeService: ThemeService , private indiceService : IndiceService) {
     
     this.isSoundOn = this.sonService.estSonActif();
   }
 
   ngOnInit() {
     this.themeList = this.themeService.getThemes()
+    
   }
 
   toggleSound() {
@@ -56,6 +58,8 @@ export class ConfigurationComponent {
   }
 
   toggleIndice(){
+    this.indiceService.toggleIndiceService();
+    this.isIndiceOn = this.indiceService.estIndiceActif();
   }
 
   toggleDropdown() {
@@ -83,22 +87,30 @@ export class ConfigurationComponent {
     this.isDropdownOpen = false; 
   }
 
-  selectedThemes: string[] = [];
+ 
 
-  onChange(event: any) {
-    const value = event.target.value;
-    if (event.target.checked) {
-      if (this.selectedThemes.length < 4 && !this.selectedThemes.includes(value)) {
-        this.selectedThemes.push(value);
+  isCheckedThemes(themeId: string): boolean {
+    return this.themeService.selectedThemes.includes(this.themeService.getThemeById(themeId));
+  }
+  
+  onChange(event: any, themeId: string) {
+    const isChecked = event.target.checked;
+  
+    if (isChecked) {
+      if (this.themeService.selectedThemes.length < 4 && !this.themeService.selectedThemes.includes(this.themeService.getThemeById(themeId))) {
+        this.themeService.selectedThemes.push(this.themeService.getThemeById(themeId));
       } else {
-        event.target.checked = false;
+        event.target.checked = false; 
       }
     } else {
-      const index = this.selectedThemes.indexOf(value);
-      if (index !== -1) {
-        this.selectedThemes.splice(index, 1);
+      const themeIndex = this.themeService.selectedThemes.findIndex(selectedThemeId => selectedThemeId === this.themeService.getThemeById(themeId));
+      if (themeIndex !== -1) {
+        this.themeService.selectedThemes.splice(themeIndex, 1);
       }
     }
+  
+  
+    localStorage.setItem('selectedThemes', JSON.stringify(this.themeService.selectedThemes));
   }
   
   

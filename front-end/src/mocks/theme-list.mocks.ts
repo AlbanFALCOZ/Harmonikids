@@ -36,20 +36,20 @@ export const THEME_LIST: Theme[] = [
         image: 'assets/img/etoile.jpg'
     },
     {
-        id: '4',
-        name: 'Les mathèmatiques',
-        description: 'Description du quiz 3',
-        numberOfQuizzes: 1,
-        quizzes: QUIZ_LIST,
-        image: 'assets/img/math.jpg'
-    },
-    {
         id: '5',
         name: 'Les mathèmatiques',
         description: 'Description du quiz 3',
         numberOfQuizzes: 1,
         quizzes: QUIZ_LIST,
-        image: 'assets/img/math.jpg'
+        image: 'assets/img/maths.jpg'
+    },
+    {
+        id: '6',
+        name: 'La langue française',
+        description: 'Description du quiz 3',
+        numberOfQuizzes: 1,
+        quizzes: QUIZ_LIST,
+        image: 'assets/img/maths.jpg'
     }
 
 ];

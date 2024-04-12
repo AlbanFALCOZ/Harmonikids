@@ -5,6 +5,8 @@ import { QuestionService } from '../../../services/question.service';
 import { QuestionType } from '../../../models/question.model';
 import { SoundQuestionComponent } from '../sound-question/sound-question.component';
 import { ScoreService } from 'src/services/score-service-component';
+import { SonService } from 'src/services/sound.service';
+import { IndiceService } from 'src/services/indice.service';
 
 @Component({
   selector: 'app-question-list',
@@ -35,10 +37,9 @@ export class QuestionListComponent implements OnInit {
 
   private messageTimeout: any;
 
-  private successAudio = new Audio('assets/img/good.mp3');
   answerSelected: any;
 
-  constructor(private router: Router, public questionService: QuestionService) {
+  constructor(private router: Router, public questionService: QuestionService , public soundService : SonService, private indiceService : IndiceService ) {
     this.questionList = this.questionService.getQuestionsFromLocalStorage();
     if (this.questionList.length === 0) {
       this.questionService.questions$.subscribe((questions: Question[]) => {
@@ -118,13 +119,13 @@ export class QuestionListComponent implements OnInit {
 
     if (correctAnswers.every((item) => this.selectedAnswerCorrect.includes(item))) {
       this.showSuccessMessage = true;
-      this.successAudio.play();
+      this.soundService.playSound('assets/img/good.mp3');
       this.questionCleared.push(this.currentQuestionIndex);
 
     } else {
       this.showFailureMessage = true;
       const hint = this.questionList[this.currentQuestionIndex].hint;
-      this.showHint(hint);
+      this.indiceService.showHint(hint);
     }
 
     this.messageTimeout = setTimeout(() => {
