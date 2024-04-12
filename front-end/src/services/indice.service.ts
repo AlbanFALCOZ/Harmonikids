@@ -4,11 +4,42 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class  IndiceService {
+
+
+
+
+
+    setIndice(hint: { text?: string | undefined; imageUrl?: string | undefined; audioUrl?: string | undefined } | undefined) {
+        if (hint) {
+           
+            if (hint.text !== undefined) {
+                this.hintText = hint.text;
+            }
+            if (hint.imageUrl !== undefined) {
+                this.hintImageUrl = hint.imageUrl;
+            }
+            if (hint.audioUrl !== undefined) {
+                
+                if (hint.audioUrl) {
+                    this.hintAudio = new Audio(hint.audioUrl);
+                } else {
+                    
+                    this.hintAudio = null;
+                }
+            }
+        } else {
+           
+            this.hintText = undefined;
+            this.hintImageUrl = undefined;
+            this.hintAudio = null;
+        }
+    }
+    
   
-  private hint: boolean;
+  public hint: boolean;
   hintText: string | undefined;
   hintImageUrl: string | undefined;
-  private hintAudio: HTMLAudioElement | null = null;
+  public hintAudio: HTMLAudioElement | null = null;
 
 
 
@@ -32,13 +63,13 @@ export class  IndiceService {
 
 
   toggleIndiceService() {
-    this.sauvegarderIndiceState(this.hint);
+    this.sauvegarderIndiceState(!this.hint);
   }
 
 
   private sauvegarderIndiceState(indiceOn: boolean) {
     this.hint = indiceOn;
-    localStorage.setItem('indiceOn', JSON.stringify(indiceOn));
+    localStorage.setItem('indiceOn', JSON.stringify(this.hint));
   }
 
   showHint(hint: any) {
@@ -55,6 +86,8 @@ export class  IndiceService {
       this.hintImageUrl = hint.imageUrl;
     }
   }
+
+  
 
 
 

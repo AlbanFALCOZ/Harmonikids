@@ -26,13 +26,14 @@ export class ConfigurationComponent {
   themeList: Theme[] = [];
   showDropdown: boolean = false;
   isSoundOn: boolean;
-  isMusicOn: boolean =false;
-  isIndiceOn:boolean=true;
+  isMusicOn: boolean ;
+  isIndiceOn:boolean;
   selectedOption: string = 'option1';
 
   constructor(private sonService: SonService , private colorService: ColorService , private themeService: ThemeService , private indiceService : IndiceService) {
-    
     this.isSoundOn = this.sonService.estSonActif();
+    this.isIndiceOn=this.indiceService.estIndiceActif();
+    this.isMusicOn = this.sonService.isMusiqueActive();
   }
 
   ngOnInit() {

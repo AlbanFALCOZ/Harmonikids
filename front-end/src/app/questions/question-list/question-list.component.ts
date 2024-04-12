@@ -24,6 +24,10 @@ export class QuestionListComponent implements OnInit {
   selectedAnswer: Answer[] = [];
   selectedAnswerCorrect: Answer[] = [];
   selectedAnswerWrong: Answer[] = [];
+  public hint: boolean | undefined;
+  hintText: string | undefined;
+  hintImageUrl: string | undefined;
+  public hintAudio: HTMLAudioElement | null = null;
 
   currentQuestionIndex: number = 0;
   QuestionType = QuestionType;
@@ -31,10 +35,7 @@ export class QuestionListComponent implements OnInit {
   showSuccessMessage: boolean = false;
   showFailureMessage: boolean = false;
 
-  hintText: string | undefined;
-  hintImageUrl: string | undefined;
-  private hintAudio: HTMLAudioElement | null = null;
-
+ 
   private messageTimeout: any;
 
   answerSelected: any;
@@ -47,6 +48,11 @@ export class QuestionListComponent implements OnInit {
         this.questionService.saveQuestionsToLocalStorage(questions);
       });
     }
+    this.hint = this.indiceService.hint;
+    this.hintText = this.indiceService.hintText
+    this.hintImageUrl = this.indiceService.hintImageUrl
+    this.hintAudio = this.indiceService.hintAudio
+
 
   }
 
@@ -124,44 +130,32 @@ export class QuestionListComponent implements OnInit {
 
     } else {
       this.showFailureMessage = true;
-      const hint = this.questionList[this.currentQuestionIndex].hint;
-      this.indiceService.showHint(hint);
+      
+      this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint)
+      this.indiceService.showHint(this.indiceService.hint);
     }
 
     this.messageTimeout = setTimeout(() => {
       this.showSuccessMessage = false;
       this.showFailureMessage = false;
-      this.hintText = undefined;
-      this.hintImageUrl = undefined;
+      this.indiceService.hintText = undefined;
+      this.indiceService.hintImageUrl = undefined;
     }, 8000);
   }
 
 
-  showHint(hint: any) {
-    if (this.hintAudio) {
-      this.hintAudio.pause();
-    }
-
-    if (hint) {
-      if (hint.audioUrl) {
-        this.hintAudio = new Audio(hint.audioUrl);
-        this.hintAudio.play();
-      }
-      this.hintText = hint.text;
-      this.hintImageUrl = hint.imageUrl;
-    }
-  }
+ 
 
 
   resetMessages() {
     clearTimeout(this.messageTimeout);
     this.showSuccessMessage = false;
     this.showFailureMessage = false;
-    this.hintText = undefined;
-    this.hintImageUrl = undefined;
-    if (this.hintAudio) {
-      this.hintAudio.pause();
-      this.hintAudio.currentTime = 0;
+    this.indiceService.hintText = undefined;
+    this.indiceService.hintImageUrl = undefined;
+    if (this.indiceService.hintAudio) {
+      this.indiceService.hintAudio.pause();
+      this.indiceService.hintAudio.currentTime = 0;
     }
   }
 
