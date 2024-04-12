@@ -18,7 +18,7 @@ export class QuizComponent implements OnInit {
     editQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
     @Output()
-    deleteQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
+    quizToDelete: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
     constructor() {
 
@@ -36,7 +36,7 @@ export class QuizComponent implements OnInit {
     }
 
     delete(): void {
-        this.deleteQuiz.emit(this.quiz);
+        this.quizToDelete.emit(this.quiz);
     }
 
     displayModalUpdate() {
@@ -54,6 +54,7 @@ export class QuizComponent implements OnInit {
     }
 
     displayModalDelete() {
+        this.quizToDelete.emit(this.quiz);
         var modal = document.getElementById("myModalDelete");
         if (modal) {
             modal.style.display = "block";

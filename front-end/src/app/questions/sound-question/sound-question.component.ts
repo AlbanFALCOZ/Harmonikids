@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Question, Answer } from 'src/models/question.model';
-import { ScoreService } from '../question-list/score-service-component';
+import { ScoreService } from 'src/services/score-service-component';
 
 @Component({
   selector: 'app-sound-question',
@@ -9,57 +9,45 @@ import { ScoreService } from '../question-list/score-service-component';
 })
 export class SoundQuestionComponent {
 
-  constructor(private scoreService: ScoreService) {}
-
   @Input() sound?: Question;
 
   showMessage: boolean = false;
   message: string = '';
+  
   audio = new Audio();
   audioFirstTime: boolean = true;
   anwsersChosen: Answer[] = new Array();
 
+  @Input()
+  answerAlreadySeleted?: Answer[];
 
-  checkAnswer(selectedAnswer: Answer) {
-    if (selectedAnswer.isCorrect) {
-      if (!this.anwsersChosen.includes(selectedAnswer)) {
-        this.showMessage = true;
-        this.message = 'Bravo, mais tu es super fort et tu viens de gagner 15 étoiles!!!';
-        this.anwsersChosen.push(selectedAnswer);
-        this.scoreService.answerCorrect();
-        this.sound?.answers.forEach((item, index) => {
-          if (item === selectedAnswer) {
-            if (this.sound && this.sound.answers) {
-              const answer = document.getElementById("answer" + index);
-              answer?.classList.add("right-answer");
-            }
+  selectedAnswer: Answer[] = [];
+
+  @Output() answerSelected = new EventEmitter<Answer[]>();
+
+
+  ngOnInit(): void {
+  }
+
+  onSelectAnswer(answer: Answer): void {
+    if (this.sound && this.sound.answers) {
+      if (answer.alreadySelected) {
+        return;
+      }
+      const correctAnswersCount = this.sound.answers.filter(ans => ans.isCorrect).length;
+
+      if (correctAnswersCount === 1) {
+        this.sound.answers.forEach(ans => {
+          if (ans.value !== answer.value) {
+            ans.isSelected = false;
           }
         });
+        answer.isSelected = true;
+      } else {
+        answer.isSelected = !answer.isSelected;
       }
-
-    } else {
-      this.scoreService.answerWrong();
-      this.sound?.answers.forEach((item, index) => {
-        if (item === selectedAnswer) {
-          if (this.sound && this.sound.answers) {
-            if (this.sound.answers.length > 2) {
-              const answer = document.getElementById("answer" + index);
-              answer?.classList.add("wrong-anwser");
-            }
-            else if (this.sound.answers.length == 2) {
-              this.message = 'Tu es sûr? Tu peux toujours changer de avis.';
-              this.showMessage = true;
-            }
-          }
-
-        }
-      });
-
+      this.answerSelected.emit(this.sound.answers.filter((a) => a.isSelected));
     }
-
-    setTimeout(() => {
-      this.showMessage = false;
-    }, 4000);
   }
 
   playSound() {
@@ -86,6 +74,10 @@ export class SoundQuestionComponent {
     setTimeout(() => {
       this.showMessage = false;
     }, 8000);
+  }
+
+  stopSound() {
+    this.audio.pause();
   }
 
 }

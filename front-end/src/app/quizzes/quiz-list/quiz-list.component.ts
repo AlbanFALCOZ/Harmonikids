@@ -14,6 +14,7 @@ import { QuestionService } from 'src/services/question.service';
 export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
+  quizToDelete: Quiz | null = null;
   isDisabled: boolean = false;
 
   public selectedQuiz: Quiz | null = null;
@@ -27,19 +28,28 @@ export class QuizListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
   quizSelected(quiz: Quiz): void {
     const quizQuestions = quiz.questions;
-    this.questionService.updateQuestionsForQuiz(quizQuestions); 
+    this.questionService.updateQuestionsForQuiz(quizQuestions);
   }
 
   editQuiz(quiz: Quiz): void {
     this.router.navigate(['/edit-quiz/' + quiz.name]);
   }
 
-  deleteQuiz(quiz : Quiz): void{
-    this.quizService.deleteQuiz(quiz);
+  deleteQuiz(): void {
+    if (this.quizToDelete) {
+      this.quizList = this.quizList.filter(quiz => quiz != this.quizToDelete);
+
+    }
   }
+
+  addQuizToDelete(quiz: Quiz): void {
+    this.quizToDelete = quiz;
+  }
+
+
 }

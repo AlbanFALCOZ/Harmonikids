@@ -12,6 +12,8 @@ export class QuizEditComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+
   closeModalUpdate() {
     var modal = document.getElementById("myModalUpdate");
     if (modal) {

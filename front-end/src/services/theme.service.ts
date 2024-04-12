@@ -42,7 +42,7 @@ export class ThemeService {
       }
     
       deleteTheme(theme: Theme): void {
-        
+        this.themes.filter(t => t.name != theme.name);
       }
 
       addSelectedTheme(theme: Theme) {
