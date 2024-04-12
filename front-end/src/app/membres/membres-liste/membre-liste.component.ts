@@ -15,14 +15,16 @@ import { SonService } from 'src/services/sound.service';
 export class MembreListeComponent implements OnInit {
 
   public membreListe: Membre[] = [];
+  membreListeDisplayed: Membre[] = [];
   public displayForm: boolean = false;
   isDisabled: boolean = false;
 
- 
+  search: string = '';
 
   constructor(private router: Router, public membreService: MembreService , public titleService: TitleService , private sonService: SonService) {
     this.membreService.membres$.subscribe((membres: Membre[]) => {
       this.membreListe = membres;
+      this.membreListeDisplayed = membres;
     });
     this.titleService.title = 'Bienvenue';
     this.titleService.search = 'Rechercher un enfant';
@@ -42,6 +44,9 @@ export class MembreListeComponent implements OnInit {
     this.sonService.playSound('./../../../../assets/img/good.mp3');
   }
  
+  onKey(event: any) {
+    this.membreListeDisplayed = this.membreListe.filter(membre => membre.firstName.toLowerCase().includes(event.target.value.toLowerCase()) || membre.lastName.toLowerCase().includes(event.target.value.toLowerCase()));
+  }
 
 }
 

@@ -41,7 +41,7 @@ export const THEME_LIST: Theme[] = [
         description: 'Description du quiz 3',
         numberOfQuizzes: 1,
         quizzes: QUIZ_LIST,
-        image: 'assets/img/math.jpg'
+        image: 'assets/img/addition.jpg'
     },
     {
         id: '5',
@@ -49,7 +49,7 @@ export const THEME_LIST: Theme[] = [
         description: 'Description du quiz 3',
         numberOfQuizzes: 1,
         quizzes: QUIZ_LIST,
-        image: 'assets/img/math.jpg'
+        image: 'assets/img/addition.jpg'
     }
 
 ];
