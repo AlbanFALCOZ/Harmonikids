@@ -15,12 +15,16 @@ import { SonService } from 'src/services/sound.service';
 export class ThemeListComponent implements OnInit {
 
   public themeList: Theme[] = [];
+  themeListDisplayed: Theme[] = [];
   themeToDelete: Theme | null = null;
   isDisabled: boolean = false;
+
+  search: string = '';
 
   constructor(private router: Router, public themeService: ThemeService, public titleService: TitleService, private sonService: SonService) {
     this.themeService.themes$.subscribe((themes: Theme[]) => {
       this.themeList = themes;
+      this.themeListDisplayed = themes;
     });
     this.titleService.title = 'Liste des themes';
     this.titleService.search = 'Rechercher dans les themes...';
@@ -51,6 +55,10 @@ export class ThemeListComponent implements OnInit {
 
   playSound() {
     this.sonService.playSound('./../../../../assets/img/good.mp3');
+  }
+
+  onKey(event: any) {
+    this.themeListDisplayed = this.themeList.filter(theme => theme.name.includes(event.target.value));
   }
 
 }

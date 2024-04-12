@@ -42,9 +42,9 @@ export class QuizListComponent implements OnInit {
 
   deleteQuiz(): void {
     if (this.quizToDelete) {
-      this.quizList = this.quizList.filter(quiz => quiz != this.quizToDelete);
-
+      this.quizService.deleteQuiz(this.quizToDelete);
     }
+
   }
 
   addQuizToDelete(quiz: Quiz): void {
