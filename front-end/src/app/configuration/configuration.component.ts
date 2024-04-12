@@ -101,8 +101,6 @@ export class ConfigurationComponent {
     }
   }
   
-  getSelectedStyle(themeId: string) {
-    return this.selectedThemes.includes(themeId) ? { color: 'green' } : {};
-  }
+  
   
 }

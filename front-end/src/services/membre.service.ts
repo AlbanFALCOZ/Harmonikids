@@ -29,7 +29,7 @@ export class MembreService {
 
 
 
-  setMemberId(id: string): void {
+  setMemberId(id: string | undefined): void {
     this.memberId = id;
   }
 
