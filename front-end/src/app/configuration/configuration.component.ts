@@ -5,6 +5,7 @@ import { Theme } from '../../models/theme.model';
 import { TitleService } from 'src/services/title.service';
 import { ThemeService } from 'src/services/theme.service';
 import { Question } from 'src/models/question.model';
+import { NavbarService } from 'src/services/navbar.service';
 
 
 enum ThemePalette {
@@ -29,9 +30,15 @@ export class ConfigurationComponent {
   isIndiceOn:boolean=false;
   selectedOption: string = 'option1';
 
-  constructor(private sonService: SonService , private colorService: ColorService , private themeService: ThemeService) {
+  isNavVisible = false;
+
+
+  constructor(private sonService: SonService , private colorService: ColorService , private themeService: ThemeService, private navbarService: NavbarService) {
     
     this.isSoundOn = this.sonService.estSonActif();
+    this.navbarService.isNavbarVisible$.subscribe(isVisible => {
+      this.isNavVisible = isVisible;
+    });
   }
 
   ngOnInit() {

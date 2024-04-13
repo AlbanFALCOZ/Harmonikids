@@ -4,7 +4,8 @@ import { Question, Answer } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
 import { QuestionType } from '../../../models/question.model';
 import { SoundQuestionComponent } from '../sound-question/sound-question.component';
-import { ScoreService } from 'src/services/score-service.service';
+import { ScoreService } from 'src/services/score-service-component.service';
+import { NavbarService } from 'src/services/navbar.service';
 
 @Component({
   selector: 'app-question-list',
@@ -35,10 +36,13 @@ export class QuestionListComponent implements OnInit {
 
   private messageTimeout: any;
 
+  isNavVisible = false;
+
+
   private successAudio = new Audio('assets/img/good.mp3');
   answerSelected: any;
 
-  constructor(private router: Router, public questionService: QuestionService) {
+  constructor(private router: Router, public questionService: QuestionService, private navbarService: NavbarService) {
     this.questionList = this.questionService.getQuestionsFromLocalStorage();
     if (this.questionList.length === 0) {
       this.questionService.questions$.subscribe((questions: Question[]) => {
@@ -46,6 +50,9 @@ export class QuestionListComponent implements OnInit {
         this.questionService.saveQuestionsToLocalStorage(questions);
       });
     }
+    this.navbarService.isNavbarVisible$.subscribe(isVisible => {
+      this.isNavVisible = isVisible;
+    });
 
   }
 

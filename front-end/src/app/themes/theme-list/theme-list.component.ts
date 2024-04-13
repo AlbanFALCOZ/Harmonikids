@@ -4,6 +4,7 @@ import { Theme } from '../../../models/theme.model';
 import { TitleService } from 'src/services/title.service';
 import { ThemeService } from 'src/services/theme.service';
 import { SonService } from 'src/services/sound.service';
+import { NavbarService } from 'src/services/navbar.service';
 
 
 @Component({
@@ -19,15 +20,22 @@ export class ThemeListComponent implements OnInit {
   themeToDelete: Theme | null = null;
   isDisabled: boolean = false;
 
+  isNavVisible = false;
   search: string = '';
 
-  constructor(private router: Router, public themeService: ThemeService, public titleService: TitleService, private sonService: SonService) {
+
+
+  constructor(private router: Router, public themeService: ThemeService, public titleService: TitleService, private sonService: SonService, private navbarService: NavbarService) {
     this.themeService.themes$.subscribe((themes: Theme[]) => {
       this.themeList = themes;
       this.themeListDisplayed = themes;
     });
     this.titleService.title = 'Liste des themes';
     this.titleService.search = 'Rechercher dans les themes...';
+
+    this.navbarService.isNavbarVisible$.subscribe(isVisible => {
+      this.isNavVisible = isVisible;
+    });
   }
 
   ngOnInit(): void {

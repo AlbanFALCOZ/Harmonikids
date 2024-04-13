@@ -1,3 +1,12 @@
+.content {
+  width: auto;
+  height: 100%;
+  transition: margin-left .5s;
+}
+
+.nav-visible {
+  margin-left: 200px;
+}
 
 .switch {
   position: relative;
@@ -209,10 +218,13 @@ input:checked + .slider:before {
   background-color: #59D5E0; 
   cursor: pointer;  
 }
+.Configuration {
+  width: 90%;
+}
 
 
-.Configuration h2 {
-  margin-right:210px;
+.Configuration h1 {
+  margin-left:210px;
 }
 
 

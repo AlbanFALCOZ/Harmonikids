@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Quiz } from 'src/models/quiz.model';
 import { Theme } from 'src/models/theme.model';
+import { NavbarService } from 'src/services/navbar.service';
 import { QuizService } from 'src/services/quiz.service';
 import { ThemeService } from 'src/services/theme.service';
 import { TitleService } from 'src/services/title.service';
@@ -18,14 +19,20 @@ export class StatistiqueComponent {
   displayedQuiz: Quiz[] = [];
   toggleButtonText: string = 'Voir plus';
   toggleButtonTextQuiz: string = 'Voir plus';
+  isNavVisible = false;
 
-  constructor(public themeService: ThemeService, public quizService: QuizService,) {
+
+  constructor(public themeService: ThemeService, public quizService: QuizService, private navbarService: NavbarService) {
     this.themeService.themes$.subscribe((themes: Theme[]) => {
       this.themeList = themes;
     });
 
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
+    });
+
+    this.navbarService.isNavbarVisible$.subscribe(isVisible => {
+      this.isNavVisible = isVisible;
     });
   }
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { QUESTION_LIST } from 'src/mocks/question.mock';
 import { Question, QuestionType } from 'src/models/question.model';
-import { SonService } from 'src/services/sound.service';
+import { NavbarService } from 'src/services/navbar.service';
 
 @Component({
   selector: 'app-question-add',
@@ -15,10 +15,15 @@ export class QuestionAddComponent {
   displayFormUpdate = false;
 
   displayFormDelete = false;
-
-
+  isNavVisible = false;
   questions = QUESTION_LIST;
 
+  constructor(private navbarService: NavbarService) {
+    this.navbarService.isNavbarVisible$.subscribe(isVisible => {
+      this.isNavVisible = isVisible;
+    });
+
+  }
 
   toggleForm() {
     this.displayForm = !this.displayForm;

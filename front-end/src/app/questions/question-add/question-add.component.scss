@@ -1,3 +1,13 @@
+.content {
+    width: auto;
+    height: 100%;
+    transition: margin-left .5s;
+}
+
+.nav-visible {
+    margin-left: 200px;
+}
+
 .content-question {
     width: 100%;
     height: 100%;

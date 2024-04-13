@@ -1,12 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavbarComponent } from 'src/app/navbar/navbar.component';
 import { Membre } from 'src/models/membre.model';
 import { MembreService } from 'src/services/membre.service';
 import { TitleService } from 'src/services/title.service';
 import { SonService } from 'src/services/sound.service';
+import { NavbarService } from 'src/services/navbar.service';
 import { NgForm } from '@angular/forms';
-import { from } from 'rxjs';
 
 
 @Component({
@@ -17,35 +16,45 @@ import { from } from 'rxjs';
 export class MembreListeComponent implements OnInit {
 
   public membreListe: Membre[] = [];
-  membreListeDisplayed: Membre[] = [];
+
   public displayForm: boolean = false;
+
+  membreListeDisplayed: Membre[] = [];
+
   isDisabled: boolean = false;
 
-  search: string = '';
+  isNavVisible = false;
 
-  constructor(private router: Router, public membreService: MembreService , public titleService: TitleService , private sonService: SonService, private serviceMemnbre: MembreService) {
+
+
+  constructor(private router: Router, public membreService: MembreService, public titleService: TitleService, private sonService: SonService, private navbarService: NavbarService) {
     this.membreService.membres$.subscribe((membres: Membre[]) => {
       this.membreListe = membres;
-      this.membreListeDisplayed = membres;
     });
+
     this.titleService.title = 'Bienvenue';
     this.titleService.search = 'Rechercher un enfant';
-    
+
+    this.navbarService.isNavbarVisible$.subscribe(isVisible => {
+      this.isNavVisible = isVisible;
+    });
 
   }
-  
+
   ngOnInit(): void {
+    
   }
+
 
   toggleForm() {
     this.displayForm = !this.displayForm;
   }
 
 
-  playSound(){
+  playSound() {
     this.sonService.playSound('./../../../../assets/img/good.mp3');
   }
- 
+
   onKey(event: any) {
     this.membreListeDisplayed = this.membreListe.filter(membre => membre.firstName.toLowerCase().includes(event.target.value.toLowerCase()) || membre.lastName.toLowerCase().includes(event.target.value.toLowerCase()));
   }
@@ -66,10 +75,11 @@ export class MembreListeComponent implements OnInit {
       image: imageMember
     };
 
-    this.serviceMemnbre.addMembre(newMember);
+    this.membreService.addMembre(newMember);
 
     form.resetForm();
   }
+
 
 }
 
