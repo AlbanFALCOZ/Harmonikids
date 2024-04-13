@@ -37,8 +37,8 @@
 
 
   <div class="content-theme">
-    <app-theme *ngFor="let theme of themeList" [theme]="theme" (themeSelected)="themeSelected($event)">
-    </app-theme>
+    <app-theme-dashboard *ngFor="let theme of themeList" [theme]="theme" (themeSelected)="themeSelected($event)">     
+    </app-theme-dashboard>
 </div>
 
 <a routerLink="/quiz-list" class="last-quiz-link">
@@ -46,6 +46,6 @@
   </a>
 
   <div class="content-quiz">
-    <app-quiz *ngFor="let quiz of quizList" [quiz]="quiz" (quizSelected)="quizSelected($event)">
-    </app-quiz>
-</div>
+    <app-quiz-dashboard *ngFor="let quiz of quizList" [quiz]="quiz" (quizSelected)="quizSelected($event)"></app-quiz-dashboard>
+  </div>
+  

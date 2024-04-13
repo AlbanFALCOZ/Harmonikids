@@ -1,6 +1,5 @@
 <app-navbar></app-navbar>
 <app-title></app-title>
-
 <div class="content-membre">
   <app-membre *ngFor="let membre of membreListe" [membre]="membre"></app-membre>
 
@@ -38,16 +37,13 @@
     </div>
   </div>
 
-
-  
-  
-
 </div>
+
 
 <button class="switch-mode" (click)="isDisabled = !isDisabled">
   Mode Ergothérapeute {{ isDisabled ? 'Off' : 'On' }}
 </button>
 
 
-<button class="boutton" (click)="playSound()">Jouer le son</button>
+
 

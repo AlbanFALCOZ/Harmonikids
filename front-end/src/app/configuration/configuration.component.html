@@ -36,7 +36,7 @@
   </div>
 
   <div class="dropdown-container-theme">
-    <h2>Recommender des thèmes</h2>
+    <h2>Des thèmes qui peuvent te faire plaisir</h2>
   </div>
 
   <div class="checkbox-container-theme" style="max-height: 62px; overflow-y: auto;">
@@ -47,17 +47,23 @@
       </label>
     </div>
   </div>
-  
-  
 
-<div class="dropdown-container-theme">
-  <h2>Gérer les questions par type</h2>
-  <div class="checkbox-container-question" style="max-height: 62px; overflow-y: auto;">
-    <label><input type="checkbox" value="son"> Avec son</label><br>
-    <label><input type="checkbox" value="video"> Avec vidéo</label><br>
-    <label><input type="checkbox" value="multiple"> Choix multiples</label><br>
-    <label><input type="checkbox" value="dragdrop"> Drag Drop</label>
+
+    <div class="dropdown-container-theme">
+    <h2>Filtrer les questions</h2>
   </div>
+  
+  <div class="checkbox-container-question" style="max-height: 62px; overflow-y: auto;">
+    <div *ngFor="let question of questionList">
+      <label>
+        <input type="checkbox" [value]="question.typeOfQuestion" (change)="onChangeQuestion($event, question.typeOfQuestion)">
+        {{ question.typeOfQuestion }}
+        
+      </label>
+    </div>
+  </div>
+
+
   
 
 </div>
@@ -76,3 +82,5 @@
   <input type="range" min="0" max="2" step="1" value="1" id="button-size-range" oninput="changeButtonSize()">
 </div>
 </div>
+
+

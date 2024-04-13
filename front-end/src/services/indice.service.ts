@@ -44,7 +44,7 @@ export class  IndiceService {
 
 
   constructor() {
-    this.hint = JSON.parse(localStorage.getItem('sonActif') ?? 'true');
+    this.hint = JSON.parse(localStorage.getItem('hint') ?? 'true');
   }
 
   activerIndice() {

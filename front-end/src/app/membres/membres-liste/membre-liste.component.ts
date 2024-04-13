@@ -5,6 +5,7 @@ import { Membre } from 'src/models/membre.model';
 import { MembreService } from 'src/services/membre.service';
 import { TitleService } from 'src/services/title.service';
 import { SonService } from 'src/services/sound.service';
+import * as confetti from 'canvas-confetti';
 
 
 @Component({
@@ -41,6 +42,8 @@ export class MembreListeComponent implements OnInit {
   playSound(){
     this.sonService.playSound('./../../../../assets/img/good.mp3');
   }
+ 
+
  
 
 }

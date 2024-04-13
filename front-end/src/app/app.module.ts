@@ -34,6 +34,8 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { SoundQuestionComponent } from './questions/sound-question/sound-question.component';
+import { QuizDashboardComponent } from './card-dashboard/quiz-dashboard/quiz-dashboard.component';
+import { ThemeDashboardComponent } from './card-dashboard/theme-dashboard/theme-dashboard.component';
 
 
 
@@ -70,6 +72,8 @@ import { SoundQuestionComponent } from './questions/sound-question/sound-questio
     ConfigurationComponent,
     DashboardComponent,
     SoundQuestionComponent,
+    QuizDashboardComponent,
+    ThemeDashboardComponent
 
   ],
   imports: [

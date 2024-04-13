@@ -58,9 +58,10 @@
 </div>
 
 
-<div class="messageSuccess" *ngIf="showSuccessMessage" >
+<div class="messageSuccess" *ngIf="showSuccessMessage"  >
   Bravo ! Tu as trouvé la bonne réponse !
 </div>
+
 
 <div class="messageFailure" *ngIf="showFailureMessage" >
   Dommage, la réponse est incorrecte ou incomplète.
@@ -71,3 +72,6 @@
   <p *ngIf="hintText">{{ hintText }}</p>
   <img *ngIf="hintImageUrl" [src]="hintImageUrl" alt="Indice">
 </div>
+
+
+

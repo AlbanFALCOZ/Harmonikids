@@ -8,6 +8,7 @@ import { ScoreService } from 'src/services/score-service-component';
 import { SonService } from 'src/services/sound.service';
 import { IndiceService } from 'src/services/indice.service';
 
+
 @Component({
   selector: 'app-question-list',
   templateUrl: './question-list.component.html',
@@ -130,7 +131,6 @@ export class QuestionListComponent implements OnInit {
 
     } else {
       this.showFailureMessage = true;
-      
       this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint)
       this.indiceService.showHint(this.indiceService.hint);
     }
@@ -144,6 +144,9 @@ export class QuestionListComponent implements OnInit {
   }
 
 
+
+ 
+  
  
 
 
@@ -169,3 +172,5 @@ export class QuestionListComponent implements OnInit {
     return Array(num);
   }
 }
+
+

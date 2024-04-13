@@ -1,0 +1,22 @@
+<div class="quiz-card">
+    <div class="quiz-card-header">
+        <img src="{{ quiz.image }}" alt="animaux">
+        <p>{{ quiz.name }}</p>
+    </div>
+    <div class="quiz-card-footer">
+        <p>{{ quiz.description }}</p>
+        <p>{{ quiz.questions.length }}</p>
+    
+    <div class="progress-circle">
+        <svg class="progress-circle__svg">
+            <circle class="progress-circle__background" cx="50%" cy="50%" r="40%">
+            </circle>
+            <circle class="progress-circle__progress" cx="50%" cy="50%" r="40%">
+            </circle>
+        </svg>
+        <div class="progress-circle__text">100%</div>
+    </div>
+    </div>
+</div>
+
+

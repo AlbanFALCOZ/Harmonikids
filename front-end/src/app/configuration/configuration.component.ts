@@ -4,8 +4,10 @@ import { ColorService } from 'src/services/color-service.service';
 import { Theme } from '../../models/theme.model';
 import { TitleService } from 'src/services/title.service';
 import { ThemeService } from 'src/services/theme.service';
-import { Question } from 'src/models/question.model';
+import { Question, QuestionType } from 'src/models/question.model';
 import { IndiceService } from 'src/services/indice.service';
+import { QUESTION_LIST } from 'src/mocks/question.mock';
+import {QuestionService} from 'src/services/question.service'
 
 
 enum ThemePalette {
@@ -29,16 +31,21 @@ export class ConfigurationComponent {
   isMusicOn: boolean ;
   isIndiceOn:boolean;
   selectedOption: string = 'option1';
+  questionList: Question[] = QUESTION_LIST;
+  selectedQuestionTypes: QuestionType[];
+ 
 
-  constructor(private sonService: SonService , private colorService: ColorService , private themeService: ThemeService , private indiceService : IndiceService) {
+
+  constructor(private sonService: SonService , private colorService: ColorService , private themeService: ThemeService , private indiceService : IndiceService  , private questionService : QuestionService) {
     this.isSoundOn = this.sonService.estSonActif();
     this.isIndiceOn=this.indiceService.estIndiceActif();
     this.isMusicOn = this.sonService.isMusiqueActive();
+    this.selectedQuestionTypes = this.questionList.map(question => question.typeOfQuestion); 
+   
   }
 
   ngOnInit() {
     this.themeList = this.themeService.getThemes()
-    
   }
 
   toggleSound() {
@@ -113,7 +120,34 @@ export class ConfigurationComponent {
   
     localStorage.setItem('selectedThemes', JSON.stringify(this.themeService.selectedThemes));
   }
+
+
+  isCheckedQuestions(type: QuestionType): boolean {
+    return this.questionService.selectedTypes.includes(this.questionService.getQuestionByType(type));
+  }
+
+
+  onChangeQuestion(event: any, questionType: QuestionType): void {
+    const isChecked = event.target.checked;
+
+    if (isChecked) {
+     
+      this.questionService.removeFromListByType(questionType);
+    } else {
+      
+    }
+  }
   
+
+  
+
+
+
+
+
+  
+  
+
   
   
 }
