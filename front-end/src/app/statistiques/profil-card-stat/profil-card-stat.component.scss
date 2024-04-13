@@ -4,10 +4,9 @@
     height: 280px;
     border: 2px solid #FAA300;
     border-radius: 10px;
-    padding-top: 10px;
     cursor: pointer;
     background-color: lightgoldenrodyellow;
-    box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px 0px #F4538A;
 }
 
 
@@ -25,11 +24,12 @@
 }
 
 .exp {
-    display: block;
-    position: absolute;
-    margin-top: 100px;
-    margin-left: 100px;
-    border: 3px solid black;
+    margin-top: 70px;
+    margin-left: 35px;
+    width: fit-content;
+    align-items: center;
+    padding: 5px;
+    border: 3px solid #F4538A;
     border-radius: 30px;
 }
 

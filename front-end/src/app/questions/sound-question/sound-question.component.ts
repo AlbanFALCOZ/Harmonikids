@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Question, Answer } from 'src/models/question.model';
-import { ScoreService } from 'src/services/score-service-component';
+import { ScoreService } from 'src/services/score-service.service';
 
 @Component({
   selector: 'app-sound-question',
@@ -13,7 +13,7 @@ export class SoundQuestionComponent {
 
   showMessage: boolean = false;
   message: string = '';
-  
+
   audio = new Audio();
   audioFirstTime: boolean = true;
   anwsersChosen: Answer[] = new Array();
