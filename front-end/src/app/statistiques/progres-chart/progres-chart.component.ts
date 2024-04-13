@@ -16,9 +16,7 @@ export class ProgresChartComponent {
     title: {
       text: 'Progrès de l\'enfant par rapport aux autres'
     },
-    credits: {
-      enabled: false
-    },
+
     xAxis: {
       categories: [],
       tickmarkPlacement: 'on',

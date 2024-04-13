@@ -1,7 +1,7 @@
 .quiz-result {
     display: flex;
     width: 550px;
-    height: 100px;
+    height: 80px;
     border: 2px solid #FAA300;
     border-radius: 10px;
     padding-top: 10px;
@@ -10,6 +10,7 @@
     margin-bottom: 10px;
     box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
     justify-content: space-around;
+    align-items: center;
 }
 
 
