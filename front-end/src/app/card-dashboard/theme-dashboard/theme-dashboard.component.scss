@@ -5,7 +5,7 @@
     border-radius: 30px;
     box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
     padding-top: 10px;
-    background-color: #fff;
+    background-color: #59D5E0;
     cursor: pointer;
 }
 
@@ -16,18 +16,30 @@
     justify-content: space-around;
     border-bottom: 2px solid #FAA300;
     height: 130px;
+    text-shadow: 0 0 5px rgba(255, 255, 255); 
+    
 }
+
+.theme-card-header p {
+    font-size: 20px;
+}
+
+
 
 .theme-card-header img {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     height: 100px;
     width: 100%;
+    margin-bottom:-15px
 }
+
+
 
 .theme-card-footer {
     text-align: center;
     font-style: italic;
+    text-shadow: 0 0 5px rgba(255, 255, 255); 
 }
 
 .theme-card-button {
@@ -41,4 +53,8 @@
     width: 80px;
     text-align: center;
     cursor: pointer;
+}
+
+.theme-card:hover {
+    transform: translateX(-5px) translateY(-5px); 
 }
