@@ -9,8 +9,13 @@ import { QUESTION_LIST } from 'src/mocks/question.mock';
   providedIn: 'root'
 })
 export class QuestionService {
+
+
+
+
  
-  private questions: Question[] = QUESTION_LIST;
+  private questions: Question[] = [];
+
   selectedQuestionTypes: QuestionType[] = [];
  
   public questions$: BehaviorSubject<Question[]>
@@ -51,17 +56,38 @@ export class QuestionService {
     return storedQuestions ? JSON.parse(storedQuestions) : [];
   }
 
-  removeFromListByType(type: QuestionType): void {
-    
-    this.questions = this.questions.filter(question => question.typeOfQuestion === type);
-    this.questions$.next(this.questions); 
-    this.saveQuestionsToLocalStorage(this.questions); 
-  }
+  removeQuestionFromLocalStorage(type : QuestionType): void {
+    let storedQuestions: Question[] = this.getQuestionsFromLocalStorage();
+    storedQuestions = storedQuestions.filter(question => question.typeOfQuestion !== type);
+    localStorage.setItem('questions', JSON.stringify(storedQuestions));
+}
+
+addToLocalStorageByType(questionType: QuestionType): void {
+  
+  let storedQuestions: Question[] = this.getQuestionsFromLocalStorage();
+  
+  
+  let questionsToAdd: Question[] = this.getQuestionByType(questionType);
+
+
+  questionsToAdd.forEach(question => {
+      if (!storedQuestions.some(q => q.typeOfQuestion === question.typeOfQuestion)) {
+          storedQuestions.push(question);
+      }
+  });
+
+  
+  localStorage.setItem('questions', JSON.stringify(storedQuestions));
+}
+
+
+  
 
   getQuestionByType(type: QuestionType): Question[] {
-    
     return this.questions.filter(question => question.typeOfQuestion === type);
   }
 
+
+  
 
 }

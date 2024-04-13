@@ -144,12 +144,6 @@ export class QuestionListComponent implements OnInit {
   }
 
 
-
- 
-  
- 
-
-
   resetMessages() {
     clearTimeout(this.messageTimeout);
     this.showSuccessMessage = false;

@@ -31,8 +31,9 @@ export class ConfigurationComponent {
   isMusicOn: boolean ;
   isIndiceOn:boolean;
   selectedOption: string = 'option1';
-  questionList: Question[] = QUESTION_LIST;
   selectedQuestionTypes: QuestionType[];
+  questionList = this.questionService.getQuestionsFromLocalStorage();
+  questionListTemp = QUESTION_LIST;
  
 
 
@@ -40,7 +41,7 @@ export class ConfigurationComponent {
     this.isSoundOn = this.sonService.estSonActif();
     this.isIndiceOn=this.indiceService.estIndiceActif();
     this.isMusicOn = this.sonService.isMusiqueActive();
-    this.selectedQuestionTypes = this.questionList.map(question => question.typeOfQuestion); 
+    this.selectedQuestionTypes = this.questionListTemp.map(question => question.typeOfQuestion); 
    
   }
 
@@ -116,37 +117,38 @@ export class ConfigurationComponent {
         this.themeService.selectedThemes.splice(themeIndex, 1);
       }
     }
-  
-  
     localStorage.setItem('selectedThemes', JSON.stringify(this.themeService.selectedThemes));
   }
 
 
+  
+
   isCheckedQuestions(type: QuestionType): boolean {
-    return this.questionService.selectedTypes.includes(this.questionService.getQuestionByType(type));
-  }
+    return this.questionService.selectedQuestionTypes.includes(type);
+}
 
 
-  onChangeQuestion(event: any, questionType: QuestionType): void {
-    const isChecked = event.target.checked;
 
-    if (isChecked) {
+onChangeQuestion(event: any, questionType: QuestionType): void {
+  const isChecked = event.target.checked;
+
+  if (isChecked) {
      
-      this.questionService.removeFromListByType(questionType);
-    } else {
-      
-    }
+      this.questionService.removeQuestionFromLocalStorage(questionType);
+      this.questionService.selectedQuestionTypes.push(questionType);
+  } else {
+    this.questionService.addToLocalStorageByType(questionType);
+    this.questionService.selectedQuestionTypes = this.questionService.selectedQuestionTypes.filter(type => type !== questionType);
+
+
+
   }
-  
 
-  
+  localStorage.setItem('selectedQuestionTypes', JSON.stringify(this.questionService.selectedQuestionTypes));
 
-
-
+}
 
 
-  
-  
 
   
   
