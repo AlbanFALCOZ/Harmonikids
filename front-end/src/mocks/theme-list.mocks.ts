@@ -36,14 +36,14 @@ export const THEME_LIST: Theme[] = [
         name: 'Les mathèmatiques',
         description: 'Description du theme 3',
         quizzes: QUIZ_LIST,
-        image: 'assets/img/maths.jpg'
+        image: 'assets/img/addition.jpg'
     },
     {
         id: '5',
         name: 'Les mathèmatiques',
         description: 'Description du theme 3',
         quizzes: QUIZ_LIST,
-        image: 'assets/img/maths2.jpg'
+        image: 'assets/img/addition.jpg'
     }
 
 ];

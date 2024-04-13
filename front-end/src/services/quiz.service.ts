@@ -9,6 +9,7 @@ import { Question } from '../models/question.model';
   providedIn: 'root'
 })
 export class QuizService {
+  
   //   this.quizzes$.next(this.quizzes);
   // });
   getQuizzes(): Quiz[] {
@@ -52,7 +53,8 @@ export class QuizService {
   }
 
   addQuiz(quiz: Quiz): void {
-    this.quizzes
+    console.log("Hello ! ");
+    this.quizzes.push(quiz);
     this.quizzes$.next(this.quizzes);
   }
   
@@ -66,7 +68,8 @@ export class QuizService {
   }
 
   deleteQuiz(quiz: Quiz): void {
-    
+    this.quizzes = this.quizzes.filter( q => q != quiz);
+    this.quizzes$.next(this.quizzes);
   }
 
   addQuestion(quiz: Quiz, question: Question): void {
@@ -76,30 +79,6 @@ export class QuizService {
   deleteQuestion(quiz: Quiz, question: Question): void {
     
   }
-
-  /*
-  Note: The functions below don't interact with the server. It's an example of implementation for the exercice 10.
-  addQuestion(quiz: Quiz, question: Question) {
-    quiz.questions.push(question);
-    const index = this.quizzes.findIndex((q: Quiz) => q.id === quiz.id);
-    if (index) {
-      this.updateQuizzes(quiz, index);
-    }
-  }
-
-  deleteQuestion(quiz: Quiz, question: Question) {
-    const index = quiz.questions.findIndex((q) => q.label === question.label);
-    if (index !== -1) {
-      quiz.questions.splice(index, 1)
-      this.updateQuizzes(quiz, index);
-    }
-  }
-
-  private updateQuizzes(quiz: Quiz, index: number) {
-    this.quizzes[index] = quiz;
-    this.quizzes$.next(this.quizzes);
-  }
-  */
 
 
 }

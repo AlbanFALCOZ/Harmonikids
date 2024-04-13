@@ -71,7 +71,6 @@ import { QuestionAddComponent } from './questions/question-add/question-add.comp
     DashboardComponent,
     SoundQuestionComponent,
     QuestionAddComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -80,7 +79,6 @@ import { QuestionAddComponent } from './questions/question-add/question-add.comp
     DragDropModule,
     CommonModule,
     FormsModule
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

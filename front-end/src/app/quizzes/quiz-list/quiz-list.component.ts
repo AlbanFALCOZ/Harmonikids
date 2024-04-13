@@ -15,17 +15,19 @@ import { NavbarService } from 'src/services/navbar.service';
 export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
+  quizListDisplayed: Quiz[] = [];
   quizToDelete: Quiz | null = null;
   isDisabled: boolean = false;
 
   isNavVisible = false;
-
+  search: string = '';
 
   public selectedQuiz: Quiz | null = null;
 
   constructor(private router: Router, public quizService: QuizService, public titleService: TitleService, public questionService: QuestionService, private navbarService: NavbarService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
+      this.quizListDisplayed = quizzes;
     });
     this.titleService.title = 'Liste des quiz';
     this.titleService.search = 'Rechercher dans les quiz...';
@@ -50,14 +52,17 @@ export class QuizListComponent implements OnInit {
 
   deleteQuiz(): void {
     if (this.quizToDelete) {
-      this.quizList = this.quizList.filter(quiz => quiz != this.quizToDelete);
-
+      this.quizService.deleteQuiz(this.quizToDelete);
     }
+
   }
 
   addQuizToDelete(quiz: Quiz): void {
     this.quizToDelete = quiz;
   }
 
+  onKey(event: any) {
+    this.quizListDisplayed = this.quizList.filter(quiz => quiz.name.toLowerCase().includes(event.target.value.toLowerCase()));
+  }
 
 }
