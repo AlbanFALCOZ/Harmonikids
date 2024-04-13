@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Quiz } from 'src/models/quiz.model';
+import { QuizService } from 'src/services/quiz.service';
 
 @Component({
   selector: 'app-theme-edit',
@@ -6,7 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './theme-edit.component.scss'
 })
 export class ThemeEditComponent {
-  constructor() { }
+  
+  quizList: Quiz[] = [];
+
+  constructor(private quizService: QuizService) {
+    this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
+      this.quizList = quizzes;
+    });
+  }
 
   ngOnInit(): void {
   }

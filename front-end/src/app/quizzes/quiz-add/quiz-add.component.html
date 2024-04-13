@@ -19,22 +19,10 @@
                     <option *ngFor="let theme of themeList">{{theme.name}}</option>
                 </select><br>
             </div>
-            <div class="display-input">
-                <label for="quizNiveau">Niveau:</label><br>
-                <select id="quizNiveau" name="quizNiveau" ngModel>
-                    <option value="">Sélectionner le niveau du quiz</option>
-                    <option value="facile">Facile</option>
-                    <option value="moyen">Moyen</option>
-                    <option value="difficile">Difficile</option>
-                </select><br>
-            </div>
+
             <div class="display-input">
                 <label for="quizDescription">Description:</label><br>
                 <textarea id="quizDescription" name="quizDescription" rows="5" ngModel></textarea><br>
-            </div>
-            <div class="display-input">
-                <label for="quizImage">Image du quiz:</label><br>
-                <input type="file" id="quizImage" name="quizImage" ngModel><br>
             </div>
             <div class="display-input">
                 <label for="quizQuestions">Questions:</label><br>
