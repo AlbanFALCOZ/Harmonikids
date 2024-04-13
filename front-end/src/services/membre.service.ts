@@ -37,6 +37,10 @@ export class MembreService {
     return this.memberId;
   }
 
+  addMembre(newMember: Membre) {
+    this.membres.push(newMember);
+    this.membres$.next(this.membres);
+  }
    
 }
 

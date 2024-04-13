@@ -6,7 +6,7 @@ export const Membre_LIST: Membre[] = [
       id: '1',
       firstName: 'Alice',
       lastName : 'Routine' , 
-      age : '8ans',
+      age : 8,
       description: 'Je veux apprendre',
       image : './../../../../assets/img/alice.jpg'
       
@@ -14,7 +14,7 @@ export const Membre_LIST: Membre[] = [
     {
       id: '2',
       firstName: 'Lucas',
-      age : '10ans',
+      age : 10,
       lastName : 'Distrait' , 
       description: 'Je ne veux pas apprendre',
       image : './../../../../assets/img/lucas.jpg'
@@ -24,7 +24,7 @@ export const Membre_LIST: Membre[] = [
       id: '3',
       firstName: 'Léo',
       lastName : 'Vivace' ,
-      age:'10ans',
+      age: 10,
       description: 'Je veux manger',
       image : './../../../../assets/img/léo.jpg'
     },

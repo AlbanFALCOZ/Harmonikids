@@ -2,7 +2,7 @@ export interface Membre {
     id: string;
     firstName: string;
     lastName : String ;
-    age:string;
+    age: number;
     description : String ; 
     image : String;  
     

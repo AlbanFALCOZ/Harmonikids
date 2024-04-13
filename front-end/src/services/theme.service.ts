@@ -33,7 +33,7 @@ export class ThemeService {
   }
 
     addTheme(theme: Theme): void {
-        this.themes
+        this.themes.push(theme);
         this.themes$.next(this.themes);
       }
     
@@ -42,7 +42,8 @@ export class ThemeService {
       }
     
       deleteTheme(theme: Theme): void {
-        this.themes.filter(t => t.name != theme.name);
+        this.themes = this.themes.filter(t => t != theme);
+        this.themes$.next(this.themes);
       }
 
       addSelectedTheme(theme: Theme) {

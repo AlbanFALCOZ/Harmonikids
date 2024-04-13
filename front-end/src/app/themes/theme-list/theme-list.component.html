@@ -1,7 +1,14 @@
 <app-navbar></app-navbar>
 <app-title></app-title>
+<div class="search">
+    <input type="text" placeholder="{{ search ? search : 'Rechercher dans les thèmes...' }}" (keyup)="onKey($event)">
+    <button>
+        <span class="material-icons">search</span>
+        <p>Rechercher</p>
+    </button>
+</div>
 <div class="content-theme">
-    <app-theme *ngFor="let theme of themeList" [theme]="theme" (themeSelected)="themeSelected($event)"
+    <app-theme *ngFor="let theme of themeListDisplayed" [theme]="theme" (themeSelected)="themeSelected($event)"
         (editTheme)="editTheme($event)" (themeToDelete)="addThemeToDelete($event)">
     </app-theme>
     <app-theme-add *ngIf="!isDisabled"></app-theme-add>
