@@ -9,6 +9,7 @@ import { Question } from '../models/question.model';
   providedIn: 'root'
 })
 export class QuizService {
+  
   //   this.quizzes$.next(this.quizzes);
   // });
   getQuizzes(): Quiz[] {
@@ -52,7 +53,8 @@ export class QuizService {
   }
 
   addQuiz(quiz: Quiz): void {
-    this.quizzes
+    console.log("Hello ! ");
+    this.quizzes.push(quiz);
     this.quizzes$.next(this.quizzes);
   }
   

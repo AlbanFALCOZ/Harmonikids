@@ -33,7 +33,7 @@ export class ThemeService {
   }
 
     addTheme(theme: Theme): void {
-        this.themes
+        this.themes.push(theme);
         this.themes$.next(this.themes);
       }
     

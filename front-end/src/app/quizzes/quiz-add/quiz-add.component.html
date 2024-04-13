@@ -6,24 +6,21 @@
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close material-icons" (click)="closeModal()">close</span>
-        <form id="addMemberForm">
+        <form id="addMemberForm" #form="ngForm" (ngSubmit)="submitForm(form)">
             <div class="display-input">
                 <label for="quizTitle">Titre du quiz:</label><br>
-                <input type="text" id="quizTitle" name="quizTitle"><br>
+                <input type="text" id="quizTitle" name="quizTitle" ngModel><br>
             </div>
             <div class="display-input">
                 <label for="quizTheme">Thème:</label><br>
-                <select id="quizTheme" name="quizTheme">
+                <select id="quizTheme" name="quizTheme" ngModel>
                     <option value="">Sélectionner le thème du quiz</option>
-                    <option value="litterature">Littérature</option>
-                    <option value="maths">Mathématiques</option>
-                    <option value="animal">Les animaux</option>
-                    <option value="astronomie">Astronomie</option>
+                    <option *ngFor="let theme of themeList">{{theme.name}}</option>
                 </select><br>
             </div>
             <div class="display-input">
                 <label for="quizNiveau">Niveau:</label><br>
-                <select id="quizNiveau" name="quizNiveau">
+                <select id="quizNiveau" name="quizNiveau" ngModel>
                     <option value="">Sélectionner le niveau du quiz</option>
                     <option value="facile">Facile</option>
                     <option value="moyen">Moyen</option>
@@ -32,11 +29,15 @@
             </div>
             <div class="display-input">
                 <label for="quizDescription">Description:</label><br>
-                <textarea id="quizDescription" name="quizDescription" rows="5"></textarea><br>
+                <textarea id="quizDescription" name="quizDescription" rows="5" ngModel></textarea><br>
+            </div>
+            <div class="display-input">
+                <label for="quizImage">Image du quiz:</label><br>
+                <input type="file" id="quizImage" name="quizImage" ngModel><br>
             </div>
             <div class="display-input">
                 <label for="quizQuestions">Questions:</label><br>
-                <select id="quizQuestions" name="quizQuestions" size="4" multiple>
+                <select id="quizQuestions" name="quizQuestions" size="4" multiple ngModel>
                     <option value="">Sélectionner les questions</option>
                     <optgroup label="Choix multiple">
                         <option value="question1">Question 1</option>

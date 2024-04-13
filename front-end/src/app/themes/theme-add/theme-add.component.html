@@ -6,16 +6,27 @@
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close material-icons" (click)="closeModal()">close</span>
-        <form id="addMemberForm">
+        <form id="addMemberForm" #form="ngForm" (ngSubmit)="submitForm(form)">
             <div class="display-input">
                 <label for="themeTitle">Titre du theme:</label><br>
-                <input type="text" id="themeTitle" name="themeTitle"><br>
+                <input type="text" id="themeTitle" name="themeTitle" ngModel><br>
             </div>
             <div class="display-input">
                 <label for="themeDescription">Description:</label><br>
-                <textarea id="themeDescription" name="themeDescription" rows="5"></textarea><br>
+                <textarea id="themeDescription" name="themeDescription" rows="5" ngModel></textarea><br>
             </div>
-            <button type="submit">Créer le theme</button>
+            <div class="display-input">
+                <label for="quizzes">Quizzes:</label><br>
+                <select id="quizzes" name="quizzes" ngModel>
+                    <option value="">Sélectionner un quiz</option>
+                    <option *ngFor="let quiz of quizList">{{quiz.name}}</option>
+                </select><br>
+            </div>
+            <div class="display-input">
+                <label for="themeImage">Image du theme:</label><br>
+                <input type="file" id="themeImage" name="themeImage" ngModel><br>
+            </div>
+            <button type="submit" >Créer le theme</button>
         </form>
     </div>
 

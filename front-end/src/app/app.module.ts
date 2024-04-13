@@ -70,14 +70,14 @@ import { SoundQuestionComponent } from './questions/sound-question/sound-questio
     ConfigurationComponent,
     DashboardComponent,
     SoundQuestionComponent,
-
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     DragDropModule,
-    
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
