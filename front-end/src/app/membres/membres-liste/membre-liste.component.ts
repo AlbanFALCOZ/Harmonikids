@@ -1,11 +1,11 @@
-import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavbarComponent } from 'src/app/navbar/navbar.component';
 import { Membre } from 'src/models/membre.model';
 import { MembreService } from 'src/services/membre.service';
 import { TitleService } from 'src/services/title.service';
 import { SonService } from 'src/services/sound.service';
 import { NavbarService } from 'src/services/navbar.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -18,6 +18,8 @@ export class MembreListeComponent implements OnInit {
   public membreListe: Membre[] = [];
 
   public displayForm: boolean = false;
+
+  membreListeDisplayed: Membre[] = [];
 
   isDisabled: boolean = false;
 
@@ -51,6 +53,31 @@ export class MembreListeComponent implements OnInit {
 
   playSound() {
     this.sonService.playSound('./../../../../assets/img/good.mp3');
+  }
+
+  onKey(event: any) {
+    this.membreListeDisplayed = this.membreListe.filter(membre => membre.firstName.toLowerCase().includes(event.target.value.toLowerCase()) || membre.lastName.toLowerCase().includes(event.target.value.toLowerCase()));
+  }
+
+  submitForm(form: NgForm): void {
+    const firstNameMember = form.value.firstName;
+    const lastNameMember = form.value.lastName;
+    const ageMember = form.value.age;
+    const descriptionMember = form.value.description;
+    const imageMember = form.value.image;
+
+    const newMember: Membre = {
+      id: '1',
+      firstName: firstNameMember,
+      lastName: lastNameMember,
+      age: ageMember,
+      description: descriptionMember,
+      image: imageMember
+    };
+
+    this.membreService.addMembre(newMember);
+
+    form.resetForm();
   }
 
 

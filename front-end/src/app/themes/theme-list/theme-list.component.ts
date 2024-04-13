@@ -20,16 +20,12 @@ export class ThemeListComponent implements OnInit {
   themeToDelete: Theme | null = null;
   isDisabled: boolean = false;
 
-<<<<<<< HEAD
   isNavVisible = false;
+  search: string = '';
+
 
 
   constructor(private router: Router, public themeService: ThemeService, public titleService: TitleService, private sonService: SonService, private navbarService: NavbarService) {
-=======
-  search: string = '';
-
-  constructor(private router: Router, public themeService: ThemeService, public titleService: TitleService, private sonService: SonService) {
->>>>>>> c7da5542e25f817778a0630280412f1664a6bd5a
     this.themeService.themes$.subscribe((themes: Theme[]) => {
       this.themeList = themes;
       this.themeListDisplayed = themes;

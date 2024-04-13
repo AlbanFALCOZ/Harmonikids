@@ -48,7 +48,6 @@ export class ThemeAddComponent implements OnInit {
 
     const themeName = form.value.themeTitle;
     const themeDescription = form.value.themeDescription;
-    const themeNumberOfQuizzes = form.value.themeNumberOfQuizzes;
     const themeQuizzes = form.value.themeQuizzes;
     const themeImage = form.value.themeImage;
 
@@ -56,7 +55,6 @@ export class ThemeAddComponent implements OnInit {
       id: '1',
       name: themeName,
       description: themeDescription,
-      numberOfQuizzes: 0,
       quizzes: themeQuizzes,
       image: themeImage,
     };
