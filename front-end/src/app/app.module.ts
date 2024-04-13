@@ -36,6 +36,8 @@ import { FormsModule } from '@angular/forms';
 import { SoundQuestionComponent } from './questions/sound-question/sound-question.component';
 import { QuizDashboardComponent } from './card-dashboard/quiz-dashboard/quiz-dashboard.component';
 import { ThemeDashboardComponent } from './card-dashboard/theme-dashboard/theme-dashboard.component';
+import { CommonModule } from '@angular/common';
+import { QuestionAddComponent } from './questions/question-add/question-add.component';
 
 
 
@@ -49,7 +51,6 @@ import { ThemeDashboardComponent } from './card-dashboard/theme-dashboard/theme-
     NiveauCardComponent,
     MembreComponent,
     MembreListeComponent,
-    NavbarComponent,
     ThemeComponent,
     ThemeAddComponent,
     ThemeEditComponent,
@@ -73,7 +74,8 @@ import { ThemeDashboardComponent } from './card-dashboard/theme-dashboard/theme-
     DashboardComponent,
     SoundQuestionComponent,
     QuizDashboardComponent,
-    ThemeDashboardComponent
+    ThemeDashboardComponent,
+    QuestionAddComponent,
 
   ],
   imports: [
@@ -81,9 +83,11 @@ import { ThemeDashboardComponent } from './card-dashboard/theme-dashboard/theme-
     AppRoutingModule,
     HttpClientModule,
     DragDropModule,
-    
+    CommonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+  
 export class AppModule { }

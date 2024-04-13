@@ -1,41 +1,82 @@
 <app-navbar></app-navbar>
-<app-title></app-title>
-<div class="content-membre">
-  <app-membre *ngFor="let membre of membreListe" [membre]="membre"></app-membre>
 
-  <div class="add-card" *ngIf="!isDisabled">
-    <p>Ajouter un nouvel enfant</p> 
-    <span class="material-icons add" id="myBtn" (click)="toggleForm()">add</span>
-  </div>
+<div class="content" [ngClass]="{'nav-visible': isNavVisible}">
+  <app-title></app-title>
 
 
-  <div id="myModal" class="modal" *ngIf="displayForm"> 
-    <div class="modal-content">
-      <span class="close material-icons" (click)="toggleForm()">close</span>
+  <div class="content-membre">
+    <app-membre *ngFor="let membre of membreListe" [membre]="membre"></app-membre>
 
-      <form id="addMemberForm"  *ngIf="displayForm"> 
-        <div class="display-input">
-          <label for="name">Nom:</label><br>
-          <input type="text" id="name" name="name"><br>
+    <div class="add-card" *ngIf="!isDisabled">
+      <p>Ajouter un nouvel enfant</p>
+      <span class="material-icons add" id="myBtn" (click)="toggleForm()">add</span>
+
+      <div id="myModal" class="modal" *ngIf="displayForm">
+        <div class="modal-content">
+          <span class="close material-icons" (click)="toggleForm()">close</span>
+
+          <form id="addMemberForm" *ngIf="displayForm" #form="ngForm" (ngSubmit)="submitForm(form)">
+            <div class="display-input">
+              <label for="name">Nom:</label><br>
+              <input type="text" id="lastName" name="lastName" ngModel><br>
+            </div>
+            <div class="display-input">
+              <label for="surname">Prénom:</label><br>
+              <input type="text" id="firstName" name="firstName" ngModel><br>
+            </div>
+            <div class="display-input">
+              <label for="age">Age:</label><br>
+              <input type="number" id="age" name="age" ngModel><br>
+            </div>
+
+            <div class="display-input">
+              <label for="">Description:</label>
+              <textarea name="description" id="description" cols="40" rows="5" ngModel></textarea>
+            </div>
+
+            <div class="display-input">
+              <label for="image">Photo:</label><br>
+              <input type="file" id="image" name="image"><br>
+            </div>
+            <button type="submit">Ajouter</button>
+
+          </form>
         </div>
-        <div class="display-input">
-          <label for="surname">Prénom:</label><br>
-          <input type="text" id="surname" name="surname"><br>
-        </div>
-        <div class="display-input">
-          <label for="age">Age:</label><br>
-          <input type="number" id="age" name="age"><br>
+
+
+        <div id="myModal" class="modal" *ngIf="displayForm">
+          <div class="modal-content">
+            <span class="close material-icons" (click)="toggleForm()">close</span>
+
+            <form id="addMemberForm" *ngIf="displayForm">
+              <div class="display-input">
+                <label for="name">Nom:</label><br>
+                <input type="text" id="name" name="name"><br>
+              </div>
+              <div class="display-input">
+                <label for="surname">Prénom:</label><br>
+                <input type="text" id="surname" name="surname"><br>
+              </div>
+              <div class="display-input">
+                <label for="age">Age:</label><br>
+                <input type="number" id="age" name="age"><br>
+              </div>
+
+              <div class="display-input">
+                <label for="">Description:</label>
+                <textarea name="description" id="description" cols="40" rows="5"></textarea>
+              </div>
+
+              <div class="display-input">
+                <label for="image">Photo:</label><br>
+                <input type="file" id="image" name="image"><br>
+              </div>
+              <button type="submit">Ajouter</button>
+
+            </form>
+          </div>
         </div>
 
-        <div class="display-input">
-          <label for="">Description:</label>
-          <textarea name="description" id="description" cols="40" rows="5"></textarea>
-        </div>
-        <button type="submit">Ajouter</button>
-      
-  </form>
-    </div>
-  </div>
 
 </div>
 
@@ -47,3 +88,5 @@
 
 
 
+
+    </div>

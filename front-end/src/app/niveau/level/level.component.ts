@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Question } from 'src/models/question.model';
 import { FilteredQuestionService } from 'src/services/filteredQuestions.service';
+import { NavbarService } from 'src/services/navbar.service';
 import { QuestionService } from 'src/services/question.service';
 import { TitleService } from 'src/services/title.service';
 
@@ -13,10 +14,17 @@ export class LevelComponent implements OnInit {
   
   public questionList: Question[] = [];
 
-  constructor(private questionService: QuestionService, private filteredQuestionService: FilteredQuestionService) {
+  isNavVisible = false;
+
+
+  constructor(private questionService: QuestionService, private filteredQuestionService: FilteredQuestionService, private navbarService: NavbarService) {
     this.questionService.questions$.subscribe((sortedQuestions: Question[]) => {
       this.questionList = sortedQuestions;
     });
+    this.navbarService.isNavbarVisible$.subscribe(isVisible => {
+      this.isNavVisible = isVisible;
+    });
+
   }
 
   ngOnInit(): void {

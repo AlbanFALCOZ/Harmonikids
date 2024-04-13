@@ -4,9 +4,12 @@ import { Question, Answer } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
 import { QuestionType } from '../../../models/question.model';
 import { SoundQuestionComponent } from '../sound-question/sound-question.component';
-import { ScoreService } from 'src/services/score-service-component';
 import { SonService } from 'src/services/sound.service';
 import { IndiceService } from 'src/services/indice.service';
+
+
+import { ScoreService } from 'src/services/score-service-component.service';
+import { NavbarService } from 'src/services/navbar.service';
 
 
 @Component({
@@ -38,10 +41,17 @@ export class QuestionListComponent implements OnInit {
 
  
   private messageTimeout: any;
+  isNavVisible = false;
 
+
+  private successAudio = new Audio('assets/img/good.mp3');
   answerSelected: any;
 
-  constructor(private router: Router, public questionService: QuestionService , public soundService : SonService, private indiceService : IndiceService ) {
+
+  
+
+  constructor(private router: Router, public questionService: QuestionService , public soundService : SonService, private indiceService : IndiceService,private navbarService: NavbarService ) {
+
     this.questionList = this.questionService.getQuestionsFromLocalStorage();
     if (this.questionList.length === 0) {
       this.questionService.questions$.subscribe((questions: Question[]) => {
@@ -49,10 +59,16 @@ export class QuestionListComponent implements OnInit {
         this.questionService.saveQuestionsToLocalStorage(questions);
       });
     }
+
+
     this.hint = this.indiceService.hint;
     this.hintText = this.indiceService.hintText
     this.hintImageUrl = this.indiceService.hintImageUrl
     this.hintAudio = this.indiceService.hintAudio
+
+    this.navbarService.isNavbarVisible$.subscribe(isVisible => {
+      this.isNavVisible = isVisible;
+    });
 
 
   }
@@ -88,10 +104,10 @@ export class QuestionListComponent implements OnInit {
       alert('Veuillez sélectionner au moins une réponse avant de valider.');
       return;
     }
-    this.selectedAnswer.forEach((item, index) => { 
+    this.selectedAnswer.forEach((item, index) => {
       item.alreadySelected = true;
       this.selectedAnswerAllQuestions.push(item);
-     });
+    });
     this.selectedAnswerAllQuestions.filter((item, index) => this.selectedAnswerAllQuestions.indexOf(item) == index);
     const currentQuestion = this.questionList[this.currentQuestionIndex];
     const correctAnswers = currentQuestion.answers.filter(a => a.isCorrect);
@@ -160,7 +176,7 @@ export class QuestionListComponent implements OnInit {
     this.selectedAnswer = answer.filter(a => a.isSelected);
     this.resetMessages();
   }
-  
+
   generateArray(num: number): any[] {
     if (num > 12) num = 12;
     return Array(num);

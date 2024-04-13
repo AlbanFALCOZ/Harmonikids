@@ -8,6 +8,8 @@ import { Question, QuestionType } from 'src/models/question.model';
 import { IndiceService } from 'src/services/indice.service';
 import { QUESTION_LIST } from 'src/mocks/question.mock';
 import {QuestionService} from 'src/services/question.service'
+import { NavbarService } from 'src/services/navbar.service';
+
 
 
 enum ThemePalette {
@@ -34,16 +36,21 @@ export class ConfigurationComponent {
   selectedQuestionTypes: QuestionType[];
   questionList = this.questionService.getQuestionsFromLocalStorage();
   questionListTemp = QUESTION_LIST;
+  isNavVisible = false;
  
 
 
-  constructor(private sonService: SonService , private colorService: ColorService , private themeService: ThemeService , private indiceService : IndiceService  , private questionService : QuestionService) {
+  constructor(private sonService: SonService , private colorService: ColorService , private themeService: ThemeService , private indiceService : IndiceService  , private questionService : QuestionService, private navbarService: NavbarService) {
     this.isSoundOn = this.sonService.estSonActif();
     this.isIndiceOn=this.indiceService.estIndiceActif();
     this.isMusicOn = this.sonService.isMusiqueActive();
     this.selectedQuestionTypes = this.questionListTemp.map(question => question.typeOfQuestion); 
-   
+    this.navbarService.isNavbarVisible$.subscribe(isVisible => {
+      this.isNavVisible = isVisible;
+    });
   }
+   
+
 
   ngOnInit() {
     this.themeList = this.themeService.getThemes()

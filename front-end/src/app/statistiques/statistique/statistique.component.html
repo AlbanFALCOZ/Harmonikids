@@ -1,34 +1,115 @@
 <app-navbar></app-navbar>
-<div>
-    <div class="title">
-        <h1> Statistiques </h1>
-        <img src="assets/img/emoji.png" alt="emoji">
+
+<div class="content" [ngClass]="{'nav-visible': isNavVisible}">
+    <div>
+        <div class="title">
+            <h1> Statistiques </h1>
+            <img src="assets/img/emoji.png" alt="emoji">
+        </div>
+        <hr class="title-ligne">
     </div>
-    <hr class="title-ligne">
-</div>
-<div class="core-page">
-    <div class="left">
-        <app-profil-card-stat></app-profil-card-stat>
-        <app-week-chart></app-week-chart>
-        <app-progres-chart></app-progres-chart>
-    </div>
-    <div class="vertical-line"></div>
-    <div class="right">
-        <div>
-            <div class="description-theme">
-                <p>Taux de quiz effectués par thème</p>
-            </div>
-            <div class="quiz-result-display">
-                <app-statistique-card *ngFor="let theme of themeList" [theme]="theme"></app-statistique-card>            
+
+    <div class="core-page">
+        <div class="profil-description">
+            <app-profil-card-stat></app-profil-card-stat>
+            <div class="card-profil-footer" [ngClass]="{'expanded': isDescriptionExpanded}">
+                <div class="profil-footer-title">
+                    <span class="material-icons">description</span>
+                    <h3>Description des troubles</h3>
+
+                </div>
+
+                <div class="profil-footer-description" [ngClass]="{'expanded': isDescriptionExpanded}">
+                    <div class="description-edit">
+                        <ng-container *ngIf="!isEditingDescription; else editModeDescription">
+                            <p>{{ description }}</p>
+                            <span class="edit material-icons" (click)="toggleEditModeDescription()">edit_square</span>
+                        </ng-container>
+                        <ng-template #editModeDescription>
+                            <div class="edit-mode-container">
+                                <textarea class="edit-textarea" [(ngModel)]="editedDescription"></textarea>
+                                <div class="button-container">
+                                    <button class="save-button" (click)="saveChangesDescription()">Enregistrer</button>
+                                    <button class="cancel-button" (click)="cancelEditDescription()">Annuler</button>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </div>
+
+                </div>
+                <div>
+                    <p id="showMore" (click)="toggleShowMore()">{{ isDescriptionExpanded ? 'Voir moins' : 'Voir plus' }}
+                    </p>
+                </div>
+
+
+
             </div>
         </div>
-        <hr class="divide-ligne">
-        <div>
-            <div class="description-quiz">
-                <p>Taux de bonnes réponses par quiz</p>
+        <div class="core-page-stat">
+            <div class="left">
+                <div class="card-profil-footer" [ngClass]="{'expandedInterest': isInterestExpanded}">
+                    <div class="profil-footer-title">
+                        <span class="material-icons">interests</span>
+                        <h3>Centres d'interêt</h3>
+                    </div>
+                    <div class="profil-footer-description" [ngClass]="{'expandedInterest': isInterestExpanded}">
+                        <div class="description-edit">
+                            <ng-container *ngIf="!isEditing; else editMode">
+                                <ul>
+                                    <li *ngFor="let interest of interests.split(',')">{{ interest.trim() }}</li>
+                                </ul>
+                                <span class="edit material-icons" (click)="toggleEditMode()">edit_square</span>
+                            </ng-container>
+                            <ng-template #editMode>
+                                <div class="edit-mode-container">
+                                    <textarea class="edit-textarea" [(ngModel)]="editedInterest"></textarea>
+                                    <div class="button-container">
+                                        <button class="save-button" (click)="saveChanges()">Enregistrer</button>
+                                        <button class="cancel-button" (click)="cancelEdit()">Annuler</button>
+                                    </div>
+                                </div>
+                            </ng-template>
+
+                        </div>
+
+
+                    </div>
+                    <div>
+                        <p id="showMore" (click)="toggleShowMoreInterests()">{{ isInterestExpanded ? 'Voir moins' :
+                            'Voir plus' }}</p>
+                    </div>
+
+                </div>
+                <app-week-chart></app-week-chart>
+                <app-progres-chart></app-progres-chart>
             </div>
-            <div class="question-result-display">
-                <app-stat-quiz *ngFor="let quiz of quizList" [quiz]="quiz"></app-stat-quiz>
+            <div class="vertical-line"></div>
+            <div class="right">
+                <div>
+                    <div class="description-theme">
+                        <p>Taux de quiz effectués par thème</p>
+                    </div>
+                    <div class="quiz-result-display">
+                        <app-statistique-card *ngFor="let theme of displayedThemes"
+                            [theme]="theme"></app-statistique-card>
+                    </div>
+                    <div>
+                        <p class="plus" (click)="toggleDisplayTheme()">{{ toggleButtonText }}</p>
+                    </div>
+                </div>
+                <hr class="divide-ligne">
+                <div>
+                    <div class="description-quiz">
+                        <p>Taux de bonnes réponses par quiz</p>
+                    </div>
+                    <div class="question-result-display">
+                        <app-stat-quiz *ngFor="let quiz of quizList" [quiz]="quiz"></app-stat-quiz>
+                    </div>
+                    <div>
+                        <p class="plus" (click)="toggleDisplayQuiz()">{{ toggleButtonTextQuiz }}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

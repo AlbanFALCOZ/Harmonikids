@@ -1,4 +1,10 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { from } from 'rxjs';
+import { Quiz } from 'src/models/quiz.model';
+import { Theme } from 'src/models/theme.model';
+import { QuizService } from 'src/services/quiz.service';
+import { ThemeService } from 'src/services/theme.service';
 
 @Component({
   selector: 'app-theme-add',
@@ -7,7 +13,13 @@ import { Component, OnInit} from '@angular/core';
 })
 export class ThemeAddComponent implements OnInit {
 
-  constructor() { }
+  quizList: Quiz[] = [];
+
+  constructor(private themeService: ThemeService, private quizService: QuizService) { 
+    this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
+      this.quizList = quizzes;
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -30,5 +42,25 @@ export class ThemeAddComponent implements OnInit {
     if (modal) {
       modal.style.display = "none";
     }
+  }
+
+  submitForm(form: NgForm): void {
+
+    const themeName = form.value.themeTitle;
+    const themeDescription = form.value.themeDescription;
+    const themeQuizzes = form.value.themeQuizzes;
+    const themeImage = form.value.themeImage;
+
+    const newTheme: Theme = {
+      id: '1',
+      name: themeName,
+      description: themeDescription,
+      quizzes: themeQuizzes,
+      image: themeImage,
+    };
+
+    this.themeService.addTheme(newTheme);
+
+    form.resetForm();
   }
 }

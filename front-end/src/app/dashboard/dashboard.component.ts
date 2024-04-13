@@ -5,6 +5,7 @@ import { Theme } from 'src/models/theme.model';
 import { Quiz } from 'src/models/quiz.model'; 
 import { ThemeService } from 'src/services/theme.service';
 import { QuizService } from 'src/services/quiz.service'; 
+import { NavbarService } from 'src/services/navbar.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,8 +18,15 @@ export class DashboardComponent implements OnInit {
   themeList: Theme[] = [];
   quizList: Quiz[] = []; 
 
+  isNavVisible = false;
+
+
   constructor(private route: ActivatedRoute, private membreService: MembreService, 
-              private themeService: ThemeService, private quizService: QuizService) {}
+    private themeService: ThemeService, private quizService: QuizService, private navbarService: NavbarService) {
+    this.navbarService.isNavbarVisible$.subscribe(isVisible => {
+      this.isNavVisible = isVisible;
+    });
+              }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
