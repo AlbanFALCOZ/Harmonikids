@@ -1,0 +1,182 @@
+<app-navbar></app-navbar>
+<div>
+    <div class="title">
+        <h1> Questions </h1>
+        <img src="assets/img/emoji.png" alt="emoji">
+    </div>
+</div>
+<div class="content-question">
+
+    <button class="add-btn" id="myBtn" (click)="toggleForm()">Ajouter une question</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Type de question</th>
+                <th scope="col">Niveau</th>
+                <th scope="col">Réponses</th>
+                <th>Opération</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let question of questions">
+                <td>{{ question.label }}</td>
+                <td>{{ question.typeOfQuestion }}</td>
+                <td>{{ question.niveau }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        <li *ngFor="let answer of question.answers">
+                            {{ answer.value }}
+                        </li>
+                    </ul>
+                </td>
+                <td class="question-operation">
+                    <span class="material-icons" (click)="toggleFormUpdate()">edit_square</span>
+                    <span class="material-icons" (click)="toggleFormDelete()">delete</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="myModal" class="modal" *ngIf="displayForm">
+        <div class="modal-content">
+            <span class="close material-icons" (click)="toggleForm()">close</span>
+
+            <form (ngSubmit)="submitForm()" #questionForm="ngForm">
+                <div class="display-input">
+                    <label for="label">Label:</label>
+                    <input type="text" class="form-control" id="label" name="label" [(ngModel)]="question.label"
+                        required>
+                </div>
+                <div class="display-input">
+                    <label for="typeOfQuestion">Type de question:</label>
+                    <select class="form-control" id="typeOfQuestion" name="typeOfQuestion"
+                        [(ngModel)]="question.typeOfQuestion" required>
+                        <option value="">Sélectionner le thème</option>
+                        <option value="multiple-choice">Choix multiple</option>
+                        <option value="unique-choice">Choix unique</option>
+                        <option value="true-or-false">Vrai/Faux</option>
+                        <option value="drag-and-drop">Drag/Drop</option>
+                        <option value="guess-the-sound">Devine son</option>
+                    </select>
+                </div>
+                <div class="display-input">
+                    <label for="niveau">Niveau:</label>
+                    <select class="form-control" id="niveau" name="niveau" [(ngModel)]="question.niveau" required>
+                        <option value="">Sélectionner le niveau</option>
+                        <option value="facile">Facile</option>
+                        <option value="moyen">Moyen</option>
+                        <option value="difficile">Difficile</option>
+                    </select>
+                </div>
+                <div class="display-input">
+                    <label for="image">Image :</label>
+                    <input type="file" class="form-control" id="image" name="image" [(ngModel)]="question.image">
+                </div>
+                <div class="display-input">
+                    <label for="audio">Audio :</label>
+                    <input type="file" class="form-control" id="audio" name="audio" [(ngModel)]="question.audio">
+                </div>
+                <div class="display-input">
+                    <label for="hintText">Indice (Texte):</label>
+                    <input type="text" class="form-control" id="hintText" name="hintText">
+                </div>
+                <div class="display-input">
+                    <label for="hintImageUrl">Indice (Image):</label>
+                    <input type="file" class="form-control" id="hintImageUrl" name="hintImageUrl">
+                </div>
+                <div class="display-input">
+                    <label for="hintAudioUrl">Indice (Audio):</label>
+                    <input type="file" class="form-control" id="hintAudioUrl" name="hintAudioUrl">
+                </div>
+                <div class="display-input">
+                    <label for="answers">Réponses:</label>
+                    <div *ngFor="let answer of question.answers; let i=index">
+                        <input type="text" class="form-control" id="answer{{i}}" name="answer{{i}}"
+                            [(ngModel)]="question.answers[i].value">
+                    </div>
+                    <button type="button" class="btn btn-secondary" (click)="addAnswer()">Ajouter une réponse</button>
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="submitForm()">Enregistrer</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div id="myModalUpdate" class="modal" *ngIf="displayFormUpdate">
+        <div class="modal-content">
+            <span class="close material-icons" (click)="toggleFormUpdate()">close</span>
+    
+            <form (ngSubmit)="submitForm()" #questionForm="ngForm">
+                <div class="display-input">
+                    <label for="label">Label:</label>
+                    <input type="text" class="form-control" id="label" name="label" [(ngModel)]="question.label" required>
+                </div>
+                <div class="display-input">
+                    <label for="typeOfQuestion">Type de question:</label>
+                    <select class="form-control" id="typeOfQuestion" name="typeOfQuestion"
+                        [(ngModel)]="question.typeOfQuestion" required>
+                        <option value="">Sélectionner le thème</option>
+                        <option value="multiple-choice">Choix multiple</option>
+                        <option value="unique-choice">Choix unique</option>
+                        <option value="true-or-false">Vrai/Faux</option>
+                        <option value="drag-and-drop">Drag/Drop</option>
+                        <option value="guess-the-sound">Devine son</option>
+                    </select>
+                </div>
+                <div class="display-input">
+                    <label for="niveau">Niveau:</label>
+                    <select class="form-control" id="niveau" name="niveau" [(ngModel)]="question.niveau" required>
+                        <option value="">Sélectionner le niveau</option>
+                        <option value="facile">Facile</option>
+                        <option value="moyen">Moyen</option>
+                        <option value="difficile">Difficile</option>
+                    </select>
+                </div>
+                <div class="display-input">
+                    <label for="image">Image :</label>
+                    <input type="file" class="form-control" id="image" name="image" [(ngModel)]="question.image">
+                </div>
+                <div class="display-input">
+                    <label for="audio">Audio :</label>
+                    <input type="file" class="form-control" id="audio" name="audio" [(ngModel)]="question.audio">
+                </div>
+                <div class="display-input">
+                    <label for="hintText">Indice (Texte):</label>
+                    <input type="text" class="form-control" id="hintText" name="hintText">
+                </div>
+                <div class="display-input">
+                    <label for="hintImageUrl">Indice (Image):</label>
+                    <input type="file" class="form-control" id="hintImageUrl" name="hintImageUrl">
+                </div>
+                <div class="display-input">
+                    <label for="hintAudioUrl">Indice (Audio):</label>
+                    <input type="file" class="form-control" id="hintAudioUrl" name="hintAudioUrl">
+                </div>
+                <div class="display-input">
+                    <label for="answers">Réponses:</label>
+                    <div *ngFor="let answer of question.answers; let i=index">
+                        <input type="text" class="form-control" id="answer{{i}}" name="answer{{i}}"
+                            [(ngModel)]="question.answers[i].value">
+                    </div>
+                    <button type="button" class="btn btn-secondary" (click)="addAnswer()">Ajouter une réponse</button>
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="toggleFormUpdate()">Modifier</button>
+            </form>
+    
+        </div>
+    </div>
+
+    <div id="myModalDelete" class="modal" *ngIf="displayFormDelete">
+        <div class="modal-content-suppression">
+            <span class="close material-icons" (click)="toggleFormDelete()">close</span>
+            <p>Êtes vous sûr de vouloir supprimer cet élément</p>
+            <div class="delete-btn">
+                <button type="submit" class="btnValid" (click)="toggleFormDelete()">Valider</button>
+                <button type="reset" class="btnCancel" (click)="toggleFormDelete()">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+</div>

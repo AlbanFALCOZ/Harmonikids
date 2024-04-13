@@ -3,6 +3,7 @@
     <span class="material-icons add" id="myBtn" (click)="displayModal()">add</span>
 </div>
 
+
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close material-icons" (click)="closeModal()">close</span>
@@ -21,15 +22,7 @@
                     <option value="astronomie">Astronomie</option>
                 </select><br>
             </div>
-            <div class="display-input">
-                <label for="quizNiveau">Niveau:</label><br>
-                <select id="quizNiveau" name="quizNiveau">
-                    <option value="">Sélectionner le niveau du quiz</option>
-                    <option value="facile">Facile</option>
-                    <option value="moyen">Moyen</option>
-                    <option value="difficile">Difficile</option>
-                </select><br>
-            </div>
+
             <div class="display-input">
                 <label for="quizDescription">Description:</label><br>
                 <textarea id="quizDescription" name="quizDescription" rows="5"></textarea><br>
@@ -54,6 +47,11 @@
                         <option value="question3">Question 3</option>
                     </optgroup>
                 </select><br>
+            </div>
+
+            <div class="display-input">
+                <label for="quizImage">Image du quiz:</label><br>
+                <input type="file" id="quizImage" name="quizImage"><br>
             </div>
 
             <button type="submit">Créer le quiz</button>
