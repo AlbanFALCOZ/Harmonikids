@@ -17,7 +17,7 @@ export const THEME_LIST: Theme[] = [
         description: 'Description du theme 2',
         numberOfQuizzes: 8,
         quizzes: QUIZ_LIST,
-        image: 'assets/img/sports.png'
+        image: 'assets/img/sport.jpg'
     },
     {
         id: '3',
@@ -33,7 +33,7 @@ export const THEME_LIST: Theme[] = [
         description: 'Description du theme 4',
         numberOfQuizzes: 2,
         quizzes: QUIZ_LIST,
-        image: 'assets/img/etoile.jpg'
+        image: 'assets/img/etoileB.jpg'
     },
     {
         id: '5',

@@ -78,25 +78,25 @@ export const TRUE_FALSE: Question = {
 
 export const DRAG_DROP1: Question = {
     id: '4',
-    label: 'Comment se nomme notre planéte?',
+    label: 'Laquelle parmis ces propositions n\est pas un animal',
     typeOfQuestion: QuestionType.DragAndDrop,
     niveau: 'moyen',
     image: 'assets/img/chien.jpeg',
     answers: [
         {
-            value: 'Terre',
+            value: 'Fourmie',
             isCorrect: true,
         },
         {
-            value: 'Mercure',
+            value: 'Singe',
             isCorrect: false,
         },
         {
-            value: 'Venus',
+            value: 'Giraffe',
             isCorrect: false,
         },
         {
-            value: 'Jupiter',
+            value: 'Tigre',
             isCorrect: false,
         },
     ],
