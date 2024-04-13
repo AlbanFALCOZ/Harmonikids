@@ -9,8 +9,8 @@
 .question img,
 .question video,
 .question audio {
-    width: 900px;
-    height: 400px;
+    width: 500px;
+    height: 190px;
     margin-top: 20px;
     border: 5px solid #000;
     border-radius: 15px;
@@ -67,8 +67,8 @@
     border: 0;
     background: transparent;
     box-sizing: border-box;
-    width: 50px;
-    height: 77px;
+    width: 40px;
+    height: 20px;
   
     border-color: transparent transparent transparent #202020;
     transition: 100ms all ease;
@@ -104,30 +104,6 @@
   }
 
 
-  .question {
-    width: 950px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.question img, .question video, .question audio {
-    width: 900px;
-    height: 400px;
-    margin-top: 20px;
-    border: 5px solid #000;
-    border-radius: 15px;
-}
-
-.question h3 {
-    font-size: 24px;
-    text-align: center;
-}
-
-.question-answers{
-    margin-left: 20px;
-}
 
 .question-answers .answer {
     width: 430px;

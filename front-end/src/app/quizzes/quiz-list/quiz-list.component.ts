@@ -4,6 +4,7 @@ import { Quiz } from '../../../models/quiz.model';
 import { QuizService } from '../../../services/quiz.service';
 import { TitleService } from '../../../services/title.service';
 import { QuestionService } from 'src/services/question.service';
+import { NavbarService } from 'src/services/navbar.service';
 
 
 @Component({
@@ -17,14 +18,21 @@ export class QuizListComponent implements OnInit {
   quizToDelete: Quiz | null = null;
   isDisabled: boolean = false;
 
+  isNavVisible = false;
+
+
   public selectedQuiz: Quiz | null = null;
 
-  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService, public questionService: QuestionService) {
+  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService, public questionService: QuestionService, private navbarService: NavbarService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
     });
     this.titleService.title = 'Liste des quiz';
     this.titleService.search = 'Rechercher dans les quiz...';
+    
+    this.navbarService.isNavbarVisible$.subscribe(isVisible => {
+      this.isNavVisible = isVisible;
+    });
   }
 
   ngOnInit(): void {
