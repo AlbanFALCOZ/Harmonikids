@@ -34,7 +34,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { SoundQuestionComponent } from './questions/sound-question/sound-question.component';
-
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -47,7 +47,6 @@ import { SoundQuestionComponent } from './questions/sound-question/sound-questio
     NiveauCardComponent,
     MembreComponent,
     MembreListeComponent,
-    NavbarComponent,
     ThemeComponent,
     ThemeAddComponent,
     ThemeEditComponent,
@@ -77,9 +76,12 @@ import { SoundQuestionComponent } from './questions/sound-question/sound-questio
     AppRoutingModule,
     HttpClientModule,
     DragDropModule,
+    CommonModule,
+    FormsModule
     
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+  
 export class AppModule { }

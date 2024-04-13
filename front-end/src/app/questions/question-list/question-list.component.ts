@@ -4,7 +4,7 @@ import { Question, Answer } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
 import { QuestionType } from '../../../models/question.model';
 import { SoundQuestionComponent } from '../sound-question/sound-question.component';
-import { ScoreService } from 'src/services/score-service-component';
+import { ScoreService } from 'src/services/score-service.service';
 
 @Component({
   selector: 'app-question-list',
@@ -80,10 +80,10 @@ export class QuestionListComponent implements OnInit {
       alert('Veuillez sélectionner au moins une réponse avant de valider.');
       return;
     }
-    this.selectedAnswer.forEach((item, index) => { 
+    this.selectedAnswer.forEach((item, index) => {
       item.alreadySelected = true;
       this.selectedAnswerAllQuestions.push(item);
-     });
+    });
     this.selectedAnswerAllQuestions.filter((item, index) => this.selectedAnswerAllQuestions.indexOf(item) == index);
     const currentQuestion = this.questionList[this.currentQuestionIndex];
     const correctAnswers = currentQuestion.answers.filter(a => a.isCorrect);
@@ -168,7 +168,7 @@ export class QuestionListComponent implements OnInit {
     this.selectedAnswer = answer.filter(a => a.isSelected);
     this.resetMessages();
   }
-  
+
   generateArray(num: number): any[] {
     if (num > 12) num = 12;
     return Array(num);

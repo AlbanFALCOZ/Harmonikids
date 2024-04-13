@@ -1,8 +1,14 @@
 .core-page {
+    width: 100%;
+    align-items: center;
+}
+
+.core-page-stat {
     display: flex;
     justify-content: space-around;
     width: 100%;
     align-items: center;
+    margin-top: 60px;
 }
 
 .title {
@@ -75,4 +81,134 @@
     grid-row: 4/4;
     font-size: 20px;
     font-weight: bold;
+}
+
+.card-profil-footer {
+    width: 500px;
+    height: 280px;
+    border: 3px solid #FAA300;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #F4538A;
+    background-color: lightgoldenrodyellow;
+}
+
+.profil-footer-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #FAA300;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.profil-footer-title .material-icons {
+    font-size: 50px;
+    color: #FAA300;
+    margin-right: 10px;
+}
+
+.profil-footer-description {
+    max-height: 150px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.profil-footer-description.expanded {
+    max-height: none;
+
+}
+
+
+.profil-footer-description.expandedInterest {
+    max-height: none;
+}
+
+.card-profil-footer.expanded {
+    height: auto;
+}
+
+.card-profil-footer.expandedInterest {
+    height: auto;
+}
+
+.plus {
+    border: 2px solid #FAA300;
+    align-items: center;
+    text-align: center;
+    background-color: #F4538A;
+    color: white;
+    padding: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.profil-description {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}
+
+#showMore {
+    border-top: 2px solid #FAA300;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.edit {
+    font-size: 30px;
+    cursor: pointer;
+    color: #FAA300;
+}
+
+.edit:hover {
+    color: #F4538A;
+}
+
+.description-edit {
+    display: flex;
+    justify-content: space-around;
+}
+
+.description-edit p {
+    text-align: justify;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.edit-mode-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-textarea {
+    width: 400px;
+    height: 70px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.save-button,
+.cancel-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #64dff2;
+    color: #fff;
+    cursor: pointer;
+}
+
+.save-button:hover,
+.cancel-button:hover {
+    background-color: #da77d8;
 }
