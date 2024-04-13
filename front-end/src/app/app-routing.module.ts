@@ -11,11 +11,13 @@ import { DragDropComponent } from './questions/drag-drop/drag-drop.component';
 import { StatistiqueComponent } from './statistiques/statistique/statistique.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { QuestionAddComponent } from './questions/question-add/question-add.component';
 
 
 const routes: Routes = [
   { path: 'quiz-list', component: QuizListComponent },
   { path: 'quiz', component: QuizComponent },
+  { path: 'questions', component: QuestionAddComponent },
   { path: 'niveau/:id', component: LevelComponent },
   { path: 'theme-list', component: ThemeListComponent },
   { path: 'statistiques', component: StatistiqueComponent },

@@ -35,6 +35,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { SoundQuestionComponent } from './questions/sound-question/sound-question.component';
 import { CommonModule } from '@angular/common';
+import { QuestionAddComponent } from './questions/question-add/question-add.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { CommonModule } from '@angular/common';
     ConfigurationComponent,
     DashboardComponent,
     SoundQuestionComponent,
+    QuestionAddComponent,
 
   ],
   imports: [
