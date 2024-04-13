@@ -7,7 +7,7 @@
         <p>{{ theme.description }}</p>
         <p>{{ theme.quizzes.length }}</p>
     </div>
-    <div class="theme-card-button">
+    <div class="theme-card-button" *ngIf="!isDisabled">
         <a routerLink="/quiz-list"><button (click)="selectTheme()">Select </button></a>
         <button (click)="displayModalUpdate()">Edit</button>
         <button (click)="displayModalDelete()">Delete</button>

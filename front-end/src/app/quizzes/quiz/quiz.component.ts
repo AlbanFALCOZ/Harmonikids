@@ -11,6 +11,8 @@ export class QuizComponent implements OnInit {
     @Input()
     quiz!: Quiz
 
+    @Input() isDisabled: boolean = false;
+
     @Output()
     quizSelected: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
