@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ColorService } from 'src/services/color-service.service';
 import { MembreService } from 'src/services/membre.service';
+import { ModeService } from 'src/services/mode-ergo.service';
 import { NavbarService } from 'src/services/navbar.service';
 
 @Component({
@@ -14,9 +15,15 @@ export class NavbarComponent implements OnInit {
   
   isNavVisible = false;
 
-  constructor(public colorService: ColorService, public membreService: MembreService, private navbarService: NavbarService) { 
+  isDisabled = false;
+
+  constructor(public colorService: ColorService, public membreService: MembreService, private navbarService: NavbarService, private modeService: ModeService) { 
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
+    });
+
+    this.modeService.isDisabled$.subscribe(isDisabled => {
+      this.isDisabled = isDisabled;
     });
   }
 

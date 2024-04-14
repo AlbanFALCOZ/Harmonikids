@@ -6,6 +6,7 @@ import { TitleService } from 'src/services/title.service';
 import { SonService } from 'src/services/sound.service';
 import { NavbarService } from 'src/services/navbar.service';
 import { NgForm } from '@angular/forms';
+import { ModeService } from 'src/services/mode-ergo.service';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class MembreListeComponent implements OnInit {
 
 
 
-  constructor(private router: Router, public membreService: MembreService, public titleService: TitleService, private sonService: SonService, private navbarService: NavbarService) {
+  constructor(private router: Router, public membreService: MembreService, public titleService: TitleService, private sonService: SonService, private navbarService: NavbarService, private modeService: ModeService) {
     this.membreService.membres$.subscribe((membres: Membre[]) => {
       this.membreListe = membres;
     });
@@ -39,10 +40,18 @@ export class MembreListeComponent implements OnInit {
       this.isNavVisible = isVisible;
     });
 
+    this.modeService.isDisabled$.subscribe(isDisabled => {
+      this.isDisabled = isDisabled;
+    });
+
   }
 
   ngOnInit(): void {
     
+  }
+
+  toggleMode() {
+    this.modeService.toggleMode();
   }
 
 

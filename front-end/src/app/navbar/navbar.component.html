@@ -13,8 +13,8 @@
   <a routerLink="/membres-liste">Accueil</a>
   <a [routerLink]="['/dashboard', memberId]">Dashboard</a>
   <a routerLink="/quiz-list">Quiz</a>
-  <a routerLink="/questions">Questions</a>
+  <a routerLink="/questions" *ngIf="!isDisabled">Questions</a>
   <a routerLink="/theme-list">Thèmes</a>
-  <a routerLink="/statistiques">Statistiques</a>
-  <a routerLink="/configuration">Paramètres</a>
+  <a routerLink="/statistiques" *ngIf="!isDisabled">Statistiques</a>
+  <a routerLink="/configuration" *ngIf="!isDisabled">Paramètres</a>
 </div>
