@@ -30,7 +30,7 @@ export class ThemeListComponent implements OnInit {
       this.themeList = themes;
       this.themeListDisplayed = themes;
     });
-    this.titleService.title = 'Liste des themes';
+    this.titleService.title = 'Liste des thèmes';
     this.titleService.search = 'Rechercher dans les themes...';
 
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {

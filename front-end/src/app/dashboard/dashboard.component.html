@@ -17,9 +17,10 @@
       <img class="stars" src="assets/img/star.png" alt="Star Image">
       <h3>130 étoiles</h3>
 
+
   </div>
   
-  
+
 
     <div class="info-box">
       <span class="material-symbols-outlined">
@@ -35,6 +36,7 @@
 <a routerLink="/theme-list" class="favorite-themes-link">
     Des thèmes qui pourront te faire plaisir <span class="arrow">➔</span>
 
+
   </a>
 
 
@@ -43,6 +45,7 @@
     <app-theme-dashboard *ngFor="let theme of themeList" [theme]="theme" (themeSelected)="themeSelected($event)">     
     </app-theme-dashboard>
 </div>
+
 
 
   <a routerLink="/quiz-list" class="last-quiz-link">

@@ -2,7 +2,6 @@ import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core
 import { Question, Answer } from 'src/models/question.model';
 import { ScoreService } from 'src/services/score-service-component.service';
 
-
 @Component({
   selector: 'app-sound-question',
   templateUrl: './sound-question.component.html',

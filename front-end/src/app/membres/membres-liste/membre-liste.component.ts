@@ -4,9 +4,9 @@ import { Membre } from 'src/models/membre.model';
 import { MembreService } from 'src/services/membre.service';
 import { TitleService } from 'src/services/title.service';
 import { SonService } from 'src/services/sound.service';
-
 import { NavbarService } from 'src/services/navbar.service';
 import { NgForm } from '@angular/forms';
+
 
 
 
@@ -83,7 +83,6 @@ export class MembreListeComponent implements OnInit {
   }
 
 
- 
 
 }
 

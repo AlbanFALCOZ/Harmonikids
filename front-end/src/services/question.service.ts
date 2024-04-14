@@ -73,37 +73,30 @@ export class QuestionService {
   }
   
 
-  removeQuestionFromLocalStorage(type : QuestionType): void {
+  removeQuestionFromLocalStorage(type: QuestionType): void {
     let storedQuestions: Question[] = this.getQuestionsFromLocalStorage();
     storedQuestions = storedQuestions.filter(question => question.typeOfQuestion !== type);
     localStorage.setItem('questions', JSON.stringify(storedQuestions));
-}
-
-addToLocalStorageByType(questionType: QuestionType): void {
-  let storedQuestions: Question[] = this.getQuestionsFromLocalStorage();
-
-  let questionsToAdd: Question[] = this.getQuestionByType(questionType);
-
-  questionsToAdd.forEach(question => {
-    if (!storedQuestions.some(q => q.typeOfQuestion === question.typeOfQuestion)) {
-      storedQuestions.push(question);
-    }
-  });
-
-  storedQuestions.sort((a, b) => {
-    if (a.id < b.id) {
-      return -1;
-    } else if (a.id > b.id) {
-      return 1;
-    } else {
-      return 0;
-    }
-  });
-
-  localStorage.setItem('questions', JSON.stringify(storedQuestions));
-}
-
-
+  }
+  
+  addToLocalStorageByType(questionType: QuestionType): void {
+    let storedQuestions: Question[] = this.getQuestionsFromLocalStorage();
+  
+    
+    const questionsToAdd: Question[] = this.getQuestionByType(questionType);
+  
+   
+    questionsToAdd.forEach(question => {
+      if (!storedQuestions.some(q => q.id === question.id)) {
+        storedQuestions.push(question);
+      }
+    });
+  
+    
+    storedQuestions.sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+    localStorage.setItem('questions', JSON.stringify(storedQuestions));
+  }
+  
 
   
 
@@ -116,6 +109,29 @@ addToLocalStorageByType(questionType: QuestionType): void {
   }
   
 
+  initializeQuestion(): Question[] {
+ 
+    const storedQuestions: Question[] = this.getQuestionsFromLocalStorage();
+
+    const storedQuestionTypes: QuestionType[] = Array.from(new Set(storedQuestions.map(question => question.typeOfQuestion)));
+  
+    const allQuestionTypes: QuestionType[] = Array.from(new Set(this.questions.map(question => question.typeOfQuestion)));
+  
+    const missingQuestionTypes: QuestionType[] = allQuestionTypes.filter(type => !storedQuestionTypes.includes(type));
+  
+    missingQuestionTypes.forEach(type => {
+      const missingQuestions: Question[] = this.getQuestionByType(type);
+      missingQuestions.forEach(question => {
+        storedQuestions.push(question);
+      });
+    });
+  
+    storedQuestions.sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+    localStorage.setItem('questions', JSON.stringify(storedQuestions));
+    return storedQuestions;
+  }
+  
+  
   
 
 }

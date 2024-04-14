@@ -146,15 +146,20 @@ export class QuestionListComponent implements OnInit {
       this.questionCleared.push(this.currentQuestionIndex);
 
     } else {
-      this.showFailureMessage = true;
-      this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint)
-      this.indiceService.showHint(this.indiceService.hint);
+      
+        this.showFailureMessage = true;
+        this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
+        this.indiceService.showHint(this.indiceService.hint);
+        
     }
 
     this.messageTimeout = setTimeout(() => {
       this.showSuccessMessage = false;
       this.showFailureMessage = false;
-      this.indiceService.hintText = undefined;
+      if(this.indiceService.estIndiceActif()){
+      this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
+      this.indiceService.hintText = this.indiceService.hintText
+      }
       this.indiceService.hintImageUrl = undefined;
     }, 8000);
   }

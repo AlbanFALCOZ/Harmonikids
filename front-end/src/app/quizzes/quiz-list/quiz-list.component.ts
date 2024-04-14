@@ -7,7 +7,6 @@ import { QuestionService } from 'src/services/question.service';
 import { NavbarService } from 'src/services/navbar.service';
 
 
-
 @Component({
   selector: 'app-quiz-list',
   templateUrl: './quiz-list.component.html',

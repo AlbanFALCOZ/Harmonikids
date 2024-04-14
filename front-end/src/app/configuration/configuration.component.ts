@@ -29,9 +29,9 @@ export class ConfigurationComponent {
 
   themeList: Theme[] = [];
   showDropdown: boolean = false;
-  isSoundOn: boolean;
+  isSoundOn: boolean ;
   isMusicOn: boolean ;
-  isIndiceOn:boolean = true;
+  isIndiceOn:boolean;
   selectedOption: string = 'option1';
   selectedQuestionTypes: QuestionType[];
   questionList = this.questionService.getQuestionsFromLocalStorage();
@@ -78,8 +78,10 @@ export class ConfigurationComponent {
     this.isIndiceOn = this.indiceService.estIndiceActif();
     if(this.isIndiceOn){
       this.indiceService.activerIndice();
+      this.indiceService.hint = true ; 
     }else {
       this.indiceService.desactiverIndice();
+      this.indiceService.hint = false ; 
     }
   }
 

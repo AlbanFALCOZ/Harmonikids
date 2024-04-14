@@ -77,6 +77,7 @@ import { QuestionAddComponent } from './questions/question-add/question-add.comp
     ThemeDashboardComponent,
     QuestionAddComponent,
 
+
   ],
   imports: [
     BrowserModule,

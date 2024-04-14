@@ -32,11 +32,13 @@ export const THEME_LIST: Theme[] = [
         image: 'assets/img/etoile.jpg'
     },
     {
-        id: '4',
+        id: '6',
+
         name: 'La logique',
-        description: 'Description du theme 4',
+        description: 'Description du theme 6',
         quizzes: QUIZ_LIST,
         image: 'assets/img/addition.jpg'
+
 
     },
     {
@@ -55,6 +57,7 @@ export const THEME_LIST: Theme[] = [
        
         quizzes: QUIZ_LIST,
         image: 'assets/img/francais.jpg'
+
 
     }
 
