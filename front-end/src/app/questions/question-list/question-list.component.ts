@@ -187,8 +187,7 @@ export class QuestionListComponent implements OnInit {
   }
 
   finishQuiz() {
-    this.scoreService.setAllSelectedAnswers(this.selectedAnswerAllQuestions);
-    this.scoreService.setCorrectAnswers(this.selectedAnswerCorrect);
+    this.scoreService.updateSelectedAnswersCount(this.selectedAnswerAllQuestions.length);
     this.router.navigate(['/end-game']);
   }
 }
