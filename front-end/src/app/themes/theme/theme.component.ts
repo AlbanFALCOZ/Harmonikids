@@ -11,6 +11,8 @@ export class ThemeComponent implements OnInit {
     @Input()
     theme?: Theme
 
+    @Input() isDisabled: boolean = false;
+
     @Output()
     themeSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
 

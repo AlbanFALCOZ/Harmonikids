@@ -6,7 +6,7 @@
 
   <div class="content-quiz">
     <app-quiz *ngFor="let quiz of quizList" [quiz]="quiz" (quizSelected)="quizSelected($event)"
-      (editQuiz)="editQuiz($event)" (quizToDelete)="addQuizToDelete($event)">
+      (editQuiz)="editQuiz($event)" (quizToDelete)="addQuizToDelete($event)" [isDisabled]="isDisabled">
     </app-quiz>
 
     <app-quiz-add *ngIf="!isDisabled"></app-quiz-add>
