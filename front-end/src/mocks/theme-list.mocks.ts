@@ -15,7 +15,7 @@ export const THEME_LIST: Theme[] = [
         name: 'Le sport',
         description: 'Description du theme 2',
         quizzes: QUIZ_LIST,
-        image: 'assets/img/sports.png'
+        image: 'assets/img/sport.jpg'
     },
     {
         id: '3',
@@ -32,18 +32,33 @@ export const THEME_LIST: Theme[] = [
         image: 'assets/img/etoile.jpg'
     },
     {
-        id: '4',
-        name: 'Les mathèmatiques',
-        description: 'Description du theme 3',
+        id: '6',
+
+        name: 'La logique',
+        description: 'Description du theme 6',
         quizzes: QUIZ_LIST,
         image: 'assets/img/addition.jpg'
+
+
     },
     {
         id: '5',
         name: 'Les mathèmatiques',
-        description: 'Description du theme 3',
+
+        description: 'Description du theme 5',
+        
         quizzes: QUIZ_LIST,
-        image: 'assets/img/addition.jpg'
+        image: 'assets/img/mathsB.jpg'
+    },
+    {
+        id: '7',
+        name: 'La langue française',
+        description: 'Description du theme 6',
+       
+        quizzes: QUIZ_LIST,
+        image: 'assets/img/francais.jpg'
+
+
     }
 
 ];

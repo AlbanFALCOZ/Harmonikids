@@ -9,6 +9,8 @@ import { NgForm } from '@angular/forms';
 import { ModeService } from 'src/services/mode-ergo.service';
 
 
+
+
 @Component({
   selector: 'app-membre-liste',
   templateUrl: './membre-liste.component.html',
@@ -88,6 +90,7 @@ export class MembreListeComponent implements OnInit {
 
     form.resetForm();
   }
+
 
 
 }

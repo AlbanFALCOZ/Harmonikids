@@ -1,0 +1,88 @@
+.quiz-card{
+    width: 270px;
+    height: 200px;
+    border: 5px solid #FAA300;
+    border-radius: 30px;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
+    padding-top: 10px;
+    background-color: #59D5E0;
+    cursor: pointer;
+}
+
+.quiz-card-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 2px solid #FAA300;
+    height: 130px;
+}
+
+.text {
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(255, 255, 255); 
+    margin-top:10px;
+}
+
+
+.quiz-card-header img{
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    height: 100px;
+    width: 100%;
+    margin-top:4px;
+}
+
+.quiz-card-footer{
+    text-align: center;
+    font-style: italic;
+   
+}
+
+
+.quiz-card:hover {
+    transform: translateX(-5px) translateY(-5px); 
+}
+
+.progress-circle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .progress-circle__svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .progress-circle__background {
+    fill: none;
+    stroke: #ddd;
+    stroke-width: 10;
+  }
+  
+  .progress-circle__progress {
+    fill: none;
+    stroke: #F4538A;
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-dasharray: 0;
+    transition: stroke-dasharray 1s ease-in-out;
+  }
+  
+  .progress-circle__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+  
+  .progress-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+  }
