@@ -53,8 +53,25 @@ export class QuestionService {
 
   getQuestionsFromLocalStorage(): Question[] {
     const storedQuestions = localStorage.getItem('questions');
-    return storedQuestions ? JSON.parse(storedQuestions) : [];
+    
+    if (storedQuestions) {
+      const parsedQuestions: Question[] = JSON.parse(storedQuestions);
+     
+      parsedQuestions.sort((a, b) => {
+        if (a.id < b.id) {
+          return -1;
+        } else if (a.id > b.id) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+      return parsedQuestions;
+    } else {
+      return [];
+    }
   }
+  
 
   removeQuestionFromLocalStorage(type : QuestionType): void {
     let storedQuestions: Question[] = this.getQuestionsFromLocalStorage();
@@ -63,22 +80,29 @@ export class QuestionService {
 }
 
 addToLocalStorageByType(questionType: QuestionType): void {
-  
   let storedQuestions: Question[] = this.getQuestionsFromLocalStorage();
-  
-  
+
   let questionsToAdd: Question[] = this.getQuestionByType(questionType);
 
-
   questionsToAdd.forEach(question => {
-      if (!storedQuestions.some(q => q.typeOfQuestion === question.typeOfQuestion)) {
-          storedQuestions.push(question);
-      }
+    if (!storedQuestions.some(q => q.typeOfQuestion === question.typeOfQuestion)) {
+      storedQuestions.push(question);
+    }
   });
 
-  
+  storedQuestions.sort((a, b) => {
+    if (a.id < b.id) {
+      return -1;
+    } else if (a.id > b.id) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
   localStorage.setItem('questions', JSON.stringify(storedQuestions));
 }
+
 
 
   
@@ -87,6 +111,10 @@ addToLocalStorageByType(questionType: QuestionType): void {
     return this.questions.filter(question => question.typeOfQuestion === type);
   }
 
+  getQuestionById(id: string): Question | undefined {
+    return this.questions.find(question => question.id === id);
+  }
+  
 
   
 

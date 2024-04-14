@@ -31,7 +31,7 @@ export class ConfigurationComponent {
   showDropdown: boolean = false;
   isSoundOn: boolean;
   isMusicOn: boolean ;
-  isIndiceOn:boolean;
+  isIndiceOn:boolean = true;
   selectedOption: string = 'option1';
   selectedQuestionTypes: QuestionType[];
   questionList = this.questionService.getQuestionsFromLocalStorage();
@@ -76,6 +76,11 @@ export class ConfigurationComponent {
   toggleIndice(){
     this.indiceService.toggleIndiceService();
     this.isIndiceOn = this.indiceService.estIndiceActif();
+    if(this.isIndiceOn){
+      this.indiceService.activerIndice();
+    }else {
+      this.indiceService.desactiverIndice();
+    }
   }
 
   toggleDropdown() {

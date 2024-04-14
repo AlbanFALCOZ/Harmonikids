@@ -6,46 +6,43 @@ import { Injectable } from '@angular/core';
 export class  IndiceService {
 
 
-
-
-
-    setIndice(hint: { text?: string | undefined; imageUrl?: string | undefined; audioUrl?: string | undefined } | undefined) {
-        if (hint) {
-           
-            if (hint.text !== undefined) {
-                this.hintText = hint.text;
-            }
-            if (hint.imageUrl !== undefined) {
-                this.hintImageUrl = hint.imageUrl;
-            }
-            if (hint.audioUrl !== undefined) {
-                
-                if (hint.audioUrl) {
-                    this.hintAudio = new Audio(hint.audioUrl);
-                } else {
-                    
-                    this.hintAudio = null;
-                }
-            }
-        } else {
-           
-            this.hintText = undefined;
-            this.hintImageUrl = undefined;
-            this.hintAudio = null;
-        }
-    }
-    
-  
   public hint: boolean;
   hintText: string | undefined;
   hintImageUrl: string | undefined;
   public hintAudio: HTMLAudioElement | null = null;
 
-
-
   constructor() {
     this.hint = JSON.parse(localStorage.getItem('hint') ?? 'true');
   }
+
+
+  setIndice(hint: { text?: string | undefined; imageUrl?: string | undefined; audioUrl?: string | undefined } | undefined) {
+    if (hint) {
+       
+        if (hint.text !== undefined) {
+            this.hintText = hint.text;
+        }
+        if (hint.imageUrl !== undefined) {
+            this.hintImageUrl = hint.imageUrl;
+        }
+        if (hint.audioUrl !== undefined) {
+            
+            if (hint.audioUrl) {
+                this.hintAudio = new Audio(hint.audioUrl);
+            } else {
+                
+                this.hintAudio = null;
+            }
+        }
+    } else {
+       
+        this.hintText = undefined;
+        this.hintImageUrl = undefined;
+        this.hintAudio = null;
+    }
+}
+
+
 
   activerIndice() {
     this.sauvegarderIndiceState(true);

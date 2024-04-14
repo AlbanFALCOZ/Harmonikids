@@ -33,7 +33,7 @@ export class SonService {
   }
 
   toggleSon() {
-    this.sauvegarderSonState(!this.sonActif);
+    this.sauvegarderSonState(this.sonActif);
   }
 
   
@@ -44,7 +44,7 @@ export class SonService {
   }
 
   toggleMusique() {
-    this.sauvegarderMusiqueState(!this.musicActif);
+    this.sauvegarderMusiqueState(this.musicActif);
   }
 
  
