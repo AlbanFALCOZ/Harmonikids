@@ -36,7 +36,7 @@ export class QuestionService {
   updateQuestionsForQuiz(questions: Question[]): void {
     this.questions = questions;
     this.questions$.next(this.questions);
-    this.saveQuestionsToLocalStorage(this.questions);
+    
   }
 
   retrieveQuestions(): void {
