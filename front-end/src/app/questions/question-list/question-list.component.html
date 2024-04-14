@@ -64,7 +64,7 @@
         (click)="validateQuestion()">Valider</button>
     </ng-container>
 
-    <button type="submit" class="suivant" (click)="nextQuestion()">Suivant</button>
+    <button type="submit" class="suivant" (click)="nextQuestion()" >Suivant</button>
   </div>
 
 
@@ -74,7 +74,7 @@
 
 
 <div class="messageFailure" *ngIf="showFailureMessage" >
-  Dommage, la réponse est incorrecte ou incomplète.
+  T'y étais presque ! Courage , des étoiles à gagner t'attendent !
 </div>
 
 

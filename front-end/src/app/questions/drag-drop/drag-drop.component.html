@@ -31,6 +31,10 @@
     Bravo, tu as trouvé la bonne réponse ! Tu gagnes 20 étoiles !
 </div>
 
-<div class="messageFailure" *ngIf="showFailureMessage" >
-    Réessaye !
+<div class="messageFailure" *ngIf="showFailureMessage">
+    Et si tu pensais autrement?
+    <br> 
+    <ng-container *ngIf="hintImageUrl">
+        <img [src]="hintImageUrl" alt="Indice">
+    </ng-container>
 </div>

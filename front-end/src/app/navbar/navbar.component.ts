@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ColorService } from 'src/services/color-service.service';
+import { IndiceService } from 'src/services/indice.service';
 import { MembreService } from 'src/services/membre.service';
 import { ModeService } from 'src/services/mode-ergo.service';
 import { NavbarService } from 'src/services/navbar.service';
@@ -14,10 +15,11 @@ export class NavbarComponent implements OnInit {
   memberId: string | undefined;
   
   isNavVisible = false;
+  hint: string | undefined;
 
   isDisabled = false;
 
-  constructor(public colorService: ColorService, public membreService: MembreService, private navbarService: NavbarService, private modeService: ModeService) { 
+  constructor(public colorService: ColorService, public membreService: MembreService, private navbarService: NavbarService, private modeService: ModeService, private indiceService : IndiceService) { 
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
@@ -25,6 +27,8 @@ export class NavbarComponent implements OnInit {
     this.modeService.isDisabled$.subscribe(isDisabled => {
       this.isDisabled = isDisabled;
     });
+
+    this.hint = this.indiceService.hintText;
   }
 
   ngOnInit(): void {
@@ -38,4 +42,9 @@ export class NavbarComponent implements OnInit {
   onNavbarClicked(): void {
     this.toggleNav();
   }
+
+
+
+
+
 }

@@ -78,7 +78,7 @@ export const TRUE_FALSE: Question = {
 
 export const DRAG_DROP1: Question = {
     id: '4',
-    label: 'Laquelle parmis ces propositions n\est pas un animal',
+    label: 'Laquelle parmis ces propositions n\'est pas un animal',
     typeOfQuestion: QuestionType.DragAndDrop,
     niveau: 'moyen',
     image: 'assets/img/chien.jpeg',
@@ -101,7 +101,7 @@ export const DRAG_DROP1: Question = {
         },
     ],
     hint: {
-        imageUrl: 'assets/img/terre.jpg'
+        imageUrl: 'assets/img/fourmis.png'
     }
 };
 

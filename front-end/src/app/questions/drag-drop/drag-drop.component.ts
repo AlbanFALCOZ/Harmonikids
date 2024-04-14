@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from  '@angular/cdk/drag-drop';
 import { DragDropService } from 'src/services/drag-drop.service';
 import { Question } from 'src/models/question.model';
+import { IndiceService } from 'src/services/indice.service';
 
 @Component({
   selector: 'app-drag-drop',
@@ -23,8 +24,9 @@ export class DragDropComponent implements OnInit {
   questionId: string = '';
 
   @Input() drag!: Question;
+  hintImageUrl: any;
 
-  constructor(private dragDropService: DragDropService) { }
+  constructor(private dragDropService: DragDropService , private indiceService : IndiceService) { }
 
   ngOnInit() {
     this.addClickOutsideListener();
@@ -75,6 +77,12 @@ export class DragDropComponent implements OnInit {
     }
     else {
       this.showFailureMessage = true;
+      if (this.indiceService.estIndiceActif()) {
+        this.hintImageUrl = '/assets/img/fourmis.png';
+        setTimeout(() => this.hintImageUrl = undefined, 5000); 
+      }
+     
+
       setTimeout(() => this.showFailureMessage = false, 5000);
     }
   }
