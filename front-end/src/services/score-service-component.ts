@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Answer } from 'src/models/question.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,9 @@ export class ScoreService {
 
   private numberOfCorrectAnswersSubject  = new BehaviorSubject<number>(0);
   public numberOfCorrectAnswers$ = this.numberOfCorrectAnswersSubject.asObservable();
+
+  private allSelectedAnswers: Answer[] = [];
+  private correctAnswers: Answer[] = [];
 
   answerCorrect() {
     const currentNumberOfQuestionsAnswered = this.numberOfQuestionsAnsweredSubject.getValue();
@@ -30,6 +34,22 @@ export class ScoreService {
   }
   getScore() {
     return this.numberOfCorrectAnswersSubject.getValue();
+  }
+
+  setAllSelectedAnswers(answers: Answer[]) {
+    this.allSelectedAnswers = answers;
+  }
+
+  setCorrectAnswers(answers: Answer[]) {
+    this.correctAnswers = answers;
+  }
+
+  getAllSelectedAnswers(): Answer[] {
+    return this.allSelectedAnswers;
+  }
+
+  getCorrectAnswers(): Answer[] {
+    return this.correctAnswers;
   }
 
 }

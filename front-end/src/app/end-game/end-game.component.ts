@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScoreService } from 'src/services/score-service-component';
 import { CommonModule } from '@angular/common'; 
+import { Answer } from 'src/models/question.model';
 
 
 @Component({
   selector: 'app-end-game',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './end-game.component.html',
   styleUrl: './end-game.component.scss'
 })
@@ -18,17 +17,15 @@ export class EndGameComponent implements OnInit {
   totalScore: number = 0;
   personalizedMessage: string = '';
 
+  correctAnswers: Answer[] = [];
+  allSelectedAnswers: Answer[] = [];
 
   constructor(private router: Router, private scoreService: ScoreService) {}
 
   ngOnInit(): void {
-    this.scoreService.numberOfCorrectAnswers$.subscribe((count) => {
-        this.correctAnswersCount = count;
-        this.updatePersonalizedMessage();
-
-      }
-    );
-    console.log(this.correctAnswersCount);
+    this.correctAnswers = this.scoreService.getCorrectAnswers();
+    this.allSelectedAnswers = this.scoreService.getAllSelectedAnswers();
+    this.updatePersonalizedMessage();
   }
   
   restartGame() {
@@ -40,13 +37,13 @@ export class EndGameComponent implements OnInit {
   }
 
   updatePersonalizedMessage() {
-    if(this.correctAnswersCount <= 1) {
-      this.personalizedMessage = "Bien essayé, continue comme ça !";
-    } else if(this.correctAnswersCount <= 2) {
-      this.personalizedMessage = "Super, tu progresses bien !";
-    } else {
-      this.personalizedMessage = "Incroyable, t'es un champion !";
-    }
+  if(this.correctAnswers.length <= 1) {
+    this.personalizedMessage = "Bien essayé, continue comme ça !";
+  } else if(this.correctAnswers.length <= 2) {
+    this.personalizedMessage = "Super, tu progresses bien !";
+  } else {
+    this.personalizedMessage = "Incroyable, t'es un champion !";
   }
+}
   
 }
