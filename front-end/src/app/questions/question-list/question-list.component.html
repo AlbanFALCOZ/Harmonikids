@@ -50,9 +50,10 @@
         [style.visibility]="questionCleared.includes(currentQuestionIndex) ? 'hidden' : 'visible'"
         (click)="validateQuestion()">Valider</button>
     </ng-container>
+  <button type="submit" class="suivant" *ngIf="currentQuestionIndex < questionList.length - 1" (click)="nextQuestion()">Suivant</button>
+  <button type="submit" class="terminer" *ngIf="currentQuestionIndex === questionList.length - 1" (click)="finishQuiz()">Terminer</button>
+</div>
 
-    <button type="submit" class="suivant" (click)="nextQuestion()" >Suivant</button>
-  </div>
 
 
 <div class="messageSuccess" *ngIf="showSuccessMessage"  >

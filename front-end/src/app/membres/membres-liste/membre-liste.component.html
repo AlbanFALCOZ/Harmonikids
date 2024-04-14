@@ -18,27 +18,27 @@
         <form id="addMemberForm" *ngIf="displayForm" #form="ngForm" (ngSubmit)="submitForm(form)">
           <div class="display-input">
             <label for="name">Nom:</label><br>
-            <input type="text" id="lastName" name="lastName" ngModel><br>
+            <input type="text" id="lastName" name="lastName" ngModel required><br>
           </div>
           <div class="display-input">
             <label for="surname">Prénom:</label><br>
-            <input type="text" id="firstName" name="firstName" ngModel><br>
+            <input type="text" id="firstName" name="firstName" ngModel required><br>
           </div>
           <div class="display-input">
             <label for="age">Age:</label><br>
-            <input type="number" id="age" name="age" ngModel><br>
+            <input type="number" id="age" name="age" ngModel required><br>
           </div>
 
           <div class="display-input">
             <label for="">Description:</label>
-            <textarea name="description" id="description" cols="40" rows="5" ngModel></textarea>
+            <textarea name="description" id="description" cols="40" rows="5" ngModel required></textarea>
           </div>
 
           <div class="display-input">
             <label for="image">Photo:</label><br>
             <input type="file" id="image" name="image"><br>
           </div>
-          <button type="submit">Ajouter</button>
+          <button [disabled]="form.invalid" type="submit">Ajouter</button>
 
         </form>
       </div>
@@ -47,7 +47,7 @@
 
   </div>
 
-  <button class="switch-mode" (click)="toggleMode()">
+  <button  class="switch-mode" (click)="toggleMode()">
     Mode Ergothérapeute : {{ isDisabled ? 'Off' : 'On' }}
   </button>
 

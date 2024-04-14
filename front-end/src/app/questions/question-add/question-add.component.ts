@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { QUESTION_LIST } from 'src/mocks/question.mock';
 import { Question, QuestionType } from 'src/models/question.model';
+import { Quiz } from 'src/models/quiz.model';
 import { NavbarService } from 'src/services/navbar.service';
+import { QuizService } from 'src/services/quiz.service';
 
 @Component({
   selector: 'app-question-add',
@@ -18,11 +20,15 @@ export class QuestionAddComponent {
   isNavVisible = false;
   questions = QUESTION_LIST;
 
-  constructor(private navbarService: NavbarService) {
+  quizList: Quiz[] = [];
+
+  constructor(private navbarService: NavbarService, private quizService: QuizService) {
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
-
+    this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
+      this.quizList = quizzes;;
+    });
   }
 
   toggleForm() {

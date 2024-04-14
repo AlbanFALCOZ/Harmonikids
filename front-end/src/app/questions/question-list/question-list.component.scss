@@ -166,6 +166,22 @@
 
 .stars {
   display: flex;
+}
+
+.terminer{
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #F4538A;
+  margin-bottom: 20px;
+  width: 150px;
+  text-align: center;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+
+}
   margin-left: 10px;
 }
 

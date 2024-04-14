@@ -1,0 +1,70 @@
+.end-game-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  background: #f0f0f0;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 1em;
+}
+
+p {
+  color: #666;
+  font-size: 1.1em;
+}
+
+.stars {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.star-img {
+  margin: 0 5px;
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+  }
+  40% {
+      transform: translateY(-15px);
+  }
+  60% {
+      transform: translateY(-15px);
+  }
+}
+
+.score {
+  display: flex;
+}
+
+.stars {
+  display: flex;
+}
+
+.recommencer {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  margin-top: 2em;
+  color: white;
+  background-color: #53cef4;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.recommencer:hover {
+  background-color: #53cef4;
+}
