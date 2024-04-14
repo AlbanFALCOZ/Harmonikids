@@ -74,6 +74,13 @@
                         </select>
                     </div>
                     <div class="display-input">
+                        <label for="quizzes">Quizzes:</label><br>
+                        <select id="quizzes" name="quizzes" ngModel>
+                            <option value="">Sélectionner un quiz</option>
+                            <option *ngFor="let quiz of quizList">{{quiz.name}}</option>
+                        </select><br>
+                    </div>
+                    <div class="display-input">
                         <label for="image">Image :</label>
                         <input type="file" class="form-control" id="image" name="image" [(ngModel)]="question.image">
                     </div>

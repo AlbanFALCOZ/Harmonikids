@@ -55,7 +55,7 @@ export class ThemeAddComponent implements OnInit {
       id: '1',
       name: themeName,
       description: themeDescription,
-      quizzes: themeQuizzes,
+      quizzes: [],
       image: themeImage,
     };
 

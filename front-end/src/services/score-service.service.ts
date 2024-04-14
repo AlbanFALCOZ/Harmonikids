@@ -5,11 +5,16 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ScoreService {
+  private score = 0;
+
   private numberOfQuestionsAnsweredSubject = new BehaviorSubject<number>(0);
   public numberOfQuestionsAnswered$ = this.numberOfQuestionsAnsweredSubject.asObservable();
 
   private numberOfCorrectAnswersSubject  = new BehaviorSubject<number>(0);
   public numberOfCorrectAnswers$ = this.numberOfCorrectAnswersSubject.asObservable();
+
+  private numberOfSelectedAnswersSubject = new BehaviorSubject<number>(0);
+  public numberOfSelectedAnswers$ = this.numberOfSelectedAnswersSubject.asObservable();
 
   answerCorrect() {
     const currentNumberOfQuestionsAnswered = this.numberOfQuestionsAnsweredSubject.getValue();
@@ -23,5 +28,15 @@ export class ScoreService {
     this.numberOfQuestionsAnsweredSubject.next(currentNumberOfQuestionsAnswered + 1);
   }
 
+  setScore(score: number) {
+    this.score = score;
+  }
+  getScore() {
+    return this.numberOfCorrectAnswersSubject.getValue();
+  }
+
+  updateSelectedAnswersCount(count: number) {
+    this.numberOfSelectedAnswersSubject.next(count);
+  }
 
 }

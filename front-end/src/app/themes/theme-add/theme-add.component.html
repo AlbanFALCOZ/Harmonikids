@@ -9,11 +9,11 @@
         <form id="addMemberForm" #form="ngForm" (ngSubmit)="submitForm(form)">
             <div class="display-input">
                 <label for="themeTitle">Titre du theme:</label><br>
-                <input type="text" id="themeTitle" name="themeTitle" ngModel><br>
+                <input type="text" id="themeTitle" name="themeTitle" ngModel required><br>
             </div>
             <div class="display-input">
                 <label for="themeDescription">Description:</label><br>
-                <textarea id="themeDescription" name="themeDescription" rows="5" ngModel></textarea><br>
+                <textarea id="themeDescription" name="themeDescription" rows="5" ngModel required></textarea><br>
             </div>
             <div class="display-input">
                 <label for="quizzes">Quizzes:</label><br>
@@ -26,7 +26,7 @@
                 <label for="themeImage">Image du theme:</label><br>
                 <input type="file" id="themeImage" name="themeImage" ngModel><br>
             </div>
-            <button type="submit" >Créer le theme</button>
+            <button [disabled]="form.invalid" type="submit" >Créer le theme</button>
         </form>
     </div>
 

@@ -10,11 +10,11 @@
         <form id="addMemberForm" #form="ngForm" (ngSubmit)="submitForm(form)">
             <div class="display-input">
                 <label for="quizTitle">Titre du quiz:</label><br>
-                <input type="text" id="quizTitle" name="quizTitle" ngModel><br>
+                <input type="text" id="quizTitle" name="quizTitle" ngModel required><br>
             </div>
             <div class="display-input">
                 <label for="quizTheme">Thème:</label><br>
-                <select id="quizTheme" name="quizTheme" ngModel>
+                <select id="quizTheme" name="quizTheme" ngModel required>
                     <option value="">Sélectionner le thème du quiz</option>
                     <option *ngFor="let theme of themeList">{{theme.name}}</option>
 
@@ -23,12 +23,12 @@
 
             <div class="display-input">
                 <label for="quizDescription">Description:</label><br>
-                <textarea id="quizDescription" name="quizDescription" rows="5" ngModel></textarea><br>
+                <textarea id="quizDescription" name="quizDescription" rows="5" ngModel required></textarea><br>
 
             </div>
             <div class="display-input">
                 <label for="quizQuestions">Questions:</label><br>
-                <select id="quizQuestions" name="quizQuestions" size="4" multiple ngModel>
+                <select id="quizQuestions" name="quizQuestions" size="4" multiple ngModel required>
                     <option value="">Sélectionner les questions</option>
                     <optgroup label="Choix multiple">
                         <option value="question1">Question 1</option>
@@ -45,6 +45,11 @@
                         <option value="question2">Question 2</option>
                         <option value="question3">Question 3</option>
                     </optgroup>
+                    <optgroup label="Question avec du son">
+                        <option value="question1">Question 1</option>
+                        <option value="question2">Question 2</option>
+                        <option value="question3">Question 3</option>
+                    </optgroup>
                 </select><br>
             </div>
 
@@ -53,7 +58,7 @@
                 <input type="file" id="quizImage" name="quizImage"><br>
             </div>
 
-            <button type="submit">Créer le quiz</button>
+            <button [disabled]="form.invalid" type="submit">Créer le quiz</button>
         </form>
     </div>
 
