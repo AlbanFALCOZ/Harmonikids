@@ -51,7 +51,7 @@ export const THEME_LIST: Theme[] = [
         image: 'assets/img/mathsB.jpg'
     },
     {
-        id: '6',
+        id: '7',
         name: 'La langue française',
         description: 'Description du theme 6',
        

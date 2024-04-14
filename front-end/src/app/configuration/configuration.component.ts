@@ -54,6 +54,7 @@ export class ConfigurationComponent {
 
   ngOnInit() {
     this.themeList = this.themeService.getThemes()
+    this.isIndiceOn=this.indiceService.estIndiceActif()
   }
 
   toggleSound() {
@@ -78,10 +79,8 @@ export class ConfigurationComponent {
     this.isIndiceOn = this.indiceService.estIndiceActif();
     if(this.isIndiceOn){
       this.indiceService.activerIndice();
-      this.indiceService.hint = true ; 
     }else {
       this.indiceService.desactiverIndice();
-      this.indiceService.hint = false ; 
     }
   }
 
