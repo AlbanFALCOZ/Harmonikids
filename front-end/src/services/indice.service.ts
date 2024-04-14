@@ -23,10 +23,11 @@ export class  IndiceService {
             this.hintText = hint.text;
         }
         if (hint.imageUrl !== undefined) {
+            this.hintText = "A quoi te fais penser cette photo?"
             this.hintImageUrl = hint.imageUrl;
         }
         if (hint.audioUrl !== undefined) {
-            
+            this.hintText="     A quoi te fait penser ce son?   "
             if (hint.audioUrl) {
                 this.hintAudio = new Audio(hint.audioUrl);
             } else {

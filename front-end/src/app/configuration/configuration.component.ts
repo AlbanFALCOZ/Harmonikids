@@ -31,7 +31,7 @@ export class ConfigurationComponent {
   showDropdown: boolean = false;
   isSoundOn: boolean ;
   isMusicOn: boolean ;
-  isIndiceOn:boolean;
+  isIndiceOn:boolean ;
   selectedOption: string = 'option1';
   selectedQuestionTypes: QuestionType[];
   questionList = this.questionService.getQuestionsFromLocalStorage();
@@ -159,6 +159,11 @@ onChangeQuestion(event: any, questionType: QuestionType): void {
 
   localStorage.setItem('selectedQuestionTypes', JSON.stringify(this.questionService.selectedQuestionTypes));
 
+}
+
+
+showIndiceStatus(){
+  return this.indiceService.estIndiceActif()
 }
 
 

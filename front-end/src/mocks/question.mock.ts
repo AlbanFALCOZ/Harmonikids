@@ -34,7 +34,7 @@ export const UNIQUE_CHOICE: Question = {
     label: 'Parmi ces animaux, lequel miaule?',
     typeOfQuestion: QuestionType.UniqueChoice,
     niveau: 'facile',
-    image: 'assets/img/chien.jpeg',
+    image: 'assets/img/reflexion.png',
     answers: [
         {
             value: 'Le chat',
@@ -78,7 +78,7 @@ export const TRUE_FALSE: Question = {
 
 export const DRAG_DROP1: Question = {
     id: '4',
-    label: 'Laquelle parmis ces propositions n\est pas un animal',
+    label: 'Laquelle parmis ces propositions n\'est pas un animal',
     typeOfQuestion: QuestionType.DragAndDrop,
     niveau: 'moyen',
     image: 'assets/img/chien.jpeg',
@@ -101,7 +101,7 @@ export const DRAG_DROP1: Question = {
         },
     ],
     hint: {
-        imageUrl: 'assets/img/terre.jpg'
+        imageUrl: 'assets/img/fourmis.png'
     }
 };
 
@@ -137,7 +137,7 @@ export const SOUND: Question = {
     typeOfQuestion: QuestionType.GuessTheSound,
     niveau: 'facile',
     audio: 'assets/miaule.mp3',
-    image: 'assets/img/cat.jpeg',
+    image: 'assets/img/chatB.png',
     answers: [
         {
             value: 'Chat',
