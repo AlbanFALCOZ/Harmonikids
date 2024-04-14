@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Question } from 'src/models/question.model';
+import { QuestionService } from './question.service';
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +13,7 @@ export class FilteredQuestionService {
     public filteredQuestions$: BehaviorSubject<Question[]>
         = new BehaviorSubject(this.filteredQuestions);
 
-    constructor() { }
+    constructor(public questionService : QuestionService ) { }
 
     updateFilteredQuestions(questions: Question[]): void {
         this.filteredQuestions = questions;
@@ -20,6 +21,6 @@ export class FilteredQuestionService {
     }
 
     getFilteredQuestions(): Question[] {
-        return this.filteredQuestions;
+        return this.questionService.getQuestionsFromLocalStorage();
     }
 }

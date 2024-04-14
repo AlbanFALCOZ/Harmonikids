@@ -162,12 +162,6 @@ onChangeQuestion(event: any, questionType: QuestionType): void {
 }
 
 
-showIndiceStatus(){
-  return this.indiceService.estIndiceActif()
-}
-
-
-
   
   
 }

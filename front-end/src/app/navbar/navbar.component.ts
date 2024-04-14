@@ -4,6 +4,7 @@ import { IndiceService } from 'src/services/indice.service';
 import { MembreService } from 'src/services/membre.service';
 import { ModeService } from 'src/services/mode-ergo.service';
 import { NavbarService } from 'src/services/navbar.service';
+import { QuestionService } from 'src/services/question.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,11 +16,11 @@ export class NavbarComponent implements OnInit {
   memberId: string | undefined;
   
   isNavVisible = false;
-  hint: string | undefined;
+ 
 
   isDisabled = false;
 
-  constructor(public colorService: ColorService, public membreService: MembreService, private navbarService: NavbarService, private modeService: ModeService, private indiceService : IndiceService) { 
+  constructor(public colorService: ColorService, public membreService: MembreService, private navbarService: NavbarService, private modeService: ModeService, private questionService : QuestionService) { 
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
@@ -28,7 +29,7 @@ export class NavbarComponent implements OnInit {
       this.isDisabled = isDisabled;
     });
 
-    this.hint = this.indiceService.hintText;
+    
   }
 
   ngOnInit(): void {
@@ -45,6 +46,9 @@ export class NavbarComponent implements OnInit {
 
 
 
+  getQuestions(){
+    return this.questionService.getQuestionsFromLocalStorage();
+  }
 
 
 }

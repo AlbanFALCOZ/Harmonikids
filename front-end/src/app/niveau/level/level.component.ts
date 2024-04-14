@@ -32,8 +32,9 @@ export class LevelComponent implements OnInit {
   }
 
   filterQuestionsByLevel(level: string): void {
-    const filteredQuestions = this.questionList.filter(question => question.niveau === level);
+    const filteredQuestions = this.questionService.getQuestionsFromLocalStorage().filter(question => question.niveau === level);
     this.filteredQuestionService.updateFilteredQuestions(filteredQuestions);
+
     console.log(filteredQuestions);
   }
   
