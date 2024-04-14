@@ -5,6 +5,7 @@ import { QuizService } from '../../../services/quiz.service';
 import { TitleService } from '../../../services/title.service';
 import { QuestionService } from 'src/services/question.service';
 import { NavbarService } from 'src/services/navbar.service';
+import { ModeService } from 'src/services/mode-ergo.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class QuizListComponent implements OnInit {
 
   public selectedQuiz: Quiz | null = null;
 
-  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService, public questionService: QuestionService, private navbarService: NavbarService) {
+  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService, public questionService: QuestionService, private navbarService: NavbarService, private modeService: ModeService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
       this.quizListDisplayed = quizzes;
@@ -34,6 +35,10 @@ export class QuizListComponent implements OnInit {
     
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
+    });
+
+    this.modeService.isDisabled$.subscribe(isDisabled => {
+      this.isDisabled = isDisabled;
     });
   }
 

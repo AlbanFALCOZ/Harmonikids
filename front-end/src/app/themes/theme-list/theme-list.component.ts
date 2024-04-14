@@ -5,6 +5,7 @@ import { TitleService } from 'src/services/title.service';
 import { ThemeService } from 'src/services/theme.service';
 import { SonService } from 'src/services/sound.service';
 import { NavbarService } from 'src/services/navbar.service';
+import { ModeService } from 'src/services/mode-ergo.service';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class ThemeListComponent implements OnInit {
 
 
 
-  constructor(private router: Router, public themeService: ThemeService, public titleService: TitleService, private sonService: SonService, private navbarService: NavbarService) {
+  constructor(private router: Router, public themeService: ThemeService, public titleService: TitleService, private sonService: SonService, private navbarService: NavbarService, private modeService: ModeService) {
     this.themeService.themes$.subscribe((themes: Theme[]) => {
       this.themeList = themes;
       this.themeListDisplayed = themes;
@@ -35,6 +36,10 @@ export class ThemeListComponent implements OnInit {
 
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
+    });
+
+    this.modeService.isDisabled$.subscribe(isDisabled => {
+      this.isDisabled = isDisabled;
     });
   }
 

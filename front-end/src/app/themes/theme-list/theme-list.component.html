@@ -12,9 +12,7 @@
         <app-theme-add *ngIf="!isDisabled"></app-theme-add>
 
     </div>
-    <button class="switch-mode" (click)="isDisabled = !isDisabled">
-        Mode Ergothérapeute {{ isDisabled ? 'Off' : 'On' }}
-    </button>
+
     <app-theme-edit></app-theme-edit>
     <app-theme-delete (deleteTheme)="deleteTheme()"></app-theme-delete>
 </div>

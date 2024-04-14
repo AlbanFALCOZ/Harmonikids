@@ -14,9 +14,6 @@
     <app-quiz-add *ngIf="!isDisabled"></app-quiz-add>
   </div>
 
-  <button class="switch-mode" (click)="isDisabled = !isDisabled">
-    Mode Ergothérapeute {{ isDisabled ? 'Off' : 'On' }}
-  </button>
   <app-quiz-edit></app-quiz-edit>
   <app-quiz-delete (deleteQuiz)="deleteQuiz()"></app-quiz-delete>
 
