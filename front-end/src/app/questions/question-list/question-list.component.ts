@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question, Answer } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
@@ -21,6 +21,8 @@ export class QuestionListComponent implements OnInit {
 
   @ViewChild(SoundQuestionComponent) soundQuestionComponent: SoundQuestionComponent | undefined;
 
+  
+
   public questionList: Question[] = [];
   questionCleared: number[] = [];
 
@@ -31,7 +33,7 @@ export class QuestionListComponent implements OnInit {
   public hint: boolean | undefined;
   hintText: string | undefined;
   hintImageUrl: string | undefined;
-  public hintAudio: HTMLAudioElement | null = null;
+  public hintAudio: HTMLAudioElement | null = new Audio('assets/img/good.mp3');
 
   currentQuestionIndex: number = 0;
   QuestionType = QuestionType;
@@ -57,16 +59,21 @@ export class QuestionListComponent implements OnInit {
         this.questionService.saveQuestionsToLocalStorage(questions);
       });
     }
-
-
+    if(this.indiceService.estIndiceActif()){
+    this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
+    }else{
+      this.indiceService.setIndice(undefined);
+    }
     this.hint = this.indiceService.hint;
     this.hintText = this.indiceService.hintText
     this.hintImageUrl = this.indiceService.hintImageUrl
-    this.hintAudio = this.indiceService.hintAudio
+    this.hintAudio = new Audio('assets/img/good.mp3');
 
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
+    
+    
 
 
   }
@@ -76,13 +83,14 @@ export class QuestionListComponent implements OnInit {
   }
 
   nextQuestion() {
+    this.resetMessages();
     if (this.currentQuestionIndex < this.questionList.length - 1) {
       this.currentQuestionIndex++;
     }
     if (this.soundQuestionComponent) {
       this.soundQuestionComponent.stopSound();
     }
-    this.resetMessages();
+    
   }
 
   previousQuestion() {
@@ -147,35 +155,55 @@ export class QuestionListComponent implements OnInit {
 
     });
 
+    
     this.selectedAnswerCorrect = this.selectedAnswerCorrect.filter((item, index) => this.selectedAnswerCorrect.indexOf(item) == index);
 
 
     if (correctAnswers.every((item) => this.selectedAnswerCorrect.includes(item))) {
+    
       this.showSuccessMessage = true;
       this.soundService.playSound('assets/img/good.mp3');
       this.questionCleared.push(this.currentQuestionIndex);
-
     } else {
-      
-        this.showFailureMessage = true;
+      this.showFailureMessage = true;
+      if (this.indiceService.estIndiceActif()) {
         this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
-        this.indiceService.showHint(this.indiceService.hint);
-        
-    }
+        this.hintAudio = this.indiceService.hintAudio
+        this.hintText = this.indiceService.hintText;
+        this.hintImageUrl=this.indiceService.hintImageUrl
 
+        if (this.hintImageUrl) {
+          setTimeout(() => {
+            this.hintImageUrl = undefined;
+          }, 3000);
+        }
+        if (this.hintAudio) {
+          this.hintAudio.play();
+          setTimeout(() => {
+            if (this.hintAudio) { 
+              this.hintAudio.pause();
+              this.hintAudio.currentTime = 0;
+            }
+          }, 5000);
+        }
+      }
+    }
+    
     this.messageTimeout = setTimeout(() => {
       this.showSuccessMessage = false;
       this.showFailureMessage = false;
-      if(this.indiceService.estIndiceActif()){
-      this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
-      this.indiceService.hintText = this.indiceService.hintText
+      if (this.indiceService.estIndiceActif()) {
+        this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
+        this.hintText = this.indiceService.hintText;
+        this.hintImageUrl=this.indiceService.hintImageUrl
       }
       this.indiceService.hintImageUrl = undefined;
     }, 8000);
-  }
+  }    
 
 
   resetMessages() {
+
     clearTimeout(this.messageTimeout);
     this.showSuccessMessage = false;
     this.showFailureMessage = false;
@@ -196,7 +224,6 @@ export class QuestionListComponent implements OnInit {
     if (num > 12) num = 12;
     return Array(num);
   }
-
   finishQuiz() {
     this.scoreService.updateSelectedAnswersCount(this.selectedAnswerAllQuestions.length);
     this.router.navigate(['/end-game']);

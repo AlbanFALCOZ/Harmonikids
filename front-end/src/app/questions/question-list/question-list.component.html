@@ -28,19 +28,6 @@
 
 
     <div class="question-param">
-
-      <div class="quiz_setting">
-        <div>
-          <span class="material-symbols-outlined help">
-            help
-          </span>
-        </div>
-        <div>
-          <span class="material-symbols-outlined volume volume_up">volume_up</span>
-          <span class="material-symbols-outlined volume volume_off" style="display: none;">volume_off</span>
-        </div>
-      </div>
-
       <div>
         <div class="Score">
           <div>Score : {{ selectedAnswerCorrect.length}}/{{ selectedAnswerAllQuestions.length }}</div>
@@ -64,9 +51,9 @@
         (click)="validateQuestion()">Valider</button>
     </ng-container>
   <button type="submit" class="suivant" *ngIf="currentQuestionIndex < questionList.length - 1" (click)="nextQuestion()">Suivant</button>
-
   <button type="submit" class="terminer" *ngIf="currentQuestionIndex === questionList.length - 1" (click)="finishQuiz()">Terminer</button>
 </div>
+
 
 
 <div class="messageSuccess" *ngIf="showSuccessMessage"  >
@@ -75,7 +62,7 @@
 
 
 <div class="messageFailure" *ngIf="showFailureMessage" >
-  Dommage, la réponse est incorrecte ou incomplète.
+  T'y étais presque ! Courage , des étoiles à gagner t'attendent !
 </div>
 
 
