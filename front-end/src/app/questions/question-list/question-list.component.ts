@@ -4,8 +4,13 @@ import { Question, Answer } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
 import { QuestionType } from '../../../models/question.model';
 import { SoundQuestionComponent } from '../sound-question/sound-question.component';
+import { SonService } from 'src/services/sound.service';
+import { IndiceService } from 'src/services/indice.service';
+
+
 import { ScoreService } from 'src/services/score-service-component.service';
 import { NavbarService } from 'src/services/navbar.service';
+
 
 @Component({
   selector: 'app-question-list',
@@ -23,6 +28,10 @@ export class QuestionListComponent implements OnInit {
   selectedAnswer: Answer[] = [];
   selectedAnswerCorrect: Answer[] = [];
   selectedAnswerWrong: Answer[] = [];
+  public hint: boolean | undefined;
+  hintText: string | undefined;
+  hintImageUrl: string | undefined;
+  public hintAudio: HTMLAudioElement | null = null;
 
   currentQuestionIndex: number = 0;
   QuestionType = QuestionType;
@@ -30,19 +39,19 @@ export class QuestionListComponent implements OnInit {
   showSuccessMessage: boolean = false;
   showFailureMessage: boolean = false;
 
-  hintText: string | undefined;
-  hintImageUrl: string | undefined;
-  private hintAudio: HTMLAudioElement | null = null;
-
+ 
   private messageTimeout: any;
-
   isNavVisible = false;
 
 
   private successAudio = new Audio('assets/img/good.mp3');
   answerSelected: any;
 
-  constructor(private router: Router, public questionService: QuestionService, private navbarService: NavbarService) {
+
+  
+
+  constructor(private router: Router, public questionService: QuestionService , public soundService : SonService, private indiceService : IndiceService,private navbarService: NavbarService ) {
+
     this.questionList = this.questionService.getQuestionsFromLocalStorage();
     if (this.questionList.length === 0) {
       this.questionService.questions$.subscribe((questions: Question[]) => {
@@ -50,9 +59,17 @@ export class QuestionListComponent implements OnInit {
         this.questionService.saveQuestionsToLocalStorage(questions);
       });
     }
+
+
+    this.hint = this.indiceService.hint;
+    this.hintText = this.indiceService.hintText
+    this.hintImageUrl = this.indiceService.hintImageUrl
+    this.hintAudio = this.indiceService.hintAudio
+
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
+
 
   }
 
@@ -125,37 +142,26 @@ export class QuestionListComponent implements OnInit {
 
     if (correctAnswers.every((item) => this.selectedAnswerCorrect.includes(item))) {
       this.showSuccessMessage = true;
-      this.successAudio.play();
+      this.soundService.playSound('assets/img/good.mp3');
       this.questionCleared.push(this.currentQuestionIndex);
 
     } else {
-      this.showFailureMessage = true;
-      const hint = this.questionList[this.currentQuestionIndex].hint;
-      this.showHint(hint);
+      
+        this.showFailureMessage = true;
+        this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
+        this.indiceService.showHint(this.indiceService.hint);
+        
     }
 
     this.messageTimeout = setTimeout(() => {
       this.showSuccessMessage = false;
       this.showFailureMessage = false;
-      this.hintText = undefined;
-      this.hintImageUrl = undefined;
-    }, 8000);
-  }
-
-
-  showHint(hint: any) {
-    if (this.hintAudio) {
-      this.hintAudio.pause();
-    }
-
-    if (hint) {
-      if (hint.audioUrl) {
-        this.hintAudio = new Audio(hint.audioUrl);
-        this.hintAudio.play();
+      if(this.indiceService.estIndiceActif()){
+      this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
+      this.indiceService.hintText = this.indiceService.hintText
       }
-      this.hintText = hint.text;
-      this.hintImageUrl = hint.imageUrl;
-    }
+      this.indiceService.hintImageUrl = undefined;
+    }, 8000);
   }
 
 
@@ -163,11 +169,11 @@ export class QuestionListComponent implements OnInit {
     clearTimeout(this.messageTimeout);
     this.showSuccessMessage = false;
     this.showFailureMessage = false;
-    this.hintText = undefined;
-    this.hintImageUrl = undefined;
-    if (this.hintAudio) {
-      this.hintAudio.pause();
-      this.hintAudio.currentTime = 0;
+    this.indiceService.hintText = undefined;
+    this.indiceService.hintImageUrl = undefined;
+    if (this.indiceService.hintAudio) {
+      this.indiceService.hintAudio.pause();
+      this.indiceService.hintAudio.currentTime = 0;
     }
   }
 
@@ -181,3 +187,5 @@ export class QuestionListComponent implements OnInit {
     return Array(num);
   }
 }
+
+

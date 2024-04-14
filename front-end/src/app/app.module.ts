@@ -34,8 +34,11 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { SoundQuestionComponent } from './questions/sound-question/sound-question.component';
+import { QuizDashboardComponent } from './card-dashboard/quiz-dashboard/quiz-dashboard.component';
+import { ThemeDashboardComponent } from './card-dashboard/theme-dashboard/theme-dashboard.component';
 import { CommonModule } from '@angular/common';
 import { QuestionAddComponent } from './questions/question-add/question-add.component';
+
 
 
 @NgModule({
@@ -70,7 +73,11 @@ import { QuestionAddComponent } from './questions/question-add/question-add.comp
     ConfigurationComponent,
     DashboardComponent,
     SoundQuestionComponent,
+    QuizDashboardComponent,
+    ThemeDashboardComponent,
     QuestionAddComponent,
+
+
   ],
   imports: [
     BrowserModule,

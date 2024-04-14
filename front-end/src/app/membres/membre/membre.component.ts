@@ -27,9 +27,7 @@ export class MembreComponent {
     }
 
  
-    selectMembre(): void {
-      this.membreSelected.emit(true);
-  }
+    
 
   onSelectMembre(id: string): void {
     this.membreService.setMemberId(id);

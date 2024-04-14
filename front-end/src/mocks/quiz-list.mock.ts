@@ -36,7 +36,7 @@ export const QUIZ_LIST: Quiz[] = [
         theme: 'Theme 4',
         questions: QUESTION_LIST,
         statut: 'Terminé',
-        image: 'assets/img/basket.jpg'
+        image: 'assets/img/basketB.jpg'
     }
 
 ];

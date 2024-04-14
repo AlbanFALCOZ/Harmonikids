@@ -4,8 +4,12 @@ import { ColorService } from 'src/services/color-service.service';
 import { Theme } from '../../models/theme.model';
 import { TitleService } from 'src/services/title.service';
 import { ThemeService } from 'src/services/theme.service';
-import { Question } from 'src/models/question.model';
+import { Question, QuestionType } from 'src/models/question.model';
+import { IndiceService } from 'src/services/indice.service';
+import { QUESTION_LIST } from 'src/mocks/question.mock';
+import {QuestionService} from 'src/services/question.service'
 import { NavbarService } from 'src/services/navbar.service';
+
 
 
 enum ThemePalette {
@@ -25,24 +29,32 @@ export class ConfigurationComponent {
 
   themeList: Theme[] = [];
   showDropdown: boolean = false;
-  isSoundOn: boolean;
-  isMusicOn: boolean =false;
-  isIndiceOn:boolean=false;
+  isSoundOn: boolean ;
+  isMusicOn: boolean ;
+  isIndiceOn:boolean;
   selectedOption: string = 'option1';
-
+  selectedQuestionTypes: QuestionType[];
+  questionList = this.questionService.getQuestionsFromLocalStorage();
+  questionListTemp = QUESTION_LIST;
   isNavVisible = false;
+ 
 
 
-  constructor(private sonService: SonService , private colorService: ColorService , private themeService: ThemeService, private navbarService: NavbarService) {
-    
+  constructor(private sonService: SonService , private colorService: ColorService , private themeService: ThemeService , private indiceService : IndiceService  , private questionService : QuestionService, private navbarService: NavbarService) {
     this.isSoundOn = this.sonService.estSonActif();
+    this.isIndiceOn=this.indiceService.estIndiceActif();
+    this.isMusicOn = this.sonService.isMusiqueActive();
+    this.selectedQuestionTypes = this.questionListTemp.map(question => question.typeOfQuestion); 
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
   }
+   
+
 
   ngOnInit() {
     this.themeList = this.themeService.getThemes()
+    this.isIndiceOn=this.indiceService.estIndiceActif()
   }
 
   toggleSound() {
@@ -63,6 +75,13 @@ export class ConfigurationComponent {
   }
 
   toggleIndice(){
+    this.indiceService.toggleIndiceService();
+    this.isIndiceOn = this.indiceService.estIndiceActif();
+    if(this.isIndiceOn){
+      this.indiceService.activerIndice();
+    }else {
+      this.indiceService.desactiverIndice();
+    }
   }
 
   toggleDropdown() {
@@ -90,26 +109,60 @@ export class ConfigurationComponent {
     this.isDropdownOpen = false; 
   }
 
-  selectedThemes: string[] = [];
+ 
 
-  onChange(event: any) {
-    const value = event.target.value;
-    if (event.target.checked) {
-      if (this.selectedThemes.length < 4 && !this.selectedThemes.includes(value)) {
-        this.selectedThemes.push(value);
-      } else {
-        event.target.checked = false;
-      }
-    } else {
-      const index = this.selectedThemes.indexOf(value);
-      if (index !== -1) {
-        this.selectedThemes.splice(index, 1);
-      }
-    }
+  isCheckedThemes(themeId: string): boolean {
+    return this.themeService.selectedThemes.includes(this.themeService.getThemeById(themeId));
   }
   
-  getSelectedStyle(themeId: string) {
-    return this.selectedThemes.includes(themeId) ? { color: 'green' } : {};
+  onChange(event: any, themeId: string) {
+    const isChecked = event.target.checked;
+  
+    if (isChecked) {
+      if (this.themeService.selectedThemes.length < 4 && !this.themeService.selectedThemes.includes(this.themeService.getThemeById(themeId))) {
+        this.themeService.selectedThemes.push(this.themeService.getThemeById(themeId));
+      } else {
+        event.target.checked = false; 
+      }
+    } else {
+      const themeIndex = this.themeService.selectedThemes.findIndex(selectedThemeId => selectedThemeId === this.themeService.getThemeById(themeId));
+      if (themeIndex !== -1) {
+        this.themeService.selectedThemes.splice(themeIndex, 1);
+      }
+    }
+    localStorage.setItem('selectedThemes', JSON.stringify(this.themeService.selectedThemes));
   }
+
+
+  
+
+  isCheckedQuestions(type: QuestionType): boolean {
+    return this.questionService.selectedQuestionTypes.includes(type);
+}
+
+
+
+onChangeQuestion(event: any, questionType: QuestionType): void {
+  const isChecked = event.target.checked;
+
+  if (isChecked) {
+     
+      this.questionService.removeQuestionFromLocalStorage(questionType);
+      this.questionService.selectedQuestionTypes.push(questionType);
+  } else {
+    this.questionService.addToLocalStorageByType(questionType);
+    this.questionService.selectedQuestionTypes = this.questionService.selectedQuestionTypes.filter(type => type !== questionType);
+
+
+
+  }
+
+  localStorage.setItem('selectedQuestionTypes', JSON.stringify(this.questionService.selectedQuestionTypes));
+
+}
+
+
+
+  
   
 }

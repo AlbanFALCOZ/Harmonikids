@@ -8,12 +8,12 @@ import { Theme } from 'src/models/theme.model';
   providedIn: 'root'
 })
 export class ThemeService {
-  getAllThemes(): string[] {
-    throw new Error('Method not implemented.');
-  }
+ 
 
     private themes: Theme[] = THEME_LIST;
-    private selectedThemes: Theme[] = [];
+    public selectedThemes: Theme[] = [];
+    
+   
 
     public themes$: BehaviorSubject<Theme[]>
     = new BehaviorSubject(this.themes);
@@ -22,6 +22,7 @@ export class ThemeService {
 
     constructor(private http: HttpClient) {
         this.retrieveThemes();
+        this.initializeSelectedThemes();
       }
 
     retrieveThemes(): void {
@@ -37,9 +38,7 @@ export class ThemeService {
         this.themes$.next(this.themes);
       }
     
-      setSelectedTheme(themeId: string): void {
-        
-      }
+     
     
       deleteTheme(theme: Theme): void {
         this.themes = this.themes.filter(t => t != theme);
@@ -54,5 +53,21 @@ export class ThemeService {
         return this.selectedThemes;
       }
 
+
+      getThemeById(id: string): Theme {
+        const theme = this.themes.find(theme => theme.id === id);
+        if (!theme) {
+          throw new Error(`No theme found with ID: ${id}`);
+        }
+        return theme;
+      }
+
+      private initializeSelectedThemes() {
+        this.selectedThemes = this.themes.slice(0, 4);
+    }
+    
+      
+      
+      
       
 }

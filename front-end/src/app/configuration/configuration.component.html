@@ -1,85 +1,88 @@
 <app-navbar></app-navbar>
 
-<div class="content">
+<div class="line"></div>
 
-
-  <div class="line"></div>
-
-  <div class="Configuration">
-    <div class="title-container">
-      <h1 class="title">Configurations</h1>
-      <h1 class="title2">Personnalisations</h1>
-    </div>
-
-
-    <div class="container">
-      <div class="toggle-container">
-        <span>Son&nbsp; &nbsp;</span>
-        <label class="switch">
-          <input type="checkbox" (click)="toggleSound()" [checked]="isSoundOn">
-          <span class="slider"></span>
-        </label>
-
-      </div>
-
-      <div class="toggle-container">
-        <span>Music</span>
-        <label class="switch">
-          <input type="checkbox" (click)="toggleMusic()" [checked]="isMusicOn">
-          <span class="slider"></span>
-        </label>
-      </div>
-
-      <div class="toggle-container">
-        <span>Indice</span>
-        <label class="switch">
-          <input type="checkbox" (click)="toggleIndice()" [checked]="isIndiceOn">
-          <span class="slider"></span>
-        </label>
-      </div>
-
-      <div class="dropdown-container-theme">
-        <h2>Recommender des thèmes</h2>
-      </div>
-
-
-      <div class="checkbox-container-theme" style="max-height: 62px; overflow-y: auto;">
-        <div *ngFor="let theme of themeList">
-          <label>
-            <input type="checkbox" [value]="theme.id" (change)="onChange($event)">
-            {{ theme.name }}
-          </label>
-        </div>
-      </div>
-
-
-      <div class="dropdown-container-theme">
-        <h2>Gérer les questions par type</h2>
-        <div class="checkbox-container-question" style="max-height: 62px; overflow-y: auto;">
-          <label><input type="checkbox" value="son"> Avec son</label><br>
-          <label><input type="checkbox" value="video"> Avec vidéo</label><br>
-          <label><input type="checkbox" value="multiple"> Choix multiples</label><br>
-          <label><input type="checkbox" value="dragdrop"> Drag Drop</label>
-        </div>
-
-
-      </div>
-    </div>
-
-    <div class="Personnalisation">
-      <div class="dropdown" [ngClass]="{ 'show': isDropdownOpen }">
-        <span>Couleurs</span>
-        <ng-container *ngFor="let option of colorOptions">
-          <div *ngFor="let color of option.colors" class="color-option" [style.background-color]="color"
-            (click)="selectColor(color)"></div>
-        </ng-container>
-      </div>
-
-      <div class="button-size-slider">
-        <span>Taille bouttons</span>
-        <input type="range" min="0" max="2" step="1" value="1" id="button-size-range" oninput="changeButtonSize()">
-      </div>
-    </div>
-
+<div class = "Configuration">
+  <div class="title-container">
+    <h1 class="title">Configurations</h1>
+    <h1 class="title2">Personnalisations</h1>
   </div>
+  
+
+<div class="container">
+  <div class="toggle-container">
+    <span>Son&nbsp;         &nbsp;</span>
+    <label class="switch">
+      <input type="checkbox" (click)="toggleSound()" [checked]="isSoundOn">
+      <span class="slider"></span>
+    </label>
+    
+  </div>
+
+  <div class="toggle-container">
+    <span>Music</span>
+    <label class="switch">
+      <input type="checkbox" (click)="toggleMusic()" [checked]="isMusicOn"> 
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="toggle-container">
+    <span>Indice</span>
+    <label class="switch">
+      <input type="checkbox" (click)="toggleIndice()" [checked]="isIndiceOn"> 
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="dropdown-container-theme">
+    <h2>Des thèmes qui peuvent te faire plaisir</h2>
+  </div>
+
+  <div class="checkbox-container-theme" style="max-height: 62px; overflow-y: auto;">
+    <div *ngFor="let theme of themeList">
+      <label>
+        <input type="checkbox" [value]="theme.id" [checked]="isCheckedThemes(theme.id)" (change)="onChange($event, theme.id)">
+        {{ theme.name }}
+      </label>
+    </div>
+  </div>
+
+
+    <div class="dropdown-container-theme">
+    <h2>Filtrer les questions</h2>
+  </div>
+  
+  <div class="checkbox-container-question" style="max-height: 62px; overflow-y: auto;">
+    <div *ngFor="let question of questionListTemp">
+      <label>
+        <input type="checkbox" [value]="question.typeOfQuestion" [checked]="isCheckedQuestions(question.typeOfQuestion)" (change)="onChangeQuestion($event, question.typeOfQuestion)">
+        {{ question.typeOfQuestion }}
+      </label>
+    </div>
+  </div>
+
+
+  
+
 </div>
+</div>
+
+<div class = "Personnalisation">
+ <div class="dropdown" [ngClass]="{ 'show': isDropdownOpen }">
+  <span>Couleurs</span>
+  <ng-container *ngFor="let option of colorOptions">
+    <div *ngFor="let color of option.colors" class="color-option" [style.background-color]="color" (click)="selectColor(color)"></div>
+  </ng-container>
+</div>
+
+<div class="button-size-slider">
+  <span>Taille bouttons</span>
+  <input type="range" min="0" max="2" step="1" value="1" id="button-size-range" oninput="changeButtonSize()">
+</div>
+</div>
+
+
+
+
+
