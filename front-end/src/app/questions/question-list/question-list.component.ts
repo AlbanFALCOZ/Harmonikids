@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question, Answer } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
@@ -20,6 +20,8 @@ import { NavbarService } from 'src/services/navbar.service';
 export class QuestionListComponent implements OnInit {
 
   @ViewChild(SoundQuestionComponent) soundQuestionComponent: SoundQuestionComponent | undefined;
+
+  
 
   public questionList: Question[] = [];
   questionCleared: number[] = [];
@@ -148,6 +150,7 @@ export class QuestionListComponent implements OnInit {
 
 
     if (correctAnswers.every((item) => this.selectedAnswerCorrect.includes(item))) {
+    
       this.showSuccessMessage = true;
       this.soundService.playSound('assets/img/good.mp3');
       this.questionCleared.push(this.currentQuestionIndex);
@@ -211,6 +214,11 @@ export class QuestionListComponent implements OnInit {
     if (num > 12) num = 12;
     return Array(num);
   }
+
+
+
+  
+
 }
 
 

@@ -29,7 +29,7 @@ export const THEME_LIST: Theme[] = [
         name: 'L\'astronomie',
         description: 'Description du theme 3',
         quizzes: QUIZ_LIST,
-        image: 'assets/img/etoile.jpg'
+        image: 'assets/img/etoileB.jpg'
     },
     {
         id: '6',

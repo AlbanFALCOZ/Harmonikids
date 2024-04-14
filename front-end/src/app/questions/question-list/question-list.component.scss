@@ -147,10 +147,29 @@
   animation: pop 1s ease-in-out forwards;
 }
 
-.score {
-  display: flex;
+.Score {
+  
+  font-size: 18px; 
+  color: #333;
+  padding: 10px;
+  border: 2px solid #ccc; 
+  border-radius: 8px;
+  background-color: #f0f0f0; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
 }
+
+.Score div {
+  padding: 5px; 
+}
+
 
 .stars {
   display: flex;
+  margin-left: 10px;
+}
+
+.question-param{
+  display: flex;
+  align-items: center; 
 }
