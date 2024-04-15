@@ -27,17 +27,17 @@ export const THEME_LIST: Theme[] = [
     {
         id: '4',
         name: 'L\'astronomie',
-        description: 'Description du theme 3',
+        description: 'Description du theme 4',
         quizzes: QUIZ_LIST,
         image: 'assets/img/etoileB.jpg'
     },
     {
         id: '6',
 
-        name: 'La logique',
-        description: 'Description du theme 6',
+        name: 'Les animaux',
+        description: 'Description du theme 5',
         quizzes: QUIZ_LIST,
-        image: 'assets/img/addition.jpg'
+        image: 'assets/img/animal.jpg'
 
 
     },
@@ -45,7 +45,7 @@ export const THEME_LIST: Theme[] = [
         id: '5',
         name: 'Les mathèmatiques',
 
-        description: 'Description du theme 5',
+        description: 'Description du theme 6',
         
         quizzes: QUIZ_LIST,
         image: 'assets/img/mathsB.jpg'
@@ -53,7 +53,7 @@ export const THEME_LIST: Theme[] = [
     {
         id: '7',
         name: 'La langue française',
-        description: 'Description du theme 6',
+        description: 'Description du theme 7',
        
         quizzes: QUIZ_LIST,
         image: 'assets/img/francais.jpg'

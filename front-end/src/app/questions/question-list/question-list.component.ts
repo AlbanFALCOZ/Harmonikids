@@ -21,7 +21,7 @@ export class QuestionListComponent implements OnInit {
 
   @ViewChild(SoundQuestionComponent) soundQuestionComponent: SoundQuestionComponent | undefined;
 
-  
+
 
   public questionList: Question[] = [];
   questionCleared: number[] = [];
@@ -41,7 +41,7 @@ export class QuestionListComponent implements OnInit {
   showSuccessMessage: boolean = false;
   showFailureMessage: boolean = false;
 
- 
+
   private messageTimeout: any;
   isNavVisible = false;
 
@@ -49,9 +49,9 @@ export class QuestionListComponent implements OnInit {
   private successAudio = new Audio('assets/img/good.mp3');
   answerSelected: any;
 
-  
 
-  constructor(private router: Router, public questionService: QuestionService , public soundService : SonService, private indiceService : IndiceService,private navbarService: NavbarService , private scoreService: ScoreService) {
+
+  constructor(private router: Router, public questionService: QuestionService, public soundService: SonService, private indiceService: IndiceService, private navbarService: NavbarService, private scoreService: ScoreService) {
     this.questionList = this.questionService.getQuestionsFromLocalStorage();
     if (this.questionList.length === 0) {
       this.questionService.questions$.subscribe((questions: Question[]) => {
@@ -59,9 +59,9 @@ export class QuestionListComponent implements OnInit {
         this.questionService.saveQuestionsToLocalStorage(questions);
       });
     }
-    if(this.indiceService.estIndiceActif()){
-    this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
-    }else{
+    if (this.indiceService.estIndiceActif()) {
+      this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
+    } else {
       this.indiceService.setIndice(undefined);
     }
     this.hint = this.indiceService.hint;
@@ -72,8 +72,8 @@ export class QuestionListComponent implements OnInit {
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
-    
-    
+
+
 
 
   }
@@ -90,7 +90,7 @@ export class QuestionListComponent implements OnInit {
     if (this.soundQuestionComponent) {
       this.soundQuestionComponent.stopSound();
     }
-    
+
   }
 
   previousQuestion() {
@@ -114,7 +114,9 @@ export class QuestionListComponent implements OnInit {
       item.alreadySelected = true;
       this.selectedAnswerAllQuestions.push(item);
     });
-    this.selectedAnswerAllQuestions.filter((item, index) => this.selectedAnswerAllQuestions.indexOf(item) == index);
+    this.selectedAnswerAllQuestions = this.selectedAnswerAllQuestions.filter((item, index, self) =>
+      index === self.indexOf(item)
+    );
     const currentQuestion = this.questionList[this.currentQuestionIndex];
     const correctAnswers = currentQuestion.answers.filter(a => a.isCorrect);
 
@@ -125,15 +127,15 @@ export class QuestionListComponent implements OnInit {
       correctAnswers.every(ca => this.selectedAnswer.some(sa => sa.value === ca.value));
 
     if (selectedAreAllCorrect && allCorrectAnswersSelected) {
-        this.showSuccessMessage = true;
-        this.successAudio.play();
-        this.questionCleared.push(this.currentQuestionIndex);
-        this.scoreService.answerCorrect();
+      this.showSuccessMessage = true;
+      this.successAudio.play();
+      this.questionCleared.push(this.currentQuestionIndex);
+      this.scoreService.answerCorrect();
     } else {
-        this.showFailureMessage = true;
-        const hint = this.questionList[this.currentQuestionIndex].hint;
-        //this.showHint(hint);
-        this.scoreService.answerWrong();  
+      this.showFailureMessage = true;
+      const hint = this.questionList[this.currentQuestionIndex].hint;
+      //this.showHint(hint);
+      this.scoreService.answerWrong();
     }
 
     this.selectedAnswer.forEach((item, index) => {
@@ -155,12 +157,12 @@ export class QuestionListComponent implements OnInit {
 
     });
 
-    
+
     this.selectedAnswerCorrect = this.selectedAnswerCorrect.filter((item, index) => this.selectedAnswerCorrect.indexOf(item) == index);
 
 
     if (correctAnswers.every((item) => this.selectedAnswerCorrect.includes(item))) {
-    
+
       this.showSuccessMessage = true;
       this.soundService.playSound('assets/img/good.mp3');
       this.questionCleared.push(this.currentQuestionIndex);
@@ -170,7 +172,7 @@ export class QuestionListComponent implements OnInit {
         this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
         this.hintAudio = this.indiceService.hintAudio
         this.hintText = this.indiceService.hintText;
-        this.hintImageUrl=this.indiceService.hintImageUrl
+        this.hintImageUrl = this.indiceService.hintImageUrl
 
         if (this.hintImageUrl) {
           setTimeout(() => {
@@ -180,7 +182,7 @@ export class QuestionListComponent implements OnInit {
         if (this.hintAudio) {
           this.hintAudio.play();
           setTimeout(() => {
-            if (this.hintAudio) { 
+            if (this.hintAudio) {
               this.hintAudio.pause();
               this.hintAudio.currentTime = 0;
             }
@@ -188,18 +190,18 @@ export class QuestionListComponent implements OnInit {
         }
       }
     }
-    
+
     this.messageTimeout = setTimeout(() => {
       this.showSuccessMessage = false;
       this.showFailureMessage = false;
       if (this.indiceService.estIndiceActif()) {
         this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
         this.hintText = this.indiceService.hintText;
-        this.hintImageUrl=this.indiceService.hintImageUrl
+        this.hintImageUrl = this.indiceService.hintImageUrl
       }
       this.indiceService.hintImageUrl = undefined;
     }, 8000);
-  }    
+  }
 
 
   resetMessages() {

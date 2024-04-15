@@ -3,9 +3,16 @@
 <div class="content" [ngClass]="{'nav-visible': isNavVisible}">
 
     <app-title></app-title>
+    <div class="search">
+        <input type="text" placeholder="{{ search ? search : 'Rechercher dans les thèmes...' }}"
+            (keyup)="onKey($event)">
+        <button>
+            <span class="material-icons">search</span>
+            <p>Rechercher</p>
+        </button>
+    </div>
     <div class="content-theme">
-        <app-theme *ngFor="let theme of themeList" [theme]="theme" (themeSelected)="themeSelected($event)"
-
+        <app-theme *ngFor="let theme of themeListDisplayed" [theme]="theme" (themeSelected)="themeSelected($event)"
             (editTheme)="editTheme($event)" (themeToDelete)="addThemeToDelete($event)" [isDisabled]="isDisabled">
 
         </app-theme>

@@ -2,11 +2,16 @@
 
 <div class="content" [ngClass]="{'nav-visible': isNavVisible}">
   <app-title></app-title>
-
+  <div class="search">
+    <input type="text" placeholder="{{ search ? search : 'Rechercher dans les quiz...' }}" (keyup)="onKey($event)">
+    <button>
+      <span class="material-icons">search</span>
+      <p>Rechercher</p>
+    </button>
+  </div>
 
   <div class="content-quiz">
-    <app-quiz *ngFor="let quiz of quizList" [quiz]="quiz" (quizSelected)="quizSelected($event)"
-
+    <app-quiz *ngFor="let quiz of quizListDisplayed" [quiz]="quiz" (quizSelected)="quizSelected($event)"
       (editQuiz)="editQuiz($event)" (quizToDelete)="addQuizToDelete($event)" [isDisabled]="isDisabled">
 
     </app-quiz>

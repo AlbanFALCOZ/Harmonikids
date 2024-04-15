@@ -28,13 +28,16 @@ export class MembreListeComponent implements OnInit {
 
   isNavVisible = false;
 
+  search: string = '';
+
 
 
   constructor(private router: Router, public membreService: MembreService, public titleService: TitleService, private sonService: SonService, private navbarService: NavbarService, private modeService: ModeService) {
     this.membreService.membres$.subscribe((membres: Membre[]) => {
       this.membreListe = membres;
+      
     });
-
+    this.membreListeDisplayed = this.membreListe;
     this.titleService.title = 'Bienvenue';
     this.titleService.search = 'Rechercher un enfant';
 

@@ -78,7 +78,7 @@ export const TRUE_FALSE: Question = {
 
 export const DRAG_DROP1: Question = {
     id: '4',
-    label: 'Quel animal a six pattes',
+    label: 'Quel animal a six pattes ?',
     typeOfQuestion: QuestionType.DragAndDrop,
     niveau: 'moyen',
     image: 'assets/img/chien.jpeg',
