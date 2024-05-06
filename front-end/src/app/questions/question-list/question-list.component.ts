@@ -128,7 +128,7 @@ export class QuestionListComponent implements OnInit {
 
     if (selectedAreAllCorrect && allCorrectAnswersSelected) {
       this.showSuccessMessage = true;
-      this.successAudio.play();
+      this.soundService.playSound('assets/img/good.mp3');
       this.questionCleared.push(this.currentQuestionIndex);
       this.scoreService.answerCorrect();
     } else {
