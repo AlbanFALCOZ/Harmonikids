@@ -3,7 +3,7 @@
 <div class="content" [ngClass]="{'nav-visible': isNavVisible}">
   
   <div class="progress-container">
-    <progress class="progress-bar" [style.width.%]="(currentQuestionIndex+1)/questionList.length*100"></progress>
+    <progress class="progress-bar" [style.width.%]="(currentQuestionIndex)/(questionList.length-1)*100"></progress>
   </div>
 
 
@@ -30,7 +30,7 @@
     <div class="question-param">
       <div>
         <div class="Score">
-          <div>Score : {{ selectedAnswerCorrect.length}}/{{ selectedAnswerAllQuestions.length }}</div>
+          <div>Score : {{ selectedAnswerCorrect.length}}/{{ (selectedAnswerCorrect.length-0)+(selectedAnswerWrong.length-0) }}</div>
         </div>
         <div>
           <img class="stars" src="assets/img/star.png" *ngFor="let item of generateArray(selectedAnswerCorrect.length)"
@@ -44,7 +44,7 @@
 
 
   <div class="quiz-btn">
-    <button class="precedent" (click)="previousQuestion()">Précédent</button>
+    <button class="precedent" (click)="previousQuestion()" [style.visibility]="(currentQuestionIndex >= 1) ? 'visible' : 'hidden'">Précédent</button>
     <ng-container *ngIf="questionList[currentQuestionIndex]?.typeOfQuestion !== QuestionType.DragAndDrop">
       <button class="validate"
         [style.visibility]="questionCleared.includes(currentQuestionIndex) ? 'hidden' : 'visible'"

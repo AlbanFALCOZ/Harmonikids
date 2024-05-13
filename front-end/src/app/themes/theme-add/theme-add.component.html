@@ -23,8 +23,11 @@
                 </select><br>
             </div>
             <div class="display-input">
-                <label for="themeImage">Image du theme:</label><br>
-                <input type="file" id="themeImage" name="themeImage" ngModel><br>
+                <label for="image">Image :</label>
+                <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel/>
+                <div (click)="inputField.click()">
+                    <ng-content />
+                </div>
             </div>
             <button [disabled]="form.invalid" type="submit" >Créer le theme</button>
         </form>

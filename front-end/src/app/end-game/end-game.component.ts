@@ -17,7 +17,7 @@ export class EndGameComponent implements OnInit {
   correctAnswersCount: number = 0;
   totalScore: number = 0;
   personalizedMessage: string = '';
-  selectedAnswerCount: number = 0;
+  correctAnswerCount: number = 0;
 
   constructor(private router: Router, private scoreService: ScoreService) {}
 
@@ -28,8 +28,8 @@ export class EndGameComponent implements OnInit {
 
       }
     );
-    this.scoreService.numberOfSelectedAnswers$.subscribe((count: number) => {
-      this.selectedAnswerCount = count;
+    this.scoreService.numberOfCorrectAnswers$.subscribe((count: number) => {
+      this.correctAnswerCount = count;
     });
     console.log(this.correctAnswersCount);
   }
@@ -43,9 +43,9 @@ export class EndGameComponent implements OnInit {
   }
 
   updatePersonalizedMessage() {
-    if(this.selectedAnswerCount <= 1) {
+    if(this.correctAnswerCount <= 1) {
       this.personalizedMessage = "Bien essayé, continue comme ça !";
-    } else if(this.selectedAnswerCount <= 2) {
+    } else if(this.correctAnswerCount <= 2) {
       this.personalizedMessage = "Super, tu progresses bien !";
     } else {
       this.personalizedMessage = "Incroyable, t'es un champion !";
