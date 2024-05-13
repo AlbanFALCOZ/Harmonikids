@@ -9,12 +9,13 @@ const { Quiz } = require('../../models')
  */
 const buildQuizz = (quizId) => {
   const quiz = Quiz.getById(quizId)
+  quiz.questions = []
   // const questions = filterQuestionsFromQuizz(quiz.id)
   // const questionWithAnswers = questions.map((question) => {
   //   const answers = filterAnswersFromQuestion(question.id)
   //   return { ...question, answers }
   // })
-  return { quiz}
+  return quiz
 }
 
 /**

@@ -27,6 +27,7 @@ export class QuizComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        console.log(this.quiz)
     }
 
     selectQuiz(): void {
@@ -44,6 +45,19 @@ export class QuizComponent implements OnInit {
     displayModalUpdate() {
         this.editQuiz.emit(this.quiz);
         var modal = document.getElementById("myModalUpdate");
+
+        const quizTitleInput = document.getElementById("quizTitle") as HTMLInputElement;
+        const quizDescriptionInput = document.getElementById("quizDescription") as HTMLInputElement;
+        const quizImageInput = document.getElementById("quizImage") as HTMLInputElement;
+        const quizThemeInput = document.getElementById("quizTheme") as HTMLSelectElement;
+
+        if (quizTitleInput && quizDescriptionInput && quizImageInput && quizThemeInput) {
+            quizTitleInput.value = this.quiz.name;
+            quizDescriptionInput.value = this.quiz.description;
+            quizImageInput.value = this.quiz.image;
+            quizThemeInput.value = this.quiz.theme;
+        }
+
         if (modal) {
             modal.style.display = "block";
               

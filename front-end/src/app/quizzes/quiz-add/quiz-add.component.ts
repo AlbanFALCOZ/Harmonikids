@@ -49,18 +49,18 @@ export class QuizAddComponent implements OnInit {
     const quizTitle = form.value.quizTitle;
     const quizTheme = form.value.quizTheme;
     const quizDescription = form.value.quizDescription;
-    const quizQuestions = [QUESTION_LIST[0]];
+    //const quizQuestions = [QUESTION_LIST[0]];
     const quizImage = form.value.quizImage;
-    console.log(quizTitle, quizTheme, quizDescription, quizQuestions, quizImage);
+    console.log(quizTitle, quizTheme, quizDescription, quizImage);
 
     const newQuiz: Quiz = {
       id: '1',
       name: quizTitle,
       theme: quizTheme,
       description: quizDescription,
-      questions: quizQuestions,
+      questions: [],
       statut: 'A faire',
-      image: quizImage,
+      image: quizImage
     };
 
     this.quizService.addQuiz(newQuiz);
@@ -69,3 +69,4 @@ export class QuizAddComponent implements OnInit {
   }
 
 }
+
