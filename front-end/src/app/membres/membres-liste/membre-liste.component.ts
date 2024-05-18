@@ -33,11 +33,16 @@ export class MembreListeComponent implements OnInit {
 
 
   constructor(private router: Router, public membreService: MembreService, public titleService: TitleService, private sonService: SonService, private navbarService: NavbarService, private modeService: ModeService) {
+   
     this.membreService.membres$.subscribe((membres: Membre[]) => {
       this.membreListe = membres;
-      
+      this.membreService.membres = this.membreListe;
+      this.membreListeDisplayed = this.membreListe;
+     
     });
-    this.membreListeDisplayed = this.membreListe;
+  
+    
+   
     this.titleService.title = 'Bienvenue';
     this.titleService.search = 'Rechercher un enfant';
 
@@ -52,7 +57,7 @@ export class MembreListeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+   
   }
 
   toggleMode() {
@@ -93,6 +98,8 @@ export class MembreListeComponent implements OnInit {
 
     form.resetForm();
   }
+
+  
 
 
 
