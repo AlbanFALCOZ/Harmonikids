@@ -54,8 +54,11 @@
             </div>
 
             <div class="display-input">
-                <label for="quizImage">Image du quiz:</label><br>
-                <input type="file" id="quizImage" name="quizImage"><br>
+                <label for="image">Image :</label>
+                <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel/>
+                <div (click)="inputField.click()">
+                    <ng-content />
+                </div>
             </div>
 
             <button [disabled]="form.invalid" type="submit">Créer le quiz</button>
@@ -63,4 +66,3 @@
     </div>
 
 </div>
-

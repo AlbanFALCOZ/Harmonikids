@@ -26,7 +26,6 @@ export class QuestionListComponent implements OnInit {
   public questionList: Question[] = [];
   questionCleared: number[] = [];
 
-  selectedAnswerAllQuestions: Answer[] = [];
   selectedAnswer: Answer[] = [];
   selectedAnswerCorrect: Answer[] = [];
   selectedAnswerWrong: Answer[] = [];
@@ -91,6 +90,23 @@ export class QuestionListComponent implements OnInit {
       this.soundQuestionComponent.stopSound();
     }
 
+    const currentQuestion = this.questionList[this.currentQuestionIndex];
+    console.log(currentQuestion.answers[0]);
+    console.log(this.selectedAnswerCorrect.length);
+
+    currentQuestion.answers.forEach((item, index2) => {
+      this.selectedAnswerCorrect.forEach((item2) => {
+        if (item == item2) {
+          console.log("item", item);
+          console.log("index2", index2);
+          const answer = document.getElementById("answer" + index2);
+          
+          answer?.classList.add("right-answer");
+          answer?.classList.remove("selected"); // Ajoutez cette ligne pour supprimer la classe "selected"
+          console.log("answer", answer);
+        }
+      });
+    });
   }
 
   previousQuestion() {
@@ -102,7 +118,13 @@ export class QuestionListComponent implements OnInit {
     }
     this.resetMessages();
 
+    const currentQuestion = this.questionList[this.currentQuestionIndex];
+
+    
+
   }
+
+
 
 
   validateQuestion(): void {
@@ -112,33 +134,14 @@ export class QuestionListComponent implements OnInit {
     }
     this.selectedAnswer.forEach((item, index) => {
       item.alreadySelected = true;
-      this.selectedAnswerAllQuestions.push(item);
     });
-    this.selectedAnswerAllQuestions = this.selectedAnswerAllQuestions.filter((item, index, self) =>
-      index === self.indexOf(item)
-    );
     const currentQuestion = this.questionList[this.currentQuestionIndex];
     const correctAnswers = currentQuestion.answers.filter(a => a.isCorrect);
 
     this.resetMessages();
+  
 
-    const selectedAreAllCorrect = this.selectedAnswer.every(sa => sa.isCorrect);
-    const allCorrectAnswersSelected = correctAnswers.length === this.selectedAnswer.length &&
-      correctAnswers.every(ca => this.selectedAnswer.some(sa => sa.value === ca.value));
-
-    if (selectedAreAllCorrect && allCorrectAnswersSelected) {
-      this.showSuccessMessage = true;
-      this.soundService.playSound('assets/img/good.mp3');
-      this.questionCleared.push(this.currentQuestionIndex);
-      this.scoreService.answerCorrect();
-    } else {
-      this.showFailureMessage = true;
-      const hint = this.questionList[this.currentQuestionIndex].hint;
-      //this.showHint(hint);
-      this.scoreService.answerWrong();
-    }
-
-    this.selectedAnswer.forEach((item, index) => {
+    this.selectedAnswer.forEach((item) => {
       currentQuestion.answers.forEach((item2, index2) => {
         if (item == item2) {
           const answer = document.getElementById("answer" + index2);
@@ -151,6 +154,7 @@ export class QuestionListComponent implements OnInit {
           else {
             this.selectedAnswerCorrect.push(item2);
             answer?.classList.add("right-answer");
+            console.log("answer", answer);
           }
         }
       });
@@ -159,10 +163,10 @@ export class QuestionListComponent implements OnInit {
 
 
     this.selectedAnswerCorrect = this.selectedAnswerCorrect.filter((item, index) => this.selectedAnswerCorrect.indexOf(item) == index);
+    this.selectedAnswerWrong = this.selectedAnswerWrong.filter((item, index) => this.selectedAnswerWrong.indexOf(item) == index);
 
 
     if (correctAnswers.every((item) => this.selectedAnswerCorrect.includes(item))) {
-
       this.showSuccessMessage = true;
       this.soundService.playSound('assets/img/good.mp3');
       this.questionCleared.push(this.currentQuestionIndex);
@@ -227,7 +231,7 @@ export class QuestionListComponent implements OnInit {
     return Array(num);
   }
   finishQuiz() {
-    this.scoreService.updateSelectedAnswersCount(this.selectedAnswerAllQuestions.length);
+    this.scoreService.updateSelectedAnswersCount(this.selectedAnswerCorrect.length);
     this.router.navigate(['/end-game']);
   }
 }

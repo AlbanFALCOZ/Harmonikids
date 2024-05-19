@@ -5,8 +5,8 @@
   <div class="search">
     <input type="text" placeholder="{{ search ? search : 'Rechercher dans les membres...' }}" (keyup)="onKey($event)">
     <button>
-        <span class="material-icons">search</span>
-        <p>Rechercher</p>
+      <span class="material-icons">search</span>
+      <p>Rechercher</p>
     </button>
   </div>
 
@@ -42,8 +42,11 @@
           </div>
 
           <div class="display-input">
-            <label for="image">Photo:</label><br>
-            <input type="file" id="image" name="image"><br>
+            <label for="image">Photo :</label>
+            <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel />
+            <div (click)="inputField.click()">
+              <ng-content />
+            </div>
           </div>
           <button [disabled]="form.invalid" type="submit">Ajouter</button>
 
@@ -54,7 +57,7 @@
 
   </div>
 
-  <button  class="switch-mode" (click)="toggleMode()">
+  <button class="switch-mode" (click)="toggleMode()">
     Mode Ergothérapeute : {{ isDisabled ? 'Off' : 'On' }}
   </button>
 
