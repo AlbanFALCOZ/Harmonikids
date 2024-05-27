@@ -30,6 +30,8 @@ export class MembreListeComponent implements OnInit {
 
   search: string = '';
 
+  src: string | undefined;
+
 
 
   constructor(private router: Router, public membreService: MembreService, public titleService: TitleService, private sonService: SonService, private navbarService: NavbarService, private modeService: ModeService) {
@@ -78,7 +80,7 @@ export class MembreListeComponent implements OnInit {
     const lastNameMember = form.value.lastName;
     const ageMember = form.value.age;
     const descriptionMember = form.value.description;
-    const imageMember = form.value.image;
+    const imageMember = this.src;
 
     const newMember: Membre = {
       id: '1',
@@ -86,12 +88,20 @@ export class MembreListeComponent implements OnInit {
       lastName: lastNameMember,
       age: ageMember,
       description: descriptionMember,
-      image: imageMember
+      image: imageMember || '',
     };
 
     this.membreService.addMembre(newMember);
 
     form.resetForm();
+  }
+
+  valueChanged(files: FileList) {
+    if (files.length !== 1) return;
+
+    const reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    reader.onload = () => (this.src = reader.result as string);
   }
 
 

@@ -1,8 +1,8 @@
 <div class="end-game-container">
   <h1>Fin du jeu !</h1>
-  <p>Score : {{ selectedAnswerCount }}</p>
+  <p>Score : {{ correctAnswerCount }}</p>
   <div class="stars">
-    <img class="star-img" src="assets/img/star.png" *ngFor="let star of generateArray(selectedAnswerCount)" width="50px" height="50px">
+    <img class="star-img" src="assets/img/star.png" *ngFor="let star of generateArray(correctAnswerCount)" width="50px" height="50px">
   </div>
   <p>{{ personalizedMessage }}</p>
   <button class="recommencer" (click)="restartGame()">Recommencer</button>
