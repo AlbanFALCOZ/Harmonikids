@@ -6,6 +6,8 @@ import { TitleService } from '../../../services/title.service';
 import { QuestionService } from 'src/services/question.service';
 import { NavbarService } from 'src/services/navbar.service';
 import { ModeService } from 'src/services/mode-ergo.service';
+import { Theme } from 'src/models/theme.model';
+import { ThemeService } from 'src/services/theme.service';
 
 
 @Component({
@@ -17,6 +19,8 @@ export class QuizListComponent implements OnInit {
 
   quizList: Quiz[] = [];
   quizListDisplayed: Quiz[] = [];
+  quizListSortedName: Quiz[] = [];
+  quizListSortedTheme: Quiz[] = [];
   quizToDelete: Quiz | null = null;
   quizToEdit: Quiz | null = null;
   isDisabled: boolean = false;
@@ -26,14 +30,21 @@ export class QuizListComponent implements OnInit {
 
   public selectedQuiz: Quiz | null = null;
 
-  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService, public questionService: QuestionService, private navbarService: NavbarService, private modeService: ModeService) {
+  themeList: Theme[] = [];
+
+  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService, public questionService: QuestionService, private navbarService: NavbarService, private modeService: ModeService, private themeService: ThemeService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
       this.quizListDisplayed = quizzes;
+      this.quizListSortedName = quizzes;
+      this.quizListSortedTheme = quizzes;
+    });
+    this.themeService.themes$.subscribe((themes: Theme[]) => {
+      this.themeList = themes;
     });
     this.titleService.title = 'Liste des quiz';
     this.titleService.search = 'Rechercher dans les quiz...';
-    
+
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
@@ -41,10 +52,23 @@ export class QuizListComponent implements OnInit {
     this.modeService.isDisabled$.subscribe(isDisabled => {
       this.isDisabled = isDisabled;
     });
+
   }
 
   ngOnInit(): void {
+    const themeSelect: HTMLSelectElement = document.getElementById("quizTheme") as HTMLSelectElement;
+    themeSelect.addEventListener('change', (event) => {
+      const themeSelected = (event.target as HTMLSelectElement).value;
+      console.log('Selected theme: ', themeSelected);
+      if (themeSelected != "none") {
+        this.quizListSortedTheme = this.quizList.filter(quiz => quiz.theme == themeSelected);
+      }
+      else {
+        this.quizListSortedTheme = this.quizList;
+      }
 
+      this.updateQuizListDisplayed();
+    });
   }
 
   quizSelected(quiz: Quiz): void {
@@ -71,7 +95,15 @@ export class QuizListComponent implements OnInit {
 
 
   onKey(event: any) {
-    this.quizListDisplayed = this.quizList.filter(quiz => quiz.name.toLowerCase().includes(event.target.value.toLowerCase()));
+    this.quizListSortedName = this.quizList.filter(quiz => quiz.name.toLowerCase().includes(event.target.value.toLowerCase()));
+    this.updateQuizListDisplayed();
+  }
+
+  updateQuizListDisplayed() {
+    this.quizListDisplayed = this.quizList.filter(quiz => 
+      this.quizListSortedName.some(sortedQuiz => sortedQuiz.id === quiz.id) &&
+      this.quizListSortedTheme.some(sortedQuiz => sortedQuiz.id === quiz.id)
+    );
   }
 
 }
