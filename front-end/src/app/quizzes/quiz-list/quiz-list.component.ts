@@ -15,9 +15,10 @@ import { ModeService } from 'src/services/mode-ergo.service';
 })
 export class QuizListComponent implements OnInit {
 
-  public quizList: Quiz[] = [];
+  quizList: Quiz[] = [];
   quizListDisplayed: Quiz[] = [];
   quizToDelete: Quiz | null = null;
+  quizToEdit: Quiz | null = null;
   isDisabled: boolean = false;
 
   isNavVisible = false;
@@ -50,10 +51,12 @@ export class QuizListComponent implements OnInit {
     const quizQuestions = quiz.questions;
     this.questionService.updateQuestionsForQuiz(quizQuestions);
   }
-
+  
   editQuiz(quiz: Quiz): void {
-    this.router.navigate(['/edit-quiz/' + quiz.name]);
+    this.quizToEdit = quiz;
+    console.log("edit du quizList ", this.quizToEdit);
   }
+
 
   deleteQuiz(): void {
     if (this.quizToDelete) {
@@ -65,6 +68,7 @@ export class QuizListComponent implements OnInit {
   addQuizToDelete(quiz: Quiz): void {
     this.quizToDelete = quiz;
   }
+
 
   onKey(event: any) {
     this.quizListDisplayed = this.quizList.filter(quiz => quiz.name.toLowerCase().includes(event.target.value.toLowerCase()));
