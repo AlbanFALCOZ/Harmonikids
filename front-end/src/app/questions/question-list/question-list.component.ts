@@ -52,7 +52,7 @@ export class QuestionListComponent implements OnInit {
   constructor(private quizService: QuizService, private router: Router, public questionService: QuestionService, public soundService: SonService, private indiceService: IndiceService, private navbarService: NavbarService, private scoreService: ScoreService) {
     
     this.questionList = this.quizService.getFilteredQuestions();
-    if (this.indiceService.estIndiceActif()) {
+    if (this.indiceService.estIndiceActif() && this.questionList[this.currentQuestionIndex] != undefined) {
       this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
     } else {
       this.indiceService.setIndice(undefined);
@@ -75,7 +75,7 @@ export class QuestionListComponent implements OnInit {
     console.log(this.questionList);
   }
 
-  nextQuestion() {
+  nextQuestion() : void{
     this.resetMessages();
     if (this.currentQuestionIndex < this.questionList.length - 1) {
       this.currentQuestionIndex++;
@@ -103,7 +103,7 @@ export class QuestionListComponent implements OnInit {
     });
   }
 
-  previousQuestion() {
+  previousQuestion(): void{
     if (this.currentQuestionIndex > 0) {
       this.currentQuestionIndex--;
     }

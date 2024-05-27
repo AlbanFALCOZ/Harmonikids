@@ -135,7 +135,7 @@ export const SOUND: Question = {
     id: 6,
     label: 'Quel animal fait ce bruit ?',
     typeOfQuestion: QuestionType.GuessTheSound,
-    niveau: 'Facile',
+    niveau: 'Difficile',
     audio: 'assets/miaule.mp3',
     image: 'assets/img/chatB.png',
     answers: [
@@ -158,4 +158,4 @@ export const SOUND: Question = {
     ]
 };
 
-export const QUESTION_LIST: Question[] = [MULTI_CHOICE, UNIQUE_CHOICE, TRUE_FALSE, DRAG_DROP1, SOUND];
+export const QUESTION_LIST: Question[] = [MULTI_CHOICE, UNIQUE_CHOICE, TRUE_FALSE, DRAG_DROP1, DRAG_DROP2, SOUND];
