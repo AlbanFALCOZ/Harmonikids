@@ -1,3 +1,4 @@
+// quiz.component.ts
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
 
@@ -9,7 +10,7 @@ import { Quiz } from '../../../models/quiz.model';
 export class QuizComponent implements OnInit {
 
     @Input()
-    quiz!: Quiz
+    quiz!: Quiz;
 
     @Input() isDisabled: boolean = false;
 
@@ -22,64 +23,40 @@ export class QuizComponent implements OnInit {
     @Output()
     quizToDelete: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
-    constructor() {
-
-    }
+    constructor() { }
 
     ngOnInit(): void {
-        console.log(this.quiz)
+        console.log(this.quiz);
     }
 
     selectQuiz(): void {
         this.quizSelected.emit(this.quiz);
     }
 
-    edit(): void {
-        this.editQuiz.emit(this.quiz);
-    }
-
-    delete(): void {
-        this.quizToDelete.emit(this.quiz);
-    }
-
     displayModalUpdate() {
-        this.editQuiz.emit(this.quiz);
-        var modal = document.getElementById("myModalUpdate");
-
-        const quizTitleInput = document.getElementById("quizTitle") as HTMLInputElement;
-        const quizDescriptionInput = document.getElementById("quizDescription") as HTMLInputElement;
-        const quizImageInput = document.getElementById("quizImage") as HTMLInputElement;
-        const quizThemeInput = document.getElementById("quizTheme") as HTMLSelectElement;
-
-        if (quizTitleInput && quizDescriptionInput && quizImageInput && quizThemeInput) {
-            quizTitleInput.value = this.quiz.name;
-            quizDescriptionInput.value = this.quiz.description;
-            quizImageInput.value = this.quiz.image;
-            quizThemeInput.value = this.quiz.theme;
-        }
+        this.editQuiz.emit(this.quiz); // Pass the quiz to the parent component
+        const modal = document.getElementById("myModalUpdate");
 
         if (modal) {
             modal.style.display = "block";
-              
             window.onclick = function (event) {
-                if (event.target == modal && (modal)) {
+                if (event.target == modal) {
                     modal.style.display = "none";
                 }
-            }
+            };
         }
     }
 
     displayModalDelete() {
         this.quizToDelete.emit(this.quiz);
-        var modal = document.getElementById("myModalDelete");
+        const modal = document.getElementById("myModalDelete");
         if (modal) {
             modal.style.display = "block";
-
             window.onclick = function (event) {
-                if (event.target == modal && (modal)) {
+                if (event.target == modal) {
                     modal.style.display = "none";
                 }
-            }
+            };
         }
     }
 }
