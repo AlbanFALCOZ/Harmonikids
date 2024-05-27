@@ -1,5 +1,5 @@
 <a routerLink="/niveau/:id">
-<div class="quiz-card">
+<div class="quiz-card" *ngIf = "quiz">
     <div class="quiz-card-header">
         <img src="{{ quiz.image }}" alt="animaux">
         <p class = "text">{{ quiz.name }}</p>
@@ -16,7 +16,7 @@
             <div class="progress-circle__text">100%</div>
         </div>
         <p>{{ quiz.description }}</p>
-        <p>{{ quiz.questions.length }}</p>
+        <p *ngIf = "quiz.questions">{{ quiz.questions.length }}</p>
     </div>
 </div>
 </a>

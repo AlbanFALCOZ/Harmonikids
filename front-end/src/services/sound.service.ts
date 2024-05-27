@@ -33,9 +33,12 @@ export class SonService {
   }
 
   toggleSon() {
-   
-    const newSonState = !this.sonActif;
-    this.sauvegarderSonState(newSonState); 
+    this.sonActif = !this.sonActif;
+    if(this.sonActif){
+      this.activerSon
+    }else{
+      this.desactiverSon
+    }
   }
   
   toggleMusique() {
