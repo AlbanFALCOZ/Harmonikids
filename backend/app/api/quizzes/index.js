@@ -2,12 +2,12 @@ const { Router } = require('express')
 
 const { Quiz } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
-// const QuestionsRouter = require('./questions')
+const QuestionsRouter = require('./questions')
 const { buildQuizz, buildQuizzes } = require('./manager')
 
 const router = new Router()
 
-//router.use('/:quizId/questions', QuestionsRouter)
+router.use('/:quizId/questions', QuestionsRouter)
 
 router.get('/', (req, res) => {
   try {

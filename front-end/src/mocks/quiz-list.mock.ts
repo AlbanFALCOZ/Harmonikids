@@ -6,7 +6,7 @@ export const QUIZ_LIST: Quiz[] = [
         id: 1,
         name: 'Les animaux',
         description: 'Description du quiz 1',
-        theme: 'Theme 1',
+        theme: 'Les animaux',
         questions: QUESTION_LIST,
         statut : 'A faire',
         image: 'assets/img/animal.jpg'
@@ -15,7 +15,7 @@ export const QUIZ_LIST: Quiz[] = [
         id: 2,
         name: 'L\'addition',
         description: 'Description du quiz 2',
-        theme: 'Theme 2',
+        theme: 'Les mathèmatiques',
         questions: QUESTION_LIST,
         statut: 'A faire',
         image: 'assets/img/addition.jpg'
@@ -24,7 +24,7 @@ export const QUIZ_LIST: Quiz[] = [
         id: 3,
         name: 'Les étoiles',
         description: 'Description du quiz 3',
-        theme: 'Theme 3',
+        theme: 'L\'astronomie',
         questions: QUESTION_LIST,
         statut: 'En cours',
         image: 'assets/img/etoile.jpg'
@@ -33,7 +33,7 @@ export const QUIZ_LIST: Quiz[] = [
         id: 4,
         name: 'Le basket',
         description: 'Description du quiz 4',
-        theme: 'Theme 4',
+        theme: 'Le sport',
         questions: QUESTION_LIST,
         statut: 'Terminé',
         image: 'assets/img/basketB.jpg'

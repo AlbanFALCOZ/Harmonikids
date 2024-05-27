@@ -2,6 +2,16 @@
 
 <div class="content" [ngClass]="{'nav-visible': isNavVisible}">
   <app-title></app-title>
+
+  <div class="select-container">
+
+    <select id="quizTheme" name="quizTheme" >
+      <option value="" disabled selected hidden>Trier les quiz par thème</option>
+      <option value="none">Tous les thèmes</option>
+      <option *ngFor="let theme of themeList" [ngValue]="theme">{{theme.name}}</option>
+    </select>
+  </div>
+
   <div class="search">
     <input type="text" placeholder="{{ search ? search : 'Rechercher dans les quiz...' }}" (keyup)="onKey($event)">
     <button>
