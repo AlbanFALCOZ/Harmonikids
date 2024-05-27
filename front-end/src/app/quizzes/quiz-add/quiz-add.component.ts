@@ -56,7 +56,7 @@ export class QuizAddComponent implements OnInit {
     console.log(quizTitle, quizTheme, quizDescription, quizImage);
 
     const newQuiz: Quiz = {
-      id: 1,
+      id: 0,
       name: quizTitle,
       theme: quizTheme,
       description: quizDescription,

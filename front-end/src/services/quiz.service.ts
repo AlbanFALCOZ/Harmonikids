@@ -42,7 +42,7 @@ export class QuizService {
   private httpOptions = httpOptionsBase;
 
   constructor(private http: HttpClient) {
-    //this.retrieveQuizzes();
+    this.retrieveQuizzes();
   }
 
   getQuizById(id: number): Observable<Quiz> {

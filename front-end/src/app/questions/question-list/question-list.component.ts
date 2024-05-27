@@ -65,14 +65,17 @@ export class QuestionListComponent implements OnInit {
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
-
-
-
-
   }
+  /*ngOnInit(): void {
+    console.log(this.questionList);
+  }*/
 
   ngOnInit(): void {
-    console.log(this.questionList);
+    const quizId = 1; // Set the quizId according to your application logic
+    this.questionService.fetchQuestions(quizId).subscribe(questions => {
+      this.questionList = questions;
+      this.questionService.saveQuestionsToLocalStorage(questions);
+    });
   }
 
   nextQuestion() : void{
@@ -96,7 +99,7 @@ export class QuestionListComponent implements OnInit {
           const answer = document.getElementById("answer" + index2);
           
           answer?.classList.add("right-answer");
-          answer?.classList.remove("selected"); // Ajoutez cette ligne pour supprimer la classe "selected"
+          answer?.classList.remove("selected");
           console.log("answer", answer);
         }
       });

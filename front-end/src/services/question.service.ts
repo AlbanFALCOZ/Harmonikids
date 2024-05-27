@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Question, QuestionType } from '../models/question.model';
 import { Quiz } from '../models/quiz.model';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { QuizService } from './quiz.service';
 import { QUESTION_LIST } from 'src/mocks/question.mock';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,7 @@ import { QUESTION_LIST } from 'src/mocks/question.mock';
 export class QuestionService {
 
   private questions: Question[] = [];
+  private apiUrl = 'http://localhost:9428/api';
 
   selectedQuestionTypes: QuestionType[] = [];
  
@@ -20,12 +23,62 @@ export class QuestionService {
   public questionSelected$: Subject<Question[]> = new Subject();
   selectedTypes: any;
 
-  constructor(public quizService: QuizService) {
+  constructor(private http: HttpClient, public quizService: QuizService) {
     this.quizService.quizSelected$.subscribe((selectedQuiz: Quiz) => {
       this.questions = selectedQuiz.questions;
       this.questions$.next(this.questions);
     });
-    this.retrieveQuestions();
+    //this.retrieveQuestions();
+  }
+
+
+
+  fetchQuestions(quizId: number): Observable<Question[]> {
+    console.log(quizId);
+    return this.http.get<Question[]>(`${this.apiUrl}/quizzes/${quizId}/questions`).pipe(
+      map((questions) => {
+        this.questions = questions;
+        this.questions$.next(this.questions);
+        return questions;
+      })
+    );
+  }
+
+
+  getQuestion(quizId: number, questionId: number): Observable<Question> {
+    return this.http.get<Question>(`${this.apiUrl}/quizzes/${quizId}/questions/${questionId}`);
+  }
+
+  createQuestion(quizId: number, question: Question): Observable<Question> {
+    return this.http.post<Question>(`${this.apiUrl}/quizzes/${quizId}/questions`, question).pipe(
+      map((newQuestion) => {
+        this.questions.push(newQuestion);
+        this.questions$.next(this.questions);
+        return newQuestion;
+      })
+    );
+  }
+
+  updateQuestion(quizId: number, questionId: number, question: Question): Observable<Question> {
+    return this.http.put<Question>(`${this.apiUrl}/quizzes/${quizId}/questions/${questionId}`, question).pipe(
+      map((updatedQuestion) => {
+        const index = this.questions.findIndex(q => q.id === updatedQuestion.id);
+        if (index !== -1) {
+          this.questions[index] = updatedQuestion;
+          this.questions$.next(this.questions);
+        }
+        return updatedQuestion;
+      })
+    );
+  }
+
+  deleteQuestion(quizId: number, questionId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/quizzes/${quizId}/questions/${questionId}`).pipe(
+      map(() => {
+        this.questions = this.questions.filter(q => q.id !== questionId);
+        this.questions$.next(this.questions);
+      })
+    );
   }
 
 
