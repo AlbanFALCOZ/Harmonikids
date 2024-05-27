@@ -1,10 +1,10 @@
 import { Question, QuestionType } from '../models/question.model';
 
 export const MULTI_CHOICE: Question = {
-    id: '1',
+    id: 1,
     label: 'Quels sont les animaux domestiques?',
     typeOfQuestion: QuestionType.MultipleChoice,
-    niveau: 'facile',
+    niveau: 'Facile',
     image: 'assets/img/chien.jpeg',
     answers: [
         {
@@ -30,10 +30,10 @@ export const MULTI_CHOICE: Question = {
 };
 
 export const UNIQUE_CHOICE: Question = {
-    id: '2',
+    id: 2,
     label: 'Parmi ces animaux, lequel miaule?',
     typeOfQuestion: QuestionType.UniqueChoice,
-    niveau: 'facile',
+    niveau: 'Facile',
     image: 'assets/img/reflexion.png',
     answers: [
         {
@@ -59,10 +59,10 @@ export const UNIQUE_CHOICE: Question = {
 };
 
 export const TRUE_FALSE: Question = {
-    id: '3',
+    id: 3,
     label: 'Le chien aboie?',
     typeOfQuestion: QuestionType.TrueOrFalse,
-    niveau: 'moyen',
+    niveau: 'Moyen',
     image: 'assets/img/chien.jpeg',
     answers: [
         {
@@ -77,10 +77,10 @@ export const TRUE_FALSE: Question = {
 };
 
 export const DRAG_DROP1: Question = {
-    id: '4',
+    id: 4,
     label: 'Quel animal a six pattes ?',
     typeOfQuestion: QuestionType.DragAndDrop,
-    niveau: 'moyen',
+    niveau: 'Moyen',
     image: 'assets/img/chien.jpeg',
     answers: [
         {
@@ -106,10 +106,10 @@ export const DRAG_DROP1: Question = {
 };
 
 export const DRAG_DROP2: Question = {
-    id: '5',
+    id: 5,
     label: 'Une question intéréssante:La reponse est Sara ?',
     typeOfQuestion: QuestionType.DragAndDrop,
-    niveau: 'difficile',
+    niveau: 'Difficile',
     image: 'assets/img/chien.jpeg',
     answers: [
         {
@@ -132,10 +132,10 @@ export const DRAG_DROP2: Question = {
 };
 
 export const SOUND: Question = {
-    id: '6',
+    id: 6,
     label: 'Quel animal fait ce bruit ?',
     typeOfQuestion: QuestionType.GuessTheSound,
-    niveau: 'facile',
+    niveau: 'Facile',
     audio: 'assets/miaule.mp3',
     image: 'assets/img/chatB.png',
     answers: [

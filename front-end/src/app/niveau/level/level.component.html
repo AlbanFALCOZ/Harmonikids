@@ -9,8 +9,9 @@
   </div>
 
   <div class="content-niveau">
-    <app-niveau-card niveauName="Facile" (niveauSelected)="filterQuestionsByLevel($event)"></app-niveau-card>
-    <app-niveau-card niveauName="Moyen" (niveauSelected)="filterQuestionsByLevel($event)"></app-niveau-card>
-    <app-niveau-card niveauName="Difficile" (niveauSelected)="filterQuestionsByLevel($event)"></app-niveau-card>
+    <app-niveau-card niveauName="Facile" [questions]="questionList"></app-niveau-card>
+    <app-niveau-card niveauName="Moyen" [questions]="questionList"></app-niveau-card>
+    <app-niveau-card niveauName="Difficile" [questions]="questionList"></app-niveau-card>
   </div>
+
 </div>

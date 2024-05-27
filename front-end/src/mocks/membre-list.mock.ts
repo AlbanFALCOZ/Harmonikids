@@ -3,7 +3,7 @@ import { Membre } from 'src/models/membre.model';
 
 export const Membre_LIST: Membre[] = [
     {
-      id: '1',
+      id: 1,
       firstName: 'Alice',
       lastName : 'Routine' , 
       age : 8,
@@ -12,7 +12,7 @@ export const Membre_LIST: Membre[] = [
       
     },
     {
-      id: '2',
+      id: 2,
       firstName: 'Lucas',
       age : 10,
       lastName : 'Distrait' , 
@@ -21,7 +21,7 @@ export const Membre_LIST: Membre[] = [
       
     },
     {
-      id: '3',
+      id: 3,
       firstName: 'Léo',
       lastName : 'Vivace' ,
       age: 10,

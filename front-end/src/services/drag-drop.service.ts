@@ -14,12 +14,12 @@ export class DragDropService {
     return of(QUESTION_LIST);
   }
 
-  getDragDropById(id: string): Observable<Question | undefined> {
+  getDragDropById(id: number): Observable<Question | undefined> {
     const question = QUESTION_LIST.find(item => item.id === id);
     return of(question);
   }
   
-  getItems(id: string): Observable<{ item1: string, item2: string, item3: string } | undefined> {
+  getItems(id: number): Observable<{ item1: string, item2: string, item3: string } | undefined> {
     const question = QUESTION_LIST.find(item => item.id === id);
     if (question) {
       return of({ item1: question.answers[0].value, item2: question.answers[1].value, item3: question.answers[2].value });
@@ -28,7 +28,7 @@ export class DragDropService {
     }
   }
 
-  getRightAnswer(id: string): Observable<string | undefined> {
+  getRightAnswer(id: number): Observable<string | undefined> {
     const question = QUESTION_LIST.find(item => item.id === id);
     if (question) {
       return of(question.answers.find(answer => answer.isCorrect)?.value);
@@ -37,7 +37,7 @@ export class DragDropService {
     }
   }
 
-  getQuestion(id: string): Observable<string | undefined> {
+  getQuestion(id: number): Observable<string | undefined> {
     const question = QUESTION_LIST.find(item => item.id === id);
     if (question) {
       return of(question.label);

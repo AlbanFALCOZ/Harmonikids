@@ -44,7 +44,7 @@ export class QuestionAddComponent {
   }
 
   question: Question = {
-    id: '',
+    id: 1,
     label: '',
     typeOfQuestion: QuestionType.MultipleChoice,
     niveau: '',

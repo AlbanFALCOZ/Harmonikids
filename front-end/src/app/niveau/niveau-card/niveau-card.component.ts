@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { QuizService } from 'src/services/quiz.service';
 
 @Component({
   selector: 'app-niveau-card',
@@ -8,11 +9,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class NiveauCardComponent {
   @Input() niveauName: string = '';
 
+  @Input() questions: any[] = [];
+
   @Output() niveauSelected: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
 
-  onNiveauSelected(niveau: string): void {
-    this.niveauSelected.emit(niveau);
-  } 
+  constructor(private quizService: QuizService) { }
+
+  onNiveauSelected(niveauName: string): void {
+    this.niveauSelected.emit(niveauName);
+    const filteredQuestions = this.questions.filter(question => question.niveau === niveauName);
+    this.quizService.setFilteredQuestions(filteredQuestions);
+  }
 }

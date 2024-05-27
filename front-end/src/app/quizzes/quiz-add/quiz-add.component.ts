@@ -56,11 +56,11 @@ export class QuizAddComponent implements OnInit {
     console.log(quizTitle, quizTheme, quizDescription, quizImage);
 
     const newQuiz: Quiz = {
-      id: '1',
+      id: 1,
       name: quizTitle,
       theme: quizTheme,
       description: quizDescription,
-      questions: [],
+      questions: [QUESTION_LIST[0]],
       statut: 'A faire',
       image: quizImage
  };

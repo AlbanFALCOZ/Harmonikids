@@ -10,10 +10,6 @@ import { QUESTION_LIST } from 'src/mocks/question.mock';
 })
 export class QuestionService {
 
-
-
-
- 
   private questions: Question[] = [];
 
   selectedQuestionTypes: QuestionType[] = [];
@@ -104,7 +100,7 @@ export class QuestionService {
     return this.questions.filter(question => question.typeOfQuestion === type);
   }
 
-  getQuestionById(id: string): Question | undefined {
+  getQuestionById(id: number): Question | undefined {
     return this.questions.find(question => question.id === id);
   }
   

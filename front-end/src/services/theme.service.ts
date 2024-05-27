@@ -54,7 +54,7 @@ export class ThemeService {
       }
 
 
-      getThemeById(id: string): Theme {
+      getThemeById(id: number): Theme {
         const theme = this.themes.find(theme => theme.id === id);
         if (!theme) {
           throw new Error(`No theme found with ID: ${id}`);

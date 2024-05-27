@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question, Answer } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
@@ -10,6 +10,7 @@ import { IndiceService } from 'src/services/indice.service';
 
 import { ScoreService } from 'src/services/score-service.service';
 import { NavbarService } from 'src/services/navbar.service';
+import { QuizService } from 'src/services/quiz.service';
 
 
 @Component({
@@ -21,9 +22,8 @@ export class QuestionListComponent implements OnInit {
 
   @ViewChild(SoundQuestionComponent) soundQuestionComponent: SoundQuestionComponent | undefined;
 
+  @Input() questionList: Question[] = [];
 
-
-  public questionList: Question[] = [];
   questionCleared: number[] = [];
 
   selectedAnswer: Answer[] = [];
@@ -49,15 +49,9 @@ export class QuestionListComponent implements OnInit {
   answerSelected: any;
 
 
-
-  constructor(private router: Router, public questionService: QuestionService, public soundService: SonService, private indiceService: IndiceService, private navbarService: NavbarService, private scoreService: ScoreService) {
-    this.questionList = this.questionService.getQuestionsFromLocalStorage();
-    if (this.questionList.length === 0) {
-      this.questionService.questions$.subscribe((questions: Question[]) => {
-        this.questionList = questions;
-        this.questionService.saveQuestionsToLocalStorage(questions);
-      });
-    }
+  constructor(private quizService: QuizService, private router: Router, public questionService: QuestionService, public soundService: SonService, private indiceService: IndiceService, private navbarService: NavbarService, private scoreService: ScoreService) {
+    
+    this.questionList = this.quizService.getFilteredQuestions();
     if (this.indiceService.estIndiceActif()) {
       this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
     } else {
@@ -123,9 +117,6 @@ export class QuestionListComponent implements OnInit {
     
 
   }
-
-
-
 
   validateQuestion(): void {
     if (this.selectedAnswer.length === 0) {
@@ -235,5 +226,3 @@ export class QuestionListComponent implements OnInit {
     this.router.navigate(['/end-game']);
   }
 }
-
-

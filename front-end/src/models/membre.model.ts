@@ -1,5 +1,5 @@
 export interface Membre {
-    id: string;
+    id: number;
     firstName: string;
     lastName : String ;
     age: number;

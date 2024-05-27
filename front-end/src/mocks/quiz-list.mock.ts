@@ -3,7 +3,7 @@ import { QUESTION_LIST } from './question.mock';
 
 export const QUIZ_LIST: Quiz[] = [
     {
-        id: '1',
+        id: 1,
         name: 'Les animaux',
         description: 'Description du quiz 1',
         theme: 'Theme 1',
@@ -12,7 +12,7 @@ export const QUIZ_LIST: Quiz[] = [
         image: 'assets/img/animal.jpg'
     },
     {
-        id: '2',
+        id: 2,
         name: 'L\'addition',
         description: 'Description du quiz 2',
         theme: 'Theme 2',
@@ -21,7 +21,7 @@ export const QUIZ_LIST: Quiz[] = [
         image: 'assets/img/addition.jpg'
     },
     {
-        id: '3',
+        id: 3,
         name: 'Les étoiles',
         description: 'Description du quiz 3',
         theme: 'Theme 3',
@@ -30,7 +30,7 @@ export const QUIZ_LIST: Quiz[] = [
         image: 'assets/img/etoile.jpg'
     },
     {
-        id: '4',
+        id: 4,
         name: 'Le basket',
         description: 'Description du quiz 4',
         theme: 'Theme 4',
