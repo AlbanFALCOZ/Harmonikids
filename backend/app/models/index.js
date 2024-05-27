@@ -1,12 +1,17 @@
 // const YourModel = require('./your-model.model.js')
+const Quiz = require('./quiz.model.js')
+const Answer = require('./answer.model.js')
+const Question = require('./question.model.js')
 
-const User = require('./user')
-const Quiz = require('./quiz')
-const Question = require('./question')
+
+
+
+//const User = require('./user')
 
 
 module.exports = {
-  User,
+  //User,
   Quiz,
   Question,
+  Answer
 }

@@ -1,7 +1,7 @@
 const { Router } = require('express')
-const { Question, Quiz, Answer } = require('../../models')
-const manageAllErrors = require('../../utils/routes/error-management')
-const AnswersRouter = require('../answers')
+const { Question, Quiz, Answer } = require('../../../models')
+const manageAllErrors = require('../../../utils/routes/error-management')
+const AnswersRouter = require('./answers')
 const { filterQuestionsFromQuizz, getQuestionFromQuiz } = require('./manager')
 
 const router = new Router({ mergeParams: true })
@@ -63,3 +63,4 @@ router.delete('/:questionId', (req, res) => {
 router.use('/:questionId/answers', AnswersRouter)
 
 module.exports = router
+ 
