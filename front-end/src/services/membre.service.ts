@@ -13,7 +13,7 @@ export class MembreService {
     public membres:Membre[] = [];
     private memberId: string | undefined ;
     private membreUrl = serverUrl + '/user';
-    private apiUrl = '../../../backend/app/api/users';
+    private apiUrl = '../../../backend/app/api/user';
 
 
     private httpOptions = httpOptionsBase;

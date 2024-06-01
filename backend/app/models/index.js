@@ -7,7 +7,7 @@ const Question = require('./question.model.js')
 
 
 
-const User = require('./user')
+const User = require('./user.js')
 
 
 module.exports = {
