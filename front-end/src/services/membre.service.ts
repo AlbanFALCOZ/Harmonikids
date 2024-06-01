@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class MembreService {
    
     public membres:Membre[] = [];
-    private memberId: string | undefined ;
+    private memberId: number | undefined ;
     private membreUrl = serverUrl + '/user';
     private apiUrl = '../../../backend/app/api/user';
 
@@ -39,7 +39,7 @@ export class MembreService {
 
     
 
-    getWelcomeMessage(memberId: string |undefined ): string {
+    getWelcomeMessage(memberId: number |undefined ): string {
         const membre = this.membres.find(m => m.id === memberId);
         if (membre) {
           return `Bonjour ${membre.firstName}!`;
@@ -54,11 +54,11 @@ export class MembreService {
 
 
 
-  setMemberId(id: string | undefined): void {
+  setMemberId(id: number | undefined): void {
     this.memberId = id;
   }
 
-  getMemberId(): string | undefined {
+  getMemberId(): number | undefined {
     return this.memberId;
   }
 

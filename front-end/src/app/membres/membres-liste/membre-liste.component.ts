@@ -88,7 +88,7 @@ export class MembreListeComponent implements OnInit {
     const imageMember = form.value.image;
 
     const newMember: Membre = {
-      id: '1',
+      id: 1,
       firstName: firstNameMember,
       lastName: lastNameMember,
       age: ageMember,
