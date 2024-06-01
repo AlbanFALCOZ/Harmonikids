@@ -11,6 +11,7 @@ import { IndiceService } from 'src/services/indice.service';
 import { ScoreService } from 'src/services/score-service.service';
 import { NavbarService } from 'src/services/navbar.service';
 import { QuizService } from 'src/services/quiz.service';
+import { StatistiqueService } from 'src/services/statistique.service';
 
 
 @Component({
@@ -40,6 +41,9 @@ export class QuestionListComponent implements OnInit {
   showSuccessMessage: boolean = false;
   showFailureMessage: boolean = false;
 
+  correctAnswersCount: number = 0;
+  correctAnswersSecondAttempt: number = 0; 
+
 
   private messageTimeout: any;
   isNavVisible = false;
@@ -48,8 +52,10 @@ export class QuestionListComponent implements OnInit {
   private successAudio = new Audio('assets/img/good.mp3');
   answerSelected: any;
 
+  answersSelected: Map<number, Answer[]> = new Map<number, Answer[]>();
 
-  constructor(private quizService: QuizService, private router: Router, public questionService: QuestionService, public soundService: SonService, private indiceService: IndiceService, private navbarService: NavbarService, private scoreService: ScoreService) {
+
+  constructor(private statistiqueService: StatistiqueService, private quizService: QuizService, private router: Router, public questionService: QuestionService, public soundService: SonService, private indiceService: IndiceService, private navbarService: NavbarService, private scoreService: ScoreService) {
     
     this.questionList = this.quizService.getFilteredQuestions();
     if (this.indiceService.estIndiceActif() && this.questionList[this.currentQuestionIndex] != undefined) {
@@ -132,6 +138,11 @@ export class QuestionListComponent implements OnInit {
     const currentQuestion = this.questionList[this.currentQuestionIndex];
     const correctAnswers = currentQuestion.answers.filter(a => a.isCorrect);
 
+    const currentQuestionId = this.questionList[this.currentQuestionIndex].id;
+
+    // Ajouter l'ID de la question et les réponses sélectionnées à answersSelected
+    this.answersSelected.set(currentQuestionId, this.selectedAnswer);
+
     this.resetMessages();
   
 
@@ -164,6 +175,9 @@ export class QuestionListComponent implements OnInit {
       this.showSuccessMessage = true;
       this.soundService.playSound('assets/img/good.mp3');
       this.questionCleared.push(this.currentQuestionIndex);
+      if (this.correctAnswersSecondAttempt == 0) {
+        this.correctAnswersCount++;
+      }
     } else {
       this.showFailureMessage = true;
       if (this.indiceService.estIndiceActif()) {
@@ -187,6 +201,7 @@ export class QuestionListComponent implements OnInit {
           }, 5000);
         }
       }
+      this.correctAnswersSecondAttempt++;
     }
 
     this.messageTimeout = setTimeout(() => {
@@ -226,6 +241,8 @@ export class QuestionListComponent implements OnInit {
   }
   finishQuiz() {
     this.scoreService.updateSelectedAnswersCount(this.selectedAnswerCorrect.length);
+    const quizId = 1716767415981;
+    this.statistiqueService.setCorrectFirstAttemptCount(quizId, this.selectedAnswerCorrect.length);
     this.router.navigate(['/end-game']);
   }
 }

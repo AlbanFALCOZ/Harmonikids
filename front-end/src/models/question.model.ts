@@ -8,6 +8,7 @@ export enum QuestionType {
 
 
 export interface Answer {
+    id: number;
     value: string;
     isCorrect: boolean;
     isSelected?: boolean;

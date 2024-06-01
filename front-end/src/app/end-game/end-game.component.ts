@@ -35,7 +35,7 @@ export class EndGameComponent implements OnInit {
   }
 
   restartGame() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/quiz-list']);
   }
 
   generateArray(num: number): any[] {

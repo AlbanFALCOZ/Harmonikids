@@ -48,12 +48,12 @@ export class QuestionAddComponent {
     label: '',
     typeOfQuestion: QuestionType.MultipleChoice,
     niveau: '',
-    answers: [{ value: '', isCorrect: false }],
+    answers: [{id: 1, value: '', isCorrect: false }],
     hint: { text: '', imageUrl: '', audioUrl: '' }
   };
 
   addAnswer() {
-    this.question.answers.push({ value: '', isCorrect: false });
+    this.question.answers.push({ id: 1, value: '', isCorrect: false });
   }
 
   submitForm() {

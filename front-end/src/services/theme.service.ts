@@ -64,7 +64,12 @@ export class ThemeService {
 
       private initializeSelectedThemes() {
         this.selectedThemes = this.themes.slice(0, 4);
-    }
+  }
+  
+  getQuizzesByTheme(themeId: string): any[] {
+    throw new Error('Method not implemented.');
+  }
+
     
       
       

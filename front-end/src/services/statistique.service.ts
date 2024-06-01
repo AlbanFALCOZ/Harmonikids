@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -26,6 +26,36 @@ export class StatistiqueService {
         return new Observable(observer => {
             observer.next({ categories, childProgress, averageProgress });
             observer.complete();
+        });
+    }
+
+    private quizCorrectFirstAttemptCount = new BehaviorSubject<Map<number, number>>(this.loadCorrectFirstAttemptCountFromLocalStorage());
+
+
+    private loadCorrectFirstAttemptCountFromLocalStorage(): Map<number, number> {
+        const storedData = localStorage.getItem('correctFirstAttemptCount');
+        if (storedData) {
+            return new Map(JSON.parse(storedData));
+        }
+        return new Map<number, number>();
+    }
+
+    private saveCorrectFirstAttemptCountToLocalStorage(data: Map<number, number>): void {
+        localStorage.setItem('correctFirstAttemptCount', JSON.stringify(Array.from(data.entries())));
+    }
+
+    setCorrectFirstAttemptCount(quizId: number, count: number): void {
+        const currentData = this.quizCorrectFirstAttemptCount.value;
+        currentData.set(quizId, count);
+        this.quizCorrectFirstAttemptCount.next(currentData);
+        this.saveCorrectFirstAttemptCountToLocalStorage(currentData);
+    }
+
+    getCorrectFirstAttemptCount(quizId: number): Observable<number> {
+        return new Observable<number>(observer => {
+            this.quizCorrectFirstAttemptCount.subscribe(map => {
+                observer.next(map.get(quizId) || 0);
+            });
         });
     }
 }
