@@ -35,11 +35,16 @@ export class MembreListeComponent implements OnInit {
 
 
   constructor(private router: Router, public membreService: MembreService, public titleService: TitleService, private sonService: SonService, private navbarService: NavbarService, private modeService: ModeService) {
+   
     this.membreService.membres$.subscribe((membres: Membre[]) => {
       this.membreListe = membres;
-      
+      this.membreService.membres = this.membreListe;
+      this.membreListeDisplayed = this.membreListe;
+     
     });
-    this.membreListeDisplayed = this.membreListe;
+  
+    
+   
     this.titleService.title = 'Bienvenue';
     this.titleService.search = 'Rechercher un enfant';
 
@@ -54,7 +59,7 @@ export class MembreListeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+   
   }
 
   toggleMode() {
@@ -80,7 +85,7 @@ export class MembreListeComponent implements OnInit {
     const lastNameMember = form.value.lastName;
     const ageMember = form.value.age;
     const descriptionMember = form.value.description;
-    const imageMember = this.src;
+    const imageMember = form.value.image;
 
     const newMember: Membre = {
       id: '1',
@@ -88,13 +93,14 @@ export class MembreListeComponent implements OnInit {
       lastName: lastNameMember,
       age: ageMember,
       description: descriptionMember,
-      image: imageMember || '',
+      image: imageMember ,
     };
 
     this.membreService.addMembre(newMember);
 
     form.resetForm();
   }
+
 
   valueChanged(files: FileList) {
     if (files.length !== 1) return;
@@ -103,6 +109,7 @@ export class MembreListeComponent implements OnInit {
     reader.readAsDataURL(files[0]);
     reader.onload = () => (this.src = reader.result as string);
   }
+
 
 
 
