@@ -13,7 +13,7 @@ export class MembreComponent {
 
 
     membre? : Membre
-    memberId: string | undefined;
+    memberId: number | undefined;
 
     @Output()
     membreSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -29,7 +29,7 @@ export class MembreComponent {
  
     
 
-  onSelectMembre(id: string): void {
+  onSelectMembre(id: number): void {
     this.membreService.setMemberId(id);
   }
 

@@ -13,7 +13,7 @@ import { NavbarService } from 'src/services/navbar.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  memberId: string | undefined;
+  memberId: number | undefined;
   welcomeMessage: string='';
   themeList: Theme[] = [];
   quizList: Quiz[] = []; 
