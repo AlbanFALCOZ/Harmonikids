@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuestionAddComponent } from './questions/question-add/question-add.component';
 
 import { EndGameComponent } from './end-game/end-game.component';
+import { QuizEditComponent } from './quizzes/quiz-edit/quiz-edit.component';
 
 
 const routes: Routes = [
