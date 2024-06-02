@@ -50,7 +50,7 @@ export class QuestionListComponent implements OnInit {
 
 
 
-  constructor(private router: Router, public questionService: QuestionService, public soundService: SonService, private indiceService: IndiceService, private navbarService: NavbarService, private scoreService: ScoreService) {
+  /*constructor(private router: Router, public questionService: QuestionService, public soundService: SonService, private indiceService: IndiceService, private navbarService: NavbarService, private scoreService: ScoreService) {
     this.questionList = this.questionService.getQuestionsFromLocalStorage();
     if (this.questionList.length === 0) {
       this.questionService.questions$.subscribe((questions: Question[]) => {
@@ -75,10 +75,31 @@ export class QuestionListComponent implements OnInit {
 
 
 
+  }*/
+
+  constructor(
+    private router: Router,
+    public questionService: QuestionService,
+    public soundService: SonService,
+    private indiceService: IndiceService,
+    private navbarService: NavbarService,
+    private scoreService: ScoreService
+  ) {
+    this.navbarService.isNavbarVisible$.subscribe(isVisible => {
+      this.isNavVisible = isVisible;
+    });
   }
 
-  ngOnInit(): void {
+  /*ngOnInit(): void {
     console.log(this.questionList);
+  }*/
+
+  ngOnInit(): void {
+    const quizId = 1; // Set the quizId according to your application logic
+    this.questionService.fetchQuestions(quizId).subscribe(questions => {
+      this.questionList = questions;
+      this.questionService.saveQuestionsToLocalStorage(questions);
+    });
   }
 
   nextQuestion() {
@@ -102,7 +123,7 @@ export class QuestionListComponent implements OnInit {
           const answer = document.getElementById("answer" + index2);
           
           answer?.classList.add("right-answer");
-          answer?.classList.remove("selected"); // Ajoutez cette ligne pour supprimer la classe "selected"
+          answer?.classList.remove("selected");
           console.log("answer", answer);
         }
       });

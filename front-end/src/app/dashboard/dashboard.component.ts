@@ -13,7 +13,7 @@ import { NavbarService } from 'src/services/navbar.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  memberId: string | undefined;
+  memberId: number | undefined;
   welcomeMessage: string='';
   themeList: Theme[] = [];
   quizList: Quiz[] = []; 
@@ -32,11 +32,18 @@ export class DashboardComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.memberId = params['id'];
       this.membreService.setMemberId(this.memberId);
-      this.welcomeMessage = this.membreService.getWelcomeMessage(this.memberId);
+     
     });
     this.themeList = this.themeService.getSelectedThemes()
     this.quizList = this.quizService.getQuizzes().slice(0, 4); 
     this.memberId=this.membreService.getMemberId();
+    console.log("Membre ID" + this.memberId)
+    this.membreService.membres$.subscribe(members => {
+      if(members.length > 0){
+        this.welcomeMessage = this.membreService.getWelcomeMessage(this.memberId)
+      }
+    })
+   
     
   }
 
@@ -48,6 +55,7 @@ export class DashboardComponent implements OnInit {
     console.log('event received from child:', selected);
   }
 
+  
  
 
   

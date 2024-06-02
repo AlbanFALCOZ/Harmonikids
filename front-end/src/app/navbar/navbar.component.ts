@@ -14,7 +14,7 @@ import { SonService } from 'src/services/sound.service';
 })
 
 export class NavbarComponent implements OnInit {
-  memberId: string | undefined;
+  memberId: number | undefined;
 
   
   isNavVisible = false;
