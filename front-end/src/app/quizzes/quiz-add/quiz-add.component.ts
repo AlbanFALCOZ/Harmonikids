@@ -52,7 +52,7 @@ export class QuizAddComponent implements OnInit {
     const quizTheme = form.value.quizTheme;
     const quizDescription = form.value.quizDescription;
     //const quizQuestions = [QUESTION_LIST[0]];
-    const quizImage = form.value.quizImage;
+    const quizImage = this.src;
     console.log(quizTitle, quizTheme, quizDescription, quizImage);
 
     const newQuiz: Quiz = {
@@ -62,7 +62,7 @@ export class QuizAddComponent implements OnInit {
       description: quizDescription,
       questions: [QUESTION_LIST[0]],
       statut: 'A faire',
-      image: quizImage
+      image: quizImage || '',
  };
 
     this.quizService.addQuiz(newQuiz);

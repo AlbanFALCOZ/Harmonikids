@@ -56,9 +56,11 @@
         -->
 
             <div class="display-input">
-                <label for="quizImage">Image du quiz:</label><br>
-                <input type="text" id="quizImage" name="quizImage" ngModel required><br>
-
+                <label for="image">Photo :</label>
+                <input #inputField type="file" accept="image/*" (change)="valueChanged($any($event.target).files)" ngModel />
+                <div (click)="inputField.click()">
+                    <ng-content />
+                </div>
             </div>
 
             <button [disabled]="form.invalid" type="submit">Créer le quiz</button>
