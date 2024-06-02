@@ -44,7 +44,7 @@ export class QuizService {
   constructor(private http: HttpClient) {
     this.retrieveQuizzes();
   }
-
+  
   retrieveQuizzes(): void {
     this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
       this.quizzes = quizList;
