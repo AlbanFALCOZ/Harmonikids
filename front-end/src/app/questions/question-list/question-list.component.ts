@@ -142,6 +142,7 @@ export class QuestionListComponent implements OnInit {
 
     // Ajouter l'ID de la question et les réponses sélectionnées à answersSelected
     this.answersSelected.set(currentQuestionId, this.selectedAnswer);
+    console.log(this.answersSelected);
 
     this.resetMessages();
   

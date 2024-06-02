@@ -21,7 +21,11 @@ export const Membre_LIST: Membre[] = [
       
     },
     {
+<<<<<<< HEAD
       id: 3,
+=======
+      id:3,
+>>>>>>> 813f7626d49cf4781c4d26cec10bf58691f401d9
       firstName: 'Léo',
       lastName : 'Vivace' ,
       age: 10,

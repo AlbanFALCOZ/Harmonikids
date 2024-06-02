@@ -5,6 +5,4 @@ export interface Membre {
     age: number;
     description : String ; 
     image : String;  
-    
- 
 }
