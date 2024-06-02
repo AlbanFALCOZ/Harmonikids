@@ -87,8 +87,4 @@ export class ThemeService {
     this.selectedThemes = this.themes.slice(0, 4);
   }
 
-
-
-
-
 }
