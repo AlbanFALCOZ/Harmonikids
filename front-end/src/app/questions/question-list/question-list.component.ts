@@ -12,6 +12,7 @@ import { ScoreService } from 'src/services/score-service.service';
 import { NavbarService } from 'src/services/navbar.service';
 import { QuizService } from 'src/services/quiz.service';
 import { StatistiqueService } from 'src/services/statistique.service';
+import { GameService } from 'src/services/game.service';
 
 
 @Component({
@@ -52,10 +53,7 @@ export class QuestionListComponent implements OnInit {
   private successAudio = new Audio('assets/img/good.mp3');
   answerSelected: any;
 
-  answersSelected: Map<number, Answer[]> = new Map<number, Answer[]>();
-
-
-  constructor(private statistiqueService: StatistiqueService, private quizService: QuizService, private router: Router, public questionService: QuestionService, public soundService: SonService, private indiceService: IndiceService, private navbarService: NavbarService, private scoreService: ScoreService) {
+  constructor(private gameService: GameService, private statistiqueService: StatistiqueService, private quizService: QuizService, private router: Router, public questionService: QuestionService, public soundService: SonService, private indiceService: IndiceService, private navbarService: NavbarService, private scoreService: ScoreService) {
     
     this.questionList = this.quizService.getFilteredQuestions();
     if (this.indiceService.estIndiceActif() && this.questionList[this.currentQuestionIndex] != undefined) {
@@ -138,11 +136,8 @@ export class QuestionListComponent implements OnInit {
     const currentQuestion = this.questionList[this.currentQuestionIndex];
     const correctAnswers = currentQuestion.answers.filter(a => a.isCorrect);
 
-    const currentQuestionId = this.questionList[this.currentQuestionIndex].id;
-
-    // Ajouter l'ID de la question et les réponses sélectionnées à answersSelected
-    this.answersSelected.set(currentQuestionId, this.selectedAnswer);
-    console.log(this.answersSelected);
+    const questionId = this.questionList[this.currentQuestionIndex].id;
+    this.gameService.saveChosenAnswers(questionId, this.selectedAnswer);
 
     this.resetMessages();
   
