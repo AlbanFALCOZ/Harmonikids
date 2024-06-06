@@ -4,7 +4,7 @@
         <div>
           <p>Nom : {{membre.lastName}}</p>
           <p>Prenom : {{membre.firstName}}</p>
-          <p>Age : {{membre.age}} ans</p>
+          <p>Âge : {{membre.age}} ans</p>
           
         </div>
       </div>
@@ -14,7 +14,7 @@
     
     <div class="membre-card-button">
       <button (click)="onSelectMembre(membre.id)">
-          <a [routerLink]="['/dashboard', membre.id]">select</a>
+          <a [routerLink]="['/dashboard', membre.id]">Choisir</a>
       </button>
   </div>
   

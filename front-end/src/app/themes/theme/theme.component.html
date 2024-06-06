@@ -5,12 +5,11 @@
     </div>
     <div class="theme-card-footer">
         <p>{{ theme.description }}</p>
-        <p>{{ theme.quizzes.length }}</p>
     </div>
     <div class="theme-card-button">
-        <a routerLink="/quiz-list"><button (click)="selectTheme()">Select </button></a>
-        <button (click)="displayModalUpdate()" *ngIf="!isDisabled">Edit</button>
-        <button (click)="displayModalDelete()" *ngIf="!isDisabled">Delete</button>
+        <a routerLink="/quiz-list"><button (click)="selectTheme()">Choisir </button></a>
+        <button (click)="displayModalUpdate()" *ngIf="!isDisabled">Modifier</button>
+        <button (click)="displayModalDelete()" *ngIf="!isDisabled">Supprimer</button>
     </div>
     
 </div>
