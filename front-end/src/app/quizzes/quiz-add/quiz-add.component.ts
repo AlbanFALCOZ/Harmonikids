@@ -16,13 +16,14 @@ import {QuestionAddComponent} from 'src/app/questions/question-add/question-add.
 })
 export class QuizAddComponent implements OnInit {
 
-  correctAnswers: boolean[] = [false, false, false, false]; 
+  
 
   src: string | undefined;
   themeList: Theme[] = [];
   quizList: Quiz[] = [];
   showQuizzes = false;
   showQuestionsAdd=false ; 
+  showHintAdd=false ; 
   QuizList: Quiz[] = [];
   questionList: Question[] = [];
   displayForm = false;
@@ -32,6 +33,11 @@ export class QuizAddComponent implements OnInit {
   displayFormUpdate = false;
   displayFormDelete = false;
   showQuestionPopup: boolean = false;
+  showAnswerAdd: boolean = false;
+  answers: string[] = [''];
+  correctAnswers: boolean[] = [false];
+
+
   
 
   constructor(public quizService: QuizService, private themeService: ThemeService, private questionService: QuestionService) {
@@ -55,6 +61,13 @@ export class QuizAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  addAnswer() {
+    if (this.answers.length < 4) {
+      this.answers.push('');
+      this.correctAnswers.push(false);
+    }
   }
 
   displayModal() {
@@ -99,9 +112,8 @@ export class QuizAddComponent implements OnInit {
     const quizTitle = form.value.quizTitle;
     const quizTheme = form.value.quizTheme;
     const quizDescription = form.value.quizDescription;
-
     const quizQuestions = this.newQuizQuestionList;
-    const quizImage = form.value.quizImage;
+    const quizImage = this.src;
     console.log(quizTitle, quizTheme, quizDescription, quizImage );
 
 
@@ -140,6 +152,14 @@ export class QuizAddComponent implements OnInit {
     this.showQuestionPopup = !this.showQuestionPopup;
   }
 
+  toggleAnswerAdd(){
+    this.showAnswerAdd = !this.showAnswerAdd;
+  }
+
+  toggleAnswerAddForQuestion(){
+
+  }
+
 
   onQuestionToggle(question: Question, event: any) {
     if (event.target.checked) {
@@ -176,13 +196,12 @@ export class QuizAddComponent implements OnInit {
   this.showQuestionsAdd = ! this.showQuestionsAdd; 
   }
 
+  toggleHintAdd(){
+    this.showHintAdd = ! this.showHintAdd; 
+    }
 
-  addAnswer() {
-    this.question.answers.push({
-      value: '', isCorrect: false,
-      id: 0
-    });
-  }
+
+ 
 
   toggleForm() {
     this.displayForm = !this.displayForm;

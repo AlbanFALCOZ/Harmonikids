@@ -13,5 +13,6 @@ module.exports = new BaseModel('Question', {
             isCorrect: Joi.boolean().required(),
         })
     ),
+    hint:Joi.items(),
     quizId: Joi.number().required(),
 })

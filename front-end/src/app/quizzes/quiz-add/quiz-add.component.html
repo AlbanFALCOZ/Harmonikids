@@ -76,7 +76,7 @@
                     <span class="close-button" (click)="toggleQuestionsAdd()">&times;</span>
                     <form (ngSubmit)="submitFormQuestion(questionForm)" #questionForm="ngForm">
                                     <div class="display-input">
-                                        <label for="label">Label:</label>
+                                        <label for="label">Titre:</label>
                                         <input type="text" class="form-control" id="label" name="label" [(ngModel)]="question.label"
                                             required>
                                     </div>
@@ -103,34 +103,67 @@
                                     </div>
                                     <div class="display-input">
                                         <label for="image">Image :</label>
-                                        <input type="text" class="form-control" id="image" name="image" [(ngModel)]="question.image">
+                                        <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel/>
+                                        <div (click)="inputField.click()">
+                                            <ng-content />
+                                        </div>
                                     </div>
                                     <div class="display-input">
                                         <label for="audio">Audio :</label>
                                         <input type="text" class="form-control" id="audio" name="audio" [(ngModel)]="question.audio">
                                     </div>
                                     <div class="display-input">
-                                        <label for="hintText">Indice (Texte):</label>
-                                        <input type="text" class="form-control" id="hintText" name="hintText">
+                                        <label for="questionForQuizToggle">Indice</label><br>
+                                        <button type="button" id="hintToggle" (click)="toggleHintAdd()">Ajouter un indice</button><br>
                                     </div>
-                                    <div class="display-input">
-                                        <label for="hintImageUrl">Indice (Image):</label>
-                                        <input type="text" class="form-control" id="hintImageUrl" name="hintImageUrl">
-                                    </div>
-                                    <div class="display-input">
-                                        <label for="hintAudioUrl">Indice (Audio):</label>
-                                        <input type="text" class="form-control" id="hintAudioUrl" name="hintAudioUrl">
-                                    </div>
-                                    <div class="display-input-answer">
-                                        <label for="answers">Réponses:</label>
-                                        <div *ngFor="let answer of [1, 2, 3, 4]; let i = index">
-                                          <input type="text" class="form-control" id="answerText{{ i }}" name="answerText{{ i }}">
-                                          <label>
-                                            <input type="checkbox" name="correctAnswer{{ i }}" [(ngModel)]="correctAnswers[i]">
-                                            Correct
-                                          </label>
+                                    <div class="popup-indice" *ngIf="showHintAdd">
+                                        <div class="popup-content-indice">
+                                            <span class="close-button" (click)="toggleHintAdd()">&times;</span>
+                                            <p>Vous pouvez ajouter un seul indice</p>
+                                            <div class="display-input">
+                                                <label for="hintText">Indice (Texte):</label>
+                                                <input type="text" class="form-control" id="hintText" name="hintText">
+                                            </div>
+                                            <div class="display-input">
+                                                <label for="image">Indice(Image) :</label>
+                                                <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel/>
+                                                <div (click)="inputField.click()">
+                                                    <ng-content />
+                                                </div>
+                                            </div>
+                                            <div class="display-input">
+                                                <label for="image">Indice(Audio)</label>
+                                                <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel/>
+                                                <div (click)="inputField.click()">
+                                                    <ng-content />
+                                                </div>
+                                            </div>
                                         </div>
-                                      </div>
+                                    </div>
+                                    <div class="display-input">
+                                        <label for="answers">Réponses:</label>
+                                        <button type="button" id="answerToggle" (click)="toggleAnswerAdd()">Ajouter des réponses</button><br>
+                                        <div class="popup-indice" *ngIf="showAnswerAdd">
+                                          <div class="popup-content-indice">
+                                            <div *ngFor="let answer of answers; let i = index">
+                                              <input type="text" class="form-control" [(ngModel)]="answers[i]" placeholder="Réponse {{ i + 1 }}">
+                                              <label>
+                                                <input type="checkbox" [(ngModel)]="correctAnswers[i]">
+                                                Correct
+                                              </label>
+                                            </div>
+                                            <div *ngIf="answers.length < 4" class="display-input">
+                                              <button type="button" (click)="addAnswer()">Ajouter une autre réponse</button><br>
+                                            </div>
+                                           
+                                              <button type="button" (click)="toggleAnswerAdd()">Valider</button><br>
+                                           
+                                          </div>
+                                      
+                                      
+                                </div>
+                                        
+                                    </div>
                                       
                                     <button type="submit" class="btn btn-primary" (click)="toggleFormUpdate()">Ajouter</button>
                                 </form>
@@ -139,8 +172,11 @@
 
 
                     <div class="display-input">
-                        <label for="quizImage">Image du quiz:</label><br>
-                        <input type="text" id="quizImage" name="quizImage"><br>
+                        <label for="image">Image :</label>
+                        <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel/>
+                        <div (click)="inputField.click()">
+                            <ng-content />
+                        </div>
                     </div>
         
                     <div>
