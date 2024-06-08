@@ -45,10 +45,12 @@ export class QuizService {
     this.retrieveQuizzes();
   }
 
+
   getQuizById(id: number): Observable<Quiz> {
     const quiz = this.quizzes.find(q => q.id === id);
     return of(quiz!);
   }
+
 
   retrieveQuizzes(): void {
     this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {

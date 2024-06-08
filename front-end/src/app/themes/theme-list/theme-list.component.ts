@@ -46,9 +46,9 @@ export class ThemeListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  themeSelected(selected: boolean): void {
-    console.log('event received from child:', selected);
-  }
+  themeSelected(theme: Theme): void {
+  this.router.navigate(['/quiz-list'], { queryParams: { theme: theme.name } });
+}
 
   editTheme(theme: Theme): void {
     this.router.navigate(['/edit-theme/' + theme.name]);
@@ -72,5 +72,7 @@ export class ThemeListComponent implements OnInit {
   onKey(event: any) {
     this.themeListDisplayed = this.themeList.filter(theme => theme.name.toLowerCase().includes(event.target.value.toLowerCase()));
   }
+
+  
 
 }

@@ -6,6 +6,7 @@ import { Quiz } from 'src/models/quiz.model';
 import { ThemeService } from 'src/services/theme.service';
 import { QuizService } from 'src/services/quiz.service'; 
 import { NavbarService } from 'src/services/navbar.service';
+import { QuestionService } from 'src/services/question.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +23,7 @@ export class DashboardComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private membreService: MembreService, 
-    private themeService: ThemeService, private quizService: QuizService, private navbarService: NavbarService) {
+    private themeService: ThemeService, private quizService: QuizService, private navbarService: NavbarService,private questionService:QuestionService) {
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
@@ -47,12 +48,15 @@ export class DashboardComponent implements OnInit {
     
   }
 
+  
+
   themeSelected(selected: boolean): void {
     console.log('event received from child:', selected);
   }
 
   quizSelected(selected: Quiz): void {
-    console.log('event received from child:', selected);
+    const quizQuestions = selected.questions;
+    this.questionService.updateQuestionsForQuiz(quizQuestions);
   }
 
   

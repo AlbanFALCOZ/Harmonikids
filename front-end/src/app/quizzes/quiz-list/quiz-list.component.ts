@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Quiz } from '../../../models/quiz.model';
 import { QuizService } from '../../../services/quiz.service';
 import { TitleService } from '../../../services/title.service';
@@ -32,7 +32,7 @@ export class QuizListComponent implements OnInit {
 
   themeList: Theme[] = [];
 
-  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService, public questionService: QuestionService, private navbarService: NavbarService, private modeService: ModeService, private themeService: ThemeService) {
+  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService, public questionService: QuestionService, private navbarService: NavbarService, private modeService: ModeService, private themeService: ThemeService, public route: ActivatedRoute) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
       this.quizListDisplayed = quizzes;
@@ -57,6 +57,16 @@ export class QuizListComponent implements OnInit {
 
   ngOnInit(): void {
     const themeSelect: HTMLSelectElement = document.getElementById("quizTheme") as HTMLSelectElement;
+    this.route.queryParams.subscribe(params => {
+      const selectedTheme = params['theme'];
+      if (selectedTheme) {
+        setTimeout(() => { 
+          themeSelect.value = selectedTheme;
+          this.quizListSortedTheme = this.quizList.filter(quiz => quiz.theme == selectedTheme);
+          this.updateQuizListDisplayed();
+        }, 0);
+      }
+    });
     themeSelect.addEventListener('change', (event) => {
       const themeSelected = (event.target as HTMLSelectElement).value;
       console.log('Selected theme: ', themeSelected);

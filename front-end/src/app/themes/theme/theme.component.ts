@@ -14,7 +14,7 @@ export class ThemeComponent implements OnInit {
     @Input() isDisabled: boolean = false;
 
     @Output()
-    themeSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
+    themeSelected: EventEmitter<Theme> = new EventEmitter<Theme>();
 
     @Output()
     editTheme: EventEmitter<Theme> = new EventEmitter<Theme>();
@@ -31,7 +31,7 @@ export class ThemeComponent implements OnInit {
     }
 
     selectTheme(): void {
-        this.themeSelected.emit(true);
+        this.themeSelected.emit(this.theme);
     }
 
     edit(): void {
