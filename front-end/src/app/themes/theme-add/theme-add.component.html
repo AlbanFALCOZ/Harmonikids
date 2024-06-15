@@ -8,11 +8,11 @@
         <span class="close material-icons" (click)="closeModal()">close</span>
         <form id="addMemberForm" #form="ngForm" (ngSubmit)="submitForm(form)">
             <div class="display-input">
-                <label for="themeTitle">Titre du theme:</label><br>
+                <label for="themeTitle">* Titre du theme:</label><br>
                 <input type="text" id="themeTitle" name="themeTitle" ngModel required><br>
             </div>
             <div class="display-input">
-                <label for="themeDescription">Description:</label><br>
+                <label for="themeDescription">* Description:</label><br>
                 <textarea id="themeDescription" name="themeDescription" rows="5" ngModel required></textarea><br>
             </div>
             <div class="display-input">
@@ -25,6 +25,5 @@
             <button [disabled]="form.invalid" type="submit" >Créer le theme</button>
         </form>
     </div>
-
 </div>
 

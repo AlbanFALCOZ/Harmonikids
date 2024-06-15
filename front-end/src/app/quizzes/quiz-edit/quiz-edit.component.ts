@@ -15,7 +15,7 @@ import { ThemeService } from 'src/services/theme.service';
 export class QuizEditComponent implements OnInit {
 
   @Input()
-  public quiz!: Quiz; // Make the quiz an input property
+  public quiz!: Quiz | null; // Make the quiz an input property
 
   themeList: Theme[] = [];
 
@@ -43,7 +43,7 @@ export class QuizEditComponent implements OnInit {
       name: quizTitle,
       theme: quizTheme,
       description: quizDescription,
-      questions: this.quiz.questions,
+      questions: this.quiz?.questions ?? [],
       statut: 'A faire',
       image: quizImage
     };

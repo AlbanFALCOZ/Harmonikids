@@ -2,26 +2,26 @@
     <div class="modal-content">
         <span class="close material-icons" (click)="closeModalUpdate()">close</span>
         <form id="updateMemberForm" #form="ngForm" (ngSubmit)="editQuizForm(form)">
-            <input id="quizIdEdit" name="quizIdEdit" [ngModel]="quiz.id" hidden>
+            <input id="quizIdEdit" *ngIf="quiz" name="quizIdEdit" [ngModel]="quiz.id" hidden>
             <div class="display-input">
                 <label for="quizTitle">Titre du quiz:</label><br>
-                <input type="text" id="quizTitleEdit" name="quizTitleEdit" [ngModel]="quiz.name" required><br>
+                <input type="text" *ngIf="quiz" id="quizTitleEdit" name="quizTitleEdit" [ngModel]="quiz.name" required><br>
             </div>
             <div class="display-input">
                 <label for="quizTheme">Thème:</label><br>
-                <select id="quizThemeEdit" name="quizThemeEdit" [ngModel]="quiz.theme" required>
+                <select id="quizThemeEdit" *ngIf="quiz" name="quizThemeEdit" [ngModel]="quiz.theme" required>
                     <option value="">Sélectionner le thème du quiz</option>
                     <option *ngFor="let theme of themeList" [value]="theme.name">{{theme.name}}</option>
                 </select><br>
             </div>
             <div class="display-input">
                 <label for="quizDescription">Description:</label><br>
-                <textarea id="quizDescriptionEdit" name="quizDescriptionEdit" rows="5" [ngModel]="quiz.description"
+                <textarea id="quizDescriptionEdit" *ngIf="quiz" name="quizDescriptionEdit" rows="5" [ngModel]="quiz.description"
                     required></textarea><br>
             </div>
             <div class="display-input">
                 <label for="quizImage">Image du quiz:</label><br>
-                <input type="text" id="quizImageEdit" name="quizImageEdit" [ngModel]="quiz.image" required><br>
+                <input type="text" id="quizImageEdit" *ngIf="quiz" name="quizImageEdit" [ngModel]="quiz.image" required><br>
             </div>
             <button type="submit" style="width: 150px;">Modifier le quiz</button>
         </form>
