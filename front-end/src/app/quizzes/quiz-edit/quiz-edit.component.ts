@@ -18,6 +18,7 @@ export class QuizEditComponent implements OnInit {
   public quiz!: Quiz | null; // Make the quiz an input property
 
   themeList: Theme[] = [];
+  src: string | undefined;
 
   @Output() editQuizEvent = new EventEmitter<void>();
 
@@ -36,7 +37,7 @@ export class QuizEditComponent implements OnInit {
     const quizTitle = form.value.quizTitleEdit;
     const quizTheme = form.value.quizThemeEdit;
     const quizDescription = form.value.quizDescriptionEdit;
-    const quizImage = form.value.quizImageEdit;
+    const quizImage = this.src == null ? form.value.quizImageEdit: this.src;
 
     const updatedQuiz: Quiz = {
       id: quizId,
@@ -45,7 +46,7 @@ export class QuizEditComponent implements OnInit {
       description: quizDescription,
       questions: this.quiz?.questions ?? [],
       statut: 'A faire',
-      image: quizImage
+      image: quizImage || ''
     };
 
     this.quizService.editQuiz(updatedQuiz).subscribe(() => {
@@ -60,5 +61,14 @@ export class QuizEditComponent implements OnInit {
     if (modal) {
       modal.style.display = "none";
     }
+  }
+
+  valueChanged(files: FileList) {
+    if (files.length !== 1) return;
+
+    const reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    reader.onload = () => (this.src = reader.result as string);
+
   }
 }
