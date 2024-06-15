@@ -24,36 +24,35 @@
 
         <form id="addMemberForm" *ngIf="displayForm" #form="ngForm" (ngSubmit)="submitForm(form)">
           <div class="display-input">
-            <label for="name">Nom:</label><br>
+            <label for="name">*Nom:</label><br>
             <input type="text" id="lastName" name="lastName" ngModel required><br>
           </div>
           <div class="display-input">
-            <label for="surname">Prénom:</label><br>
+            <label for="surname">*Prénom:</label><br>
             <input type="text" id="firstName" name="firstName" ngModel required><br>
           </div>
           <div class="display-input">
-            <label for="age">Age:</label><br>
+            <label for="age">*Age:</label><br>
             <input type="number" id="age" name="age" ngModel required><br>
           </div>
 
           <div class="display-input">
-            <label for="">Description:</label>
+            <label for="">*Description:</label>
             <textarea name="description" id="description" cols="40" rows="5" ngModel required></textarea>
           </div>
 
           <div class="display-input">
-            <div class="display-input">
-              <label for="age">Photo:</label><br>
-              <input type="text" id="image" name="image"  ngModel ><br>
+            <label for="image">* Photo :</label>
+            <input #inputField type="file" accept="image/*" (change)="valueChanged($any($event.target).files)"
+              ngModel />
+            <div (click)="inputField.click()">
+              <ng-content />
             </div>
           </div>
-          <button type="submit">Ajouter</button>
-
+          <button class="bottom-elem" type="submit">Ajouter</button>
+          <p class="text-info">Les champs marqués avec * sont obligatoires</p>
         </form>
       </div>
-
     </div>
-
   </div>
-
 </div>

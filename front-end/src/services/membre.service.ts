@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { Membre } from 'src/models/membre.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { HttpClient } from '@angular/common/http';
@@ -56,8 +56,10 @@ export class MembreService {
     return this.memberId;
   }
 
-  addMembre(newMember: Membre) {
-    this.http.post<Membre>(this.membreUrl, newMember, this.httpOptions).subscribe(() => this.retrieveMembres());
+  addMembre(newMember: Membre): Observable<Membre> {
+    return this.http.post<Membre>(this.membreUrl, newMember, this.httpOptions).pipe(
+      tap(() => this.retrieveMembres())
+    );
   }
 
   deleteMember(membre: Membre): void {

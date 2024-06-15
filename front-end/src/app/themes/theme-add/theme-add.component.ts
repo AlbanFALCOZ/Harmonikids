@@ -47,23 +47,22 @@ export class ThemeAddComponent implements OnInit {
   }
 
   submitForm(form: NgForm): void {
-
     const themeName = form.value.themeTitle;
     const themeDescription = form.value.themeDescription;
     const themeQuizzes = form.value.themeQuizzes;
     const themeImage = this.src;
-
+  
     const newTheme: Theme = {
       id: 1,
       name: themeName,
       description: themeDescription,
       quizzes: [],
-      image: themeImage || '',
+      image: themeImage || 'a',
     };
-
-    this.themeService.addTheme(newTheme);
-
-    form.resetForm();
+    this.themeService.addTheme(newTheme).subscribe(() => {
+      form.resetForm();
+      this.closeModal();
+    });
   }
 
   valueChanged(files: FileList) {

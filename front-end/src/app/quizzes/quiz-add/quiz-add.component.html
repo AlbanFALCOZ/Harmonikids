@@ -133,6 +133,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary" (click)="toggleFormUpdate()">Ajouter</button>
+
                     </form>
                 </div>
             </div>
@@ -140,7 +141,8 @@
 
             <div class="display-input">
                 <label for="image">Image du quiz:</label>
-                <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel />
+                <input #inputField type="file" accept="image/*" (change)="valueChanged($any($event.target).files)"
+                    ngModel />
                 <div (click)="inputField.click()">
                     <ng-content />
                 </div>
@@ -150,3 +152,8 @@
 
                 <button (click)="submitFormQuiz(form)" class="creerQuiz" [disabled]="form.invalid" type="submit">Créer
                     le quiz</button>
+                <p class="text-info">Les champs marqués avec * sont obligatoires</p>
+            </div>
+        </form>
+    </div>
+</div>

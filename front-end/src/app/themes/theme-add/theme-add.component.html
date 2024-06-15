@@ -17,12 +17,13 @@
             </div>
             <div class="display-input">
                 <label for="image">Image :</label>
-                <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel/>
+                <input #inputField type="file" accept="image/*" (change)="valueChanged($any($event.target).files)" ngModel/>
                 <div (click)="inputField.click()">
                     <ng-content />
                 </div>
             </div>
             <button [disabled]="form.invalid" type="submit" >Créer le theme</button>
+          <p class="text-info">Les champs marqués avec * sont obligatoires</p>
         </form>
     </div>
 </div>

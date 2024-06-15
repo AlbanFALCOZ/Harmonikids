@@ -82,20 +82,26 @@ export class MembreListeComponent implements OnInit {
     const lastNameMember = form.value.lastName;
     const ageMember = form.value.age;
     const descriptionMember = form.value.description;
-    const imageMember = form.value.image;
-
+    const imageMember = this.src;
+  
     const newMember: Membre = {
       id: 1,
       firstName: firstNameMember,
       lastName: lastNameMember,
       age: ageMember,
       description: descriptionMember,
-      image: imageMember ,
+      image: imageMember || '' ,
     };
-
-    this.membreService.addMembre(newMember);
-
-    form.resetForm();
+  
+    this.membreService.addMembre(newMember).subscribe(
+      () => {
+        form.resetForm();
+        this.displayForm = false;
+      },
+      error => {
+        console.error('Error:', error);
+      }
+    );
   }
 
 
