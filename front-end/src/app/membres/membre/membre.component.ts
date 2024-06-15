@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Membre } from '../../../models/membre.model';
 import { MembreService } from 'src/services/membre.service';
+import { ModeService } from 'src/services/mode-ergo.service';
 
 @Component({
   selector: 'app-membre',
@@ -12,22 +13,26 @@ export class MembreComponent {
   @Input()
 
 
-    membre? : Membre
-    memberId: number | undefined;
+  membre?: Membre
+  memberId: number | undefined;
+  isDisabled: boolean = false;
 
-    @Output()
-    membreSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output()
+  membreSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    constructor(private membreService: MembreService) {
-      this.memberId = this.membreService.getMemberId();
-        
-    }
+  constructor(private membreService: MembreService, private modeService: ModeService) {
+    this.memberId = this.membreService.getMemberId();
+    this.modeService.isDisabled$.subscribe(isDisabled => {
+      this.isDisabled = isDisabled;
+    });
 
-    ngOnInit(): void {
-    }
+  }
 
- 
-    
+  ngOnInit(): void {
+  }
+
+
+
 
   onSelectMembre(id: number): void {
     this.membreService.setMemberId(id);

@@ -10,7 +10,6 @@
       <span class="material-icons">account_circle</span>
       <div class="dropdown-menu" *ngIf="isUserMenuVisible">
         <a [routerLink]="['/dashboard', memberId]">Profil</a>
-        <a routerLink="/questions" *ngIf="!isDisabled">Questions</a>
         <a routerLink="/statistiques" *ngIf="!isDisabled">Statistiques</a>
         <a routerLink="/configuration" *ngIf="!isDisabled">Paramètres</a>
       </div>

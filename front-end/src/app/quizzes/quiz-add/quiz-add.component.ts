@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { QUESTION_LIST } from 'src/mocks/question.mock';
 import { Quiz } from 'src/models/quiz.model';
 import { Theme } from 'src/models/theme.model';
 import { Question, QuestionType } from 'src/models/question.model';
@@ -246,7 +245,7 @@ export class QuizAddComponent implements OnInit {
       description: quizDescription,
       theme: quizTheme,
       questions: selectedQuestions,
-      statut: 'draft', 
+      statut: 'A faire', 
       image: quizImage,
       id:0 
     };
@@ -254,8 +253,8 @@ export class QuizAddComponent implements OnInit {
 
    
     this.quizService.addQuiz(newQuiz)
-        this.closeModal();
-        form.resetForm();
+    this.closeModal();
+    form.resetForm();
      
   }
 
