@@ -15,7 +15,6 @@ export class MembreService {
     private membreUrl = serverUrl + '/user';
     private apiUrl = '../../../backend/app/api/user';
 
-
     private httpOptions = httpOptionsBase;
 
     registerUser(userData: any): Observable<any> {
@@ -47,11 +46,6 @@ export class MembreService {
           return "Heureux de te revoir.";
         }
       }
-
-
-
-
-
 
 
   setMemberId(id: number | undefined): void {

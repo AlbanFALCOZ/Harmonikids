@@ -44,7 +44,7 @@
           <div class="display-input">
             <div class="display-input">
               <label for="age">Photo:</label><br>
-              <input type="text" id="image" name="image" ngModel required><br>
+              <input type="text" id="image" name="image"  ngModel ><br>
             </div>
           </div>
           <button type="submit">Ajouter</button>
@@ -55,13 +55,5 @@
     </div>
 
   </div>
-
-  <button class="switch-mode" (click)="toggleMode()">
-    Mode Ergothérapeute : {{ isDisabled ? 'Off' : 'On' }}
-  </button>
-
-
-  <button class="boutton" (click)="playSound()">Jouer le son</button>
-
 
 </div>

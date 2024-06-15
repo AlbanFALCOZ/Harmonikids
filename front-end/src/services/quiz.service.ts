@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { Question } from '../models/question.model';
@@ -25,7 +25,7 @@ export class QuizService {
    The list of quiz.
    The list is retrieved from the mock.
    */
-  private quizzes: Quiz[] = [];
+  private quizzes: Quiz[] = QUIZ_LIST;
 
   /*
    Observable which contains the list of the quiz.
@@ -44,7 +44,14 @@ export class QuizService {
   constructor(private http: HttpClient) {
     this.retrieveQuizzes();
   }
-  
+
+
+  getQuizById(id: number): Observable<Quiz> {
+    const quiz = this.quizzes.find(q => q.id === id);
+    return of(quiz!);
+  }
+
+
   retrieveQuizzes(): void {
     this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
       this.quizzes = quizList;
@@ -63,7 +70,7 @@ export class QuizService {
   }
 
 
-  setSelectedQuiz(quizId: string): void {
+  setSelectedQuiz(quizId: number): void {
     const urlWithId = this.quizUrl + '/' + quizId;
     this.http.get<Quiz>(urlWithId).subscribe((quiz) => {
       this.quizSelected$.next(quiz);
@@ -83,6 +90,16 @@ export class QuizService {
   deleteQuestion(quiz: Quiz, question: Question): void {
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+  }
+
+  private filteredQuestions: Question[] = [];
+
+  setFilteredQuestions(questions: Question[]): void {
+    this.filteredQuestions = questions;
+  }
+
+  getFilteredQuestions(): Question[] {
+    return this.filteredQuestions;
   }
 
 

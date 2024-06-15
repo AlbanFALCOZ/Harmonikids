@@ -38,6 +38,7 @@ import { QuizDashboardComponent } from './card-dashboard/quiz-dashboard/quiz-das
 import { ThemeDashboardComponent } from './card-dashboard/theme-dashboard/theme-dashboard.component';
 import { CommonModule } from '@angular/common';
 import { QuestionAddComponent } from './questions/question-add/question-add.component';
+import { HistoriqueComponent } from './statistiques/historique/historique.component';
 
 
 
@@ -76,6 +77,7 @@ import { QuestionAddComponent } from './questions/question-add/question-add.comp
     QuizDashboardComponent,
     ThemeDashboardComponent,
     QuestionAddComponent,
+    HistoriqueComponent,
 
 
   ],

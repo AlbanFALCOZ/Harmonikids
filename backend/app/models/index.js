@@ -1,4 +1,3 @@
-
 // const YourModel = require('./your-model.model.js')
 const Quiz = require('./quiz.model.js')
 const Answer = require('./answer.model.js')

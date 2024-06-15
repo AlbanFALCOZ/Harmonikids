@@ -26,6 +26,13 @@ export class ThemeService {
   private httpOptions = httpOptionsBase;
 
 
+      
+  
+  getQuizzesByTheme(themeId: string): any[] {
+    throw new Error('Method not implemented.');
+  }
+
+
   public selectedThemes: Theme[] = [];
 
 
@@ -33,7 +40,7 @@ export class ThemeService {
 
   constructor(private http: HttpClient) {
     this.retrieveThemes();
-    // this.initializeSelectedThemes();
+    this.initializeSelectedThemes();
   }
 
   retrieveThemes(): void {
@@ -41,7 +48,7 @@ export class ThemeService {
       this.themes = themeList;
       this.themes$.next(this.themes);
     });
-    // this.themes$.next(this.themes);
+     this.themes$.next(this.themes);
   }
 
 
@@ -49,8 +56,8 @@ export class ThemeService {
   addTheme(theme: Theme): void {
     this.http.post<Theme>(this.themeUrl, theme, this.httpOptions).subscribe(() => this.retrieveThemes());
 
-    // this.themes.push(theme);
-    // this.themes$.next(this.themes);
+     this.themes.push(theme);
+     this.themes$.next(this.themes);
   }
 
   editTheme(theme: Theme): Observable<Theme> {
@@ -62,8 +69,8 @@ export class ThemeService {
     const urlWithId = this.themeUrl + '/' + theme.id;
     this.http.delete<Theme>(urlWithId, this.httpOptions).subscribe(() => this.retrieveThemes());
 
-    // this.themes = this.themes.filter(t => t != theme);
-    // this.themes$.next(this.themes);
+    this.themes = this.themes.filter(t => t != theme);
+    this.themes$.next(this.themes);
   }
 
   addSelectedTheme(theme: Theme) {
@@ -75,7 +82,7 @@ export class ThemeService {
   }
 
 
-  getThemeById(id: string): Theme {
+  getThemeById(id: number): Theme {
     const theme = this.themes.find(theme => theme.id === id);
     if (!theme) {
       throw new Error(`No theme found with ID: ${id}`);

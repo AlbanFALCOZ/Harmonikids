@@ -15,6 +15,7 @@ import { QuestionAddComponent } from './questions/question-add/question-add.comp
 
 import { EndGameComponent } from './end-game/end-game.component';
 import { QuizEditComponent } from './quizzes/quiz-edit/quiz-edit.component';
+import { HistoriqueComponent } from './statistiques/historique/historique.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'statistiques', component: StatistiqueComponent },
   { path: 'question-list', component: QuestionListComponent },
   { path: '', redirectTo: '/membres-liste', pathMatch: 'full' },
-  { path: 'membres' , component: MembreComponent},
+  { path: 'membres', component: MembreComponent },
+  {path: 'history', component: HistoriqueComponent},
   {
     path: 'membres-liste',
     component: MembreListeComponent,

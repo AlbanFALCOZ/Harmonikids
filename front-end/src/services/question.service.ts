@@ -12,10 +12,6 @@ import { map } from 'rxjs/operators';
 })
 export class QuestionService {
 
-
-
-
- 
   private questions: Question[] = [];
   private apiUrl = 'http://localhost:9428/api';
 
@@ -32,12 +28,13 @@ export class QuestionService {
       this.questions = selectedQuiz.questions;
       this.questions$.next(this.questions);
     });
-    this.retrieveQuestions();
+    //this.retrieveQuestions();
   }
 
 
 
   fetchQuestions(quizId: number): Observable<Question[]> {
+    console.log(quizId);
     return this.http.get<Question[]>(`${this.apiUrl}/quizzes/${quizId}/questions`).pipe(
       map((questions) => {
         this.questions = questions;
@@ -78,7 +75,7 @@ export class QuestionService {
   deleteQuestion(quizId: number, questionId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/quizzes/${quizId}/questions/${questionId}`).pipe(
       map(() => {
-        this.questions = this.questions.filter(q => q.id !== questionId.toString());
+        this.questions = this.questions.filter(q => q.id !== questionId);
         this.questions$.next(this.questions);
       })
     );
@@ -156,7 +153,7 @@ export class QuestionService {
     return this.questions.filter(question => question.typeOfQuestion === type);
   }
 
-  getQuestionById(id: string): Question | undefined {
+  getQuestionById(id: number): Question | undefined {
     return this.questions.find(question => question.id === id);
   }
   

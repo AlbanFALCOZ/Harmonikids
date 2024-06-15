@@ -11,4 +11,12 @@ export class StatistiqueCardComponent {
 
   @Input()
   theme!: Theme;
+  constructor(private themeService: ThemeService) {}
+
+
+  getQuizCountByTheme(themeId: string): number {
+    const quizzes = this.themeService.getQuizzesByTheme(themeId);
+    const completedQuizzes = quizzes.filter(quiz => quiz.status === 'terminé');
+    return completedQuizzes.length;
+  }
 }

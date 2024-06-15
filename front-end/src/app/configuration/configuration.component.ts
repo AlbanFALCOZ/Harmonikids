@@ -111,11 +111,11 @@ export class ConfigurationComponent {
 
  
 
-  isCheckedThemes(themeId: string): boolean {
+  isCheckedThemes(themeId: number): boolean {
     return this.themeService.selectedThemes.includes(this.themeService.getThemeById(themeId));
   }
   
-  onChange(event: any, themeId: string) {
+  onChange(event: any, themeId: number) {
     const isChecked = event.target.checked;
   
     if (isChecked) {

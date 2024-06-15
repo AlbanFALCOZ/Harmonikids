@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question, Answer } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
@@ -10,6 +10,9 @@ import { IndiceService } from 'src/services/indice.service';
 
 import { ScoreService } from 'src/services/score-service.service';
 import { NavbarService } from 'src/services/navbar.service';
+import { QuizService } from 'src/services/quiz.service';
+import { StatistiqueService } from 'src/services/statistique.service';
+import { GameService } from 'src/services/game.service';
 
 
 @Component({
@@ -21,9 +24,8 @@ export class QuestionListComponent implements OnInit {
 
   @ViewChild(SoundQuestionComponent) soundQuestionComponent: SoundQuestionComponent | undefined;
 
+  @Input() questionList: Question[] = [];
 
-
-  public questionList: Question[] = [];
   questionCleared: number[] = [];
 
   selectedAnswer: Answer[] = [];
@@ -40,6 +42,9 @@ export class QuestionListComponent implements OnInit {
   showSuccessMessage: boolean = false;
   showFailureMessage: boolean = false;
 
+  correctAnswersCount: number = 0;
+  correctAnswersSecondAttempt: number = 0; 
+
 
   private messageTimeout: any;
   isNavVisible = false;
@@ -48,17 +53,10 @@ export class QuestionListComponent implements OnInit {
   private successAudio = new Audio('assets/img/good.mp3');
   answerSelected: any;
 
-
-
-  /*constructor(private router: Router, public questionService: QuestionService, public soundService: SonService, private indiceService: IndiceService, private navbarService: NavbarService, private scoreService: ScoreService) {
-    this.questionList = this.questionService.getQuestionsFromLocalStorage();
-    if (this.questionList.length === 0) {
-      this.questionService.questions$.subscribe((questions: Question[]) => {
-        this.questionList = questions;
-        this.questionService.saveQuestionsToLocalStorage(questions);
-      });
-    }
-    if (this.indiceService.estIndiceActif()) {
+  constructor(private gameService: GameService, private statistiqueService: StatistiqueService, private quizService: QuizService, private router: Router, public questionService: QuestionService, public soundService: SonService, private indiceService: IndiceService, private navbarService: NavbarService, private scoreService: ScoreService) {
+    
+    this.questionList = this.quizService.getFilteredQuestions();
+    if (this.indiceService.estIndiceActif() && this.questionList[this.currentQuestionIndex] != undefined) {
       this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
     } else {
       this.indiceService.setIndice(undefined);
@@ -71,25 +69,7 @@ export class QuestionListComponent implements OnInit {
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
-
-
-
-
-  }*/
-
-  constructor(
-    private router: Router,
-    public questionService: QuestionService,
-    public soundService: SonService,
-    private indiceService: IndiceService,
-    private navbarService: NavbarService,
-    private scoreService: ScoreService
-  ) {
-    this.navbarService.isNavbarVisible$.subscribe(isVisible => {
-      this.isNavVisible = isVisible;
-    });
   }
-
   /*ngOnInit(): void {
     console.log(this.questionList);
   }*/
@@ -102,7 +82,7 @@ export class QuestionListComponent implements OnInit {
     });
   }
 
-  nextQuestion() {
+  nextQuestion() : void{
     this.resetMessages();
     if (this.currentQuestionIndex < this.questionList.length - 1) {
       this.currentQuestionIndex++;
@@ -130,7 +110,7 @@ export class QuestionListComponent implements OnInit {
     });
   }
 
-  previousQuestion() {
+  previousQuestion(): void{
     if (this.currentQuestionIndex > 0) {
       this.currentQuestionIndex--;
     }
@@ -145,9 +125,6 @@ export class QuestionListComponent implements OnInit {
 
   }
 
-
-
-
   validateQuestion(): void {
     if (this.selectedAnswer.length === 0) {
       alert('Veuillez sélectionner au moins une réponse avant de valider.');
@@ -158,6 +135,9 @@ export class QuestionListComponent implements OnInit {
     });
     const currentQuestion = this.questionList[this.currentQuestionIndex];
     const correctAnswers = currentQuestion.answers.filter(a => a.isCorrect);
+
+    const questionId = this.questionList[this.currentQuestionIndex].id;
+    this.gameService.saveChosenAnswers(questionId, this.selectedAnswer);
 
     this.resetMessages();
   
@@ -191,6 +171,9 @@ export class QuestionListComponent implements OnInit {
       this.showSuccessMessage = true;
       this.soundService.playSound('assets/img/good.mp3');
       this.questionCleared.push(this.currentQuestionIndex);
+      if (this.correctAnswersSecondAttempt == 0) {
+        this.correctAnswersCount++;
+      }
     } else {
       this.showFailureMessage = true;
       if (this.indiceService.estIndiceActif()) {
@@ -214,6 +197,7 @@ export class QuestionListComponent implements OnInit {
           }, 5000);
         }
       }
+      this.correctAnswersSecondAttempt++;
     }
 
     this.messageTimeout = setTimeout(() => {
@@ -253,8 +237,8 @@ export class QuestionListComponent implements OnInit {
   }
   finishQuiz() {
     this.scoreService.updateSelectedAnswersCount(this.selectedAnswerCorrect.length);
+    const quizId = 1716767415981;
+    this.statistiqueService.setCorrectFirstAttemptCount(quizId, this.selectedAnswerCorrect.length);
     this.router.navigate(['/end-game']);
   }
 }
-
-

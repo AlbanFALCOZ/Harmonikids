@@ -21,7 +21,7 @@ export class DragDropComponent implements OnInit {
   showFailureMessage: boolean = false;
 
 
-  questionId: string = '';
+  questionId: number = 0;
 
   @Input() drag!: Question;
   hintImageUrl: any;
@@ -87,7 +87,7 @@ export class DragDropComponent implements OnInit {
     }
   }
 
-  updateItems(questionId: string) {
+  updateItems(questionId: number) {
     this.dragDropService.getDragDropById(questionId).subscribe(dragDropItem => {
       if (dragDropItem) {
         this.items = dragDropItem.answers.map(answer => answer.value);
@@ -98,7 +98,7 @@ export class DragDropComponent implements OnInit {
     });
   }
 
-  changeQuestion(newQuestionId: string) {
+  changeQuestion(newQuestionId: number) {
     this.questionId = newQuestionId;
     this.updateItems(this.questionId);
   }

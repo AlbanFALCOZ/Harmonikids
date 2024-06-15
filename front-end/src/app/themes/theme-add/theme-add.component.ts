@@ -54,7 +54,7 @@ export class ThemeAddComponent implements OnInit {
     const themeImage = this.src;
 
     const newTheme: Theme = {
-      id: '1',
+      id: 1,
       name: themeName,
       description: themeDescription,
       quizzes: [],

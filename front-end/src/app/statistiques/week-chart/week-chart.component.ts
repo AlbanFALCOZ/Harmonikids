@@ -42,9 +42,9 @@ export class WeekChartComponent implements OnInit {
     this.statistiqueService.getWeeklyQuizData().subscribe(data => {
       this.options.xAxis.categories = data.weeks;
       this.options.series = [
-        { name: 'Quiz faciles par semaine', data: data.quizFacilesCounts },
-        { name: 'Quiz moyens par semaine', data: data.quizMoyensCounts },
-        { name: 'Quiz difficiles par semaine', data: data.quizDifficilesCounts }
+        { name: 'Questions faciles par semaine', data: data.quizFacilesCounts },
+        { name: 'Questions moyens par semaine', data: data.quizMoyensCounts },
+        { name: 'Questions difficiles par semaine', data: data.quizDifficilesCounts }
       ];
       Highcharts.chart('container', this.options);
     });
