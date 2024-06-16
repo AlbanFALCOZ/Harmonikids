@@ -84,20 +84,24 @@ export class MembreListeComponent implements OnInit {
     const descriptionMember = form.value.description;
     const imageMember = form.value.image;
 
-    const newMember: Membre = {
-      id: 1,
-      firstName: firstNameMember,
-      lastName: lastNameMember,
-      age: ageMember,
-      description: descriptionMember,
-      image: imageMember ,
-    };
+    if (form.valid) {
+      const newMember: Membre = {
+        id: 1,
+        firstName: firstNameMember,
+        lastName: lastNameMember,
+        age: ageMember,
+        description: descriptionMember,
+        image: imageMember ,
+      };
 
-    this.membreService.addMembre(newMember);
+      this.membreService.addMembre(newMember);
 
-    form.resetForm();
+      form.resetForm();
+      this.toggleForm();
+    } else {
+      // Highlight errors
+    }
   }
-
 
   valueChanged(files: FileList) {
     if (files.length !== 1) return;

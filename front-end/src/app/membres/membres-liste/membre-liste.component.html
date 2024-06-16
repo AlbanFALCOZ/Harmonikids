@@ -17,43 +17,45 @@
       <p>Ajouter un nouvel enfant</p>
       <span class="material-icons add" id="myBtn" (click)="toggleForm()">add</span>
     </div>
-
-    <div id="myModal" class="modal" *ngIf="displayForm">
-      <div class="modal-content">
-        <span class="close material-icons" (click)="toggleForm()">close</span>
-
-        <form id="addMemberForm" *ngIf="displayForm" #form="ngForm" (ngSubmit)="submitForm(form)">
-          <div class="display-input">
-            <label for="name">Nom:</label><br>
-            <input type="text" id="lastName" name="lastName" ngModel required><br>
-          </div>
-          <div class="display-input">
-            <label for="surname">Prénom:</label><br>
-            <input type="text" id="firstName" name="firstName" ngModel required><br>
-          </div>
-          <div class="display-input">
-            <label for="age">Age:</label><br>
-            <input type="number" id="age" name="age" ngModel required><br>
-          </div>
-
-          <div class="display-input">
-            <label for="">Description:</label>
-            <textarea name="description" id="description" cols="40" rows="5" ngModel required></textarea>
-          </div>
-
-          <div class="display-input">
-            <div class="display-input">
-              <label for="age">Photo:</label><br>
-              <input type="text" id="image" name="image"  ngModel ><br>
-            </div>
-          </div>
-          <button type="submit">Ajouter</button>
-
-        </form>
+    
+<div id="myModal" class="modal" *ngIf="displayForm">
+  <div class="modal-content">
+    <span class="close material-icons" (click)="toggleForm()">close</span>
+    
+    <form id="addMemberForm" #form="ngForm" (ngSubmit)="submitForm(form)">
+      <div class="display-input">
+        <label for="name">Nom:</label>
+        <input type="text" id="lastName" name="lastName" ngModel required>
+        <div *ngIf="form.submitted && !form.controls['lastName']?.valid" class="error-message">
+          Le nom est requis.
+        </div>
       </div>
-
-    </div>
-
+      <div class="display-input">
+        <label for="surname">Prénom:</label>
+        <input type="text" id="firstName" name="firstName" ngModel required>
+        <div *ngIf="form.submitted && !form.controls['firstName']?.valid" class="error-message">
+          Le prénom est requis.
+        </div>
+      </div>
+      <div class="display-input">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" ngModel required>
+        <div *ngIf="form.submitted && !form.controls['age']?.valid" class="error-message">
+          L'âge est requis.
+        </div>
+      </div>
+      <div class="display-input">
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" cols="40" rows="5" ngModel required></textarea>
+        <div *ngIf="form.submitted && !form.controls['description']?.valid" class="error-message">
+          La description est requise.
+        </div>
+      </div>
+      <div class="display-input">
+        <label for="image">Photo:</label>
+        <input type="text" id="image" name="image" ngModel>
+      </div>
+      <button type="submit">Ajouter</button>
+    </form>
   </div>
-
 </div>
