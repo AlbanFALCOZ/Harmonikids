@@ -16,6 +16,7 @@ export class ThemeAddComponent implements OnInit {
   src: string | undefined;
 
   quizList: Quiz[] = [];
+  displayForm: boolean = false;
 
   constructor(private themeService: ThemeService, private quizService: QuizService) { 
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
@@ -47,24 +48,27 @@ export class ThemeAddComponent implements OnInit {
   }
 
   submitForm(form: NgForm): void {
-
+    if (form.valid) {
     const themeName = form.value.themeTitle;
     const themeDescription = form.value.themeDescription;
     const themeQuizzes = form.value.themeQuizzes;
     const themeImage = this.src;
-
+    
+    
     const newTheme: Theme = {
-      id: 1,
-      name: themeName,
-      description: themeDescription,
-      quizzes: [],
-      image: themeImage || '',
-    };
+        id: 1,
+        name: themeName,
+        description: themeDescription,
+        quizzes: [],
+        image: themeImage || '',
+      };
+    
 
     this.themeService.addTheme(newTheme);
-
     form.resetForm();
-  }
+    this.displayForm = false;
+    }
+}
 
   valueChanged(files: FileList) {
     if (files.length !== 1) return;

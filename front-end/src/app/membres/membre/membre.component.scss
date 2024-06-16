@@ -1,6 +1,6 @@
 .card{
     width: 270px;
-    height: 200px;
+    height: auto;
     border: 5px solid #FAA300;
     border-radius: 30px;
     box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
@@ -18,7 +18,7 @@
     align-items: center;
     justify-content: space-around;
     border-bottom: 2px solid #FAA300;
-    height: 130px;
+    height: auto;;
     font-family: "Finger Paint", sans-serif;
 }
 
@@ -28,6 +28,7 @@
     height: 120px;
     width: 120px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .card-footer{

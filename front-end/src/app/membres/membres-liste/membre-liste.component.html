@@ -48,13 +48,16 @@
         <label for="description">Description:</label>
         <textarea name="description" id="description" cols="40" rows="5" ngModel required></textarea>
         <div *ngIf="form.submitted && !form.controls['description']?.valid" class="error-message">
-          La description est requise.
+          Une description est requise.
         </div>
       </div>
       <div class="display-input">
-        <label for="image">Photo:</label>
-        <input type="text" id="image" name="image" ngModel>
-      </div>
+        <label for="image">Image :</label>
+        <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel/>
+        <div (click)="inputField.click()">
+            <ng-content />
+        </div>
+    </div>
       <button type="submit">Ajouter</button>
     </form>
   </div>

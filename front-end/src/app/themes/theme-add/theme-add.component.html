@@ -10,10 +10,16 @@
             <div class="display-input">
                 <label for="themeTitle">Titre du theme:</label><br>
                 <input type="text" id="themeTitle" name="themeTitle" ngModel required><br>
+                <div *ngIf="form.submitted && !form.controls['themeTitle']?.valid" class="error-message">
+                    Le Titre est requis.
+                </div>
             </div>
             <div class="display-input">
                 <label for="themeDescription">Description:</label><br>
                 <textarea id="themeDescription" name="themeDescription" rows="5" ngModel required></textarea><br>
+                <div *ngIf="form.submitted && !form.controls['themeDescription']?.valid" class="error-message">
+                    Une description est requise.
+                </div>
             </div>
             <div class="display-input">
                 <label for="image">Image :</label>
@@ -22,9 +28,7 @@
                     <ng-content />
                 </div>
             </div>
-            <button [disabled]="form.invalid" type="submit" >Créer le theme</button>
+            <button type="submit">Créer le theme</button>
         </form>
     </div>
-
 </div>
-
