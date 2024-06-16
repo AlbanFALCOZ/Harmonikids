@@ -1,3 +1,5 @@
+
+
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Question } from 'src/models/question.model';
@@ -18,7 +20,7 @@ export class DragDropService {
     const question = QUESTION_LIST.find(item => item.id === id);
     return of(question);
   }
-  
+
   getItems(id: number): Observable<{ item1: string, item2: string, item3: string } | undefined> {
     const question = QUESTION_LIST.find(item => item.id === id);
     if (question) {
