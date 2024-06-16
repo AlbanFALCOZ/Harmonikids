@@ -1,7 +1,12 @@
 .content {
-  width: auto;
+  width: 100%;
   height: 100%;
   transition: margin-left .5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20px;
 }
 
 .nav-visible {
@@ -69,67 +74,62 @@ input:checked + .slider:before {
 }
 
 
-
-
-.dropdown-container-theme {
-  margin-top: 20px;
-  margin-right:20px; 
-}
-
-
-.dropdown-container-theme h2 {
-  font-size: 20px;
+.toggle-container {
+  margin-left: 210px;
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
 }
 
-
-
-
-.dropdown-container-theme select option {
-  font-size: 16px; 
+.dropdown-container-theme, .checkbox-container-theme, .checkbox-container-question {
+  margin: 2px auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  text-align: center;
 }
 
-
-.toggle-container {
-  margin-left: 210px;
+.dropdown-container-theme h2, .checkbox-container-theme h2, .checkbox-container-question h2 {
+  font-size: 24px;
+  margin-bottom: 1px;
+  color: #333;
+  border-bottom: 2px solid #FAA300;
+  padding-bottom: 4px;
 }
 
-.dropdown-container-theme {
-  margin-left: 210px; 
+.checkbox-container-theme label, .checkbox-container-question label {
+  display: block;
+  margin-bottom: 10px; /* Increase margin for better spacing */
+  font-size: 18px
 }
 
-
-
-.palette-button {
-  background-color: var(--button-background-color, #28a745); 
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  margin-left: 80px;
-  margin-top: 80px;
+.color-option {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  border-radius: 50%;
   cursor: pointer;
+  display: inline-block;
 }
 
 .dropdown {
+  cursor: pointer;
   position: absolute;
+  align-items: center;
   top: 0;
-  left: 50%;
+  left: 65%;
   transform: translateX(20%);
   margin-top: 220px;
-  margin-right: 220px;
-  display: flex; 
-  flex-direction: row; 
+  display: flex;
+  flex-direction: row;
 }
-
-
 
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 100px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -137,94 +137,52 @@ input:checked + .slider:before {
   display: block;
 }
 
-.color-option {
-  width: 20px;
-  height: 20px;
-  margin: 5px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-
 .title-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
- 
+  width: 90%;
+  margin: 5 auto;
 }
 
 .title {
   color: #FAA300;
-  font-size: 33px;
+  font-size: 30px;
   font-family: "Finger Paint", sans-serif;
-  
-  margin-left: 270px;
 }
 
 .title2 {
   color: #FAA300;
   font-size: 33px;
   font-family: "Finger Paint", sans-serif;
-  margin-right: 230px; 
-}
-
-.line {
-  width: 2px; 
-  height: 90vh; 
-  background-color: #FAA300;
-  position: fixed; 
-  top: 25; 
-  left: 50%; 
-  transform: translateX(-50%); 
-}
-
-
-.toggle-container .switch {
-  font-size: medium; 
-}
-
-
-.button-size-slider span {
-  margin-right: 30px; 
-}
-
-
-.dropdown span {
-  margin-right: 70px; 
 }
 
 .checkbox-container-theme {
-  max-height: 55px;
-  margin-left:210px; 
-  width: 32.4%; 
-  padding: 10px; 
-  border: 2px solid #FAA300; 
+  max-height: 200px;
+  padding: 20px;
+  border: 2px solid #FAA300;
   font-family: "Finger Paint", sans-serif;
-  border-radius: 5px; 
-  font-size: 16px; 
-  background-color: #59D5E0; 
-  cursor: pointer;  
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #59D5E0;
+  cursor: pointer;
+  overflow-y: auto;
 }
-.Configuration {
-  width: 90%;
-}
-
-
-.Configuration h1 {
-  margin-left:210px;
-}
-
 
 .checkbox-container-question {
-  max-height: 55px;
-  margin-left:210px; 
-  width: 32.5%; 
-  padding: 10px; 
-  border: 2px solid #FAA300; 
+  padding: 20px;
+  border: 2px solid #FAA300;
   font-family: "Finger Paint", sans-serif;
-  border-radius: 5px; 
-  font-size: 16px; 
-  background-color: #59D5E0; 
-  cursor: pointer;  
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #59D5E0;
+  cursor: pointer;
 }
 
+.Configuration {
+  width: 100%;
+}
+
+.Configuration h1 {
+  margin-left: 210px;
+}
