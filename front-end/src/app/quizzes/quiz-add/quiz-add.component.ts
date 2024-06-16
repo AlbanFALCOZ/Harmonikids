@@ -34,9 +34,11 @@ export class QuizAddComponent implements OnInit {
   displayFormDelete = false;
   showQuestionPopup: boolean = false;
   showAnswerAdd: boolean = false;
-  answers: string[] ;
+  answers: string[] = ['', '', '', '']; 
+  correctAnswers: boolean[] = [false, false, false, false]; 
+  
   answerList: Answer[] = [];
-  correctAnswers: boolean[] = [false];
+  
   hint: { text?: string | undefined; imageUrl?: string | undefined; } ;
   
 
@@ -241,21 +243,21 @@ export class QuizAddComponent implements OnInit {
     console.log("label" + label)
     const typeOfQuestion = form.value.typeOfQuestion;
     const niveau = form.value.niveau;
-    const image = form.value.image;
+    const image = this.src;
     const audio = form.value.audio;
     const quizId = form.value.quizId;
-    const hint = this.hint;  
+    const hint = this.hint || this.src;  
     const answers = this.answerList;  
   
     const newQuestion: Question = {
       label: label,
       typeOfQuestion: typeOfQuestion,
       niveau: niveau,
-      image: image,
+      image: image || '',
       audio: audio,
       quizId: quizId,
       answers: answers,
-      hint:this.hint,
+      hint:this.hint || this.src,
       id: 0
     };
    
@@ -266,7 +268,7 @@ export class QuizAddComponent implements OnInit {
         console.log(this.newQuizQuestionList[0]);
         
         
-      
+    this.answers = ['' , '']
     this.answerList = [];
     form.resetForm();
   }
@@ -277,7 +279,7 @@ export class QuizAddComponent implements OnInit {
     typeOfQuestion: QuestionType.MultipleChoice,
     niveau: '',
     answers: [{ id: 1, value: '', isCorrect: false }],
-    hint: { text: '', imageUrl: '' },
+    hint: { text: '',  imageUrl: '' },
     quizId: 0
   };
 
@@ -303,7 +305,7 @@ export class QuizAddComponent implements OnInit {
       console.error('Element with ID "hintText" not found.');
       return;
     }
-    this.hint = {text:'' , imageUrl:''};
+    
   }
 
   

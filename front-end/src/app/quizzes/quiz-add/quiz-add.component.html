@@ -133,41 +133,56 @@
                           </div>
                         </div>
                         <div class="display-input">
-                          <label for="answers">Réponses:</label>
-                          <button type="button" id="answerToggle" (click)="toggleAnswerAdd()">Ajouter des réponses</button><br>
-                          <div class="popup-indice" *ngIf="showAnswerAdd">
-                            <div class="popup-content-indice">
-                              <label for="ReponseText1">Réponse:</label>
-                              <input type="text" class="form-control" id="ReponseText1" name="ReponseText1" [(ngModel)]="answers[0]">
-                              <label>
-                                <input type="checkbox" name="checkbox1" id="checkbox1" [(ngModel)]="correctAnswers[0]">
-                                Correct
-                              </label>
-                              <label for="ReponseText2">Réponse:</label>
-                              <input type="text" class="form-control" id="ReponseText2" name="ReponseText2" [(ngModel)]="answers[1]">
-                              <label>
-                                <input type="checkbox" name="checkbox2" id="checkbox2" [(ngModel)]="correctAnswers[1]">
-                                Correct
-                              </label>
-                              <label for="ReponseText3">Réponse:</label>
-                              <input type="text" class="form-control" id="ReponseText3" name="ReponseText3" [(ngModel)]="answers[2]">
-                              <label>
-                                <input type="checkbox" name="checkbox3"id="checkbox3" [(ngModel)]="correctAnswers[2]">
-                                Correct
-                              </label>
-                              <label for="ReponseText4">Réponse:</label>
-                              <input type="text" class="form-control" id="ReponseText4" name="ReponseText4" [(ngModel)]="answers[3]">
-                              <label>
-                                <input type="checkbox" name="checkbox4" id="checkbox4"[(ngModel)]="correctAnswers[3]">
-                                Correct
-                              </label>
+                            <label for="answers">Réponses:</label>
+                            
+                            <button type="button" id="answerToggle" (click)="toggleAnswerAdd()">Ajouter des réponses</button><br>
+                            
+                            <div class="popup-indice" *ngIf="showAnswerAdd">
+                              <div class="popup-content-indice">
+                                <label for="ReponseText1">Réponse:</label>
+                                <span class="close-button" (click)="toggleAnswerAdd()">&times;</span>
+                                <input type="text" class="form-control" id="ReponseText1" name="ReponseText1" [(ngModel)]="answers[0]">
+                                <label>
+                                  <input type="checkbox" name="checkbox1" id="checkbox1" [(ngModel)]="correctAnswers[0]">
+                                  Correct
+                                </label>
+                                
+                                <label for="ReponseText2">Réponse:</label>
+                                <input type="text" class="form-control" id="ReponseText2" name="ReponseText2" [(ngModel)]="answers[1]">
+                                <label>
+                                  <input type="checkbox" name="checkbox2" id="checkbox2" [(ngModel)]="correctAnswers[1]">
+                                  Correct
+                                </label>
+                                
+                                <div *ngIf="answers.length >= 3">
+                                  <label for="ReponseText3">Réponse:</label>
+                                  <input type="text" class="form-control" id="ReponseText3" name="ReponseText3" [(ngModel)]="answers[2]">
+                                  <label>
+                                    <input type="checkbox" name="checkbox3" id="checkbox3" [(ngModel)]="correctAnswers[2]">
+                                    Correct
+                                  </label>
+                                </div>
+                                
+                                <div *ngIf="answers.length >= 4">
+                                  <label for="ReponseText4">Réponse:</label>
+                                  <input type="text" class="form-control" id="ReponseText4" name="ReponseText4" [(ngModel)]="answers[3]">
+                                  <label>
+                                    <input type="checkbox" name="checkbox4" id="checkbox4" [(ngModel)]="correctAnswers[3]">
+                                    Correct
+                                  </label>
+                                </div>
+                                
+                                <div *ngIf="answers.length < 4" class="display-input">
+                                  <button type="button" (click)="addAnswer()">Ajouter une autre réponse</button><br>
+                                </div>
+                                
+                                <button type="button" (click)="answerListAdd()">Valider</button><br>
+                              </div>
                             </div>
-                            <div *ngIf="answers.length < 4" class="display-input">
-                              <button type="button" (click)="addAnswer()">Ajouter une autre réponse</button><br>
-                            </div>
-                            <button type="button" (click)="answerListAdd()">Valider</button><br>
-                          </div>
+                         
+                          
                         </div>
+                        
                         <button type="submit" class="btn btn-primary">Ajouter</button>
                       </form>
                         </div>
