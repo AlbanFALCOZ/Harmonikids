@@ -22,6 +22,10 @@ export class NavbarComponent implements OnInit {
 
   isDisabled = false;
 
+  isUserMenuVisible = false;
+  showPasswordPrompt = false;
+  password = '';
+
   constructor(public colorService: ColorService, public membreService: MembreService, private navbarService: NavbarService, private modeService: ModeService, private questionService : QuestionService , private sonService : SonService) { 
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
@@ -52,7 +56,6 @@ export class NavbarComponent implements OnInit {
     return this.questionService.getQuestionsFromLocalStorage();
   }
 
-  isUserMenuVisible = false;
 
   toggleUserMenu(): void {
     this.isUserMenuVisible = !this.isUserMenuVisible;
@@ -63,4 +66,19 @@ export class NavbarComponent implements OnInit {
   }
 
   
-} 
+  promptPassword() {
+    console.log('Prompting password');  // Ajoutez cette ligne pour vérifier si la méthode est appelée
+    this.showPasswordPrompt = true;
+    console.log(this.showPasswordPrompt);  // Ajoutez cette ligne pour vérifier la mise à jour de la variable
+  }
+
+  submitPassword() {
+    if (this.password === 'votreMotDePasseErgo') {
+      this.modeService.toggleMode();
+      this.showPasswordPrompt = false;
+      this.password = '';
+    } else {
+      alert('Mot de passe incorrect');
+    }
+  }
+}
