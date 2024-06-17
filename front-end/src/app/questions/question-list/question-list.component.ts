@@ -75,7 +75,7 @@ export class QuestionListComponent implements OnInit {
   }*/
 
   ngOnInit(): void {
-    const quizId = 1; // Set the quizId according to your application logic
+    const quizId = this.quizService.quizSelectedId;
     this.questionService.fetchQuestions(quizId).subscribe(questions => {
       this.questionList = questions;
       this.questionService.saveQuestionsToLocalStorage(questions);

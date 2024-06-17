@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, catchError, map, of, tap } from 'rxjs';
 import { Membre } from 'src/models/membre.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { HttpClient } from '@angular/common/http';
@@ -12,6 +12,7 @@ export class MembreService {
    
     public membres:Membre[] = [];
     private memberId: number | undefined ;
+    private membre!: Membre; 
     private membreUrl = serverUrl + '/user';
     private apiUrl = '../../../backend/app/api/user';
 
@@ -38,14 +39,7 @@ export class MembreService {
 
     
 
-    getWelcomeMessage(memberId: number |undefined ): string {
-        const membre = this.membres.find(m => m.id === memberId);
-        if (membre) {
-          return `Bonjour ${membre.firstName}!`;
-        } else {
-          return "Heureux de te revoir.";
-        }
-      }
+ 
 
 
   setMemberId(id: number | undefined): void {
@@ -68,7 +62,52 @@ export class MembreService {
   }
 
 
+  getWelcomeMessage(memberId: number | undefined): string {
+    console.log("get welcome message:", memberId);
+  
+    if (memberId !== undefined) {
+      const membre = this.getMemberByIdSync(memberId);
+      console.log(this.membre)
+      if (this.membre !== null) {
+        console.log("The first name:", this.membre.firstName);
+        return `Bonjour ${this.membre.firstName} !`;
+      } else {
+        return "Heureux de te revoir.";
+      }
+    } else {
+      return "Heureux de te revoir.";
+    }
+  }
+  
+  
+  getMemberByIdSync(id: number | undefined): Membre | null {
+    const urlWithId = `${this.membreUrl}/${id}`;
+    console.log("urlWithId  " + urlWithId);
+    console.log(this.membreUrl);
+    console.log(id);
+  
+    let membre: Membre | null = null;
+  
+    this.http.get<Membre>(urlWithId).subscribe(
+      (data: Membre) => {
+       
+        membre = data;
+        this.setMembre(membre)
+      },
+      (error) => {
+        console.error('Error fetching member:', error);
+      }
+    );
+  
+    return membre;
+  }
 
+  setMembre(membre: Membre | null): void {
+    if (membre !== null) {
+      console.log("Membre is setMembre" + membre)
+        this.membre = membre; 
+    } 
+}
 
 
 

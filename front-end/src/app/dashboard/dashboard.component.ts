@@ -7,6 +7,8 @@ import { ThemeService } from 'src/services/theme.service';
 import { QuizService } from 'src/services/quiz.service'; 
 import { NavbarService } from 'src/services/navbar.service';
 import { QuestionService } from 'src/services/question.service';
+import { Observable } from 'rxjs';
+import { Membre } from 'src/models/membre.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,35 +17,56 @@ import { QuestionService } from 'src/services/question.service';
 })
 export class DashboardComponent implements OnInit {
   memberId: number | undefined;
-  welcomeMessage: string='';
+  welcomeMessage: string | undefined;
   themeList: Theme[] = [];
   quizList: Quiz[] = []; 
+  membre!: Membre | null;
 
   isNavVisible = false;
 
 
   constructor(private route: ActivatedRoute, private membreService: MembreService, 
     private themeService: ThemeService, private quizService: QuizService, private navbarService: NavbarService,private questionService:QuestionService) {
-    this.navbarService.isNavbarVisible$.subscribe(isVisible => {
-      this.isNavVisible = isVisible;
-    });
+   
+      this.route.params.subscribe(params => {
+        this.memberId = params['id'];
+    
+        this.membre = this.membreService.getMemberByIdSync(this.memberId)
+        
+       
+      });
+      this.themeList = this.themeService.getSelectedThemes()
+      this.quizList = this.quizService.getQuizzes().slice(0, 4); 
+      this.memberId=this.membreService.getMemberId();
+      console.log("Membre ID" + this.memberId)
+     
+      this.membreService.membres$.subscribe(members => {
+        if(members.length > 0){
+          this.welcomeMessage = this.membreService.getWelcomeMessage(this.memberId)
+        }
+      })
               }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.memberId = params['id'];
-      this.membreService.setMemberId(this.memberId);
+      this.membreService.membres$.subscribe(members => {
+        if(members.length > 0){
+          this.welcomeMessage = this.membreService.getWelcomeMessage(this.memberId)
+        }
+      })
+      
      
     });
     this.themeList = this.themeService.getSelectedThemes()
     this.quizList = this.quizService.getQuizzes().slice(0, 4); 
+    this.membre = this.membreService.getMemberByIdSync(this.memberId)
+    
     this.memberId=this.membreService.getMemberId();
     console.log("Membre ID" + this.memberId)
-    this.membreService.membres$.subscribe(members => {
-      if(members.length > 0){
-        this.welcomeMessage = this.membreService.getWelcomeMessage(this.memberId)
-      }
-    })
+    this.membreService.setMemberId(this.memberId);
+   
+   
    
     
   }
