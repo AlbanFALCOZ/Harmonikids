@@ -215,3 +215,18 @@
 .cancel-button:hover {
     background-color: #da77d8;
 }
+
+.button_history{
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #FAA300;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #F4538A;
+    color: white;
+    cursor: pointer;
+
+}

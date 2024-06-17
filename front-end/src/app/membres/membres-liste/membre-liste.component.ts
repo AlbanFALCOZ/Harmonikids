@@ -62,10 +62,7 @@ export class MembreListeComponent implements OnInit {
    
   }
 
-  toggleMode() {
-    this.modeService.toggleMode();
-  }
-
+ 
 
   toggleForm() {
     this.displayForm = !this.displayForm;

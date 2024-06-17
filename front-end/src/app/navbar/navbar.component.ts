@@ -52,6 +52,15 @@ export class NavbarComponent implements OnInit {
     return this.questionService.getQuestionsFromLocalStorage();
   }
 
+  isUserMenuVisible = false;
+
+  toggleUserMenu(): void {
+    this.isUserMenuVisible = !this.isUserMenuVisible;
+  }
+
+  toggleMode() {
+    this.modeService.toggleMode();
+  }
 
   
-}
+} 

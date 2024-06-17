@@ -5,11 +5,10 @@
     </div>
     <div class="quiz-card-footer">
         <p>{{ quiz.description }}</p>
-        <p *ngIf = "quiz.questions">{{ quiz.questions.length }}</p>
     </div>
     <div class="quiz-card-button">
-        <a routerLink="/niveau/{{ quiz.id }}"><button (click)="selectQuiz()">Select</button></a>
-        <button (click)="displayModalUpdate()" *ngIf="!isDisabled">Edit</button>
-        <button (click)="displayModalDelete()" *ngIf="!isDisabled">Delete</button>
+        <a routerLink="/niveau/{{ quiz.id }}"><button (click)="selectQuiz()">Choisir</button></a>
+        <button (click)="displayModalUpdate()" *ngIf="!isDisabled">Modifier</button>
+        <button (click)="displayModalDelete()" *ngIf="!isDisabled">Supprimer</button>
     </div>
 </div>

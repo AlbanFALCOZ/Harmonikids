@@ -1,25 +1,21 @@
-
-<div class="navbar" [ngStyle]="{ 
-    'background-color': colorService.selectedColor, }">
-  <span class="material-icons" id="menu" (click)="toggleNav()">menu</span>
+<div class="navbar" [ngStyle]="{'background-color': colorService.selectedColor, }">
+    <a routerLink="/membres-liste" class="accueil">Accueil</a>
   <div>
     <img src="assets/img/logo3.png" alt="logo">
   </div>
+  <div class="user">
+    <div class="user-menu" (click)="toggleUserMenu()">
+      <span class="material-icons">account_circle</span>
+      <div class="dropdown-menu" *ngIf="isUserMenuVisible">
+        <a [routerLink]="['/dashboard', memberId]">Profile</a>
+        <a routerLink="/statistiques" *ngIf="!isDisabled">Statistiques</a>
+        <a routerLink="/configuration" *ngIf="!isDisabled">Paramètres</a>
+      </div>
+    </div>
+    <button class="switch-mode" (click)="toggleMode()">
+      Mode Ergo : {{ isDisabled ? 'Off' : 'On' }}
+    </button>
+  </div>
 </div>
 
-<div class="nav-vertical" [ngStyle]="{ 
-     'background-color': colorService.selectedColor, 
-     'visibility': isNavVisible ? 'visible' : 'hidden' 
-  }">
-
-
-
-  <a routerLink="/membres-liste">Accueil</a>
-  <a [routerLink]="['/dashboard', memberId]">Dashboard</a>
-  <a routerLink="/quiz-list">Quiz</a>
-  <a routerLink="/questions" *ngIf="!isDisabled">Questions</a>
-  <a routerLink="/theme-list">Thèmes</a>
-  <a routerLink="/statistiques" *ngIf="!isDisabled">Statistiques</a>
-  <a routerLink="/configuration" *ngIf="!isDisabled">Paramètres</a>
-</div>
 
