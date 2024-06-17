@@ -6,11 +6,13 @@
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close material-icons" (click)="closeModal()">close</span>
-        <!-- Example button or link to select a quiz, assuming you have quiz.id available -->
         <form id="addQuizForm" #form="ngForm" >  
             <div class="display-input">
                 <label for="quizTitle">Titre du quiz:</label><br>
                 <input type="text" id="quizTitle" name="quizTitle" ngModel required><br>
+                <div *ngIf="form.submitted && !form.controls['quizTitle']?.valid" class="error-message">
+                    Le titre est requis
+                  </div>
             </div>
             <div class="display-input">
                 <label for="quizTheme">Thème:</label><br>
@@ -24,6 +26,9 @@
             <div class="display-input">
                 <label for="quizDescription">Description:</label><br>
                 <textarea id="quizDescription" name="quizDescription" rows="5" ngModel required></textarea><br>
+                <div *ngIf="form.submitted && !form.controls['quizDescription']?.valid" class="error-message">
+                    La description est requise
+                  </div>
             </div>
 
            
@@ -105,10 +110,6 @@
                           <div (click)="inputField.click()">
                             <ng-content></ng-content>
                           </div>
-                        </div>
-                        <div class="display-input">
-                          <label for="audio">Audio :</label>
-                          <input type="text" class="form-control" id="audio" [(ngModel)]="question.audio" name="audio">
                         </div>
                         <div class="display-input">
                           <label for="questionForQuizToggle">Indice</label><br>

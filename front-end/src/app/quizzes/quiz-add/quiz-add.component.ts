@@ -247,13 +247,12 @@ export class QuizAddComponent implements OnInit {
     const quizId = form.value.quizId;
     const hint = this.hint || this.src;  
     const answers = this.answerList;  
-  
+    if (form.valid) {
     const newQuestion: Question = {
       label: label,
       typeOfQuestion: typeOfQuestion,
       niveau: niveau,
       image: image || '',
-      audio: audio,
       quizId: quizId,
       answers: answers,
       hint:this.hint || this.src,
@@ -269,7 +268,9 @@ export class QuizAddComponent implements OnInit {
         
     this.answers = ['' , '']
     this.answerList = [];
+    this.hint = {text:'' , imageUrl:''};
     form.resetForm();
+  }
   }
 
   question: Question = {
@@ -318,6 +319,7 @@ export class QuizAddComponent implements OnInit {
     const selectedQuestions = this.newQuizQuestionList; 
     console.log("QuestionSelected" + selectedQuestions)
 
+    if (form.valid) {
     const newQuiz: Quiz = {
       name: quizTitle,
       description: quizDescription,
@@ -329,8 +331,11 @@ export class QuizAddComponent implements OnInit {
 
       id:0 
     };
+  
     
 
+
+    console.log("La liste des questions newQuizList" + this.newQuizQuestionList)
     
 
     this.quizService.addQuiz(newQuiz).subscribe(
@@ -344,7 +349,6 @@ export class QuizAddComponent implements OnInit {
             typeOfQuestion: question.typeOfQuestion,
             niveau: question.niveau,
             image: question.image,
-            audio: question.audio,
             answers: question.answers,
             hint: question.hint,
             quizId:quizId,
@@ -355,7 +359,6 @@ export class QuizAddComponent implements OnInit {
             (createdQuestion) => {
               this.newQuizQuestionList.push(createdQuestion);
               console.log("Created question:", createdQuestion);
-              this.displayMessage('Les questions ont été ajoutées avec succès');
               this.displayMessage('Le quiz a été créé avec succès');
               this.reloadPageAfterDelay();
             },
@@ -376,14 +379,14 @@ export class QuizAddComponent implements OnInit {
       }
       
     );
-  
+    
 
 
     
         this.closeModal();
         console.log(newQuiz.id);
         form.resetForm();
-       
+  }
 
      
   }
