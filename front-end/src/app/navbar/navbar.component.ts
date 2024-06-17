@@ -62,18 +62,22 @@ export class NavbarComponent implements OnInit {
   }
 
   toggleMode() {
-    this.modeService.toggleMode();
+    if (!this.isDisabled) {
+      // Désactiver le mode ergo sans demander de mot de passe
+      this.modeService.toggleMode();
+    } else {
+      // Activer le mode ergo avec demande de mot de passe
+      this.promptPassword();
+    }
   }
 
   
   promptPassword() {
-    console.log('Prompting password');  // Ajoutez cette ligne pour vérifier si la méthode est appelée
     this.showPasswordPrompt = true;
-    console.log(this.showPasswordPrompt);  // Ajoutez cette ligne pour vérifier la mise à jour de la variable
   }
 
   submitPassword() {
-    if (this.password === 'votreMotDePasseErgo') {
+    if (this.password === 'vivi') {
       this.modeService.toggleMode();
       this.showPasswordPrompt = false;
       this.password = '';
