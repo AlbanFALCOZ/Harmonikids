@@ -70,14 +70,12 @@ export class QuestionListComponent implements OnInit {
       this.isNavVisible = isVisible;
     });
   }
-  /*ngOnInit(): void {
-    console.log(this.questionList);
-  }*/
+
 
   ngOnInit(): void {
     const quizId = this.quizService.quizSelectedId;
     this.questionService.fetchQuestions(quizId).subscribe(questions => {
-      this.questionList = questions;
+      this.questionList = this.quizService.getFilteredQuestions();
       this.questionService.saveQuestionsToLocalStorage(questions);
     });
   }

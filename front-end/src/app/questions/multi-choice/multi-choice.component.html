@@ -2,7 +2,7 @@
     <img src="{{ question.image }}" alt="image_question">
     <h3>{{ question.label }}</h3>
     <div class="question-answer">
-        <button class="answer" *ngFor="let answer of answers; let i = index" id="{{ 'answer' + i }}" [ngClass]="{'selected': answer.isSelected}" 
+        <button class="answer" *ngFor="let answer of question.answers; let i = index" id="{{ 'answer' + i }}" [ngClass]="{'selected': answer.isSelected}" 
         (click)="onSelectAnswer(answer)">{{ answer.value }}</button>
     </div>
     <div *ngIf="showMessage" class="right-answer-message">{{ message }}</div>

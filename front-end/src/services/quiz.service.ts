@@ -102,10 +102,12 @@ export class QuizService {
   private filteredQuestions: Question[] = [];
 
   setFilteredQuestions(questions: Question[]): void {
+    console.log("Filtered questions length in quiz service : ", questions.length);
     this.filteredQuestions = questions;
   }
 
   getFilteredQuestions(): Question[] {
+    console.log("Filtered questions length in quiz service : ", this.filteredQuestions.length);
     return this.filteredQuestions;
   }
 
