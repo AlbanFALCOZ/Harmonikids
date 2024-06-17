@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ColorService } from 'src/services/color-service.service';
-import { IndiceService } from 'src/services/indice.service';
 import { MembreService } from 'src/services/membre.service';
 import { ModeService } from 'src/services/mode-ergo.service';
 import { NavbarService } from 'src/services/navbar.service';
@@ -12,21 +11,22 @@ import { SonService } from 'src/services/sound.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-
 export class NavbarComponent implements OnInit {
   memberId: number | undefined;
-
-  
   isNavVisible = false;
- 
-
   isDisabled = false;
-
   isUserMenuVisible = false;
   showPasswordPrompt = false;
   password = '';
 
-  constructor(public colorService: ColorService, public membreService: MembreService, private navbarService: NavbarService, private modeService: ModeService, private questionService : QuestionService , private sonService : SonService) { 
+  constructor(
+    public colorService: ColorService, 
+    public membreService: MembreService, 
+    private navbarService: NavbarService, 
+    private modeService: ModeService, 
+    private questionService: QuestionService, 
+    private sonService: SonService
+  ) {
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
@@ -34,8 +34,6 @@ export class NavbarComponent implements OnInit {
     this.modeService.isDisabled$.subscribe(isDisabled => {
       this.isDisabled = isDisabled;
     });
-
-    
   }
 
   ngOnInit(): void {
@@ -50,12 +48,9 @@ export class NavbarComponent implements OnInit {
     this.toggleNav();
   }
 
-
-
-  getQuestions(){
+  getQuestions() {
     return this.questionService.getQuestionsFromLocalStorage();
   }
-
 
   toggleUserMenu(): void {
     this.isUserMenuVisible = !this.isUserMenuVisible;
@@ -63,21 +58,18 @@ export class NavbarComponent implements OnInit {
 
   toggleMode() {
     if (!this.isDisabled) {
-      // Désactiver le mode ergo sans demander de mot de passe
       this.modeService.toggleMode();
     } else {
-      // Activer le mode ergo avec demande de mot de passe
       this.promptPassword();
     }
   }
 
-  
   promptPassword() {
     this.showPasswordPrompt = true;
   }
 
   submitPassword() {
-    if (this.password === 'vivi') {
+    if (this.password === 'admin') {
       this.modeService.toggleMode();
       this.showPasswordPrompt = false;
       this.password = '';

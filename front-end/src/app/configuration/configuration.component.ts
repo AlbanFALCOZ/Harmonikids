@@ -9,6 +9,7 @@ import { IndiceService } from 'src/services/indice.service';
 import { QUESTION_LIST } from 'src/mocks/question.mock';
 import {QuestionService} from 'src/services/question.service'
 import { NavbarService } from 'src/services/navbar.service';
+import { ModeService } from 'src/services/mode-ergo.service';
 
 
 
