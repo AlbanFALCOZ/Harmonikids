@@ -1,6 +1,7 @@
 const { Quiz } = require('../../models')
 const { filterQuestionsFromQuizz } = require('./questions/manager')
 const { filterAnswersFromQuestion } = require('./questions/answers/manager')
+const quizModel = require('../../models/quiz.model')
 
 /**
  * Function buildQuizz.
@@ -27,7 +28,12 @@ const buildQuizzes = () => {
   return quizzes.map((quiz) => buildQuizz(quiz.id))
 }
 
+const updateQuizStatus = async (quizId, isCompleted) => {
+  return await quizModel.update(quizId, { isQuizCompleted: isCompleted });
+};
+
 module.exports = {
   buildQuizz,
   buildQuizzes,
+  updateQuizStatus,
 }

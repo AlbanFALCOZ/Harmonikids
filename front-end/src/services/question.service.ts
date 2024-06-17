@@ -5,7 +5,8 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { QuizService } from './quiz.service';
 import { QUESTION_LIST } from 'src/mocks/question.mock';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
+import { serverUrl } from 'src/configs/server.config';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ import { map } from 'rxjs/operators';
 export class QuestionService {
 
   private questions: Question[] = [];
-  private apiUrl = 'http://localhost:9428/api';
+  private apiUrl = serverUrl;
+  private quizId!: number;
 
   selectedQuestionTypes: QuestionType[] = [];
  
@@ -28,21 +30,35 @@ export class QuestionService {
       this.questions = selectedQuiz.questions;
       this.questions$.next(this.questions);
     });
-    //this.retrieveQuestions();
+    this.retrieveQuestions();
+  }
+
+  setCurrentQuizId(quizId: number): void {
+    this.quizId = quizId;
+  }
+
+  getCurrentQuizId(): number {
+    return this.quizId;
   }
 
 
 
   fetchQuestions(quizId: number): Observable<Question[]> {
-    console.log(quizId);
+    console.log(`Fetching questions for quiz ID: ${quizId}`);
     return this.http.get<Question[]>(`${this.apiUrl}/quizzes/${quizId}/questions`).pipe(
-      map((questions) => {
+      tap(questions => {
+        console.log('Fetched questions:', questions);
         this.questions = questions;
         this.questions$.next(this.questions);
-        return questions;
+        return this.questions;
+      }),
+      catchError(error => {
+        console.error('Error fetching questions:', error);
+        throw error; // Assurez-vous de gérer les erreurs appropriées ici
       })
     );
   }
+
 
 
   getQuestion(quizId: number, questionId: number): Observable<Question> {

@@ -2,7 +2,7 @@
     <div class="quiz-result">
         <div class="left-side-quiz-result">
             <p class="theme-title">Intitulé : {{ theme.name }}</p>
-            <p class="number-quiz">Nombre de quiz terminés/quiz total : {{ theme.quizzes.length }}/15</p>
+            <p class="number-quiz">Nombre de quiz terminés/quiz total : {{ numberOfQuizzesFinished }}/{{ numberOfQuizzes }}</p>
         </div>
         <app-progres-circle></app-progres-circle>
     </div>

@@ -25,7 +25,7 @@ export class QuizService {
    The list of quiz.
    The list is retrieved from the mock.
    */
-  private quizzes: Quiz[] = QUIZ_LIST;
+  private quizzes: Quiz[] = [];
 
   /*
    Observable which contains the list of the quiz.
@@ -100,6 +100,10 @@ export class QuizService {
 
   getFilteredQuestions(): Question[] {
     return this.filteredQuestions;
+  }
+
+  updateQuizStatus(quizId: number, isCompleted: String): Observable<any> {
+    return this.http.put(`${this.quizUrl}/${quizId}/status`, { isCompleted });
   }
 
 

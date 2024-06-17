@@ -9,8 +9,9 @@ import { ThemeService } from 'src/services/theme.service';
 })
 export class StatistiqueCardComponent {
 
-  @Input()
-  theme!: Theme;
+  @Input() theme!: Theme;
+  @Input() numberOfQuizzes!: number;
+  @Input() numberOfQuizzesFinished!: number;
   constructor(private themeService: ThemeService) {}
 
 

@@ -21,7 +21,7 @@ export class LevelComponent implements OnInit {
   isNavVisible = false;
 
 
-  constructor(private route: ActivatedRoute, public questionService: QuestionService, private quizService: QuizService, private filteredQuestionService: FilteredQuestionService, private navbarService: NavbarService) {
+  constructor(private route: ActivatedRoute, public questionService: QuestionService, private navbarService: NavbarService) {
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
@@ -32,6 +32,7 @@ export class LevelComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.quizId = +params['id'];
       this.getQuestions();
+      this.questionService.setCurrentQuizId(this.quizId);
     });
     console.log(this.quizId)
 
@@ -40,11 +41,12 @@ export class LevelComponent implements OnInit {
   getQuestions(): void {
     if (this.quizId !== undefined) {
       this.questionService.fetchQuestions(this.quizId).subscribe((questions) => {
-        this.questionList = questions;
+        this.questionList = questions; 
+        console.log(this.questionList);
       });
-      console.log(this.questionList);
-      console.log(this.quizId)
+      console.log(this.quizId); 
     }
   }
+
 
 }

@@ -1,19 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { QuizService } from './quiz.service';
+import { GameService } from './game.service';
+import { Quiz } from 'src/models/quiz.model';
+import { Game } from 'src/models/game.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class StatistiqueService {
 
-    constructor(private http: HttpClient) { }
+    quizList: Quiz[] = [];
+    games: Game[] = [];
+
+
+    constructor(private http: HttpClient, private quizService: QuizService, private gameService: GameService) {
+        this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
+            this.quizList = quizzes;
+        });
+
+        this.gameService.games$.subscribe((games: Game[]) => {
+            this.games = games;
+        });
+
+     }
 
     getWeeklyQuizData(): Observable<{ weeks: string[], quizFacilesCounts: number[], quizMoyensCounts: number[], quizDifficilesCounts: number[] }> {
         const weeks = ['Semaine 1', 'Semaine 2', 'Semaine 3', 'Semaine 4'];
-        const quizFacilesCounts = [5, 10, 2, 12];
-        const quizMoyensCounts = [0, 5, 1, 10];
-        const quizDifficilesCounts = [0, 2, 3, 6];
+        const quizFacilesCounts = this.quizList.map(quiz => quiz.questions.filter(question => question.niveau === 'Facile').length);
+        const quizMoyensCounts = this.quizList.map(quiz => quiz.questions.filter(question => question.niveau === 'Moyen').length);
+        const quizDifficilesCounts = this.quizList.map(quiz => quiz.questions.filter(question => question.niveau === 'Difficile').length);
         return of({ weeks, quizFacilesCounts, quizMoyensCounts, quizDifficilesCounts });
     }
 

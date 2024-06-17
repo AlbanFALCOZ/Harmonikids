@@ -6,14 +6,11 @@ import { QuestionType } from '../../../models/question.model';
 import { SoundQuestionComponent } from '../sound-question/sound-question.component';
 import { SonService } from 'src/services/sound.service';
 import { IndiceService } from 'src/services/indice.service';
-
-
 import { ScoreService } from 'src/services/score-service.service';
 import { NavbarService } from 'src/services/navbar.service';
 import { QuizService } from 'src/services/quiz.service';
 import { StatistiqueService } from 'src/services/statistique.service';
 import { GameService } from 'src/services/game.service';
-
 
 @Component({
   selector: 'app-question-list',
@@ -43,18 +40,27 @@ export class QuestionListComponent implements OnInit {
   showFailureMessage: boolean = false;
 
   correctAnswersCount: number = 0;
-  correctAnswersSecondAttempt: number = 0; 
-
+  correctAnswersSecondAttempt: number = 0;
 
   private messageTimeout: any;
   isNavVisible = false;
 
-
   private successAudio = new Audio('assets/img/good.mp3');
   answerSelected: any;
 
-  constructor(private gameService: GameService, private statistiqueService: StatistiqueService, private quizService: QuizService, private router: Router, public questionService: QuestionService, public soundService: SonService, private indiceService: IndiceService, private navbarService: NavbarService, private scoreService: ScoreService) {
-    
+  childId: number = 123; // Remplacez ceci par l'ID de l'enfant actuel
+
+  constructor(
+    private gameService: GameService,
+    private statistiqueService: StatistiqueService,
+    private quizService: QuizService,
+    private router: Router,
+    public questionService: QuestionService,
+    public soundService: SonService,
+    private indiceService: IndiceService,
+    private navbarService: NavbarService,
+    private scoreService: ScoreService
+  ) {
     this.questionList = this.quizService.getFilteredQuestions();
     if (this.indiceService.estIndiceActif() && this.questionList[this.currentQuestionIndex] != undefined) {
       this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
@@ -62,27 +68,21 @@ export class QuestionListComponent implements OnInit {
       this.indiceService.setIndice(undefined);
     }
     this.hint = this.indiceService.hint;
-    this.hintText = this.indiceService.hintText
-    this.hintImageUrl = this.indiceService.hintImageUrl
+    this.hintText = this.indiceService.hintText;
+    this.hintImageUrl = this.indiceService.hintImageUrl;
     this.hintAudio = new Audio('assets/img/good.mp3');
 
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
   }
-  /*ngOnInit(): void {
-    console.log(this.questionList);
-  }*/
 
   ngOnInit(): void {
-    const quizId = 1; // Set the quizId according to your application logic
-    this.questionService.fetchQuestions(quizId).subscribe(questions => {
-      this.questionList = questions;
-      this.questionService.saveQuestionsToLocalStorage(questions);
-    });
+    const quizId = this.questionService.getCurrentQuizId();
+    console.log('Quiz ID:', quizId);
   }
 
-  nextQuestion() : void{
+  nextQuestion(): void {
     this.resetMessages();
     if (this.currentQuestionIndex < this.questionList.length - 1) {
       this.currentQuestionIndex++;
@@ -97,11 +97,11 @@ export class QuestionListComponent implements OnInit {
 
     currentQuestion.answers.forEach((item, index2) => {
       this.selectedAnswerCorrect.forEach((item2) => {
-        if (item == item2) {
+        if (item === item2) {
           console.log("item", item);
           console.log("index2", index2);
           const answer = document.getElementById("answer" + index2);
-          
+
           answer?.classList.add("right-answer");
           answer?.classList.remove("selected");
           console.log("answer", answer);
@@ -110,7 +110,7 @@ export class QuestionListComponent implements OnInit {
     });
   }
 
-  previousQuestion(): void{
+  previousQuestion(): void {
     if (this.currentQuestionIndex > 0) {
       this.currentQuestionIndex--;
     }
@@ -118,11 +118,6 @@ export class QuestionListComponent implements OnInit {
       this.soundQuestionComponent.stopSound();
     }
     this.resetMessages();
-
-    const currentQuestion = this.questionList[this.currentQuestionIndex];
-
-    
-
   }
 
   validateQuestion(): void {
@@ -130,57 +125,54 @@ export class QuestionListComponent implements OnInit {
       alert('Veuillez sélectionner au moins une réponse avant de valider.');
       return;
     }
-    this.selectedAnswer.forEach((item, index) => {
+    this.selectedAnswer.forEach((item) => {
       item.alreadySelected = true;
     });
     const currentQuestion = this.questionList[this.currentQuestionIndex];
     const correctAnswers = currentQuestion.answers.filter(a => a.isCorrect);
 
+    const quizId = this.questionService.getCurrentQuizId();
     const questionId = this.questionList[this.currentQuestionIndex].id;
-    this.gameService.saveChosenAnswers(questionId, this.selectedAnswer);
+    this.gameService.saveChosenAnswers(this.childId, quizId, questionId, this.selectedAnswer);
 
     this.resetMessages();
-  
 
     this.selectedAnswer.forEach((item) => {
       currentQuestion.answers.forEach((item2, index2) => {
-        if (item == item2) {
+        if (item === item2) {
           const answer = document.getElementById("answer" + index2);
           answer?.classList.remove("selected");
 
           if (!item.isCorrect) {
             this.selectedAnswerWrong.push(item2);
             answer?.classList.add("wrong-answer");
-          }
-          else {
+          } else {
             this.selectedAnswerCorrect.push(item2);
             answer?.classList.add("right-answer");
             console.log("answer", answer);
           }
         }
       });
-
     });
 
-
-    this.selectedAnswerCorrect = this.selectedAnswerCorrect.filter((item, index) => this.selectedAnswerCorrect.indexOf(item) == index);
-    this.selectedAnswerWrong = this.selectedAnswerWrong.filter((item, index) => this.selectedAnswerWrong.indexOf(item) == index);
-
+    this.selectedAnswerCorrect = this.selectedAnswerCorrect.filter((item, index) => this.selectedAnswerCorrect.indexOf(item) === index);
+    this.selectedAnswerWrong = this.selectedAnswerWrong.filter((item, index) => this.selectedAnswerWrong.indexOf(item) === index);
 
     if (correctAnswers.every((item) => this.selectedAnswerCorrect.includes(item))) {
       this.showSuccessMessage = true;
       this.soundService.playSound('assets/img/good.mp3');
       this.questionCleared.push(this.currentQuestionIndex);
-      if (this.correctAnswersSecondAttempt == 0) {
+      if (this.correctAnswersSecondAttempt === 0) {
         this.correctAnswersCount++;
+        this.gameService.incrementCorrectFirstAttemptCount(this.childId, quizId);
       }
     } else {
       this.showFailureMessage = true;
       if (this.indiceService.estIndiceActif()) {
         this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
-        this.hintAudio = this.indiceService.hintAudio
+        this.hintAudio = this.indiceService.hintAudio;
         this.hintText = this.indiceService.hintText;
-        this.hintImageUrl = this.indiceService.hintImageUrl
+        this.hintImageUrl = this.indiceService.hintImageUrl;
 
         if (this.hintImageUrl) {
           setTimeout(() => {
@@ -206,15 +198,13 @@ export class QuestionListComponent implements OnInit {
       if (this.indiceService.estIndiceActif()) {
         this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
         this.hintText = this.indiceService.hintText;
-        this.hintImageUrl = this.indiceService.hintImageUrl
+        this.hintImageUrl = this.indiceService.hintImageUrl;
       }
       this.indiceService.hintImageUrl = undefined;
     }, 8000);
   }
 
-
-  resetMessages() {
-
+  resetMessages(): void {
     clearTimeout(this.messageTimeout);
     this.showSuccessMessage = false;
     this.showFailureMessage = false;
@@ -235,10 +225,13 @@ export class QuestionListComponent implements OnInit {
     if (num > 12) num = 12;
     return Array(num);
   }
-  finishQuiz() {
+
+  finishQuiz(): void {
     this.scoreService.updateSelectedAnswersCount(this.selectedAnswerCorrect.length);
-    const quizId = 1716767415981;
-    this.statistiqueService.setCorrectFirstAttemptCount(quizId, this.selectedAnswerCorrect.length);
+    const quizId = this.questionService.getCurrentQuizId();
+    const game = this.gameService.getGame(this.childId, quizId);
+    this.gameService.sendGameDataToBackend(game!);
+    this.gameService.setQuizCompleted(this.childId, quizId);
     this.router.navigate(['/end-game']);
   }
 }

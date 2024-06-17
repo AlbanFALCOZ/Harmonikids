@@ -53,4 +53,13 @@ router.delete('/:quizId', (req, res) => {
   }
 })
 
+router.put('/:id/status', async (req, res) => {
+  try {
+    const quiz = await Quiz.updateQuizStatus(req.params.id, req.body.isCompleted);
+    res.send(quiz);
+  } catch (error) {
+    res.status(500).send({ error: 'Failed to update quiz status.' });
+  }
+});
+
 module.exports = router
