@@ -48,12 +48,16 @@ export class ConfigurationComponent {
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
+    this.themeService.themes$.subscribe((themes: Theme[]) => {
+      this.themeList = themes;
+      
+    });
   }
    
 
 
   ngOnInit() {
-    this.themeList = this.themeService.getThemes()
+  
     this.isIndiceOn=this.indiceService.estIndiceActif()
   }
 

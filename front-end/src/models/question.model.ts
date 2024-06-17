@@ -8,7 +8,7 @@ export enum QuestionType {
 
 
 export interface Answer {
-    id: number;
+    id?: number;
     value: string;
     isCorrect: boolean;
     isSelected?: boolean;
@@ -28,4 +28,6 @@ export interface Question {
         imageUrl?: string;
         audioUrl?: string;
       };
+    quizId:number
+    
 }

@@ -55,7 +55,6 @@ export class ThemeService {
 
   addTheme(theme: Theme): void {
     this.http.post<Theme>(this.themeUrl, theme, this.httpOptions).subscribe(() => this.retrieveThemes());
-
      this.themes.push(theme);
      this.themes$.next(this.themes);
   }

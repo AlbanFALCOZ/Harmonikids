@@ -23,14 +23,15 @@ export const MULTI_CHOICE: Question = {
             isCorrect: false,
         },
         {
-            id: 4,  // id de la réponse                                                                 
+            id: 4, // id de la réponse                                                                 
             value: 'Le tigre',
             isCorrect: false,
         }
     ],
     hint: {
         text: "Pense à des animaux que les gens peuvent avoir chez eux pour les câliner et jouer avec eux."
-      }
+    },
+    quizId: 0
 };
 
 export const UNIQUE_CHOICE: Question = {
@@ -63,7 +64,8 @@ export const UNIQUE_CHOICE: Question = {
     ],
     hint: {
         audioUrl: 'assets/img/miaule.mp3'
-    }
+    },
+    quizId: 0
 };
 
 export const TRUE_FALSE: Question = {
@@ -83,7 +85,8 @@ export const TRUE_FALSE: Question = {
             value: 'Faux',
             isCorrect: false,
         },
-    ]
+    ],
+    quizId: 0
 };
 
 export const DRAG_DROP1: Question = {
@@ -116,7 +119,8 @@ export const DRAG_DROP1: Question = {
     ],
     hint: {
         imageUrl: 'assets/img/fourmis.png'
-    }
+    },
+    quizId: 0
 };
 
 export const DRAG_DROP2: Question = {
@@ -146,7 +150,8 @@ export const DRAG_DROP2: Question = {
             value: 'Alban',
             isCorrect: false,
         },
-    ]
+    ],
+    quizId: 0
 };
 
 export const SOUND: Question = {
@@ -177,7 +182,8 @@ export const SOUND: Question = {
             value: 'Vache',
             isCorrect: false,
         },
-    ]
+    ],
+    quizId: 0
 };
 
 export const QUESTION_LIST: Question[] = [MULTI_CHOICE, UNIQUE_CHOICE, TRUE_FALSE, DRAG_DROP1, DRAG_DROP2, SOUND];

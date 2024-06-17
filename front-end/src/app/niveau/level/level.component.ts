@@ -33,6 +33,7 @@ export class LevelComponent implements OnInit {
       this.quizId = +params['id'];
       this.getQuestions();
     });
+    this.quizService.setSelectedQuizId(this.quizId);
     console.log(this.quizId)
 
   }
