@@ -39,6 +39,7 @@ import { ThemeDashboardComponent } from './card-dashboard/theme-dashboard/theme-
 import { CommonModule } from '@angular/common';
 import { QuestionAddComponent } from './questions/question-add/question-add.component';
 import { HistoriqueComponent } from './statistiques/historique/historique.component';
+import { CountdownModule } from 'ngx-countdown';
 
 
 
@@ -87,7 +88,8 @@ import { HistoriqueComponent } from './statistiques/historique/historique.compon
     HttpClientModule,
     DragDropModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    CountdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

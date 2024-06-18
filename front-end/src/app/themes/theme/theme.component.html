@@ -7,7 +7,7 @@
         <p>{{ theme.description }}</p>
     </div>
     <div class="theme-card-button">
-        <a routerLink="/quiz-list"><button (click)="selectTheme()">Choisir </button></a>
+        <button (click)="selectTheme()">Choisir </button>
         <button (click)="displayModalUpdate()" *ngIf="!isDisabled">Modifier</button>
         <button (click)="displayModalDelete()" *ngIf="!isDisabled">Supprimer</button>
   </div>

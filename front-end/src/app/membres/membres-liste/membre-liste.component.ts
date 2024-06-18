@@ -30,7 +30,7 @@ export class MembreListeComponent implements OnInit {
 
   search: string = '';
 
-  src: string | undefined;
+  src: string  = "../../../assets/img/no-photo.png";
 
 
 
@@ -83,21 +83,23 @@ export class MembreListeComponent implements OnInit {
     const ageMember = form.value.age;
     const descriptionMember = form.value.description;
     const imageMember = this.src;
+    if (form.valid) {
+      const newMember: Membre = {
+        id: 1,
+        firstName: firstNameMember,
+        lastName: lastNameMember,
+        age: ageMember,
+        description: descriptionMember,
+        image: imageMember || "" ,
+      };
 
-    const newMember: Membre = {
-      id: 1,
-      firstName: firstNameMember,
-      lastName: lastNameMember,
-      age: ageMember,
-      description: descriptionMember,
-      image: imageMember || '',
-    };
+      this.membreService.addMembre(newMember);
 
-    this.membreService.addMembre(newMember);
-
-    form.resetForm();
+      form.resetForm();
+      this.toggleForm();
+      this.src = "../../../assets/img/no-photo.png";
+    } 
   }
-
 
   valueChanged(files: FileList) {
     if (files.length !== 1) return;

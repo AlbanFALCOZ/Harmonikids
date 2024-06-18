@@ -5,5 +5,5 @@ module.exports = new BaseModel('Theme', {
   name: Joi.string().required(),
   description: Joi.string().required(),
   quizzes: Joi.array(),
-  image: Joi.string().required(),
+  image: Joi.string(),
 })

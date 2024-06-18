@@ -11,6 +11,7 @@ import {QuestionService} from 'src/services/question.service'
 import { NavbarService } from 'src/services/navbar.service';
 import { MembreService } from 'src/services/membre.service';
 import { ActivatedRoute } from '@angular/router';
+import { ModeService } from 'src/services/mode-ergo.service';
 
 
 

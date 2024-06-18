@@ -1,207 +1,201 @@
 <div class="add-card">
-    <p>Ajouter un nouveau quiz</p>
-    <span class="material-icons add" id="myBtn" (click)="displayModal()">add</span>
+  <p>Ajouter un nouveau quiz</p>
+  <span class="material-icons add" id="myBtn" (click)="displayModal()">add</span>
 </div>
 
 <div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close material-icons" (click)="closeModal()">close</span>
-        <!-- Example button or link to select a quiz, assuming you have quiz.id available -->
-        <form id="addQuizForm" #form="ngForm" >  
-            <div class="display-input">
-                <label for="quizTitle">Titre du quiz:</label><br>
-                <input type="text" id="quizTitle" name="quizTitle" ngModel required><br>
-            </div>
-            <div class="display-input">
-                <label for="quizTheme">Thème:</label><br>
-                <select id="quizTheme" name="quizTheme" ngModel required>
-                    <option value="">Sélectionner le thème du quiz</option>
-                    <option *ngFor="let theme of themeList" [value]="theme.name">{{theme.name}}</option>
-                </select>
-                <br>
-            </div>
+  <div class="modal-content">
+    <span class="close material-icons" (click)="closeModal()">close</span>
+    <p>Tous les champs sont obligatoires</p>
+    <form id="addQuizForm" #form="ngForm">
+      <div class="display-input">
+        <label for="quizTitle">Titre du quiz:</label><br>
+        <input type="text" id="quizTitle" name="quizTitle" ngModel required><br>
+        <div *ngIf="form.submitted && !form.controls['quizTitle']?.valid" class="error-message">
+          Le titre est requis
+        </div>
+      </div>
+      <div class="display-input">
+        <label for="quizTheme">Thème:</label><br>
+        <select id="quizTheme" name="quizTheme" ngModel required>
+          <option value="">Sélectionner le thème du quiz</option>
+          <option *ngFor="let theme of themeList" [value]="theme.name">{{theme.name}}</option>
+        </select>
+        <br>
+      </div>
 
-            <div class="display-input">
-                <label for="quizDescription">Description:</label><br>
-                <textarea id="quizDescription" name="quizDescription" rows="5" ngModel required></textarea><br>
-            </div>
+      <div class="display-input">
+        <label for="quizDescription">Description:</label><br>
+        <textarea id="quizDescription" name="quizDescription" rows="5" ngModel required></textarea><br>
+        <div *ngIf="form.submitted && !form.controls['quizDescription']?.valid" class="error-message">
+          La description est requise
+        </div>
+      </div>
 
-           
-            
-            <div class="display-input">
 
-                <label for="questionForQuizToggle">Questions</label><br>
-                <button type="button"  (click)="toggleQuiz()">Sélectionner des questions existantes</button><br>
+      <div class="popup" *ngIf="showQuizzes">
+        <div class="popup-content-quiz">
+          <span class="close-button" (click)="toggleQuiz()">&times;</span>
+          <div *ngFor="let quiz of quizList">
+            <button (click)="selectQuiz(quiz)">{{quiz.name}}</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="popup" *ngIf="showQuestionPopup && selectedQuiz">
+        <div class="popup-content-quiz">
+          <span class="close-button" (click)="toggleQuestionPopup()">&times;</span>
+          <h3>Questions du quiz {{selectedQuiz.name}}</h3>
+          <div *ngFor="let question of selectedQuiz.questions">
+            <input type="checkbox" [id]="question" [value]="question.label"
+              (change)="onQuestionToggle(question, $event)" [checked]="isQuestionSelected(question)">
+            <label [for]="question">{{question.label}}</label>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="display-input">
+        <label for="questionForQuizToggle">Questions</label><br>
+        <button type="button" id="questionForQuizToggle" (click)="toggleQuestionsAdd()">Créer une nouvelle
+          question</button><br>
+        <span class="number" *ngIf="newQuizQuestionList.length > 0">{{ newQuizQuestionList.length }}</span>
+
+      </div>
+
+      <div class="popup" *ngIf="showQuestionsAdd">
+        <div class="popup-content">
+          <span class="close-button" (click)="toggleQuestionsAdd()">&times;</span>
+          <p>Tous les champs sont obligatoires</p>
+          <form (ngSubmit)="submitFormQuestion(questionForm)" #questionForm="ngForm">
+            <div class="display-input">
+              <label for="label">Titre: </label>
+              <input type="text" class="form-control" id="label" name="label" [(ngModel)]="question.label" required>
+
             </div>
-            
-            <div class="popup" *ngIf="showQuizzes">
-                <div class="popup-content-quiz">
-                  <span class="close-button" (click)="toggleQuiz()">&times;</span>
-                  <div *ngFor="let quiz of quizList">
-                    <button (click)="selectQuiz(quiz)">{{quiz.name}}</button>
+            <div class="display-input">
+              <label for="typeOfQuestion">Type de question: </label>
+              <select class="form-control" id="typeOfQuestion" name="typeOfQuestion"
+                [(ngModel)]="question.typeOfQuestion" required>
+                <option value="">Sélectionner le thème</option>
+                <option value="multiple-choice">Choix multiple</option>
+                <option value="unique-choice">Choix unique</option>
+                <option value="true-or-false">Vrai/Faux</option>
+                <option value="drag-and-drop">Drag/Drop</option>
+                <option value="guess-the-sound">Devine son</option>
+              </select>
+            </div>
+            <div class="display-input">
+              <label for="niveau">Niveau: </label>
+              <select class="form-control" id="niveau" name="niveau" [(ngModel)]="question.niveau" required>
+                <option value="">Sélectionner le niveau</option>
+                <option value="Facile">Facile</option>
+                <option value="Moyen">Moyen</option>
+                <option value="Difficile">Difficile</option>
+              </select>
+            </div>
+            <div class="display-input">
+              <label for="image">Image :</label>
+              <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel name="image" />
+              <div (click)="inputField.click()">
+                <ng-content></ng-content>
+              </div>
+            </div>
+            <div class="display-input">
+              <label for="questionForQuizToggle">Indice: </label><br>
+              <button type="button" name="Ajout-indice" id="hintToggle" (click)="toggleHintAdd()">Ajouter un
+                indice</button><br>
+              <span *ngIf="hint.text" class="check-mark">✔</span>
+            </div>
+            <div class="popup-indice" *ngIf="showHintAdd">
+              <div class="popup-content-indice">
+                <span class="close-button" (click)="toggleHintAdd()">&times;</span>
+                <p>***Vous pouvez ajouter un seul indice***</p>
+                <div class="display-input">
+                  <label for="hintText">Indice (Texte):</label>
+                  <input type="text" class="form-control" id="hintText" name="hintText" [(ngModel)]="hint.text">
+                </div>
+                <div class="display-input">
+                  <label for="hintImage">Indice (Image) :</label>
+                  <input #hintImageField type="file" (change)="valueChanged($any($event.target).files)" ngModel
+                    name="hintImage" />
+                  <div (click)="hintImageField.click()">
+                    <ng-content></ng-content>
                   </div>
                 </div>
+                <button class="Add hint" type="button" (click)="setHint()">Ajouter</button>
               </div>
-              
-             
-              <div class="popup" *ngIf="showQuestionPopup && selectedQuiz">
-                <div class="popup-content-quiz">
-                  <span class="close-button" (click)="toggleQuestionPopup()">&times;</span>
-                  <h3>Questions du quiz {{selectedQuiz.name}}</h3>
-                  <div *ngFor="let question of selectedQuiz.questions">
-                    <input 
-                      type="checkbox" 
-                      [id]="question" 
-                      [value]="question.label" 
-                      (change)="onQuestionToggle(question, $event)"
-                      [checked]="isQuestionSelected(question)">
-                    <label [for]="question">{{question.label}}</label>
-                  </div>
-                </div>
-              </div>
-            
-
-
-            
+            </div>
             <div class="display-input">
+              <label for="answers">Réponses:</label>
 
-                <label for="questionForQuizToggle">Questions</label><br>
-                <button type="button" id="questionForQuizToggle" (click)="toggleQuestionsAdd()">Créer une nouvelle question</button><br>
+              <button type="button" id="answerToggle" (click)="toggleAnswerAdd()">Ajouter des réponses</button><br>
+              <span *ngIf="hasMoreThanTwoAnswers()" class="check-mark">✔</span>
+              <div class="popup-indice" *ngIf="showAnswerAdd">
+                <div class="popup-content-indice">
+                  <label for="ReponseText1">Réponse:</label>
+                  <span class="close-button" (click)="toggleAnswerAdd()">&times;</span>
+                  <input type="text" class="form-control" id="ReponseText1" name="ReponseText1"
+                    [(ngModel)]="answers[0]">
+                  <label>
+                    <input type="checkbox" name="checkbox1" id="checkbox1" [(ngModel)]="correctAnswers[0]">
+                    Correct
+                  </label>
+                  <label for="ReponseText2">Réponse:</label>
+                  <input type="text" class="form-control" id="ReponseText2" name="ReponseText2"
+                    [(ngModel)]="answers[1]">
+                  <label>
+                    <input type="checkbox" name="checkbox2" id="checkbox2" [(ngModel)]="correctAnswers[1]">
+                    Correct
+                  </label>
+                  <div *ngIf="answers.length >= 3">
+                    <label for="ReponseText3">Réponse:</label>
+                    <input type="text" class="form-control" id="ReponseText3" name="ReponseText3"
+                      [(ngModel)]="answers[2]">
+                    <label>
+                      <input type="checkbox" name="checkbox3" id="checkbox3" [(ngModel)]="correctAnswers[2]">
+                      Correct
+                    </label>
+                  </div>
+                  <div *ngIf="answers.length >= 4">
+                    <label for="ReponseText4">Réponse:</label>
+                    <input type="text" class="form-control" id="ReponseText4" name="ReponseText4"
+                      [(ngModel)]="answers[3]">
+                    <label>
+                      <input type="checkbox" name="checkbox4" id="checkbox4" [(ngModel)]="correctAnswers[3]">
+                      Correct
+                    </label>
+                  </div>
+                  <div *ngIf="answers.length < 4" >
+                    <button type="button" (click)="addAnswer()">Ajouter une autre réponse</button><br>
+                  </div>
+                 
+                  <button type="button" (click)="answerListAdd()">Valider</button><br>
+                
+                </div>
+
+              </div>
 
 
             </div>
-
-            <div class="popup" *ngIf="showQuestionsAdd">
-                <div class="popup-content">
-                    <span class="close-button" (click)="toggleQuestionsAdd()">&times;</span>
-                    <form (ngSubmit)="submitFormQuestion(questionForm)" #questionForm="ngForm">
-                        <div class="display-input">
-                          <label for="label">Titre:</label>
-                          <input type="text" class="form-control" id="label" name="label" [(ngModel)]="question.label" required>
-                        </div>
-                        <div class="display-input">
-                          <label for="typeOfQuestion">Type de question:</label>
-                          <select class="form-control" id="typeOfQuestion" name="typeOfQuestion" [(ngModel)]="question.typeOfQuestion" required>
-                            <option value="">Sélectionner le thème</option>
-                            <option value="multiple-choice">Choix multiple</option>
-                            <option value="unique-choice">Choix unique</option>
-                            <option value="true-or-false">Vrai/Faux</option>
-                            <option value="drag-and-drop">Drag/Drop</option>
-                            <option value="guess-the-sound">Devine son</option>
-                          </select>
-                        </div>
-                        <div class="display-input">
-                          <label for="niveau">Niveau:</label>
-                          <select class="form-control" id="niveau" name="niveau" [(ngModel)]="question.niveau" required>
-                            <option value="">Sélectionner le niveau</option>
-                            <option value="Facile">Facile</option>
-                            <option value="Moyen">Moyen</option>
-                            <option value="Difficile">Difficile</option>
-                          </select>
-                        </div>
-                        <div class="display-input">
-                          <label for="image">Image :</label>
-                          <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel name="image"/>
-                          <div (click)="inputField.click()">
-                            <ng-content></ng-content>
-                          </div>
-                        </div>
-                        <div class="display-input">
-                          <label for="questionForQuizToggle">Indice</label><br>
-                          <button type="button" name="Ajout-indice" id="hintToggle" (click)="toggleHintAdd()">Ajouter un indice</button><br>
-                        </div>
-                        <div class="popup-indice" *ngIf="showHintAdd">
-                          <div class="popup-content-indice">
-                            <span class="close-button" (click)="toggleHintAdd()">&times;</span>
-                            <p>Vous pouvez ajouter un seul indice</p>
-                            <div class="display-input">
-                              <label for="hintText">Indice (Texte):</label>
-                              <input type="text" class="form-control" id="hintText" name="hintText" [(ngModel)]="hint.text">
-                            </div>
-                            <div class="display-input">
-                              <label for="hintImage">Indice (Image) :</label>
-                              <input #hintImageField type="file" (change)="valueChanged($any($event.target).files)" ngModel name="hintImage"/>
-                              <div (click)="hintImageField.click()">
-                                <ng-content></ng-content>
-                              </div>
-                            </div>
-                            <button class="Add hint" type="button" (click)="setHint()">Ajouter</button>
-                          </div>
-                        </div>
-                        <div class="display-input">
-                            <label for="answers">Réponses:</label>
-                            
-                            <button type="button" id="answerToggle" (click)="toggleAnswerAdd()">Ajouter des réponses</button><br>
-                            
-                            <div class="popup-indice" *ngIf="showAnswerAdd">
-                              <div class="popup-content-indice">
-                                <label for="ReponseText1">Réponse:</label>
-                                <span class="close-button" (click)="toggleAnswerAdd()">&times;</span>
-                                <input type="text" class="form-control" id="ReponseText1" name="ReponseText1" [(ngModel)]="answers[0]">
-                                <label>
-                                  <input type="checkbox" name="checkbox1" id="checkbox1" [(ngModel)]="correctAnswers[0]">
-                                  Correct
-                                </label>
-                                
-                                <label for="ReponseText2">Réponse:</label>
-                                <input type="text" class="form-control" id="ReponseText2" name="ReponseText2" [(ngModel)]="answers[1]">
-                                <label>
-                                  <input type="checkbox" name="checkbox2" id="checkbox2" [(ngModel)]="correctAnswers[1]">
-                                  Correct
-                                </label>
-                                
-                                <div *ngIf="answers.length >= 3">
-                                  <label for="ReponseText3">Réponse:</label>
-                                  <input type="text" class="form-control" id="ReponseText3" name="ReponseText3" [(ngModel)]="answers[2]">
-                                  <label>
-                                    <input type="checkbox" name="checkbox3" id="checkbox3" [(ngModel)]="correctAnswers[2]">
-                                    Correct
-                                  </label>
-                                </div>
-                                
-                                <div *ngIf="answers.length >= 4">
-                                  <label for="ReponseText4">Réponse:</label>
-                                  <input type="text" class="form-control" id="ReponseText4" name="ReponseText4" [(ngModel)]="answers[3]">
-                                  <label>
-                                    <input type="checkbox" name="checkbox4" id="checkbox4" [(ngModel)]="correctAnswers[3]">
-                                    Correct
-                                  </label>
-                                </div>
-                                
-                                <div *ngIf="answers.length < 4" class="display-input">
-                                  <button type="button" (click)="addAnswer()">Ajouter une autre réponse</button><br>
-                                </div>
-                                
-                                <button type="button" (click)="answerListAdd()">Valider</button><br>
-                              </div>
-                            </div>
-                         
-                          
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Ajouter</button>
-                      </form>
-                        </div>
-                    </div>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+          </form>
+        </div>
+      </div>
 
 
-                    <div class="display-input">
-                        <label for="image">Image :</label>
-                        <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel name = "name-changed"/>
-                        <div (click)="inputField.click()">
-                            <ng-content />
-                        </div>
-                    </div>
-        
-                    <div>
-        
-                     <button (click) = "submitFormQuiz(form)" class="creerQuiz" [disabled]="form.invalid" type="submit">Créer le quiz</button>  
-                          
-                        
-           
-      
+      <div class="display-input">
+        <label for="image">Image :</label>
+        <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel name="name-changed" />
+        <div (click)="inputField.click()">
+          <ng-content />
+        </div>
+      </div>
 
+      <div>
 
-
-
-
+        <button (click)="submitFormQuiz(form)" class="creerQuiz" [disabled]="form.invalid" type="submit">Créer le
+          quiz</button>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, catchError, map, of } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, catchError, map, of, tap } from 'rxjs';
 import { Membre } from 'src/models/membre.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { HttpClient } from '@angular/common/http';
@@ -46,6 +46,7 @@ export class MembreService {
   }
 
   addMembre(newMember: Membre) {
+    console.log("In add membre");
     this.http.post<Membre>(this.membreUrl, newMember, this.httpOptions).subscribe(() => this.retrieveMembres());
   }
 

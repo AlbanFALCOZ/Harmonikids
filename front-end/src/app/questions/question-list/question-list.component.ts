@@ -13,6 +13,8 @@ import { StatistiqueService } from 'src/services/statistique.service';
 import { GameService } from 'src/services/game.service';
 import { MembreService } from 'src/services/membre.service';
 import { log } from 'console';
+import { CountdownEvent } from 'ngx-countdown';
+
 
 @Component({
   selector: 'app-question-list',
@@ -38,6 +40,9 @@ export class QuestionListComponent implements OnInit {
   showFailureMessage: boolean = false;
   correctAnswersCount: number = 0;
   correctAnswersSecondAttempt: number = 0;
+  niveau: string;
+
+
   private messageTimeout: any;
   isNavVisible = false;
   private successAudio = new Audio('assets/img/good.mp3');
@@ -57,6 +62,7 @@ export class QuestionListComponent implements OnInit {
     private membreService: MembreService
   ) {
     this.questionList = this.quizService.getFilteredQuestions();
+    this.niveau = this.quizService.getLevel();
     if (this.indiceService.estIndiceActif() && this.questionList[this.currentQuestionIndex] != undefined) {
       this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
     } else {
@@ -81,6 +87,7 @@ export class QuestionListComponent implements OnInit {
     }
     console.log('Quiz ID:', quizId);
     console.log('Child ID:', childId);
+
   }
 
   nextQuestion(): void {
@@ -244,4 +251,17 @@ export class QuestionListComponent implements OnInit {
     });
     
   }
+
+  async onTimerFinished(e: CountdownEvent) {
+    if (e.action == 'done') {
+      alert("Il n'y a plus de temps, c'est la fin du quiz !");
+      this.validateQuestion();
+      await this.delay(2000);
+      this.finishQuiz();
+    }
+  }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
 }
