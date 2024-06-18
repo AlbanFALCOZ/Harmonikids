@@ -50,10 +50,9 @@ export class MembreService {
     return this.memberId;
   }
 
-  addMembre(newMember: Membre): Observable<Membre> {
-    return this.http.post<Membre>(this.membreUrl, newMember, this.httpOptions).pipe(
-      tap(() => this.retrieveMembres())
-    );
+  addMembre(newMember: Membre) {
+    console.log("In add membre");
+    this.http.post<Membre>(this.membreUrl, newMember, this.httpOptions).subscribe(() => this.retrieveMembres());
   }
 
   deleteMember(membre: Membre): void {

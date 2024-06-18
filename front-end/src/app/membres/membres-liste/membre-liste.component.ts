@@ -30,7 +30,7 @@ export class MembreListeComponent implements OnInit {
 
   search: string = '';
 
-  src: string | undefined;
+  src: string  = "../../../assets/img/no-photo.png";
 
 
 
@@ -83,7 +83,6 @@ export class MembreListeComponent implements OnInit {
     const ageMember = form.value.age;
     const descriptionMember = form.value.description;
     const imageMember = this.src;
-
     if (form.valid) {
       const newMember: Membre = {
         id: 1,
