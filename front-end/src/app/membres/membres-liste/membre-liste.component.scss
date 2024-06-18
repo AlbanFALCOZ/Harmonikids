@@ -202,6 +202,28 @@
   cursor: pointer;
 }
 
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+  border-color: red;
+  box-shadow: 0 0 8px red;
+}
+
+.display-input {
+  position: relative; 
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+  background: white;
+  padding: 0 5px;
+  pointer-events: none;
+}
+
+
 .bottom-elem {
   background-color: #fefefe;
   margin: auto;

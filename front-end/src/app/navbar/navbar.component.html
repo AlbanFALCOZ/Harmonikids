@@ -1,23 +1,25 @@
 <div class="navbar" [ngStyle]="{'background-color': colorService.selectedColor, }">
-    <a routerLink="/membres-liste" class="accueil">Accueil</a>
+  <a routerLink="/membres-liste" class="accueil">Accueil</a>
   <div>
     <a routerLink="/membres-liste">
       <img src="assets/img/logo3.png" alt="logo" >
     </a>
   </div>
   <div class="user">
-    <div class="user-menu" (click)="toggleUserMenu()">
-      <span class="material-icons">account_circle</span>
-      <div class="dropdown-menu" *ngIf="isUserMenuVisible">
-        <a [routerLink]="['/dashboard', memberId]">Profil</a>
-        <a routerLink="/statistiques" *ngIf="!isDisabled">Statistiques</a>
-        <a routerLink="/configuration" *ngIf="!isDisabled">Paramètres</a>
+      <div class="user-menu" (click)="toggleUserMenu()">
+          <span class="material-icons">account_circle</span>
+          <div class="dropdown-menu" *ngIf="isUserMenuVisible">
+              <a [routerLink]="['/dashboard', memberId]">Profile</a>
+              <a routerLink="/statistiques" *ngIf="!isDisabled">Statistiques</a>
+              <a routerLink="/configuration" *ngIf="!isDisabled">Paramètres</a>
+          </div>
       </div>
-    </div>
-    <button class="switch-mode" (click)="toggleMode()">
-      Mode Ergo : {{ isDisabled ? 'Off' : 'On' }}
-    </button>
+      <button class="switch-mode" (click)="toggleMode()">
+          Mode Ergo : {{ isDisabled ? 'Off' : 'On' }}
+      </button>
   </div>
 </div>
-
-
+<div *ngIf="showPasswordPrompt" class="password-prompt">
+  <input type="password" [(ngModel)]="password" placeholder="Mot de passe">
+  <button (click)="submitPassword()">Se connecter</button>
+</div>
