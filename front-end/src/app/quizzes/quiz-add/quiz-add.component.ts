@@ -75,13 +75,15 @@ export class QuizAddComponent implements OnInit {
     }
   }
 
+  hasMoreThanTwoAnswers(): boolean {
+    return this.answerList.length >= 2;
+  }
+
   answerListAdd() {
     this.answerList = [];
-
     for (let i = 1; i <= 4; i++) {
       const inputElement = document.getElementById(`ReponseText${i}`) as HTMLInputElement;
       const checkboxElement  = document.getElementById(`checkbox${i}`) as HTMLInputElement;
-  
       if (inputElement) {
         const newAnswer: Answer = {
           value: inputElement.value,
@@ -94,9 +96,8 @@ export class QuizAddComponent implements OnInit {
       }
     }
     this.toggleAnswerAdd();
-
+    this.displayMessage('Les réponses ont été ajoutée à la question');
     console.log('answerList:', this.answerList);
-    
   }
   
   getInputValueById(id: string): string | undefined {
@@ -220,8 +221,6 @@ export class QuizAddComponent implements OnInit {
   toggleHintAdd(){
     this.showHintAdd = ! this.showHintAdd; 
     }
-
-
  
 
   toggleForm() {
@@ -247,29 +246,29 @@ export class QuizAddComponent implements OnInit {
     const quizId = form.value.quizId;
     const hint = this.hint || this.src;  
     const answers = this.answerList;  
-    console.log("Question niveau : ", niveau);
+    console.log("Question niveau : ", niveau);  
+    if (form.valid) {
     const newQuestion: Question = {
       label: label,
       typeOfQuestion: typeOfQuestion,
       niveau: niveau,
       image: image || '',
-      audio: audio,
       quizId: quizId,
       answers: answers,
       hint:this.hint || this.src,
       id: 0
     };
    
-
-  
-        this.newQuizQuestionList.push(newQuestion);
-   
-        console.log(this.newQuizQuestionList[0]);
-        
-        
+    this.newQuizQuestionList.push(newQuestion);
+    console.log(this.newQuizQuestionList[0]);
     this.answers = ['' , '']
     this.answerList = [];
+    this.hint = {text:'' , imageUrl:''};
+    this.toggleQuestionsAdd();
+    this.correctAnswers= [false, false, false, false]; 
+    this.displayMessage('La question a bien été ajoutée au nouveau quiz');
     form.resetForm();
+  }
   }
 
   question: Question = {
@@ -290,8 +289,10 @@ export class QuizAddComponent implements OnInit {
 
       if (textValue && !imageUrl) {
         this.hint = { text: textValue };
+        this.displayMessage('L\'indice a bien été ajouté');
       } else if (!textValue && imageUrl) {
         this.hint = { imageUrl: imageUrl };
+        this.displayMessage('L\'indice a bien été ajouté');
       } else if (textValue && imageUrl) {
         this.hint = { text: textValue, imageUrl: imageUrl };
       } else {
@@ -318,6 +319,9 @@ export class QuizAddComponent implements OnInit {
     const selectedQuestions = this.newQuizQuestionList; 
     console.log("QuestionSelected" + selectedQuestions);
     console.log("QuestionSelected length" + selectedQuestions.length);
+    console.log("QuestionSelected" + selectedQuestions)
+
+    if (form.valid) {
     const newQuiz: Quiz = {
       name: quizTitle,
       description: quizDescription,
@@ -329,8 +333,11 @@ export class QuizAddComponent implements OnInit {
 
       id:0 
     };
+  
     
 
+
+    console.log("La liste des questions newQuizList" + this.newQuizQuestionList)
     
 
     this.quizService.addQuiz(newQuiz).subscribe(
@@ -344,7 +351,6 @@ export class QuizAddComponent implements OnInit {
             typeOfQuestion: question.typeOfQuestion,
             niveau: question.niveau,
             image: question.image,
-            audio: question.audio,
             answers: question.answers,
             hint: question.hint,
             quizId:quizId,
@@ -355,7 +361,6 @@ export class QuizAddComponent implements OnInit {
             (createdQuestion) => {
               this.newQuizQuestionList.push(createdQuestion);
               console.log("Created question:", createdQuestion);
-              this.displayMessage('Les questions ont été ajoutées avec succès');
               this.displayMessage('Le quiz a été créé avec succès');
               //this.reloadPageAfterDelay();
             },
@@ -376,14 +381,14 @@ export class QuizAddComponent implements OnInit {
       }
       
     );
-  
+    
 
 
     
         this.closeModal();
         console.log(newQuiz.id);
         form.resetForm();
-       
+  }
 
      
   }
