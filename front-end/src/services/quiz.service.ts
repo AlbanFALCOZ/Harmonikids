@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map, of } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { Question } from '../models/question.model';
@@ -30,7 +30,7 @@ export class QuizService {
    The list of quiz.
    The list is retrieved from the mock.
    */
-  private quizzes: Quiz[] = QUIZ_LIST;
+  private quizzes: Quiz[] = [];
 
   /*
    Observable which contains the list of the quiz.
@@ -111,6 +111,19 @@ export class QuizService {
   getFilteredQuestions(): Question[] {
     console.log("Filtered questions length in quiz service : ", this.filteredQuestions.length);
     return this.filteredQuestions;
+  }
+
+  updateQuizStatus(quizId: number, status: string): void {
+    const quiz = this.http.get(`${this.quizUrl}/${quizId}`)
+      .pipe(
+        map((quiz: any) => {
+          quiz.statut = status;
+          return quiz;
+        })
+      );
+
+    const url = this.quizUrl + '/' + quizId;
+    this.http.put<Quiz>(url, quiz, this.httpOptions);
   }
 
   setLevel(niveauName: string) {
