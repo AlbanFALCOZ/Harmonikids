@@ -46,6 +46,7 @@ export class QuestionService {
 
 
   getQuestion(quizId: number, questionId: number): Observable<Question> {
+    console.log('test');
     return this.http.get<Question>(`${this.apiUrl}/quizzes/${quizId}/questions/${questionId}`);
   }
 
