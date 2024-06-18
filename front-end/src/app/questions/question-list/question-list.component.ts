@@ -13,6 +13,7 @@ import { NavbarService } from 'src/services/navbar.service';
 import { QuizService } from 'src/services/quiz.service';
 import { StatistiqueService } from 'src/services/statistique.service';
 import { GameService } from 'src/services/game.service';
+import { CountdownEvent } from 'ngx-countdown';
 
 
 @Component({
@@ -43,7 +44,8 @@ export class QuestionListComponent implements OnInit {
   showFailureMessage: boolean = false;
 
   correctAnswersCount: number = 0;
-  correctAnswersSecondAttempt: number = 0; 
+  correctAnswersSecondAttempt: number = 0;
+  niveau: string;
 
 
   private messageTimeout: any;
@@ -56,6 +58,7 @@ export class QuestionListComponent implements OnInit {
   constructor(private gameService: GameService, private statistiqueService: StatistiqueService, private quizService: QuizService, private router: Router, public questionService: QuestionService, public soundService: SonService, private indiceService: IndiceService, private navbarService: NavbarService, private scoreService: ScoreService) {
     
     this.questionList = this.quizService.getFilteredQuestions();
+    this.niveau = this.quizService.getLevel();
     if (this.indiceService.estIndiceActif() && this.questionList[this.currentQuestionIndex] != undefined) {
       this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
     } else {
@@ -70,14 +73,12 @@ export class QuestionListComponent implements OnInit {
       this.isNavVisible = isVisible;
     });
   }
-  /*ngOnInit(): void {
-    console.log(this.questionList);
-  }*/
+
 
   ngOnInit(): void {
     const quizId = this.quizService.quizSelectedId;
     this.questionService.fetchQuestions(quizId).subscribe(questions => {
-      this.questionList = questions;
+      this.questionList = this.quizService.getFilteredQuestions();
       this.questionService.saveQuestionsToLocalStorage(questions);
     });
   }
@@ -241,4 +242,17 @@ export class QuestionListComponent implements OnInit {
     this.statistiqueService.setCorrectFirstAttemptCount(quizId, this.selectedAnswerCorrect.length);
     this.router.navigate(['/end-game']);
   }
+
+  async onTimerFinished(e: CountdownEvent) {
+    if (e.action == 'done') {
+      alert("Il n'y a plus de temps, c'est la fin du quiz !");
+      this.validateQuestion();
+      await this.delay(2000);
+      this.finishQuiz();
+    }
+  }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
 }

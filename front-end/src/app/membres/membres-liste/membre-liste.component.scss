@@ -222,3 +222,20 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
   padding: 0 5px;
   pointer-events: none;
 }
+
+
+.bottom-elem {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border-radius: 30px;
+  width: 50%;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+.text-info {
+  font-size: small;
+}
