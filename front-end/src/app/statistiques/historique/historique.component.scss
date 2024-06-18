@@ -1,0 +1,48 @@
+.game {
+    width: auto;
+    height: auto;
+    border: 5px solid #FAA300;
+    border-radius: 30px;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 20px 40px 20px;
+}
+
+.game-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+}
+
+.historique-title {
+    font-size: 30px;
+    color: #3a74b6;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.historique-question {
+    font-size: 20px;
+    color: #3a74b6;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.game p {
+    font-size: 20px;
+    text-align: center;
+}
+
+
+.game ul li {
+    font-size: 20px;
+    color: #3a74b6;
+    list-style-type: square;
+    margin-bottom: 25px;
+}

@@ -54,7 +54,7 @@
 
   <div class="content-quiz">
 
-    <app-quiz-dashboard *ngFor="let quiz of quizList" [quiz]="quiz" (quizSelected)="quizSelected($event)"></app-quiz-dashboard>
+    <app-quiz-dashboard *ngFor="let quiz of quizList" [quiz]="quiz" (quizSelected)="quizSelected($event)" [memberId]="memberId"></app-quiz-dashboard>
   </div>
   
 </div>

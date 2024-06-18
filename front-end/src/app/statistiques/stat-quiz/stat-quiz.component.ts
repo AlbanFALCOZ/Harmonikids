@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Game } from 'src/models/game.model';
 import { Quiz } from 'src/models/quiz.model';
 import { StatistiqueService } from 'src/services/statistique.service';
 
@@ -10,16 +11,15 @@ import { StatistiqueService } from 'src/services/statistique.service';
 export class StatQuizComponent implements OnInit {
 
   @Input() quiz!: Quiz;
+  @Input() game?: Game | undefined;
   correctFirstAttemptCount: number = 0;
 
-  constructor(private statistiqueService: StatistiqueService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    const quizId = this.quiz.id;
-
-    this.statistiqueService.getCorrectFirstAttemptCount(quizId).subscribe(count => {
-      this.correctFirstAttemptCount = count;
-    });
+    if (this.game) {
+      this.correctFirstAttemptCount = this.game.correctFirstAttemptCount;
+    }
   }
 
   calculatePercentage(correctFirstAttemptCount: number, totalQuestions: number): number {

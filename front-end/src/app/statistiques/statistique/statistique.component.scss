@@ -19,6 +19,7 @@
     width: 100%;
     align-items: center;
     margin-top: 60px;
+    margin-left: 20px;
 }
 
 .title {
@@ -218,13 +219,15 @@
 
 .button_history{
     margin: auto;
+    margin-top: 30px;
+    width: 500px;
     align-items: center;
-    text-align: center;
     display: flex;
     justify-content: center;
+    text-align: center;
     border: 2px solid #FAA300;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: #F4538A;
     color: white;
     cursor: pointer;

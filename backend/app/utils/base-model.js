@@ -43,6 +43,10 @@ module.exports = class BaseModel {
     return item
   }
 
+  getByChildId(childId) {
+    return this.items.filter((item) => item.childId === childId)
+  }
+
   create(obj = {}) {
     console.log("OBJ : ", obj)
     const item = { ...obj, id: Date.now() }
