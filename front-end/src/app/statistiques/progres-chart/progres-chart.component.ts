@@ -46,4 +46,16 @@ export class ProgresChartComponent {
     });
   }
 
+  ngOnChanges(): void {
+    this.progressService.getProgressData().subscribe(data => {
+      this.options.xAxis.categories = data.categories;
+      this.options.series = [
+        { name: 'Progrès de l\'enfant', data: data.childProgress },
+        { name: 'Progrès moyen des autres enfants', data: data.averageProgress }
+      ];
+      Highcharts.chart('myChart', this.options);
+    });
+  }
+
+
 }

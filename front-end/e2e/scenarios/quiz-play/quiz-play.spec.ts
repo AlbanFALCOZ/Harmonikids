@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { testUrlQuiz } from 'e2e/e2e.config';
+import { quizListUrl } from 'e2e/e2e.config';
 import { EndGameFixture } from 'src/app/end-game/end-game.fixture';
 import { LevelFixture } from 'src/app/niveau/level/level.fixture';
 import { MultiChoiceFixture } from 'src/app/questions/multi-choice/multi-choice.fixture';
@@ -10,7 +10,7 @@ import { QuizFixture } from 'src/app/quizzes/quiz/quiz.fixture';
 
 test.describe('Initial test display', () => {
     test('Basic test', async ({ page }) => {
-        await page.goto(testUrlQuiz);
+        await page.goto(quizListUrl);
         const quizFixture = new QuizFixture(page);
         const button = quizFixture.getChooseButton().nth(6);
         await button.click();

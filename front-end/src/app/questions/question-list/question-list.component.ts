@@ -83,7 +83,7 @@ export class QuestionListComponent implements OnInit {
     const childId = this.membreService.getMemberId();
 
     if (childId && quizId) {
-      this.gameService.getGame(childId, quizId);
+      this.gameService.startNewGame(childId, quizId);
     }
     console.log('Quiz ID:', quizId);
     console.log('Child ID:', childId);

@@ -16,7 +16,6 @@ export class GameService {
 
     gameUrl = serverUrl + '/games';
     quizUrl = serverUrl + '/quizzes';
-    private httpOptions = httpOptionsBase;
 
     constructor(private http: HttpClient) {
         this.getGames();
