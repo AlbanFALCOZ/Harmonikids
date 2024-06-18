@@ -56,19 +56,18 @@ export class ThemeAddComponent implements OnInit {
     
     
     const newTheme: Theme = {
-        id: 1,
-        name: themeName,
-        description: themeDescription,
-        quizzes: [],
-        image: themeImage || '',
-      };
-    
-
+      id: 1,
+      name: themeName,
+      description: themeDescription,
+      quizzes: [],
+      image: themeImage || 'a',
+    };
     this.themeService.addTheme(newTheme);
     form.resetForm();
-    this.displayForm = false;
+    this.closeModal();
+    
     }
-}
+  }
 
   valueChanged(files: FileList) {
     if (files.length !== 1) return;

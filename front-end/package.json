@@ -24,6 +24,7 @@
     "canvas-confetti": "^1.9.2",
     "cdk": "^2.133.0",
     "chart.js": "^4.4.2",
+    "ngx-countdown": "^18.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.6.2",
     "zone.js": "~0.14.4"
@@ -35,6 +36,7 @@
     "@playwright/test": "^1.34.3",
     "@types/canvas-confetti": "^1.6.4",
     "@types/jasmine": "~4.3.0",
+    "copyfiles": "^2.4.1",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",

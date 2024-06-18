@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { THEME_LIST } from 'src/mocks/theme-list.mocks';
 import { Theme } from 'src/models/theme.model';
@@ -48,13 +48,13 @@ export class ThemeService {
       this.themes = themeList;
       this.themes$.next(this.themes);
     });
-     this.themes$.next(this.themes);
   }
 
 
 
   addTheme(theme: Theme): void {
     this.http.post<Theme>(this.themeUrl, theme, this.httpOptions).subscribe(() => this.retrieveThemes());
+
      this.themes.push(theme);
      this.themes$.next(this.themes);
   }
