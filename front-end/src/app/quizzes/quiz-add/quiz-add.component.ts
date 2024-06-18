@@ -247,7 +247,7 @@ export class QuizAddComponent implements OnInit {
     const quizId = form.value.quizId;
     const hint = this.hint || this.src;  
     const answers = this.answerList;  
-  
+    console.log("Question niveau : ", niveau);
     const newQuestion: Question = {
       label: label,
       typeOfQuestion: typeOfQuestion,
@@ -316,8 +316,8 @@ export class QuizAddComponent implements OnInit {
     const quizDescription = form.value.quizDescription;
     const quizImage = this.src || 'a';
     const selectedQuestions = this.newQuizQuestionList; 
-    console.log("QuestionSelected" + selectedQuestions)
-
+    console.log("QuestionSelected" + selectedQuestions);
+    console.log("QuestionSelected length" + selectedQuestions.length);
     const newQuiz: Quiz = {
       name: quizTitle,
       description: quizDescription,
@@ -357,7 +357,7 @@ export class QuizAddComponent implements OnInit {
               console.log("Created question:", createdQuestion);
               this.displayMessage('Les questions ont été ajoutées avec succès');
               this.displayMessage('Le quiz a été créé avec succès');
-              this.reloadPageAfterDelay();
+              //this.reloadPageAfterDelay();
             },
             (error) => {
               console.error('Error creating question', error);
@@ -367,7 +367,7 @@ export class QuizAddComponent implements OnInit {
 
         if(this.newQuizQuestionList.length==0){
           this.displayMessage('Le quiz a été créé avec succès');
-          this.reloadPageAfterDelay();
+          //this.reloadPageAfterDelay();
         }
         
       },

@@ -38,6 +38,12 @@ export class MembreComponent {
     this.membreService.setMemberId(id);
   }
 
+  onDeleteMembre() {
+    if (this.membre) {
+      this.membreService.deleteMember(this.membre);
+    }
+  }
+
 
 
 }
