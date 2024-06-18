@@ -9,7 +9,7 @@
       <div class="user-menu" (click)="toggleUserMenu()">
           <span class="material-icons">account_circle</span>
           <div class="dropdown-menu" *ngIf="isUserMenuVisible">
-              <a [routerLink]="['/dashboard', memberId]">Profile</a>
+              <a [routerLink]="['/dashboard', memberId]">Profil</a>
               <a routerLink="/statistiques" *ngIf="!isDisabled">Statistiques</a>
               <a routerLink="/configuration" *ngIf="!isDisabled">Paramètres</a>
           </div>

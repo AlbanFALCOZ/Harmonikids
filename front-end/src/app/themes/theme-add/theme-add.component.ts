@@ -64,7 +64,8 @@ export class ThemeAddComponent implements OnInit {
     };
     this.themeService.addTheme(newTheme);
     form.resetForm();
-    this.displayForm = false;
+    this.closeModal();
+    
     }
   }
 

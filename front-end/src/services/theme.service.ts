@@ -52,15 +52,11 @@ export class ThemeService {
 
 
 
-  addTheme(theme: Theme): Observable<Theme> {
-    console.log(theme.name,theme.description, theme.image, theme.quizzes);
-    return this.http.post<Theme>(this.themeUrl, theme, this.httpOptions).pipe(
-      tap(() => {
-        this.themes.push(theme);
-        this.themes$.next(this.themes);
-        this.retrieveThemes();
-      })
-    );
+  addTheme(theme: Theme): void {
+    this.http.post<Theme>(this.themeUrl, theme, this.httpOptions).subscribe(() => this.retrieveThemes());
+
+     this.themes.push(theme);
+     this.themes$.next(this.themes);
   }
 
   editTheme(theme: Theme): Observable<Theme> {
