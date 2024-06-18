@@ -29,5 +29,6 @@ export class NiveauCardComponent {
     }
     console.log("Filtered questions by level length : ", filteredQuestions.length);
     this.quizService.setFilteredQuestions(filteredQuestions);
+    this.quizService.setLevel(niveauName);
 }
 }

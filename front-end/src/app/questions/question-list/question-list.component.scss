@@ -8,14 +8,14 @@
   margin-left: 200px;
 }
 
-.question-param{
+.question-param {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
 
 }
 
-.content-question{
+.content-question {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,20 +40,22 @@
 
 
 
-.help, .volume_up, .volume_off{
+.help,
+.volume_up,
+.volume_off {
   color: #FA3;
   cursor: pointer;
   font-size: 70px;
 }
 
-.quiz-btn{
+.quiz-btn {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
 
 }
 
-.suivant{
+.suivant {
   font-size: 20px;
   font-weight: bold;
   padding: 10px;
@@ -68,7 +70,7 @@
 
 }
 
-.precedent{
+.precedent {
   font-size: 20px;
   font-weight: bold;
   padding: 10px;
@@ -100,7 +102,9 @@
 
 
 
-.messageSuccess, .messageFailure, .hint {
+.messageSuccess,
+.messageFailure,
+.hint {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -123,12 +127,13 @@
 }
 
 .hint {
-  background-color: #ffffe0; 
-  margin-top: 20px; 
-  transform: translate(-50%, -60%); 
+  background-color: #ffffe0;
+  margin-top: 20px;
+  transform: translate(-50%, -60%);
 }
 
-.messageSuccess::after, .messageFailure::after {
+.messageSuccess::after,
+.messageFailure::after {
   content: "★";
   font-size: 24px;
   position: absolute;
@@ -149,19 +154,19 @@
 }
 
 .Score {
-  
-  font-size: 18px; 
+
+  font-size: 18px;
   color: #333;
   padding: 10px;
-  border: 2px solid #ccc; 
+  border: 2px solid #ccc;
   border-radius: 8px;
-  background-color: #f0f0f0; 
+  background-color: #f0f0f0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-right: 20px;
 }
 
 .Score div {
-  padding: 5px; 
+  padding: 5px;
 }
 
 
@@ -169,7 +174,7 @@
   display: flex;
 }
 
-.terminer{
+.terminer {
   font-size: 20px;
   font-weight: bold;
   padding: 10px;
@@ -183,8 +188,24 @@
   cursor: pointer;
 
 }
- 
-.question-param{
+
+.question-param {
   display: flex;
-  align-items: center; 
+  align-items: center;
+}
+
+
+.countdown-timer {
+  margin-top: 5%;
+  margin-left: 2%;
+  position: absolute;
+}
+
+.timer {
+  margin-left: 20%;
+  font-size: 2em;
+}
+
+.text-timer {
+  font-size: medium;
 }

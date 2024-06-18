@@ -10,6 +10,7 @@ import { serverUrl, httpOptionsBase } from '../configs/server.config';
   providedIn: 'root'
 })
 export class QuizService {
+  
   setSelectedQuizId(quizId: number) {
     this.quizSelectedId = quizId;
   }
@@ -43,6 +44,7 @@ export class QuizService {
   private quizUrl = serverUrl + '/quizzes';
   private questionsPath = 'questions';
   private quizSelected = 0;
+  private niveau = "facile";
 
   private httpOptions = httpOptionsBase;
 
@@ -111,8 +113,13 @@ export class QuizService {
     return this.filteredQuestions;
   }
 
-
+  setLevel(niveauName: string) {
+    this.niveau = niveauName;
+  }
   
+  getLevel() {
+    return this.niveau;
+  }
 
 
 }

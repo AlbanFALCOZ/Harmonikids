@@ -6,6 +6,12 @@
     <progress class="progress-bar" [value]="currentQuestionIndex + 1" [max]="questionList.length"></progress>
   </div>
 
+  <div class="countdown-timer" *ngIf="niveau === 'Difficile'">
+    <p class="text-timer">Temps restant pour le quiz : </p>
+    <countdown class="timer" [config]="{leftTime: questionList.length > 0 ? (45 * questionList.length) : 30, format: 'm:s'}" (event)="onTimerFinished($event)"></countdown>
+  </div>
+    
+
   <div class="content-question">
     <ng-container *ngIf="questionList.length > 0 && currentQuestionIndex < questionList.length">
 
