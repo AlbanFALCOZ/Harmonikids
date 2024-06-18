@@ -97,9 +97,8 @@ export class MembreListeComponent implements OnInit {
 
       form.resetForm();
       this.toggleForm();
-    } else {
-      // Highlight errors
-    }
+      this.src = "../../../assets/img/no-photo.png";
+    } 
   }
 
   valueChanged(files: FileList) {
