@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:e2e": "npx playwright test"
+    "test:e2e": "npx playwright test",
+    "start:e2e": "rimraf ./database/e2e && copyfiles -f ./database/e2e-starter/* ./database/e2e ./database/e2e && cross-env DB_FOLDER=e2e/ node app/index.js"
   },
   "private": true,
   "dependencies": {
@@ -46,4 +47,6 @@
     "playwright": "^1.34.3",
     "typescript": "~5.3.3"
   }
+
+
 }
