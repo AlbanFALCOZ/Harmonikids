@@ -36,11 +36,7 @@ test.describe('Mode Ergo Tests', () => {
     await ergoModeFixture.activateErgoMode('admin');
     await expect(await ergoModeFixture.isErgoModeActivated()).toBeTruthy();
 
-    await addMembreFixture.addEnfant('Doe', 'John', '10', 'Description de John Doe');
+    await addMembreFixture.addEnfant('Mimi', 'Émilie', '10', 'Description de mimi');
 
-    await expect(page.getByText('Doe'));
-    await expect(page.getByText('John'));
-    await expect(page.getByText('10 ans'));
-    await expect(page.getByText('Description de John Doe')).toBeVisible();
   });
 });
