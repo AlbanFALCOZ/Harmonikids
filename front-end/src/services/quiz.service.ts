@@ -10,6 +10,7 @@ import { serverUrl, httpOptionsBase } from '../configs/server.config';
   providedIn: 'root'
 })
 export class QuizService {
+  
   setSelectedQuizId(quizId: number) {
     this.quizSelectedId = quizId;
   }
@@ -43,6 +44,7 @@ export class QuizService {
   private quizUrl = serverUrl + '/quizzes';
   private questionsPath = 'questions';
   private quizSelected = 0;
+  private niveau = "facile";
 
   private httpOptions = httpOptionsBase;
 
@@ -102,15 +104,22 @@ export class QuizService {
   private filteredQuestions: Question[] = [];
 
   setFilteredQuestions(questions: Question[]): void {
+    console.log("Filtered questions length in quiz service : ", questions.length);
     this.filteredQuestions = questions;
   }
 
   getFilteredQuestions(): Question[] {
+    console.log("Filtered questions length in quiz service : ", this.filteredQuestions.length);
     return this.filteredQuestions;
   }
 
-
+  setLevel(niveauName: string) {
+    this.niveau = niveauName;
+  }
   
+  getLevel() {
+    return this.niveau;
+  }
 
 
 }

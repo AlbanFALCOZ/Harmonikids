@@ -25,6 +25,7 @@
     "canvas-confetti": "^1.9.2",
     "cdk": "^2.133.0",
     "chart.js": "^4.4.2",
+    "ngx-countdown": "^18.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.6.2",
     "zone.js": "~0.14.4"

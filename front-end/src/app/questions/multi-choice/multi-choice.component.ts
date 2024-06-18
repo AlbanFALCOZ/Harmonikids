@@ -13,6 +13,8 @@ export class MultiChoiceComponent implements OnInit {
   @Input()
   question!: Question;
 
+  answers: Answer[] = [];
+
   @Input()
   answerAlreadySeleted?: Answer[];
 
@@ -28,7 +30,7 @@ export class MultiChoiceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.shuffle(this.question.answers);
   }
 
 
@@ -53,4 +55,12 @@ export class MultiChoiceComponent implements OnInit {
       this.answerSelected.emit(this.selectedAnswer);
     }
   }
+
+  shuffle(array: Answer[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  };
+
 }

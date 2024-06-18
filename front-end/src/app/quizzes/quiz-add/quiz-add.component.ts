@@ -314,7 +314,7 @@ export class QuizAddComponent implements OnInit {
     const quizTitle = form.value.quizTitle;
     const quizTheme = form.value.quizTheme;
     const quizDescription = form.value.quizDescription;
-    const quizImage =this.src;
+    const quizImage = this.src || 'a';
     const selectedQuestions = this.newQuizQuestionList; 
     console.log("QuestionSelected" + selectedQuestions)
 

@@ -1,7 +1,7 @@
 <div class="card"  *ngIf="membre">
     <div class="card-header">   
-       <img [src]="membre.image" alt="Member Image">
-        <div>
+      <img [src]="membre.image ? membre.image : 'assets/img/no-photo.png'" alt="Member Image">
+      <div>
           <p>Nom : {{membre.lastName}}</p>
           <p>Prenom : {{membre.firstName}}</p>
           <p>Âge : {{membre.age}} ans</p>
@@ -16,13 +16,13 @@
       <button (click)="onSelectMembre(membre.id)"  >
           <a [routerLink]="['/dashboard', membre.id]">Choisir</a>
       </button>
-      <button (click)="onSelectMembre(membre.id)">
-          <a routerLink="/configuration">Choisir</a>
+      <button (click)="onSelectMembre(membre.id)" *ngIf="!isDisabled">
+        <a [routerLink]="['/dashboard', membre.id]">Choisir</a>
       </button>
 
   </div>
   
-    </div>
+</div>
 
     
   
