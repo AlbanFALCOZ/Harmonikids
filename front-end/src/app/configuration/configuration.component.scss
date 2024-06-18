@@ -52,6 +52,8 @@
   border-radius: 50%;
 }
 
+
+
 input:checked + .slider {
   background-color: #5cb85c;
 }
@@ -79,6 +81,8 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  margin-left:510px; 
+  
 }
 
 .dropdown-container-theme, .checkbox-container-theme, .checkbox-container-question {
@@ -111,6 +115,7 @@ input:checked + .slider:before {
   cursor: pointer;
   display: inline-block;
 }
+
 
 .dropdown {
   cursor: pointer;

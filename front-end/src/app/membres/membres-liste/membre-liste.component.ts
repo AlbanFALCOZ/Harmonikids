@@ -82,7 +82,7 @@ export class MembreListeComponent implements OnInit {
     const lastNameMember = form.value.lastName;
     const ageMember = form.value.age;
     const descriptionMember = form.value.description;
-    const imageMember = form.value.image;
+    const imageMember = this.src;
 
     if (form.valid) {
       const newMember: Membre = {
@@ -91,7 +91,7 @@ export class MembreListeComponent implements OnInit {
         lastName: lastNameMember,
         age: ageMember,
         description: descriptionMember,
-        image: imageMember ,
+        image: imageMember || "" ,
       };
 
       this.membreService.addMembre(newMember);
