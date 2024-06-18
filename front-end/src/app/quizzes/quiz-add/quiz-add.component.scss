@@ -222,7 +222,7 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
 .popup-content {
     background-color: #fff;
     padding: 20px;
-    margin-top: 300px;
+    margin-top: 30px;
     border-radius: 10px;
     width: 80%;
     overflow: scroll;
@@ -270,3 +270,23 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
     border-radius: 10px;
     box-sizing: border-box;
 }
+
+.check-mark {
+    position: absolute;
+    right: 10px; 
+    top: 50%; 
+    transform: translateY(-50%);
+    color: green; 
+    font-size: 1.5em; 
+  }
+
+  .number {
+    background-color: #28a745; /* Green background */
+    color: white; /* White text color */
+    padding: 3px 7px; /* Padding around the text */
+    border-radius: 50%; /* Rounded shape */
+    margin-left: 10px; /* Space between the button and the span */
+    font-size: 14px; /* Font size */
+    display: inline-block; /* Ensure it's inline-block for proper spacing */
+  }
+

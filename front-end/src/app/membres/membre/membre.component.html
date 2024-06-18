@@ -13,10 +13,10 @@
     </div>
     
     <div class="membre-card-button">
-      <button (click)="onSelectMembre(membre.id)"  *ngIf="isDisabled">
+      <button (click)="onSelectMembre(membre.id)"  >
           <a [routerLink]="['/dashboard', membre.id]">Choisir</a>
       </button>
-      <button (click)="onSelectMembre(membre.id)" *ngIf="!isDisabled">
+      <button (click)="onSelectMembre(membre.id)">
           <a routerLink="/configuration">Choisir</a>
       </button>
 

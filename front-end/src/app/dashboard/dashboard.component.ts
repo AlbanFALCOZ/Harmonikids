@@ -27,46 +27,32 @@ export class DashboardComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private membreService: MembreService, 
     private themeService: ThemeService, private quizService: QuizService, private navbarService: NavbarService,private questionService:QuestionService) {
-   
+      console.log("****Dashboard component*****")
+      this.memberId=this.membreService.getMemberId();
       this.route.params.subscribe(params => {
         this.memberId = params['id'];
-    
+        this.membreService.setMemberId(this.memberId);
         this.membre = this.membreService.getMemberByIdSync(this.memberId)
+        this.membreService.membres$.subscribe(members => {
+          if(members.length > 0){
+            this.welcomeMessage = this.membreService.getWelcomeMessage(this.memberId)
+          }
+        })
         
        
       });
       this.themeList = this.themeService.getSelectedThemes()
       this.quizList = this.quizService.getQuizzes().slice(0, 4); 
       this.memberId=this.membreService.getMemberId();
+  
       console.log("Membre ID" + this.memberId)
+      console.log("****Dashboard component**")
      
-      this.membreService.membres$.subscribe(members => {
-        if(members.length > 0){
-          this.welcomeMessage = this.membreService.getWelcomeMessage(this.memberId)
-        }
-      })
+      
               }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.memberId = params['id'];
-      this.membreService.membres$.subscribe(members => {
-        if(members.length > 0){
-          this.welcomeMessage = this.membreService.getWelcomeMessage(this.memberId)
-        }
-      })
-      
-     
-    });
-    this.themeList = this.themeService.getSelectedThemes()
-    this.quizList = this.quizService.getQuizzes().slice(0, 4); 
-    this.membre = this.membreService.getMemberByIdSync(this.memberId)
-    
-    this.memberId=this.membreService.getMemberId();
-    console.log("Membre ID" + this.memberId)
-    this.membreService.setMemberId(this.memberId);
-   
-   
+
    
     
   }

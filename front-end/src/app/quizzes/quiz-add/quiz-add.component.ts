@@ -75,13 +75,15 @@ export class QuizAddComponent implements OnInit {
     }
   }
 
+  hasMoreThanTwoAnswers(): boolean {
+    return this.answerList.length >= 2;
+  }
+
   answerListAdd() {
     this.answerList = [];
-
     for (let i = 1; i <= 4; i++) {
       const inputElement = document.getElementById(`ReponseText${i}`) as HTMLInputElement;
       const checkboxElement  = document.getElementById(`checkbox${i}`) as HTMLInputElement;
-  
       if (inputElement) {
         const newAnswer: Answer = {
           value: inputElement.value,
@@ -94,9 +96,8 @@ export class QuizAddComponent implements OnInit {
       }
     }
     this.toggleAnswerAdd();
-
+    this.displayMessage('Les réponses ont été ajoutée à la question');
     console.log('answerList:', this.answerList);
-    
   }
   
   getInputValueById(id: string): string | undefined {
@@ -220,8 +221,6 @@ export class QuizAddComponent implements OnInit {
   toggleHintAdd(){
     this.showHintAdd = ! this.showHintAdd; 
     }
-
-
  
 
   toggleForm() {
@@ -259,16 +258,14 @@ export class QuizAddComponent implements OnInit {
       id: 0
     };
    
-
-  
-        this.newQuizQuestionList.push(newQuestion);
-   
-        console.log(this.newQuizQuestionList[0]);
-        
-        
+    this.newQuizQuestionList.push(newQuestion);
+    console.log(this.newQuizQuestionList[0]);
     this.answers = ['' , '']
     this.answerList = [];
     this.hint = {text:'' , imageUrl:''};
+    this.toggleQuestionsAdd();
+    this.correctAnswers= [false, false, false, false]; 
+    this.displayMessage('La question a bien été ajoutée au nouveau quiz');
     form.resetForm();
   }
   }
@@ -291,8 +288,10 @@ export class QuizAddComponent implements OnInit {
 
       if (textValue && !imageUrl) {
         this.hint = { text: textValue };
+        this.displayMessage('L\'indice a bien été ajouté');
       } else if (!textValue && imageUrl) {
         this.hint = { imageUrl: imageUrl };
+        this.displayMessage('L\'indice a bien été ajouté');
       } else if (textValue && imageUrl) {
         this.hint = { text: textValue, imageUrl: imageUrl };
       } else {
