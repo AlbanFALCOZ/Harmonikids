@@ -39,4 +39,12 @@ test.describe('Mode Ergo Tests', () => {
     await addMembreFixture.addEnfant('Mimi', 'Émilie', '10', 'Description de mimi');
 
   });
+
+  test('should not add a new enfant', async ({ page }) => {
+    await ergoModeFixture.activateErgoMode('admin');
+    await expect(await ergoModeFixture.isErgoModeActivated()).toBeTruthy();
+
+    await addMembreFixture.addEnfant('Mimi', '','','');
+
+  });
 });
