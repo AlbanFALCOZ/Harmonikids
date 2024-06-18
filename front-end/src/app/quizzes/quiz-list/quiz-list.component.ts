@@ -82,7 +82,8 @@ export class QuizListComponent implements OnInit {
   }
 
   quizSelected(quiz: Quiz): void {
-    
+    console.log("QuizQuestions : ", quiz.questions);
+    console.log("QuizQuestionsLength : ", quiz.questions.length);
     const quizQuestions = quiz.questions;
     this.questionService.updateQuestionsForQuiz(quizQuestions);
   }
