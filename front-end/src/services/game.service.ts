@@ -71,6 +71,7 @@ export class GameService {
 
     getGame(childId: number, quizId: number): Game | undefined {
         console.log('getGame', childId, quizId);
+        console.log("This.game : ", this.games);
         return this.games.find(g => g.quizId === quizId && g.childId === childId);
     }
 

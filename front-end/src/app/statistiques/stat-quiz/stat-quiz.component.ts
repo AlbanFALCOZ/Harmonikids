@@ -22,6 +22,12 @@ export class StatQuizComponent implements OnInit {
     }
   }
 
+  ngOnChanges(): void {
+    if (this.game) {
+      this.correctFirstAttemptCount = this.game.correctFirstAttemptCount;
+    }
+  }
+
   calculatePercentage(correctFirstAttemptCount: number, totalQuestions: number): number {
     if (correctFirstAttemptCount === 0) {
       return 0;
