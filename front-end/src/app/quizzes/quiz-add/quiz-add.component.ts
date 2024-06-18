@@ -222,7 +222,6 @@ export class QuizAddComponent implements OnInit {
     const typeOfQuestion = form.value.typeOfQuestion;
     const niveau = form.value.niveau;
     const image = this.src;
-    const audio = form.value.audio;
     const quizId = form.value.quizId;
     const hint = this.hint || this.src;
     const answers = this.answerList;

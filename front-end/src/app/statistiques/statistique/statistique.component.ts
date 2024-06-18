@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Game } from 'src/models/game.model';
 import { Quiz } from 'src/models/quiz.model';
 import { Theme } from 'src/models/theme.model';
+import { GameService } from 'src/services/game.service';
+import { MembreService } from 'src/services/membre.service';
 import { NavbarService } from 'src/services/navbar.service';
 import { QuizService } from 'src/services/quiz.service';
 import { ThemeService } from 'src/services/theme.service';
-import { TitleService } from 'src/services/title.service';
 
 @Component({
   selector: 'app-statistique',
   templateUrl: './statistique.component.html',
-  styleUrl: './statistique.component.scss'
+  styleUrls: ['./statistique.component.scss']
 })
-export class StatistiqueComponent {
+export class StatistiqueComponent implements OnInit {
 
   public themeList: Theme[] = [];
   public quizList: Quiz[] = [];
@@ -20,9 +23,23 @@ export class StatistiqueComponent {
   toggleButtonText: string = 'Voir plus';
   toggleButtonTextQuiz: string = 'Voir plus';
   isNavVisible = false;
+  games: Game[] = [];
+  gameMap: { [quizId: number]: Game | undefined } = {};
+  showAllThemes: boolean = false;
+  showAllQuiz: boolean = false;
+  numberOfQuizzes: number = 0;
+  numberOfQuizzesFinished: number = 0;
+  memberId: number = 0;
 
-
-  constructor(public themeService: ThemeService, public quizService: QuizService, private navbarService: NavbarService) {
+  constructor(
+    private router: Router,
+    private gameService: GameService,
+    public themeService: ThemeService,
+    public quizService: QuizService,
+    private navbarService: NavbarService,
+    private membreService: MembreService,
+    private route: ActivatedRoute
+  ) {
     this.themeService.themes$.subscribe((themes: Theme[]) => {
       this.themeList = themes;
     });
@@ -34,15 +51,48 @@ export class StatistiqueComponent {
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
+
+    this.route.params.subscribe(params => {
+      this.memberId = parseInt(params['id']);
+      this.membreService.setMemberId(this.memberId);
+
+    });
+
+    this.gameService.games$.subscribe(games => {
+      this.games = games.filter(game => game.childId == this.membreService.getMemberId());
+      this.games.forEach(game => {
+        this.gameMap[game.quizId] = game;
+      });
+      console.log("2", this.games);
+    });
   }
-
-
-  showAllThemes: boolean = false;
-  showAllQuiz: boolean = false;
 
   ngOnInit() {
     this.displayedThemes = this.themeList.slice(0, 4);
     this.displayedQuiz = this.quizList.slice(0, 4);
+    
+    
+  }
+
+  getNumberOfQuizzesOfThemes(theme: String): number {
+    const numberOfQuizzes = this.quizList.filter(quiz => quiz.theme == theme).length;
+    return numberOfQuizzes;
+  }
+
+  getNumberOfQuizzesFinishedOfThemes(theme: String): number {
+    const numberOfQuizzesFinished = this.quizList.filter(quiz => quiz.theme == theme).length;
+    return numberOfQuizzesFinished;
+  }
+
+  updateQuizStatus(): void {
+    if (this.games) {
+      this.quizList.forEach(quiz => {
+        const game = this.games.find(g => g.quizId == quiz.id);
+        if (game && game.isQuizCompleted) {
+          this.quizService.updateQuizStatus(quiz.id, "Terminé");
+        }
+      });
+    }
   }
 
   toggleDisplayTheme() {
@@ -109,7 +159,6 @@ export class StatistiqueComponent {
     this.isEditing = false;
   }
 
-
   cancelEdit() {
     this.isEditing = false;
   }
@@ -117,6 +166,5 @@ export class StatistiqueComponent {
   toggleShowMoreInterests() {
     this.isInterestExpanded = !this.isInterestExpanded;
   }
-
 
 }

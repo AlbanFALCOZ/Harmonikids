@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class MembreService {
    
     public membres:Membre[] = [];
-    private memberId: number | undefined ;
+    private memberId!: number ;
     private membre!: Membre; 
     private membreUrl = serverUrl + '/user';
     private apiUrl = '../../../backend/app/api/user';
@@ -37,16 +37,11 @@ export class MembreService {
       });
     }
 
-    
-
- 
-
-
-  setMemberId(id: number | undefined): void {
+  setMemberId(id: number): void {
     this.memberId = id;
   }
 
-  getMemberId(): number | undefined {
+  getMemberId(): number {
     return this.memberId;
   }
 

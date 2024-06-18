@@ -9,6 +9,8 @@ import { IndiceService } from 'src/services/indice.service';
 import { QUESTION_LIST } from 'src/mocks/question.mock';
 import {QuestionService} from 'src/services/question.service'
 import { NavbarService } from 'src/services/navbar.service';
+import { MembreService } from 'src/services/membre.service';
+import { ActivatedRoute } from '@angular/router';
 import { ModeService } from 'src/services/mode-ergo.service';
 
 
@@ -38,10 +40,14 @@ export class ConfigurationComponent {
   questionList = this.questionService.getQuestionsFromLocalStorage();
   questionListTemp = QUESTION_LIST;
   isNavVisible = false;
+
+  memberId: number = 0;
  
 
 
-  constructor(private sonService: SonService , private colorService: ColorService , private themeService: ThemeService , private indiceService : IndiceService  , private questionService : QuestionService, private navbarService: NavbarService) {
+  constructor(private sonService: SonService, private colorService: ColorService, private themeService: ThemeService, private indiceService: IndiceService, private questionService: QuestionService, private navbarService: NavbarService,
+    private membreService: MembreService, private route: ActivatedRoute
+  ) {
     this.isSoundOn = this.sonService.estSonActif();
     this.isIndiceOn=this.indiceService.estIndiceActif();
     this.isMusicOn = this.sonService.isMusiqueActive();
@@ -59,7 +65,11 @@ export class ConfigurationComponent {
 
   ngOnInit() {
   
-    this.isIndiceOn=this.indiceService.estIndiceActif()
+    this.isIndiceOn = this.indiceService.estIndiceActif()
+    this.route.params.subscribe(params => {
+      this.memberId = parseInt(params['id']);
+      this.membreService.setMemberId(this.memberId);
+    });
   }
 
   toggleSound() {

@@ -1,6 +1,7 @@
 // quiz.component.ts
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-quiz',
@@ -11,6 +12,8 @@ export class QuizComponent implements OnInit {
 
     @Input()
     quiz!: Quiz;
+
+    memberId!: number | undefined;
 
     @Input() isDisabled: boolean = false;
 
@@ -23,10 +26,13 @@ export class QuizComponent implements OnInit {
     @Output()
     quizToDelete: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
-    constructor() { }
+    constructor(private route: ActivatedRoute) { 
+
+    }
 
     ngOnInit(): void {
         console.log(this.quiz);
+        this.memberId = this.route.snapshot.params['id'];
     }
 
     selectQuiz(): void {
@@ -59,4 +65,6 @@ export class QuizComponent implements OnInit {
             };
         }
     }
+
+    
 }

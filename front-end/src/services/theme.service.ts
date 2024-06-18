@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { THEME_LIST } from 'src/mocks/theme-list.mocks';
 import { Theme } from 'src/models/theme.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
+import { QuizService } from './quiz.service';
+import { Quiz } from 'src/models/quiz.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,11 +27,14 @@ export class ThemeService {
 
   private httpOptions = httpOptionsBase;
 
-
-      
+  private quizList: Quiz[] = [];
   
-  getQuizzesByTheme(themeId: string): any[] {
-    throw new Error('Method not implemented.');
+  getQuizzesByTheme(theme: string): Quiz[] {
+    this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
+      this.quizList = quizzes;
+      this.quizList = this.quizList.filter(quiz => quiz.theme === theme);
+    });
+    return this.quizList;
   }
 
 
@@ -38,7 +43,7 @@ export class ThemeService {
 
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private quizService: QuizService) {
     this.retrieveThemes();
     this.initializeSelectedThemes();
   }

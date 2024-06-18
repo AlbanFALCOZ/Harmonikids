@@ -15,7 +15,7 @@
   <div class="membre-card-button">
 
     <button (click)="onSelectMembre(membre.id)">
-      <a [routerLink]="['/dashboard', membre.id]">Choisir</a>
+      <a [routerLink]="['/configuration', membre.id]">Choisir</a>
     </button>
     <button (click)="onDeleteMembre()" *ngIf="!isDisabled">Supprimer</button>
 

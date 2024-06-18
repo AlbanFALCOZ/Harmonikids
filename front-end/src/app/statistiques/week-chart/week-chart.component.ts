@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import { Quiz } from 'src/models/quiz.model';
+import { QuizService } from 'src/services/quiz.service';
 import { StatistiqueService } from 'src/services/statistique.service';
 
 @Component({
@@ -8,6 +10,7 @@ import { StatistiqueService } from 'src/services/statistique.service';
   styleUrls: ['./week-chart.component.scss']
 })
 export class WeekChartComponent implements OnInit {
+
 
   public options: any = {
     chart: {
@@ -36,7 +39,9 @@ export class WeekChartComponent implements OnInit {
     series: []
   };
 
-  constructor(private statistiqueService: StatistiqueService) { }
+  constructor(private statistiqueService: StatistiqueService) { 
+
+  }
 
   ngOnInit(): void {
     this.statistiqueService.getWeeklyQuizData().subscribe(data => {

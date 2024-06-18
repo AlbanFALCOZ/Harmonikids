@@ -9,8 +9,9 @@ import { Quiz } from 'src/models/quiz.model';
 })
 export class QuizDashboardComponent {
 
-  @Input()
-    quiz!: Quiz
+  @Input() quiz!: Quiz
+  
+  @Input() memberId!: number | undefined;
 
     @Output()
     quizSelected: EventEmitter<Quiz> = new EventEmitter<Quiz>();
@@ -19,12 +20,14 @@ export class QuizDashboardComponent {
 
     }
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
 
-    selectQuiz(): void {
-        this.quizSelected.emit(this.quiz);
-    }
+      
+  }
+
+  selectQuiz(): void {
+      this.quizSelected.emit(this.quiz);
+  }
 
 
 
