@@ -1,8 +1,11 @@
 {
   "dependencies": {
+    "@angular/common": "^18.0.3",
+    "@angular/core": "^18.0.3",
     "canvas-confetti": "^1.9.2",
     "chart.js": "^4.4.2",
-    "highcharts": "^11.4.1"
+    "highcharts": "^11.4.1",
+    "ngx-countdown": "^18.0.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.44.1",

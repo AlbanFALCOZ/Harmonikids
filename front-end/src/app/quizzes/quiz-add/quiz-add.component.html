@@ -59,7 +59,6 @@
 
 
       <div class="display-input">
-
         <label for="questionForQuizToggle">Questions</label><br>
         <button type="button" id="questionForQuizToggle" (click)="toggleQuestionsAdd()">Créer une nouvelle
           question</button><br>
@@ -106,7 +105,7 @@
               </div>
             </div>
             <div class="display-input">
-              <label for="questionForQuizToggle">Indice </label><br>
+              <label for="questionForQuizToggle">Indice: </label><br>
               <button type="button" name="Ajout-indice" id="hintToggle" (click)="toggleHintAdd()">Ajouter un
                 indice</button><br>
               <span *ngIf="hint.text" class="check-mark">✔</span>
@@ -170,10 +169,12 @@
                       Correct
                     </label>
                   </div>
-                  <div *ngIf="answers.length < 4" class="display-input">
+                  <div *ngIf="answers.length < 4" >
                     <button type="button" (click)="addAnswer()">Ajouter une autre réponse</button><br>
                   </div>
+                 
                   <button type="button" (click)="answerListAdd()">Valider</button><br>
+                
                 </div>
 
               </div>
