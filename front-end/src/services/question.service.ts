@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Question, QuestionType } from '../models/question.model';
 import { Quiz } from '../models/quiz.model';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, forkJoin } from 'rxjs';
 import { QuizService } from './quiz.service';
 import { QUESTION_LIST } from 'src/mocks/question.mock';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, tap, switchMap } from 'rxjs/operators';
 import { serverUrl } from 'src/configs/server.config';
 
 @Injectable({
@@ -44,7 +44,8 @@ export class QuestionService {
 
 
   fetchQuestions(quizId: number): Observable<Question[]> {
-    console.log(`Fetching questions for quiz ID: ${quizId}`);
+
+    console.log("question service " + quizId);
     return this.http.get<Question[]>(`${this.apiUrl}/quizzes/${quizId}/questions`).pipe(
       tap(questions => {
         console.log('Fetched questions:', questions);
@@ -196,6 +197,18 @@ export class QuestionService {
     return storedQuestions;
   }
   
+
+  updateQuestionQuizId(questionId: number, newQuizId: number): Observable<Question> {
+    const url = `{this.apiUrl}/quizzes/1717355613792/questions/${questionId}`; 
+
+    const updatePayload = {
+      quizId: newQuizId
+    };
+
+    return this.http.put<Question>(url, updatePayload);
+  }
+
+
   
   
 

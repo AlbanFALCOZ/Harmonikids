@@ -21,8 +21,8 @@ const deleteGame = async (gameId) => {
 };
 
 const getGamesByChild = async (childId) => {
-    return await GameModel.get('childId', childId);
-}
+    return await GameModel.getByChildId(childId);
+};
 
 
 

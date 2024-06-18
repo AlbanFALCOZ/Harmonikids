@@ -4,7 +4,8 @@ import { Answer } from '../models/question.model';
 import { Game } from '../models/game.model';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
-import { serverUrl } from 'src/configs/server.config';
+import { httpOptionsBase, serverUrl } from 'src/configs/server.config';
+import { Quiz } from 'src/models/quiz.model';
 
 @Injectable({
     providedIn: 'root'
@@ -15,12 +16,14 @@ export class GameService {
 
     gameUrl = serverUrl + '/games';
     quizUrl = serverUrl + '/quizzes';
+    private httpOptions = httpOptionsBase;
 
     constructor(private http: HttpClient) {
         this.getGames();
-     }
+    }
 
-    saveChosenAnswers(childId: number, quizId: number, questionId: number, answers: Answer[]): void {
+    startNewGame(childId: number, quizId: number): void {
+        console.log('startNewGame', childId, quizId);
         let game = this.games.find(g => g.quizId === quizId && g.childId === childId);
         if (!game) {
             game = {
@@ -29,13 +32,25 @@ export class GameService {
                 quizId: quizId,
                 correctFirstAttemptCount: 0,
                 chosenAnswers: {},
-                isQuizCompleted: false
+                isQuizCompleted: false,
+                score: 0
             };
             this.games.push(game);
+            this.updateGamesSubject(this.games);
         }
-        game.chosenAnswers[questionId] = answers;
-        this.updateGamesSubject(this.games);
     }
+
+    saveChosenAnswers(childId: number, quizId: number, questionId: number, answers: Answer[], score: number): void {
+        console.log('saveChosenAnswers', childId, quizId, questionId, answers, score);
+        let game = this.games.find(g => g.quizId === quizId && g.childId === childId);
+        if (game) {
+            game.chosenAnswers[questionId] = answers;
+            game.score += score;
+            this.updateGamesSubject(this.games);
+        }
+    }
+
+
 
     incrementCorrectFirstAttemptCount(childId: number, quizId: number): void {
         const game = this.games.find(g => g.quizId === quizId && g.childId === childId);
@@ -50,15 +65,17 @@ export class GameService {
         if (game) {
             game.isQuizCompleted = true;
             this.updateGamesSubject(this.games);
+            this.http.put(`${this.quizUrl}/${quizId}/statut`, 'Terminé').subscribe();
         }
     }
 
     getGame(childId: number, quizId: number): Game | undefined {
+        console.log('getGame', childId, quizId);
         return this.games.find(g => g.quizId === quizId && g.childId === childId);
     }
 
     getGamesByChildId(childId: number): Promise<Game[]> {
-        const url = this.gameUrl + '/gamesByChild/' + childId;
+        const url = `${this.gameUrl}/gamesByChild/${childId}`;
         return this.http.get<Game[]>(url).pipe(
             tap(games => {
                 this.games = games || [];
@@ -76,7 +93,7 @@ export class GameService {
         return this.http.post(this.gameUrl, game).pipe(
             tap(response => {
                 console.log('Game data sent to backend:', response);
-                this.getGames(); 
+                this.getGames();
             })
         );
     }
@@ -97,5 +114,4 @@ export class GameService {
             map(games => games.find(game => game.quizId === quizId))
         );
     }
-
 }

@@ -10,6 +10,7 @@ module.exports = new BaseModel('Game', {
         Joi.array()
     ).required(),
     isQuizCompleted: Joi.boolean().required(),
+    score: Joi.number(),
 });
 
 

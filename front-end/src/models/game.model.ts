@@ -7,6 +7,7 @@ export interface Game {
     correctFirstAttemptCount: number;
     chosenAnswers: { [questionId: number]: Answer[] };
     isQuizCompleted: boolean;
+    score: number;
 }
 
 

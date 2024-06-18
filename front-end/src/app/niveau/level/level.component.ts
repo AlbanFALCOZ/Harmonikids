@@ -21,7 +21,7 @@ export class LevelComponent implements OnInit {
   isNavVisible = false;
 
 
-  constructor(private route: ActivatedRoute, public questionService: QuestionService, private navbarService: NavbarService) {
+  constructor(private route: ActivatedRoute, public questionService: QuestionService, private navbarService: NavbarService, private quizService: QuizService) {
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
     });
@@ -34,6 +34,7 @@ export class LevelComponent implements OnInit {
       this.getQuestions();
       this.questionService.setCurrentQuizId(this.quizId);
     });
+    this.quizService.setSelectedQuizId(this.quizId);
     console.log(this.quizId)
 
   }

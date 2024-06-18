@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map, of } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { Question } from '../models/question.model';
@@ -10,6 +10,10 @@ import { serverUrl, httpOptionsBase } from '../configs/server.config';
   providedIn: 'root'
 })
 export class QuizService {
+  setSelectedQuizId(quizId: number) {
+    this.quizSelectedId = quizId;
+  }
+  quizSelectedId: any;
   
   //   this.quizzes$.next(this.quizzes);
   // });
@@ -38,6 +42,7 @@ export class QuizService {
 
   private quizUrl = serverUrl + '/quizzes';
   private questionsPath = 'questions';
+  private quizSelected = 0;
 
   private httpOptions = httpOptionsBase;
 
@@ -60,8 +65,8 @@ export class QuizService {
   }
 
 
-  addQuiz(quiz: Quiz): void {
-    this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe(() => this.retrieveQuizzes());
+  addQuiz(quiz: Quiz): Observable<any> {
+    return this.http.post<any>(this.quizUrl, quiz, this.httpOptions);
   }
 
   editQuiz(quiz: Quiz): Observable<Quiz> {
@@ -75,6 +80,8 @@ export class QuizService {
     this.http.get<Quiz>(urlWithId).subscribe((quiz) => {
       this.quizSelected$.next(quiz);
     });
+    this.quizSelected = quizId;
+    console.log("Quiz selected " + this.quizSelected)
   }
 
   deleteQuiz(quiz: Quiz): void {
@@ -102,9 +109,20 @@ export class QuizService {
     return this.filteredQuestions;
   }
 
-  updateQuizStatus(quizId: number, isCompleted: String): Observable<any> {
-    return this.http.put(`${this.quizUrl}/${quizId}/status`, { isCompleted });
+  updateQuizStatus(quizId: number, status: string): void {
+    const quiz = this.http.get(`${this.quizUrl}/${quizId}`)
+      .pipe(
+        map((quiz: any) => {
+          quiz.statut = status;
+          return quiz;
+        })
+      );
+
+    const url = this.quizUrl + '/' + quizId;
+    this.http.put<Quiz>(url, quiz, this.httpOptions);
   }
+
+  
 
 
 }

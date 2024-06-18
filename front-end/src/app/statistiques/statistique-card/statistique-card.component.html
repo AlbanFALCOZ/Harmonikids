@@ -4,6 +4,6 @@
             <p class="theme-title">Intitulé : {{ theme.name }}</p>
             <p class="number-quiz">Nombre de quiz terminés/quiz total : {{ numberOfQuizzesFinished }}/{{ numberOfQuizzes }}</p>
         </div>
-        <app-progres-circle></app-progres-circle>
+        <app-progres-circle [percentage]="calculatePercentage(numberOfQuizzesFinished, numberOfQuizzes)"></app-progres-circle>
     </div>
 </div>

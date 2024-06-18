@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
 
+
 <div class="content" [ngClass]="{'nav-visible': isNavVisible}">
     <div>
         <div class="title">
@@ -104,16 +105,21 @@
                         <p>Taux de bonnes réponses par quiz</p>
                     </div>
                     <div class="question-result-display">
-                        <app-stat-quiz *ngFor="let quiz of quizList" [quiz]="quiz" [game]="getGameByQuizId(quiz.id)"></app-stat-quiz>
+                        <app-stat-quiz *ngFor="let quiz of quizList" [quiz]="quiz" [game]="gameMap[quiz.id]"></app-stat-quiz>
                     </div>
                     <div>
                         <p class="plus" (click)="toggleDisplayQuiz()">{{ toggleButtonTextQuiz }}</p>
                     </div>
                 </div>
+
             </div>
+            
         </div>
     </div>
+    <a class="button_history" [routerLink]="['/history', memberId]">Voir l'historique des jeux</a>
+
 </div>
 
-<a class="button_history" (click)="navigateToHistory()">Voir l'historique des jeux</a>
+
+
 

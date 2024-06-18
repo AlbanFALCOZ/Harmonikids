@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question, Answer } from '../../../models/question.model';
 import { QuestionService } from '../../../services/question.service';
@@ -11,6 +11,8 @@ import { NavbarService } from 'src/services/navbar.service';
 import { QuizService } from 'src/services/quiz.service';
 import { StatistiqueService } from 'src/services/statistique.service';
 import { GameService } from 'src/services/game.service';
+import { MembreService } from 'src/services/membre.service';
+import { log } from 'console';
 
 @Component({
   selector: 'app-question-list',
@@ -20,35 +22,27 @@ import { GameService } from 'src/services/game.service';
 export class QuestionListComponent implements OnInit {
 
   @ViewChild(SoundQuestionComponent) soundQuestionComponent: SoundQuestionComponent | undefined;
-
   @Input() questionList: Question[] = [];
 
   questionCleared: number[] = [];
-
   selectedAnswer: Answer[] = [];
   selectedAnswerCorrect: Answer[] = [];
   selectedAnswerWrong: Answer[] = [];
-  public hint: boolean | undefined;
+  hint: boolean | undefined;
   hintText: string | undefined;
   hintImageUrl: string | undefined;
-  public hintAudio: HTMLAudioElement | null = new Audio('assets/img/good.mp3');
-
+  hintAudio: HTMLAudioElement | null = new Audio('assets/img/good.mp3');
   currentQuestionIndex: number = 0;
   QuestionType = QuestionType;
-
   showSuccessMessage: boolean = false;
   showFailureMessage: boolean = false;
-
   correctAnswersCount: number = 0;
   correctAnswersSecondAttempt: number = 0;
-
   private messageTimeout: any;
   isNavVisible = false;
-
   private successAudio = new Audio('assets/img/good.mp3');
   answerSelected: any;
-
-  childId: number = 123; // Remplacez ceci par l'ID de l'enfant actuel
+  childId: number | undefined = 0;
 
   constructor(
     private gameService: GameService,
@@ -59,7 +53,8 @@ export class QuestionListComponent implements OnInit {
     public soundService: SonService,
     private indiceService: IndiceService,
     private navbarService: NavbarService,
-    private scoreService: ScoreService
+    private scoreService: ScoreService,
+    private membreService: MembreService
   ) {
     this.questionList = this.quizService.getFilteredQuestions();
     if (this.indiceService.estIndiceActif() && this.questionList[this.currentQuestionIndex] != undefined) {
@@ -79,7 +74,13 @@ export class QuestionListComponent implements OnInit {
 
   ngOnInit(): void {
     const quizId = this.questionService.getCurrentQuizId();
+    const childId = this.membreService.getMemberId();
+
+    if (childId && quizId) {
+      this.gameService.getGame(childId, quizId);
+    }
     console.log('Quiz ID:', quizId);
+    console.log('Child ID:', childId);
   }
 
   nextQuestion(): void {
@@ -101,7 +102,6 @@ export class QuestionListComponent implements OnInit {
           console.log("item", item);
           console.log("index2", index2);
           const answer = document.getElementById("answer" + index2);
-
           answer?.classList.add("right-answer");
           answer?.classList.remove("selected");
           console.log("answer", answer);
@@ -132,8 +132,13 @@ export class QuestionListComponent implements OnInit {
     const correctAnswers = currentQuestion.answers.filter(a => a.isCorrect);
 
     const quizId = this.questionService.getCurrentQuizId();
+    const childId = this.membreService.getMemberId();
     const questionId = this.questionList[this.currentQuestionIndex].id;
-    this.gameService.saveChosenAnswers(this.childId, quizId, questionId, this.selectedAnswer);
+
+    if (childId) {
+      this.gameService.saveChosenAnswers(childId, quizId, questionId, this.selectedAnswer, this.selectedAnswerCorrect.length);
+    }
+    console.log("selectedAnswer", this.selectedAnswer);
 
     this.resetMessages();
 
@@ -164,7 +169,7 @@ export class QuestionListComponent implements OnInit {
       this.questionCleared.push(this.currentQuestionIndex);
       if (this.correctAnswersSecondAttempt === 0) {
         this.correctAnswersCount++;
-        this.gameService.incrementCorrectFirstAttemptCount(this.childId, quizId);
+        this.gameService.incrementCorrectFirstAttemptCount(childId!, quizId);
       }
     } else {
       this.showFailureMessage = true;
@@ -229,9 +234,14 @@ export class QuestionListComponent implements OnInit {
   finishQuiz(): void {
     this.scoreService.updateSelectedAnswersCount(this.selectedAnswerCorrect.length);
     const quizId = this.questionService.getCurrentQuizId();
-    const game = this.gameService.getGame(this.childId, quizId);
-    this.gameService.sendGameDataToBackend(game!);
-    this.gameService.setQuizCompleted(this.childId, quizId);
-    this.router.navigate(['/end-game']);
+    const childId = this.membreService.getMemberId();
+    const game = this.gameService.getGame(childId, quizId);
+    console.log('Game:', game);
+    this.quizService.updateQuizStatus(quizId, 'Terminé');
+    this.gameService.sendGameDataToBackend(game!).subscribe(() => {
+      this.gameService.setQuizCompleted(childId, quizId);
+      this.router.navigate(['/end-game']);
+    });
+    
   }
 }

@@ -48,8 +48,9 @@ export class QuestionAddComponent {
     label: '',
     typeOfQuestion: QuestionType.MultipleChoice,
     niveau: '',
-    answers: [{id: 1, value: '', isCorrect: false }],
-    hint: { text: '', imageUrl: '', audioUrl: '' }
+    answers: [{ id: 1, value: '', isCorrect: false }],
+    hint: { text: '', imageUrl: '' },
+    quizId: 0
   };
 
   addAnswer() {

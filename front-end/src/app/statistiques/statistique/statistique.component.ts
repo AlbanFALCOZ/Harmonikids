@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Game } from 'src/models/game.model';
 import { Quiz } from 'src/models/quiz.model';
 import { Theme } from 'src/models/theme.model';
 import { GameService } from 'src/services/game.service';
+import { MembreService } from 'src/services/membre.service';
 import { NavbarService } from 'src/services/navbar.service';
 import { QuizService } from 'src/services/quiz.service';
 import { ThemeService } from 'src/services/theme.service';
@@ -28,13 +29,16 @@ export class StatistiqueComponent implements OnInit {
   showAllQuiz: boolean = false;
   numberOfQuizzes: number = 0;
   numberOfQuizzesFinished: number = 0;
+  memberId: number = 0;
 
   constructor(
     private router: Router,
     private gameService: GameService,
     public themeService: ThemeService,
     public quizService: QuizService,
-    private navbarService: NavbarService
+    private navbarService: NavbarService,
+    private membreService: MembreService,
+    private route: ActivatedRoute
   ) {
     this.themeService.themes$.subscribe((themes: Theme[]) => {
       this.themeList = themes;
@@ -48,9 +52,17 @@ export class StatistiqueComponent implements OnInit {
       this.isNavVisible = isVisible;
     });
 
+    this.route.params.subscribe(params => {
+      this.memberId = parseInt(params['id']);
+      this.membreService.setMemberId(this.memberId);
+
+    });
+
     this.gameService.games$.subscribe(games => {
-      this.games = games.filter(game => game.childId === 123);
-      this.createGameMap();
+      this.games = games.filter(game => game.childId == this.membreService.getMemberId());
+      this.games.forEach(game => {
+        this.gameMap[game.quizId] = game;
+      });
       console.log("2", this.games);
     });
   }
@@ -58,34 +70,24 @@ export class StatistiqueComponent implements OnInit {
   ngOnInit() {
     this.displayedThemes = this.themeList.slice(0, 4);
     this.displayedQuiz = this.quizList.slice(0, 4);
+    
+    
   }
 
   getNumberOfQuizzesOfThemes(theme: String): number {
-    const numberOfQuizzes = this.quizList.filter(quiz => quiz.theme === theme).length;
+    const numberOfQuizzes = this.quizList.filter(quiz => quiz.theme == theme).length;
     return numberOfQuizzes;
   }
 
   getNumberOfQuizzesFinishedOfThemes(theme: String): number {
-    const numberOfQuizzesFinished = this.quizList.filter(quiz => quiz.theme === theme && quiz.statut === 'Terminé').length;
+    const numberOfQuizzesFinished = this.quizList.filter(quiz => quiz.theme == theme).length;
     return numberOfQuizzesFinished;
-  }
-
-  createGameMap() {
-    console.log("1", this.games);
-    this.games.forEach(game => {
-      this.gameMap[game.quizId] = game;
-    });
-  }
-
-  navigateToHistory(): void {
-    console.log("games", this.games);
-    this.router.navigate(['/history']);
   }
 
   updateQuizStatus(): void {
     if (this.games) {
       this.quizList.forEach(quiz => {
-        const game = this.games.find(g => g.quizId === quiz.id);
+        const game = this.games.find(g => g.quizId == quiz.id);
         if (game && game.isQuizCompleted) {
           this.quizService.updateQuizStatus(quiz.id, "Terminé");
         }
@@ -165,7 +167,4 @@ export class StatistiqueComponent implements OnInit {
     this.isInterestExpanded = !this.isInterestExpanded;
   }
 
-  getGameByQuizId(quizId: number): Game | undefined {
-    return this.gameMap[quizId];
-  }
 }

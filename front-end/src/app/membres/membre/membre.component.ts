@@ -32,9 +32,8 @@ export class MembreComponent {
   }
 
 
-
-
   onSelectMembre(id: number): void {
+    console.log("Membre ID 2" + id)
     this.membreService.setMemberId(id);
   }
 

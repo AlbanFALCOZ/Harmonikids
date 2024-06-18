@@ -9,9 +9,13 @@ module.exports = new BaseModel('Question', {
     audio: Joi.string(),
     answers: Joi.array().items(
         Joi.object({
-            value: Joi.string().required(),
-            isCorrect: Joi.boolean().required(),
+            value: Joi.string(),
+            isCorrect: Joi.boolean(),
         })
     ),
-    quizId: Joi.number().required(),
+    hint: Joi.object({
+        text: Joi.string().optional(),
+        imageUrl: Joi.string().uri().optional()
+    }).optional(),
+    quizId: Joi.number()
 })
