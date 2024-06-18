@@ -40,6 +40,12 @@ export class MembreComponent {
     console.log("Memeber ID" + this.membreService.getMemberId())
   }
 
+  onDeleteMembre() {
+    if (this.membre) {
+      this.membreService.deleteMember(this.membre);
+    }
+  }
+
 
 
 }

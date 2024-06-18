@@ -242,7 +242,11 @@ export class QuestionListComponent implements OnInit {
     this.scoreService.updateSelectedAnswersCount(this.selectedAnswerCorrect.length);
     const quizId = this.questionService.getCurrentQuizId();
     const childId = this.membreService.getMemberId();
+    console.log("ChildId in finishQuiz: ", childId);
+    console.log("QuizId in finishQuiz: ", quizId);
     const game = this.gameService.getGame(childId, quizId);
+    console.log("ChildId in finishQuiz2: ", childId);
+    console.log("QuizId in finishQuiz: ", quizId);
     console.log('Game:', game);
     this.quizService.updateQuizStatus(quizId, 'Terminé');
     this.gameService.sendGameDataToBackend(game!).subscribe(() => {
