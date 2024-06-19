@@ -71,7 +71,9 @@ export class DashboardComponent implements OnInit {
       
      
     });
-    this.themeList = this.themeService.getSelectedThemes()
+    this.themeService.themes$.subscribe(themes => {
+      this.themeList = this.themeService.getSelectedThemes();
+    });
     this.quizList = this.quizService.getQuizzes().slice(0, 4); 
   
     

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, min, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { THEME_LIST } from 'src/mocks/theme-list.mocks';
 import { Theme } from 'src/models/theme.model';
@@ -52,6 +52,7 @@ export class ThemeService {
     this.http.get<Theme[]>(this.themeUrl).subscribe((themeList) => {
       this.themes = themeList;
       this.themes$.next(this.themes);
+      this.initializeSelectedThemes();
     });
   }
 
@@ -82,6 +83,12 @@ export class ThemeService {
   }
 
   getSelectedThemes(): Theme[] {
+    console.log("this.selectedThemes.length",this.selectedThemes.length);
+    console.log("In selectedThemes : this.themes.length",this.themes.length);
+    if (this.selectedThemes.length == 0) {
+      this.selectedThemes = this.themes.slice(0, Math.max(2, this.selectedThemes.length));
+    }
+    console.log("After this.selectedThemes.length",this.selectedThemes.length);
     return this.selectedThemes;
   }
 
@@ -95,7 +102,9 @@ export class ThemeService {
   }
 
   private initializeSelectedThemes() {
-    this.selectedThemes = this.themes.slice(0, 4);
+    console.log("this.themes.length",this.themes.length);
+    this.selectedThemes = this.themes.slice(0, Math.max(2, this.selectedThemes.length));
+    console.log("In init : this.selectedThemes.length : ",this.selectedThemes.length)
   }
 
 }
