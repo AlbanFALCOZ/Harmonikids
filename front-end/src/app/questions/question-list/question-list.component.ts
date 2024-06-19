@@ -41,7 +41,8 @@ export class QuestionListComponent implements OnInit {
   correctAnswersCount: number = 0;
   correctAnswersSecondAttempt: number = 0;
   niveau: string;
-
+  
+  isIndiceActif: boolean;
 
   private messageTimeout: any;
   isNavVisible = false;
@@ -69,6 +70,7 @@ export class QuestionListComponent implements OnInit {
       this.indiceService.setIndice(undefined);
     }
     this.hint = this.indiceService.hint;
+    this.isIndiceActif = this.indiceService.estIndiceActif();
     this.hintText = this.indiceService.hintText;
     this.hintImageUrl = this.indiceService.hintImageUrl;
     this.hintAudio = new Audio('assets/img/good.mp3');
