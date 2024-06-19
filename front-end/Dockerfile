@@ -24,7 +24,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 RUN chown -R appuser:appgroup /usr/share/nginx/html && \
     chown -R appuser:appgroup /etc/nginx/nginx.conf
 
-EXPOSE 8080
+EXPOSE 80
 
 USER nginx
 
