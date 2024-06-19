@@ -1,3 +1,8 @@
+docker stop backend-container
+docker rm backend-container
+docker stop frontend-container
+docker rm frontend-container
+
 cd backend
 docker build -t backend-image .
 
