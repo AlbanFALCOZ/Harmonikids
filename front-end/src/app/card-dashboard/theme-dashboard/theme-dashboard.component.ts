@@ -1,5 +1,6 @@
 
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { Theme } from 'src/models/theme.model';
 
 @Component({
@@ -17,7 +18,7 @@ export class ThemeDashboardComponent {
   themeSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
-  constructor() {
+  constructor(private router: Router) {
 
   }
 
@@ -26,6 +27,10 @@ export class ThemeDashboardComponent {
 
   selectTheme(): void {
       this.themeSelected.emit(true);
+  }
+
+  onThemeSelected(): void {
+    this.router.navigate(['/quiz-list'], { queryParams: { theme: this.theme?.name } });
   }
 
 
