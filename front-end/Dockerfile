@@ -1,43 +1,32 @@
-FROM node:16.20-alpine3.17 AS build-stage
+# Étape 1: Build de l'application avec Node.js
+FROM node:18.13-alpine AS builder
 
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup -s /bin/sh
-
-WORKDIR /app 
+WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install -g @angular/cli
-
-USER root
-
-RUN chown -R appuser:appgroup /app
-
-USER appuser
-
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 COPY . .
 
-USER appuser
-
 RUN npm run build
 
+# Étape 2: Serveur Nginx pour servir l'application
 
-FROM nginx:1.24.0 AS production-stage
+FROM nginx:alpine
 
-RUN groupadd appgroup && \
-    useradd --no-log-init -r -g appgroup appuser && \
-    mkdir -p /var/cache/nginx/client_temp && \
-    chown -R appuser:appgroup /var/cache/nginx
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
-COPY --from=build-stage /app/dist/front-end /usr/share/nginx/html
+COPY --from=builder /app/dist/front-end /usr/share/nginx/html
 
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
-RUN chown -R appuser:appgroup /usr/share/nginx/html
+RUN chown -R appuser:appgroup /usr/share/nginx/html && \
+    chown -R appuser:appgroup /etc/nginx/nginx.conf
 
-USER appuser
+EXPOSE 8080
 
-EXPOSE 80
+USER nginx
 
 CMD ["nginx", "-g", "daemon off;"]
+
