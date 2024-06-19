@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   themeList: Theme[] = [];
   quizList: Quiz[] = []; 
   membre!: Membre | null;
+  membreImage :string | undefined
 
   isNavVisible = false;
 
@@ -34,10 +35,13 @@ export class DashboardComponent implements OnInit {
       this.route.params.subscribe(params => {
         this.memberId = params['id'];
         this.membreService.setMemberId(this.memberId);
-        this.membre = this.membreService.getMemberByIdSync(this.memberId)
+        this.membreService.setImage(this.membreService.getImageById(this.memberId))
         this.membreService.membres$.subscribe(members => {
           if(members.length > 0){
             this.welcomeMessage = this.membreService.getWelcomeMessage(this.memberId)
+            this.membreService.setImage(this.membreService.getImageById(this.memberId))
+            console.log(this.membreService.getMembre())
+            console.log("**** Fin Dashboard component**")
           }
         })
         
@@ -69,7 +73,7 @@ export class DashboardComponent implements OnInit {
     });
     this.themeList = this.themeService.getSelectedThemes()
     this.quizList = this.quizService.getQuizzes().slice(0, 4); 
-    this.membre = this.membreService.getMemberByIdSync(this.memberId)
+  
     
     this.memberId=this.membreService.getMemberId();
     console.log("Membre ID" + this.memberId)

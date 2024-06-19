@@ -13,6 +13,7 @@ export class MembreService {
     public membres:Membre[] = [];
     private memberId!: number ;
     private membre!: Membre; 
+    private imageMember:string | undefined ;
     private membreUrl = serverUrl + '/user';
     private apiUrl = '../../../backend/app/api/user';
 
@@ -57,45 +58,41 @@ export class MembreService {
 
 
   getWelcomeMessage(memberId: number | undefined): string {
-    console.log("get welcome message:", memberId);
-  
-    if (memberId !== undefined) {
-      const membre = this.getMemberByIdSync(memberId);
-      console.log(this.membre)
-      if (this.membre !== null) {
-        console.log("The first name:", this.membre.firstName);
-        return `Bonjour ${this.membre.firstName} !`;
-      } else {
-        return "Heureux de te revoir.";
-      }
+    if (memberId === undefined) {
+      return 'Heureux de te revoir!';
+    }
+
+    const member = this.membres.find(m => m.id === memberId);
+
+    if (member) {
+      return `Bonjour, ${member.firstName}!`;
     } else {
-      return "Heureux de te revoir.";
+      return 'Member not found.';
     }
   }
-  
-  
-  getMemberByIdSync(id: number | undefined): Membre | null {
-    const urlWithId = `${this.membreUrl}/${id}`;
-    console.log("urlWithId  " + urlWithId);
-    console.log(this.membreUrl);
-    console.log(id);
-  
-    let membre: Membre | null = null;
-  
-    this.http.get<Membre>(urlWithId).subscribe(
-      (data: Membre) => {
-       
-        membre = data;
-        this.setMembre(membre)
-      },
-      (error) => {
-        console.error('Error fetching member:', error);
-      }
-    );
-  
-    return membre;
+
+  getMembre():Membre{
+    return this.membre;
   }
 
+  getImageById(memberId: number | undefined): string {
+    const member = this.membres.find(m => m.id === memberId);
+    if (member) {
+      return member.image;
+    } else {
+      return 'je n\'arrive pas '; 
+    }
+  }
+
+  getImage():string |undefined {
+    return this.imageMember;
+  }
+
+  setImage(image : string){
+    this.imageMember = image;
+  }
+  
+  
   setMembre(membre: Membre | null): void {
     if (membre !== null) {
       console.log("Membre is setMembre" + membre)

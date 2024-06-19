@@ -16,4 +16,4 @@ COPY --from=build-stage /app/node_modules /app/node_modules
 
 EXPOSE 9428
 
-CMD ["npm", "start"]
+CMD ["npm", "run" , "dev"]
