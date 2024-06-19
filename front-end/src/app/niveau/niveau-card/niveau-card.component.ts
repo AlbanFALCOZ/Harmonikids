@@ -17,15 +17,16 @@ export class NiveauCardComponent {
   constructor(private quizService: QuizService) { }
 
   onNiveauSelected(niveauName: string): void {
+    niveauName = niveauName.toLocaleLowerCase();
     console.log("onNiveauSelected : ", niveauName);
     this.niveauSelected.emit(niveauName);
     this.questions.forEach((question) => console.log(question.name, question.niveau));
     console.log("Questions length : ", this.questions.length);
     let filteredQuestions = this.questions;
-    if (niveauName === 'Facile') {
-        filteredQuestions = this.questions.filter(question => question.niveau === 'facile');
-    } else if (niveauName === 'Moyen') {
-        filteredQuestions = this.questions.filter(question => question.niveau === 'facile' || question.niveau === 'moyen');
+    if (niveauName === 'facile') {
+        filteredQuestions = this.questions.filter(question => question.niveau === 'Facile');
+    } else if (niveauName === 'moyen') {
+        filteredQuestions = this.questions.filter(question => question.niveau === 'Facile' || question.niveau === 'Moyen');
     }
     console.log("Filtered questions by level length : ", filteredQuestions.length);
     this.quizService.setFilteredQuestions(filteredQuestions);

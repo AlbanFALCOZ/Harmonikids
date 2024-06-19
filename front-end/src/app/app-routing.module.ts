@@ -24,24 +24,22 @@ const routes: Routes = [
   { path: 'questions', component: QuestionAddComponent },
   { path: 'niveau/:id', component: LevelComponent },
   { path: 'theme-list', component: ThemeListComponent },
-  { path: 'statistiques', component: StatistiqueComponent },
+  { path: 'statistiques/:id', component: StatistiqueComponent },
   { path: 'question-list', component: QuestionListComponent },
   { path: '', redirectTo: '/membres-liste', pathMatch: 'full' },
   { path: 'membres', component: MembreComponent },
-  {path: 'history', component: HistoriqueComponent},
+  {path: 'history/:id', component: HistoriqueComponent},
   {
     path: 'membres-liste',
     component: MembreListeComponent,
   },
-
-
 
   {
     path: 'drag-drop',
     component: DragDropComponent,
   },
   {
-    path:'configuration',component:ConfigurationComponent,
+    path:'configuration/:id',component:ConfigurationComponent,
   },
   {
     path: 'dashboard/:id',

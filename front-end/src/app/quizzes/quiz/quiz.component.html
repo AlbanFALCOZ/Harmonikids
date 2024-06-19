@@ -7,7 +7,7 @@
         <p>{{ quiz.description }}</p>
     </div>
     <div class="quiz-card-button">
-        <a routerLink="/niveau/{{ quiz.id }}"><button (click)="selectQuiz()">Choisir</button></a>
+        <a routerLink="/niveau/{{ memberId }}/{{ quiz.id }}"><button (click)="selectQuiz()">Choisir</button></a>
         <button (click)="displayModalUpdate()" *ngIf="!isDisabled">Modifier</button>
         <button (click)="displayModalDelete()" *ngIf="!isDisabled">Supprimer</button>
     </div>

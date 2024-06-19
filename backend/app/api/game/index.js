@@ -1,29 +1,62 @@
-const { Router } = require('express')
-
-const bodyParser = require('body-parser');
+const { Router } = require('express');
+const manageAllErrors = require('../../utils/routes/error-management');
 const GameManager = require('./manager');
 
-const app = Router();
-app.use(bodyParser.json());
+const router = Router();
 
-app.post('/', (req, res) => {
-    const game = GameManager.saveGame(req.body);
-    res.send(game);
+router.post('/', async (req, res) => {
+    try {
+        const game = await GameManager.saveGame(req.body);
+        res.status(201).send(game);
+    } catch (error) {
+        manageAllErrors(res, error);
+    }
 });
 
-app.get('/:id', (req, res) => {
-    const game = GameManager.getGame(req.params.id);
-    res.send(game);
+router.get('/', async (req, res) => {
+    try {
+        const games = await GameManager.getGames();
+        res.send(games);
+    } catch (error) {
+        manageAllErrors(res, error);
+    }
 });
 
-app.put('/:id', (req, res) => {
-    const game = GameManager.updateGame(req.params.id, req.body);
-    res.send(game);
+router.get('/:id', async (req, res) => {
+    try {
+        const game = await GameManager.getGame(req.params.id);
+        res.send(game);
+    } catch (error) {
+        manageAllErrors(res, error);
+    }
 });
 
-app.delete('/:id', (req, res) => {
-    GameManager.deleteGame(req.params.id);
-    res.sendStatus(200);
+router.put('/:id', async (req, res) => {
+    try {
+        const game = await GameManager.updateGame(req.params.id, req.body);
+        res.send(game);
+    } catch (error) {
+        manageAllErrors(res, error);
+    }
 });
 
-module.exports = app;
+router.delete('/:id', async (req, res) => {
+    try {
+        await GameManager.deleteGame(req.params.id);
+        res.sendStatus(200);
+    } catch (error) {
+        manageAllErrors(res, error);
+    }
+});
+
+router.get('/gamesByChild/:childId', async (req, res) => {
+    try {
+        const childId = parseInt(req.params.childId);
+        const childGames = await GameManager.getGamesByChild(childId);
+        res.send(childGames);
+    } catch (error) {
+        manageAllErrors(res, error);
+    }
+});
+
+module.exports = router;

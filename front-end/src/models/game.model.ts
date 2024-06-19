@@ -1,11 +1,13 @@
 import { Answer } from "./question.model";
 
 export interface Game {
-    memberId: number;
+    id: number;
+    childId: number;
     quizId: number;
-    questionId: number;
     correctFirstAttemptCount: number;
     chosenAnswers: { [questionId: number]: Answer[] };
     isQuizCompleted: boolean;
+    score: number;
 }
+
 

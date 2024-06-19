@@ -1,8 +1,25 @@
-<div *ngFor="let game of games">
-    <p>Quiz ID: {{ game.quizId }}</p>
-    <p>Question ID: {{ game.questionId }}</p>
-    <p>Correct First Attempt Count: {{ game.correctFirstAttemptCount }}</p>
-    <p>Chosen Answers: {{ game.chosenAnswers }}</p>
-    <p>Is Quiz Completed: {{ game.isQuizCompleted }}</p>
-    <hr>
+<app-navbar></app-navbar>
+
+<div class="game" *ngFor="let game of games">
+    <div *ngFor="let quiz of quizzes">
+        <h2 *ngIf="quiz.id == game.quizId" class="historique-title">Quiz joué : {{ quiz.name }}</h2>
+    </div>
+    <div>
+        <p>Nombre de bonnes réponses du premier coup: {{ game.correctFirstAttemptCount }}</p>
+        <p *ngIf="game.isQuizCompleted">Statut du quiz: Terminé</p>
+        <p *ngIf="!game.isQuizCompleted">Statut du quiz: En cours</p>
+        <div class="game-content">
+            <div *ngFor="let questionId of getQuestionIds(game)" class="historique-question">
+                <div>
+                    <p>Question : {{ getQuestion(questionId) }}</p>
+                    <ul *ngFor="let answer of game.chosenAnswers[questionId]">
+                        <li>Titre de la réponse : {{ answer.value }}</li>
+                        <li *ngIf="answer.isCorrect">Est-ce la bonne réponse ? Oui</li>
+                        <li *ngIf="!answer.isCorrect">Est-ce la bonne réponse ? Non</li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 </div>
