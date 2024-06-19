@@ -42,6 +42,7 @@ export class MembreListeComponent implements OnInit {
       this.membreListeDisplayed = this.membreListe;
      
     });
+    this.membreService.setMembre(null);
   
     
    
@@ -59,8 +60,10 @@ export class MembreListeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+    
   }
+  
+ 
 
  
 

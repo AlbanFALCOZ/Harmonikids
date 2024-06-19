@@ -31,20 +31,48 @@
     margin-bottom:5px;
 }
 
-.navbar img{
-    margin-top: 10px;
-    width: 250px;
-    height: 200px;
-}
 
-.user-menu .material-icons{
+
+.user-menu .material-icons {
     color: white;
-    font-size: 40px;
+    font-size: 70px;
     margin-left: 20px;
     transition: transform 0.3s ease;
-    z-index: 3;
-    cursor: pointer;
-}
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+
+  .logo{
+    margin-top: 30px;
+    margin-left:60px;
+    width: 210px;
+    height: 210px;
+
+  }
+  
+  .img {
+    width: 70px;
+    height: 70px;
+    margin-left: 20px;
+    border-radius: 50%;
+    z-index: 2;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border: 2px solid ;
+    border-color: white;
+    object-fit: cover;
+  }
+  
+  .img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-color: white; 
+  }
+
 
 .user-menu .material-icons:hover {
     transform: scale(1.1); 
