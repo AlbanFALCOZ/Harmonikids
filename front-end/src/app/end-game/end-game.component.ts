@@ -24,6 +24,7 @@ export class EndGameComponent implements OnInit {
   ngOnInit(): void {
     this.scoreService.numberOfCorrectAnswers$.subscribe((count: number) => {
         this.correctAnswersCount = count;
+        this.correctAnswerCount = count;
         this.updatePersonalizedMessage();
 
       }
@@ -43,6 +44,7 @@ export class EndGameComponent implements OnInit {
   }
 
   updatePersonalizedMessage() {
+    console.log("this.correctAnswerCount",this.correctAnswerCount);
     if(this.correctAnswerCount <= 1) {
       this.personalizedMessage = "Bien essayé, continue comme ça !";
     } else if(this.correctAnswerCount <= 2) {

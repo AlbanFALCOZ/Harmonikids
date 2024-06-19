@@ -41,7 +41,7 @@ export class QuestionListComponent implements OnInit {
   correctAnswersCount: number = 0;
   correctAnswersSecondAttempt: number = 0;
   niveau: string;
-  
+
   isIndiceActif: boolean;
 
   private messageTimeout: any;
@@ -63,6 +63,9 @@ export class QuestionListComponent implements OnInit {
     private membreService: MembreService
   ) {
     this.questionList = this.quizService.getFilteredQuestions();
+    this.questionList.forEach((question) => {
+      question.answers = this.shuffle(question.answers);
+    });
     this.niveau = this.quizService.getLevel();
     if (this.indiceService.estIndiceActif() && this.questionList[this.currentQuestionIndex] != undefined) {
       this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
@@ -244,18 +247,13 @@ export class QuestionListComponent implements OnInit {
     this.scoreService.updateSelectedAnswersCount(this.selectedAnswerCorrect.length);
     const quizId = this.questionService.getCurrentQuizId();
     const childId = this.membreService.getMemberId();
-    console.log("ChildId in finishQuiz: ", childId);
-    console.log("QuizId in finishQuiz: ", quizId);
     const game = this.gameService.getGame(childId, quizId);
-    console.log("ChildId in finishQuiz2: ", childId);
-    console.log("QuizId in finishQuiz: ", quizId);
-    console.log('Game:', game);
     this.quizService.updateQuizStatus(quizId, 'Terminé');
     this.gameService.sendGameDataToBackend(game!).subscribe(() => {
       this.gameService.setQuizCompleted(childId, quizId);
       this.router.navigate(['/end-game']);
     });
-    
+
   }
 
   async onTimerFinished(e: CountdownEvent) {
@@ -268,6 +266,15 @@ export class QuestionListComponent implements OnInit {
   }
 
   delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  shuffle(array: Answer[]): Answer[] {
+    console.log("Shuffle ! ");
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
 }
