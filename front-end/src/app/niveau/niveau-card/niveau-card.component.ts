@@ -28,6 +28,9 @@ export class NiveauCardComponent {
     } else if (niveauName === 'moyen') {
         filteredQuestions = this.questions.filter(question => question.niveau === 'Facile' || question.niveau === 'Moyen');
     }
+    if (filteredQuestions.length == 0) {
+      filteredQuestions.push(this.questions.at(0));
+    }
     console.log("Filtered questions by level length : ", filteredQuestions.length);
     this.quizService.setFilteredQuestions(filteredQuestions);
     this.quizService.setLevel(niveauName);
