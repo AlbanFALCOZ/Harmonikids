@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Game } from 'src/models/game.model';
+import { Membre } from 'src/models/membre.model';
 import { Quiz } from 'src/models/quiz.model';
 import { Theme } from 'src/models/theme.model';
 import { GameService } from 'src/services/game.service';
@@ -30,6 +31,8 @@ export class StatistiqueComponent implements OnInit {
   numberOfQuizzes: number = 0;
   numberOfQuizzesFinished: number = 0;
   memberId: number = 0;
+  membre!: Membre;
+  score: number = 0;
 
   constructor(
     private router: Router,
@@ -58,23 +61,50 @@ export class StatistiqueComponent implements OnInit {
 
     });
 
-    this.gameService.games$.subscribe(games => {
-      this.games = games.filter(game => game.childId == this.membreService.getMemberId());
-      this.games.forEach(game => {
-        this.gameMap[game.quizId] = game;
-      });
-      console.log("2", this.games);
-    });
+    
   }
 
   ngOnInit() {
     this.displayedThemes = this.themeList.slice(0, 4);
     this.displayedQuiz = this.quizList.slice(0, 4);
-    
-    
+    this.gameService.games$.subscribe(games => {
+      this.games = games.filter(game => game.childId == this.membreService.getMemberId());
+      this.games.forEach(game => {
+        this.gameMap[game.quizId] = game;
+
+        if (game.score > this.score) {
+          this.score = game.score;
+        }
+      });
+      console.log("2", this.games);
+    });
+
+    this.membreService.membres$.subscribe(membre => {
+      this.membre = membre.find(m => m.id == this.memberId)!;
+    });
+
   }
 
-  getNumberOfQuizzesOfThemes(theme: String): number {
+    ngOnChanges() {
+      this.displayedThemes = this.themeList.slice(0, 4);
+      this.displayedQuiz = this.quizList.slice(0, 4);
+      this.gameService.games$.subscribe(games => {
+        this.games = games.filter(game => game.childId == this.membreService.getMemberId());
+        this.games.forEach(game => {
+          this.gameMap[game.quizId] = game;
+        });
+        console.log("2", this.games);
+      });
+
+      this.membreService.membres$.subscribe(membre => {
+        this.membre = membre.find(m => m.id == this.memberId)!;
+      });
+
+  }
+  
+
+
+  getNumberOfQuizzesOfThemes(theme: String): number{
     const numberOfQuizzes = this.quizList.filter(quiz => quiz.theme == theme).length;
     return numberOfQuizzes;
   }
@@ -84,16 +114,6 @@ export class StatistiqueComponent implements OnInit {
     return numberOfQuizzesFinished;
   }
 
-  updateQuizStatus(): void {
-    if (this.games) {
-      this.quizList.forEach(quiz => {
-        const game = this.games.find(g => g.quizId == quiz.id);
-        if (game && game.isQuizCompleted) {
-          this.quizService.updateQuizStatus(quiz.id, "Terminé");
-        }
-      });
-    }
-  }
 
   toggleDisplayTheme() {
     this.showAllThemes = !this.showAllThemes;
