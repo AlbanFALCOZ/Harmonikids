@@ -12,7 +12,7 @@
 
     <div class="core-page">
         <div class="profil-description">
-            <app-profil-card-stat></app-profil-card-stat>
+            <app-profil-card-stat [membre]="membre" [score]="score"></app-profil-card-stat>
             <div class="card-profil-footer" [ngClass]="{'expanded': isDescriptionExpanded}">
                 <div class="profil-footer-title">
                     <span class="material-icons">description</span>

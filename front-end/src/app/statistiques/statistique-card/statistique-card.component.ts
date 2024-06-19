@@ -12,7 +12,9 @@ export class StatistiqueCardComponent {
   @Input() theme!: Theme;
   @Input() numberOfQuizzes!: number;
   @Input() numberOfQuizzesFinished!: number;
-  constructor(private themeService: ThemeService) {}
+  constructor(private themeService: ThemeService) { }
+  
+  ngOnchanges(): void { }
 
 
   getQuizCountByTheme(theme: string): number {

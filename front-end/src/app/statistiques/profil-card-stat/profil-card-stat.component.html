@@ -1,13 +1,13 @@
 <div class="profil-statistique">
     <div class="card-left">
-        <img src="assets/img/alice.jpg" alt="fille">
+        <img src="{{ membre.image }}" alt="fille">
     </div>
     <div class="profil-name">
-        <p>Prénom : Alice</p>
-        <p>Nom : Routine</p>
-        <p>Age : 8 ans</p>
+        <p>Prénom : {{ membre.firstName }}</p>
+        <p>Nom : {{ membre.lastName }}</p>
+        <p>Age : {{ membre.age }} ans</p>
     </div>
     <div class="exp">
-        <p>Nombre d'étoiles gagnées/étoiles totales : 100/200</p>
+        <p>Nombre d'étoiles gagnées : {{ score }}</p>
     </div>
 </div>
