@@ -1,8 +1,8 @@
 export interface Membre {
     id: number;
     firstName: string;
-    lastName : String ;
+    lastName : string ;
     age: number;
-    description : String ; 
-    image : String;  
+    description : string ; 
+    image : string;  
 }

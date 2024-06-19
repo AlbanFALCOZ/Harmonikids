@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { unescape } from 'querystring';
+import { Membre } from 'src/models/membre.model';
 import { ColorService } from 'src/services/color-service.service';
 import { MembreService } from 'src/services/membre.service';
 import { ModeService } from 'src/services/mode-ergo.service';
@@ -11,13 +13,21 @@ import { SonService } from 'src/services/sound.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
+
+
 export class NavbarComponent implements OnInit {
+
+
+
+  
   memberId: number | undefined;
   isNavVisible = false;
-  isDisabled = false;
-  isUserMenuVisible = false;
   showPasswordPrompt = false;
+  memberImage:string|undefined;
   password = '';
+  membre : Membre |undefined
+  isUserMenuVisible: boolean = false;
+  isDisabled: boolean = false;
 
   constructor(
     public colorService: ColorService, 
@@ -34,11 +44,22 @@ export class NavbarComponent implements OnInit {
     this.modeService.isDisabled$.subscribe(isDisabled => {
       this.isDisabled = isDisabled;
     });
+    console.log("NavBar" + this.membre)
+   
+    
   }
 
   ngOnInit(): void {
     this.memberId = this.membreService.getMemberId();
+    this.membreService.membres$.subscribe(membre => {
+      this.membre = membre.find(m => m.id == this.memberId)!;
+    });
   }
+
+  resetMemberImage() {
+    this.membreService.setMemberId(0);
+  }
+
 
   toggleNav() {
     this.navbarService.toggleNavbarVisibility();

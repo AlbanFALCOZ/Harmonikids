@@ -7,7 +7,6 @@ RUN npm install
 
 COPY . .
 
-
 FROM node:16.20-alpine3.17
 
 WORKDIR /app
@@ -17,4 +16,4 @@ COPY --from=build-stage /app/node_modules /app/node_modules
 
 EXPOSE 9428
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run" , "dev"]

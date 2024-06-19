@@ -1,22 +1,23 @@
 <div class="navbar" [ngStyle]="{'background-color': colorService.selectedColor, }">
-  <a routerLink="/membres-liste" class="accueil">Accueil</a>
+  <a routerLink="/membres-liste" class="accueil" (click)="resetMemberImage()">Accueil</a>
   <div>
-    <a routerLink="/membres-liste">
-      <img src="assets/img/logo3.png" alt="logo" >
+    <a routerLink="/membres-liste" class="accueil" (click)="resetMemberImage()">
+      <img src="assets/img/logo3.png" alt="logo" class="logo" >
     </a>
   </div>
   <div class="user">
-      <div class="user-menu" (click)="toggleUserMenu()">
-          <span class="material-icons">account_circle</span>
-          <div class="dropdown-menu" *ngIf="isUserMenuVisible">
-              <a [routerLink]="['/dashboard', memberId]">Profil</a>
-              <a [routerLink]="['/statistiques', memberId]" *ngIf="!isDisabled">Statistiques</a>
-              <a [routerLink]="['/configuration', memberId]" *ngIf="!isDisabled">Paramètres</a>
-          </div>
-      </div>
       <button class="switch-mode" (click)="toggleMode()">
           Mode Ergo : {{ isDisabled ? 'Off' : 'On' }}
       </button>
+      <div class="user-menu" (click)="toggleUserMenu()">
+        <span *ngIf="!(membre && membre.image)" class="img"></span>
+        <img *ngIf="membre && membre.image" [src]="membre.image" class="img">
+        <div class="dropdown-menu" *ngIf="isUserMenuVisible">
+            <a [routerLink]="['/dashboard', memberId]">Profil</a>
+            <a [routerLink]="['/statistiques', memberId]" *ngIf="!isDisabled">Statistiques</a>
+            <a [routerLink]="['/configuration', memberId]" *ngIf="!isDisabled">Paramètres</a>
+        </div>
+    </div>
   </div>
 </div>
 <div *ngIf="showPasswordPrompt" class="password-prompt">
