@@ -13,7 +13,7 @@
         <span *ngIf="!(membre && membre.image)" class="img"></span>
         <img *ngIf="membre && membre.image" [src]="membre.image" class="img">
         <div class="dropdown-menu" *ngIf="isUserMenuVisible">
-            <a [routerLink]="['/dashboard', memberId]">Profil</a>
+            <a [routerLink]="['/dashboard', memberId]" *ngIf="!isMembresListePage()">Profil</a>
             <a [routerLink]="['/statistiques', memberId]" *ngIf="!isDisabled">Statistiques</a>
             <a [routerLink]="['/configuration', memberId]" *ngIf="!isDisabled">Paramètres</a>
         </div>
@@ -21,6 +21,6 @@
   </div>
 </div>
 <div *ngIf="showPasswordPrompt" class="password-prompt">
-  <input type="password" [(ngModel)]="password" placeholder="Mot de passe">
+  <input type="password" [(ngModel)]="password" placeholder="Mot de passe" (keyup.enter)="submitPassword()">
   <button (click)="submitPassword()">Se connecter</button>
 </div>

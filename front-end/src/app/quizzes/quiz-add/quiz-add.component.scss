@@ -95,6 +95,35 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
     cursor: pointer;
 }
 
+.close-add-answer {
+    color: #aaa;
+    float: right;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.close-add-answer,
+.close-add-answer {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    padding-bottom: 3%;
+}
+
+.close-answer{
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-answer:hover,
+.close-answer:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .display-input {
     display: flex;
     align-items: center;
@@ -260,3 +289,6 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
     display: inline-block; 
   }
 
+.infos {
+    margin-bottom: 4%;
+}

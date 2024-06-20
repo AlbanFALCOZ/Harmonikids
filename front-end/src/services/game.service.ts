@@ -16,14 +16,19 @@ export class GameService {
 
     gameUrl = serverUrl + '/games';
     quizUrl = serverUrl + '/quizzes';
+    private httpOptions = httpOptionsBase;
 
     constructor(private http: HttpClient) {
+        
         this.getGames();
+        
     }
 
     startNewGame(childId: number, quizId: number): void {
-        console.log('startNewGame', childId, quizId);
+        
+        
         let game = this.games.find(g => g.quizId === quizId && g.childId === childId);
+        
         if (!game) {
             game = {
                 id: 0,
@@ -34,14 +39,15 @@ export class GameService {
                 isQuizCompleted: false,
                 score: 0
             };
+            
             this.games.push(game);
             this.updateGamesSubject(this.games);
         }
     }
 
     saveChosenAnswers(childId: number, quizId: number, questionId: number, answers: Answer[], score: number): void {
-        console.log('saveChosenAnswers', childId, quizId, questionId, answers, score);
         let game = this.games.find(g => g.quizId === quizId && g.childId === childId);
+        
         if (game) {
             game.chosenAnswers[questionId] = answers;
             game.score += score;
@@ -69,8 +75,10 @@ export class GameService {
     }
 
     getGame(childId: number, quizId: number): Game | undefined {
-        console.log('getGame', childId, quizId);
-        console.log("This.game : ", this.games);
+        
+        
+        
+        
         return this.games.find(g => g.quizId === quizId && g.childId === childId);
     }
 
@@ -92,21 +100,24 @@ export class GameService {
     sendGameDataToBackend(game: Game): Observable<any> {
         return this.http.post(this.gameUrl, game).pipe(
             tap(response => {
-                console.log('Game data sent to backend:', response);
                 this.getGames();
             })
         );
     }
 
     getGames(): void {
+        
         this.http.get<Game[]>(this.gameUrl).subscribe(games => {
             this.games = games;
             this.updateGamesSubject(this.games);
         });
+        
     }
 
     private updateGamesSubject(games: Game[]): void {
+        
         this.games$.next(games);
+        
     }
 
     getGameByQuizId(quizId: number): Observable<Game | undefined> {

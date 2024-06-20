@@ -8,6 +8,7 @@ import { NavbarService } from 'src/services/navbar.service';
 import { ModeService } from 'src/services/mode-ergo.service';
 import { Theme } from 'src/models/theme.model';
 import { ThemeService } from 'src/services/theme.service';
+import { MembreService } from 'src/services/membre.service';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class QuizListComponent implements OnInit {
 
   themeList: Theme[] = [];
 
-  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService, public questionService: QuestionService, private navbarService: NavbarService, private modeService: ModeService, private themeService: ThemeService, public route: ActivatedRoute) {
+  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService, public questionService: QuestionService, private navbarService: NavbarService, private modeService: ModeService, private themeService: ThemeService, public route: ActivatedRoute, private membreService: MembreService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
       this.quizListDisplayed = quizzes;
@@ -69,7 +70,6 @@ export class QuizListComponent implements OnInit {
     });
     themeSelect.addEventListener('change', (event) => {
       const themeSelected = (event.target as HTMLSelectElement).value;
-      console.log('Selected theme: ', themeSelected);
       if (themeSelected != "none") {
         this.quizListSortedTheme = this.quizList.filter(quiz => quiz.theme == themeSelected);
       }
@@ -82,15 +82,12 @@ export class QuizListComponent implements OnInit {
   }
 
   quizSelected(quiz: Quiz): void {
-    console.log("QuizQuestions : ", quiz.questions);
-    console.log("QuizQuestionsLength : ", quiz.questions.length);
     const quizQuestions = quiz.questions;
     this.questionService.updateQuestionsForQuiz(quizQuestions);
   }
   
   editQuiz(quiz: Quiz): void {
     this.quizToEdit = quiz;
-    console.log("edit du quizList ", this.quizToEdit);
   }
 
 

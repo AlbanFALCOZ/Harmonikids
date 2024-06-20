@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { unescape } from 'querystring';
 import { Membre } from 'src/models/membre.model';
 import { ColorService } from 'src/services/color-service.service';
@@ -19,23 +20,23 @@ export class NavbarComponent implements OnInit {
 
 
 
-  
   memberId: number | undefined;
   isNavVisible = false;
   showPasswordPrompt = false;
-  memberImage:string|undefined;
+  memberImage: string | undefined;
   password = '';
-  membre : Membre |undefined
+  membre: Membre | undefined
   isUserMenuVisible: boolean = false;
   isDisabled: boolean = false;
 
   constructor(
-    public colorService: ColorService, 
-    public membreService: MembreService, 
-    private navbarService: NavbarService, 
-    private modeService: ModeService, 
-    private questionService: QuestionService, 
-    private sonService: SonService
+    public colorService: ColorService,
+    public membreService: MembreService,
+    private navbarService: NavbarService,
+    private modeService: ModeService,
+    private questionService: QuestionService,
+    private sonService: SonService,
+    private router: Router
   ) {
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
@@ -44,9 +45,8 @@ export class NavbarComponent implements OnInit {
     this.modeService.isDisabled$.subscribe(isDisabled => {
       this.isDisabled = isDisabled;
     });
-    console.log("NavBar" + this.membre)
-   
-    
+
+
   }
 
   ngOnInit(): void {
@@ -59,6 +59,8 @@ export class NavbarComponent implements OnInit {
   resetMemberImage() {
     this.membreService.setMemberId(0);
   }
+
+
 
 
   toggleNav() {
@@ -78,6 +80,10 @@ export class NavbarComponent implements OnInit {
   }
 
   toggleMode() {
+    if (this.isDisabled && this.showPasswordPrompt) {
+      this.showPasswordPrompt = false;
+      return;
+    }
     if (!this.isDisabled) {
       this.modeService.toggleMode();
     } else {
@@ -90,6 +96,7 @@ export class NavbarComponent implements OnInit {
   }
 
   submitPassword() {
+
     if (this.password === 'admin') {
       this.modeService.toggleMode();
       this.showPasswordPrompt = false;
@@ -97,5 +104,9 @@ export class NavbarComponent implements OnInit {
     } else {
       alert('Mot de passe incorrect');
     }
+  }
+
+  isMembresListePage(): boolean {
+    return this.router.url === '/membres-liste';
   }
 }

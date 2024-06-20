@@ -1,13 +1,14 @@
 <div class="quiz-card" *ngIf = "quiz">
-    <div class="quiz-card-header">
-        <img src="{{ quiz.image }}" alt="No image given">
-        <p>{{ quiz.name }}</p>
-    </div>
-    <div class="quiz-card-footer">
-        <p>{{ quiz.description }}</p>
+    <div (click)="selectQuiz()">
+        <div class="quiz-card-header">
+            <img src="{{ quiz.image }}" alt="No image given">
+            <p>{{ quiz.name }}</p>
+        </div>
+        <div class="quiz-card-footer">
+            <p>{{ quiz.description }}</p>
+        </div>
     </div>
     <div class="quiz-card-button">
-        <a routerLink="/niveau/{{ memberId }}/{{ quiz.id }}"><button (click)="selectQuiz()">Choisir</button></a>
         <button (click)="displayModalUpdate()" *ngIf="!isDisabled">Modifier</button>
         <button (click)="displayModalDelete()" *ngIf="!isDisabled">Supprimer</button>
     </div>

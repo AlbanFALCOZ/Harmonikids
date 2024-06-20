@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { Theme } from 'src/models/theme.model';
 
 @Component({
@@ -23,7 +24,7 @@ export class ThemeComponent implements OnInit {
     themeToDelete: EventEmitter<Theme> = new EventEmitter<Theme>();
     sonService: any;
 
-    constructor() {
+    constructor(private router: Router) {
 
     }
 
@@ -31,8 +32,9 @@ export class ThemeComponent implements OnInit {
     }
 
     selectTheme(): void {
-        this.themeSelected.emit(this.theme);
+        this.router.navigate(['/quiz-list'], { queryParams: { theme: this.theme?.name } });
     }
+    
 
     edit(): void {
         this.editTheme.emit(this.theme);
