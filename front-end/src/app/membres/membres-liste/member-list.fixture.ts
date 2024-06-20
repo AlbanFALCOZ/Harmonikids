@@ -33,5 +33,6 @@ export class AddMembreFixture extends E2EComponentFixture {
         await this.getAgeInput().fill(age);
         await this.getDescriptionInput().fill(description);
         await this.getSubmitButton().click();
+        //await this.page.pause();
     }
 }

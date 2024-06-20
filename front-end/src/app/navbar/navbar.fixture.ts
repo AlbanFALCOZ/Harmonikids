@@ -32,4 +32,19 @@ export class ErgoModeFixture extends E2EComponentFixture {
         const toggleButton = await this.getToggleModeButton();
         return (await toggleButton.innerText()).includes('Off');
     }
+
+    async goConfig() {
+        const goConf = this.page.getByText('account_circle');
+        return await goConf.click();
+    }
+
+    async selectConfig() {
+        const selectConf = this.page.getByRole('link', { name: 'Paramètres' });
+        return await selectConf.click();
+    }
+
+    async selectProfile() {
+        const selectProf = this.page.getByRole('link', { name: 'Profil' });
+        return await selectProf.click();
+    }
 }
