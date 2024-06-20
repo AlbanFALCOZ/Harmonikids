@@ -30,22 +30,22 @@ export class MembreListeComponent implements OnInit {
 
   search: string = '';
 
-  src: string  = "../../../assets/img/no-photo.png";
+  src: string = "../../../assets/img/no-photo.png";
 
 
 
   constructor(private router: Router, public membreService: MembreService, public titleService: TitleService, private sonService: SonService, private navbarService: NavbarService, private modeService: ModeService) {
-   
+
     this.membreService.membres$.subscribe((membres: Membre[]) => {
       this.membreListe = membres;
       this.membreService.membres = this.membreListe;
       this.membreListeDisplayed = this.membreListe;
-     
+
     });
     this.membreService.setMembre(null);
-  
-    
-   
+
+
+
     this.titleService.title = 'Bienvenue';
     this.titleService.search = 'Rechercher un enfant';
 
@@ -60,11 +60,11 @@ export class MembreListeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
 
- 
+
 
   toggleForm() {
     this.displayForm = !this.displayForm;
@@ -92,7 +92,7 @@ export class MembreListeComponent implements OnInit {
         lastName: lastNameMember,
         age: ageMember,
         description: descriptionMember,
-        image: imageMember || "" ,
+        image: imageMember || "",
       };
 
       this.membreService.addMembre(newMember);
@@ -100,7 +100,7 @@ export class MembreListeComponent implements OnInit {
       form.resetForm();
       this.toggleForm();
       this.src = "../../../assets/img/no-photo.png";
-    } 
+    }
   }
 
   valueChanged(files: FileList) {
@@ -112,7 +112,20 @@ export class MembreListeComponent implements OnInit {
   }
 
 
+  closeModalDelete() {
 
+    var modal = document.getElementById("myModalDelete");
+    if (modal) {
+      modal.style.display = "none";
+    }
+
+  }
+
+  onDeleteMember(membre: Membre) {
+    this.membreService.deleteMember(membre);
+  }
+
+  
 
 }
 

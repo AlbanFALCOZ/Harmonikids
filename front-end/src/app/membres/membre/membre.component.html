@@ -12,7 +12,19 @@
       <p>{{membre.description}}</p>
     </div>
   </div>
+  
   <div class="membre-card-button">
-    <button (click)="onDeleteMembre()" *ngIf="!isDisabled">Supprimer</button>
+    <button (click)="displayModalUpdate()" *ngIf="!isDisabled">Supprimer</button>
+  </div>
+</div>
+
+<div id="myModalUpdate" class="modal_delete">
+  <div class="modal-content-suppression">
+    <span class="close material-icons" (click)="closeModalDelete()">close</span>
+    <p>Êtes vous sûr de vouloir supprimer cet membre ?</p>
+    <div class="delete-btn">
+      <button type="reset" class="btnCancel" (click)="closeModalDelete()">Annuler</button>
+      <button type="submit" class="btnValid" (click)="onDeleteMembre()">Valider</button>
+    </div>
   </div>
 </div>

@@ -19,6 +19,9 @@ export class MembreComponent {
   memberId: number | undefined;
   isDisabled: boolean = false;
 
+  @Output()
+  membreToDelete: EventEmitter<Membre> = new EventEmitter<Membre>();
+
 
 
   constructor(private membreService: MembreService, private modeService: ModeService, private router: Router) {
@@ -36,7 +39,7 @@ export class MembreComponent {
 
   onDeleteMembre() {
     if (this.membre) {
-      this.membreService.deleteMember(this.membre);
+      this.membreToDelete.emit(this.membre);
     }
   }
 
@@ -44,6 +47,30 @@ export class MembreComponent {
     this.membreService.setMemberId(id);
     this.router.navigate(['/dashboard', id]);
   }
+
+  displayModalUpdate() {
+    // this.membreToDelete.emit(this.membre);
+    var modal = document.getElementById("myModalUpdate");
+    if (modal) {
+      modal.style.display = "block";
+
+      window.onclick = function (event) {
+        if (event.target == modal && (modal)) {
+          modal.style.display = "none";
+        }
+      }
+    }
+  }
+
+  closeModalDelete() {
+
+    var modal = document.getElementById("myModalDelete");
+    if (modal) {
+      modal.style.display = "none";
+    }
+
+  }
+
 
 }
 
