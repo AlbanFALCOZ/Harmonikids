@@ -73,6 +73,7 @@ export class QuestionListComponent implements OnInit {
       this.indiceService.setIndice(undefined);
     }
     this.hint = this.indiceService.hint;
+
     this.isIndiceActif = this.indiceService.estIndiceActif();
     this.hintText = this.indiceService.hintText;
     this.hintImageUrl = this.indiceService.hintImageUrl;
@@ -90,7 +91,6 @@ export class QuestionListComponent implements OnInit {
     if (childId && quizId) {
       this.gameService.startNewGame(childId, quizId);
     }
-
 
   }
 
@@ -250,7 +250,6 @@ export class QuestionListComponent implements OnInit {
       this.gameService.setQuizCompleted(childId, quizId);
       this.router.navigate(['/end-game']);
     });
-
   }
 
   async onTimerFinished(e: CountdownEvent) {

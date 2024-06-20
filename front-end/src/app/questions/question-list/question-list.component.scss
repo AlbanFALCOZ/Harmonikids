@@ -29,8 +29,19 @@
   background-color: #f3f3f3;
   margin-left: 15%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
-  margin-top: 10px;
+  margin-top: 18px;
+  position: relative;
 }
+
+
+.progress-info {
+  position: absolute;
+  top: -20px;
+  transform: translateX(-1%);
+  font-size: 1em;
+  font-weight: bold;
+}
+
 
 .progress-bar {
   height: 20px;

@@ -29,12 +29,12 @@ export class MembreComponent {
     this.modeService.isDisabled$.subscribe(isDisabled => {
       this.isDisabled = isDisabled;
     });
+    console.log("Membre ID  " + this.memberId)
 
   }
 
   ngOnInit(): void {
   }
-
 
 
   onDeleteMembre() {

@@ -62,7 +62,7 @@ p {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .recommencer:hover {

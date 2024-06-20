@@ -192,5 +192,14 @@
 
       <div>
 
+      <div class="display-input">
+        <label for="image">Image :</label>
+        <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel name="name-changed" />
+        <div (click)="inputField.click()">
+          <ng-content />
+        </div>
+      </div>
+
+      <div>
         <button (click)="submitFormQuiz(form)" class="creerQuiz" [disabled]="form.invalid" type="submit">Créer le
           quiz</button>

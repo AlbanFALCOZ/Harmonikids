@@ -82,11 +82,8 @@ export class QuizListComponent implements OnInit {
   }
 
   quizSelected(quiz: Quiz): void {
-    // const quizQuestions = quiz.questions;
-    // this.questionService.updateQuestionsForQuiz(quizQuestions);
-    // const memberId = this.membreService.getMemberId();
-    // console.log("memberId",memberId);
-    // this.router.navigate(['/niveau', quiz.id]);
+    const quizQuestions = quiz.questions;
+    this.questionService.updateQuestionsForQuiz(quizQuestions);
   }
   
   editQuiz(quiz: Quiz): void {

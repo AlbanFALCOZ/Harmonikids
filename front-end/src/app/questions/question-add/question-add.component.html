@@ -160,8 +160,8 @@
                     </div>
                     <div class="display-input">
                         <label for="hintImageUrl">Indice (Image):</label>
-                        <input type="file" class="form-control" id="hintImageUrl" name="hintImageUrl">
-                    </div>
+                        <input type="file" class="form-control" id="hintImageUrl" name="hintImageUrl" (change)="onFileSelected($event, 'hintImageUrl')">
+                      </div>                      
                     <div class="display-input">
                         <label for="hintAudioUrl">Indice (Audio):</label>
                         <input type="file" class="form-control" id="hintAudioUrl" name="hintAudioUrl">
