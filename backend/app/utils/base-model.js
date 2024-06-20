@@ -44,6 +44,7 @@ module.exports = class BaseModel {
   }
 
   getByChildId(childId) {
+    console.log("In getByChildId");
     return this.items.filter((item) => item.childId === childId)
   }
 
