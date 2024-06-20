@@ -13,7 +13,7 @@
         <span *ngIf="!(membre && membre.image)" class="img"></span>
         <img *ngIf="membre && membre.image" [src]="membre.image" class="img">
         <div class="dropdown-menu" *ngIf="isUserMenuVisible">
-            <a [routerLink]="['/dashboard', memberId]">Profil</a>
+            <a [routerLink]="['/dashboard', memberId]" *ngIf="!isMembresListePage()">Profil</a>
             <a [routerLink]="['/statistiques', memberId]" *ngIf="!isDisabled">Statistiques</a>
             <a [routerLink]="['/configuration', memberId]" *ngIf="!isDisabled">Paramètres</a>
         </div>

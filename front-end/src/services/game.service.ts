@@ -83,7 +83,6 @@ export class GameService {
     }
 
     getGamesByChildId(childId: number): Promise<Game[]> {
-        console.log("In getGamesByChildId : childId", childId);
         const url = `${this.gameUrl}/gamesByChild/${childId}`;
         return this.http.get<Game[]>(url).pipe(
             tap(games => {

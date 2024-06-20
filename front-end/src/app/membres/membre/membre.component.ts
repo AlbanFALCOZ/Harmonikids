@@ -29,7 +29,6 @@ export class MembreComponent {
     this.modeService.isDisabled$.subscribe(isDisabled => {
       this.isDisabled = isDisabled;
     });
-    console.log("Membre ID  " + this.memberId)
 
   }
 
@@ -45,7 +44,7 @@ export class MembreComponent {
 
   onSelectMember(id: number) {
     this.membreService.setMemberId(id);
-    this.router.navigate(['/dashboard', id]);
+    this.router.navigate([this.isDisabled ? '/dashboard' : '/statistiques', id]);
   }
 
   displayModalUpdate() {

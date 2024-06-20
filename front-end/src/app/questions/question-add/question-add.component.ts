@@ -80,7 +80,6 @@ export class QuestionAddComponent {
     }
 
     this.http.post('/api/quizzes/' + this.question.quizId + '/questions', formData).subscribe(response => {
-      console.log(response);
       this.displayForm = false;
     });
   }

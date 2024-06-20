@@ -68,6 +68,13 @@ export class QuizAddComponent implements OnInit {
     }
   }
 
+  removeAnswer() {
+    if (this.answers.length > 2) {
+      this.answers.pop();
+      this.correctAnswers.pop();
+    }
+  }
+
   hasMoreThanTwoAnswers(): boolean {
     return this.answerList.length >= 2;
   }
@@ -78,6 +85,10 @@ export class QuizAddComponent implements OnInit {
       const inputElement = document.getElementById(`ReponseText${i}`) as HTMLInputElement;
       const checkboxElement = document.getElementById(`checkbox${i}`) as HTMLInputElement;
       if (inputElement) {
+        if (inputElement.value == '') {
+          this.displayMessage('Une réponse est vide');
+          return;
+        }
         const newAnswer: Answer = {
           value: inputElement.value,
           isCorrect: checkboxElement.checked,
@@ -87,6 +98,10 @@ export class QuizAddComponent implements OnInit {
       } else {
         console.error(`Element with ID "ReponseText${i}" or checkbox "checkbox${i}" not found.`);
       }
+    }
+    if (!this.hasCorrectAnswer()) {
+      this.displayMessage('Au moins une réponse correcte est requise.');
+      return;
     }
     this.toggleAnswerAdd();
     this.displayMessage('Les réponses ont été ajoutée à la question');
@@ -210,14 +225,34 @@ export class QuizAddComponent implements OnInit {
     this.displayFormDelete = !this.displayFormDelete;
   }
 
+  hasCorrectAnswer(): boolean {
+    return this.answerList.some(answer => answer.isCorrect === true);
+  }
+
+  hasNoAnswerEmpty(): boolean {
+    return this.answerList.some((answer) => answer.value === "");
+  }
+
   submitFormQuestion(form: NgForm): void {
     const label = form.value.label;
-    const typeOfQuestion = form.value.typeOfQuestion;
+    const typeOfQuestion = QuestionType.MultipleChoice;
     const niveau = form.value.niveau;
     const image = this.src;
     const quizId = form.value.quizId;
     const hint = this.hint || this.src;
     const answers = this.answerList;
+    
+    if (hint.text === "") {
+      this.displayMessage("Vous n'avez pas ajouté d'indice");
+      return ;
+    }
+
+
+    if (answers.length == 0 || !this.hasCorrectAnswer() || !this.hasMoreThanTwoAnswers()) {
+      this.displayMessage("Vous n'avez pas créé de questions");
+      return ;
+    }
+
     if (form.valid) {
       const newQuestion: Question = {
         label: label,
@@ -326,6 +361,7 @@ export class QuizAddComponent implements OnInit {
         },
         (error) => {
           console.error('Error creating quiz:', error);
+          this.displayMessage("Problème lors de la création du quiz, ce dernier n'est sûrement pas jouable");
         }
       );
       

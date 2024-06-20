@@ -29,7 +29,6 @@ export class HistoriqueComponent implements OnInit {
 
   ngOnInit(): void {
     this.memberId = this.membreService.getMemberId();
-    console.log("In ngOnInit of historique: this.memberId", this.memberId);
     this.gameService.getGamesByChildId(this.memberId).then(games => {
       this.games = games;
     });

@@ -5,9 +5,7 @@ const GameManager = require('./manager');
 const router = Router();
 
 router.post('/', async (req, res) => {
-    console.log("In game POST");
     try {
-        console.log("req.body : ", req.body);
         const game = await GameManager.saveGame(req.body);
         res.status(201).send(game);
     } catch (error) {
@@ -61,11 +59,8 @@ router.delete('/:id', async (req, res) => {
 
 router.get('/gamesByChild/:childId', async (req, res) => {
     try {
-        console.log("req.body : ", req.body);
         const childId = parseInt(req.params.childId);
-        console.log("In game index.js router get : childId : ", childId);
         const childGames = await GameManager.getGamesByChild(childId);
-        console.log("In game index.js router get : childGames : ", childGames);
         res.send(childGames);
     } catch (error) {
         manageAllErrors(res, error);
