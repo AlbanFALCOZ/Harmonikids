@@ -8,6 +8,7 @@ import { NavbarService } from 'src/services/navbar.service';
 import { ModeService } from 'src/services/mode-ergo.service';
 import { Theme } from 'src/models/theme.model';
 import { ThemeService } from 'src/services/theme.service';
+import { MembreService } from 'src/services/membre.service';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class QuizListComponent implements OnInit {
 
   themeList: Theme[] = [];
 
-  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService, public questionService: QuestionService, private navbarService: NavbarService, private modeService: ModeService, private themeService: ThemeService, public route: ActivatedRoute) {
+  constructor(private router: Router, public quizService: QuizService, public titleService: TitleService, public questionService: QuestionService, private navbarService: NavbarService, private modeService: ModeService, private themeService: ThemeService, public route: ActivatedRoute, private membreService: MembreService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
       this.quizListDisplayed = quizzes;
@@ -81,8 +82,11 @@ export class QuizListComponent implements OnInit {
   }
 
   quizSelected(quiz: Quiz): void {
-    const quizQuestions = quiz.questions;
-    this.questionService.updateQuestionsForQuiz(quizQuestions);
+    // const quizQuestions = quiz.questions;
+    // this.questionService.updateQuestionsForQuiz(quizQuestions);
+    // const memberId = this.membreService.getMemberId();
+    // console.log("memberId",memberId);
+    // this.router.navigate(['/niveau', quiz.id]);
   }
   
   editQuiz(quiz: Quiz): void {

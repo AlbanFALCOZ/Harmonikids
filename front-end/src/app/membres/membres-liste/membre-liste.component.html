@@ -11,7 +11,7 @@
   </div>
 
   <div class="content-membre">
-    <app-membre *ngFor="let membre of membreListeDisplayed" [membre]="membre" (click)="onSelectMember(membre.id)"></app-membre>
+    <app-membre *ngFor="let membre of membreListeDisplayed" [membre]="membre"></app-membre>
 
     <div class="add-card" *ngIf="!isDisabled">
       <p>Ajouter un nouvel enfant</p>
@@ -53,7 +53,7 @@
       </div>
       <div class="display-input">
         <label for="image">Image :</label>
-        <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel/>
+        <input #inputField type="file" accept="image/*" (change)="valueChanged($any($event.target).files)" ngModel/>
         <div (click)="inputField.click()">
             <ng-content />
         </div>

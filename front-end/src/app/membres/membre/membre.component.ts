@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class MembreComponent {
 
-  
+
   @Input()
 
 
@@ -33,9 +33,6 @@ export class MembreComponent {
   }
 
 
-  onSelectMembre(id: number): void {
-    this.membreService.setMemberId(id);
-  }
 
   onDeleteMembre() {
     if (this.membre) {
@@ -43,7 +40,10 @@ export class MembreComponent {
     }
   }
 
-
+  onSelectMember(id: number) {
+    this.membreService.setMemberId(id);
+    this.router.navigate(['/dashboard', id]);
+  }
 
 }
 

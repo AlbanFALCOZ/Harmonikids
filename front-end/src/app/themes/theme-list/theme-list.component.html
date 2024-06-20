@@ -12,7 +12,7 @@
         </button>
     </div>
     <div class="content-theme">
-        <app-theme *ngFor="let theme of themeListDisplayed" [theme]="theme" (click)="themeSelected(theme)"
+        <app-theme *ngFor="let theme of themeListDisplayed" [theme]="theme"
             (editTheme)="editTheme($event)" (themeToDelete)="addThemeToDelete($event)" [isDisabled]="isDisabled" >
 
         </app-theme>

@@ -62,13 +62,7 @@ export class MembreListeComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  
 
-  onSelectMember(id: number) {
-    console.log("Test");
-    this.membreService.setMemberId(id);
-    this.router.navigate(['/dashboard', id]);
-  }
 
  
 
