@@ -7,8 +7,6 @@ export class ErgoModeFixture extends E2EComponentFixture {
     }
 
     async activateErgoMode(password: string) {
-        const modeButtonOn=this.page.getByRole('button', { name: 'Mode Ergo : On' })
-        await modeButtonOn.click();
         const modeButton=this.page.getByRole('button', { name: 'Mode Ergo : Off' })
         await modeButton.click();
         const ergoOn=this.page.locator('input[placeholder="Mot de passe"]')
@@ -34,7 +32,7 @@ export class ErgoModeFixture extends E2EComponentFixture {
     }
 
     async goConfig() {
-        const goConf = this.page.getByText('account_circle');
+        const goConf = this.page.locator('app-navbar span');
         return await goConf.click();
     }
 
