@@ -9,7 +9,7 @@ services:
     volumes:
       - my_volume:/var/lib/xyz
     environment:
-      - NODE_ENV=production
+      - ENV=production
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8081/api/status"]
       interval: 1m30s
