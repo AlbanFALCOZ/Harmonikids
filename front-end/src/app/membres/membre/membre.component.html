@@ -1,24 +1,17 @@
-<div class="card" *ngIf="membre">
+<div class="card" *ngIf="membre" (click)="onSelectMembre(membre.id)">
   <div class="card-header">
     <img [src]="membre.image ? membre.image : 'assets/img/no-photo.png'" alt="Member Image">
     <div>
       <p>Nom : {{membre.lastName}}</p>
-      <p>Prenom : {{membre.firstName}}</p>
+      <p>Prénom : {{membre.firstName}}</p>
       <p>Âge : {{membre.age}} ans</p>
-
     </div>
   </div>
   <div class="card-footer">
     <p>{{membre.description}}</p>
   </div>
-
   <div class="membre-card-button">
-
-    <button (click)="onSelectMembre(membre.id)">
-      <a [routerLink]="['/dashboard', membre.id]">Choisir</a>
-    </button>
     <button (click)="onDeleteMembre()" *ngIf="!isDisabled">Supprimer</button>
-
   </div>
 
 </div>

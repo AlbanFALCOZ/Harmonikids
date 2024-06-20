@@ -63,7 +63,12 @@ export class MembreListeComponent implements OnInit {
     
   }
   
- 
+
+  onSelectMember(id: number) {
+    console.log("Test");
+    this.membreService.setMemberId(id);
+    this.router.navigate(['/dashboard', id]);
+  }
 
  
 

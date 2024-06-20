@@ -11,7 +11,7 @@
   </div>
 
   <div class="content-membre">
-    <app-membre *ngFor="let membre of membreListeDisplayed" [membre]="membre"></app-membre>
+    <app-membre *ngFor="let membre of membreListeDisplayed" [membre]="membre" (click)="onSelectMember(membre.id)"></app-membre>
 
     <div class="add-card" *ngIf="!isDisabled">
       <p>Ajouter un nouvel enfant</p>

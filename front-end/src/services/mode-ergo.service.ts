@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
     providedIn: 'root'
 })
 export class ModeService {
-    private disabledSource = new BehaviorSubject<boolean>(false);
+    private disabledSource = new BehaviorSubject<boolean>(true);
     isDisabled$ = this.disabledSource.asObservable();
 
     toggleMode() {
