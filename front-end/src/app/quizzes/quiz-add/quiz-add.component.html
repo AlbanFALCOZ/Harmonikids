@@ -99,7 +99,7 @@
             </div>
             <div class="display-input">
               <label for="image">Image :</label>
-              <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel name="image" />
+              <input #inputField type="file" accept="image/*" (change)="valueChanged($any($event.target).files)" ngModel name="image" />
               <div (click)="inputField.click()">
                 <ng-content></ng-content>
               </div>
@@ -184,7 +184,7 @@
 
       <div class="display-input">
         <label for="image">Image :</label>
-        <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel name="name-changed" />
+        <input #inputField type="file" accept="image/*" (change)="valueChanged($any($event.target).files)" ngModel name="name-changed" />
         <div (click)="inputField.click()">
           <ng-content />
         </div>

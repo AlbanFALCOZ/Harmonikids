@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { unescape } from 'querystring';
 import { Membre } from 'src/models/membre.model';
 import { ColorService } from 'src/services/color-service.service';
@@ -18,7 +18,6 @@ import { SonService } from 'src/services/sound.service';
 export class NavbarComponent implements OnInit {
 
 
-
   
   memberId: number | undefined;
   isNavVisible = false;
@@ -35,7 +34,8 @@ export class NavbarComponent implements OnInit {
     private navbarService: NavbarService, 
     private modeService: ModeService, 
     private questionService: QuestionService, 
-    private sonService: SonService
+    private sonService: SonService,
+    firstNameField: ElementRef<HTMLInputElement>
   ) {
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
@@ -44,7 +44,6 @@ export class NavbarComponent implements OnInit {
     this.modeService.isDisabled$.subscribe(isDisabled => {
       this.isDisabled = isDisabled;
     });
-    console.log("NavBar" + this.membre)
    
     
   }
@@ -78,6 +77,10 @@ export class NavbarComponent implements OnInit {
   }
 
   toggleMode() {
+    if (this.isDisabled && this.showPasswordPrompt) {
+      this.showPasswordPrompt = false;
+      return;
+    }
     if (!this.isDisabled) {
       this.modeService.toggleMode();
     } else {
@@ -90,6 +93,7 @@ export class NavbarComponent implements OnInit {
   }
 
   submitPassword() {
+
     if (this.password === 'admin') {
       this.modeService.toggleMode();
       this.showPasswordPrompt = false;

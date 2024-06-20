@@ -23,9 +23,7 @@ router.get('/:userId', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  console.log("In post user");
   try {
-    console.log("In if post user");
     const user = User.create({ ...req.body })
     res.status(201).json(user)
   } catch (err) {

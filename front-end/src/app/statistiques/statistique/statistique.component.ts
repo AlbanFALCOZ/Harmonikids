@@ -76,7 +76,6 @@ export class StatistiqueComponent implements OnInit {
           this.score = game.score;
         }
       });
-      console.log("2", this.games);
     });
 
     this.membreService.membres$.subscribe(membre => {
@@ -93,7 +92,6 @@ export class StatistiqueComponent implements OnInit {
         this.games.forEach(game => {
           this.gameMap[game.quizId] = game;
         });
-        console.log("2", this.games);
       });
 
       this.membreService.membres$.subscribe(membre => {

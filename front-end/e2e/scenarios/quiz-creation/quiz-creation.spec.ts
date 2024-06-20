@@ -8,7 +8,6 @@ test.describe('Initial test display', () => {
     await page.goto(quizListUrl);
     const appComponentFixture = new AppFixtureQuizAdd(page);
     const bouton = appComponentFixture.getAddButton();
-    console.log(bouton);
     await bouton.click()
     appComponentFixture.clickOnShowButton();
     const titre = page.getByLabel('Titre du quiz:')

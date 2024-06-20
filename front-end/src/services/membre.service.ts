@@ -47,7 +47,6 @@ export class MembreService {
   }
 
   addMembre(newMember: Membre) {
-    console.log("In add membre");
     this.http.post<Membre>(this.membreUrl, newMember, this.httpOptions).subscribe(() => this.retrieveMembres());
   }
 
@@ -95,7 +94,6 @@ export class MembreService {
   
   setMembre(membre: Membre | null): void {
     if (membre !== null) {
-      console.log("Membre is setMembre" + membre)
         this.membre = membre; 
     } 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Membre } from '../../../models/membre.model';
 import { MembreService } from 'src/services/membre.service';
 import { ModeService } from 'src/services/mode-ergo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-membre',
@@ -10,6 +11,7 @@ import { ModeService } from 'src/services/mode-ergo.service';
 })
 export class MembreComponent {
 
+
   @Input()
 
 
@@ -17,15 +19,16 @@ export class MembreComponent {
   memberId: number | undefined;
   isDisabled: boolean = false;
 
+  @Output()
+  membreToDelete: EventEmitter<Membre> = new EventEmitter<Membre>();
 
 
-  constructor(private membreService: MembreService, private modeService: ModeService) {
-    console.log("*******Membre component**********")
+
+  constructor(private membreService: MembreService, private modeService: ModeService, private router: Router) {
     this.memberId = this.membreService.getMemberId();
     this.modeService.isDisabled$.subscribe(isDisabled => {
       this.isDisabled = isDisabled;
     });
-    console.log("Membre ID  " + this.memberId)
 
   }
 
@@ -33,19 +36,40 @@ export class MembreComponent {
   }
 
 
-  onSelectMembre(id: number): void {
-    console.log("Membre ID 2" + id)
-    console.log("On select membre ID   *****")
-    this.membreService.setMemberId(id);
-    console.log("Memeber ID" + this.membreService.getMemberId())
-  }
 
   onDeleteMembre() {
     if (this.membre) {
-      this.membreService.deleteMember(this.membre);
+      this.membreToDelete.emit(this.membre);
     }
   }
 
+  onSelectMember(id: number) {
+    this.membreService.setMemberId(id);
+    this.router.navigate(['/dashboard', id]);
+  }
+
+  displayModalUpdate() {
+    // this.membreToDelete.emit(this.membre);
+    var modal = document.getElementById("myModalUpdate");
+    if (modal) {
+      modal.style.display = "block";
+
+      window.onclick = function (event) {
+        if (event.target == modal && (modal)) {
+          modal.style.display = "none";
+        }
+      }
+    }
+  }
+
+  closeModalDelete() {
+
+    var modal = document.getElementById("myModalDelete");
+    if (modal) {
+      modal.style.display = "none";
+    }
+
+  }
 
 
 }

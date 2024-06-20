@@ -21,12 +21,12 @@
   </div>
 
   <div class="content-quiz">
-    <app-quiz *ngFor="let quiz of quizListDisplayed" [quiz]="quiz" (quizSelected)="quizSelected($event)"
+    <app-quiz *ngFor="let quiz of quizListDisplayed" [quiz]="quiz" 
       (editQuiz)="editQuiz($event)" (quizToDelete)="addQuizToDelete($event)" [isDisabled]="isDisabled">
 
     </app-quiz>
 
-    <app-quiz-add ></app-quiz-add>
+    <app-quiz-add *ngIf="!isDisabled"></app-quiz-add>
   </div>
 
   <app-quiz-edit [quiz]="quizToEdit"></app-quiz-edit>

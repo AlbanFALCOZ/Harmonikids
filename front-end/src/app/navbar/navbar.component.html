@@ -21,6 +21,6 @@
   </div>
 </div>
 <div *ngIf="showPasswordPrompt" class="password-prompt">
-  <input type="password" [(ngModel)]="password" placeholder="Mot de passe">
+  <input type="password" [(ngModel)]="password" placeholder="Mot de passe" (keyup.enter)="submitPassword()">
   <button (click)="submitPassword()">Se connecter</button>
 </div>

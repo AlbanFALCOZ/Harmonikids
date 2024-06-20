@@ -90,7 +90,6 @@ export class QuizAddComponent implements OnInit {
     }
     this.toggleAnswerAdd();
     this.displayMessage('Les réponses ont été ajoutée à la question');
-    console.log('answerList:', this.answerList);
   }
 
   getInputValueById(id: string): string | undefined {
@@ -129,7 +128,6 @@ export class QuizAddComponent implements OnInit {
     const quizDescription = form.value.quizDescription;
     const quizQuestions = this.newQuizQuestionList;
     const quizImage = this.src;
-    console.log(quizTitle, quizTheme, quizDescription, quizImage);
     form.resetForm();
     this.closeModal();
   }
@@ -144,16 +142,12 @@ export class QuizAddComponent implements OnInit {
   }
 
   toggleQuiz() {
-    console.log(this.questionList)
     this.showQuizzes = !this.showQuizzes;
-    console.log(this.showQuizzes)
   }
 
   selectQuiz(quiz: any) {
-    console.log(this.showQuizzes)
     this.selectedQuiz = quiz;
     this.showQuestionPopup = !this.showQuestionPopup;
-    console.log("le probleme est apres le set des quiz")
     this.selectedQuestions.clear();
 
   }
@@ -218,14 +212,12 @@ export class QuizAddComponent implements OnInit {
 
   submitFormQuestion(form: NgForm): void {
     const label = form.value.label;
-    console.log("label" + label)
     const typeOfQuestion = form.value.typeOfQuestion;
     const niveau = form.value.niveau;
     const image = this.src;
     const quizId = form.value.quizId;
     const hint = this.hint || this.src;
     const answers = this.answerList;
-    console.log("Question niveau : ", niveau);
     if (form.valid) {
       const newQuestion: Question = {
         label: label,
@@ -239,7 +231,6 @@ export class QuizAddComponent implements OnInit {
       };
 
       this.newQuizQuestionList.push(newQuestion);
-      console.log(this.newQuizQuestionList[0]);
       this.answers = ['', '']
       this.answerList = [];
       this.hint = { text: '', imageUrl: '' };
@@ -279,9 +270,7 @@ export class QuizAddComponent implements OnInit {
         return;
       }
       this.toggleHintAdd();
-      console.log('Nouveau hint :', this.hint);
     } else {
-      console.error('Element with ID "hintText" not found.');
       return;
     }
   }
@@ -292,9 +281,6 @@ export class QuizAddComponent implements OnInit {
     const quizDescription = form.value.quizDescription;
     const quizImage = this.src || 'a';
     const selectedQuestions = this.newQuizQuestionList;
-    console.log("QuestionSelected" + selectedQuestions);
-    console.log("QuestionSelected length" + selectedQuestions.length);
-    console.log("QuestionSelected" + selectedQuestions)
 
     if (form.valid) {
       const newQuiz: Quiz = {
@@ -308,7 +294,6 @@ export class QuizAddComponent implements OnInit {
 
         id: 0
       };
-      console.log("La liste des questions newQuizList" + this.newQuizQuestionList)
 
       this.quizService.addQuiz(newQuiz).subscribe(
         (createdQuiz) => {
@@ -327,7 +312,6 @@ export class QuizAddComponent implements OnInit {
             this.questionService.createQuestion(quizId, questionToCreate).subscribe(
               (createdQuestion) => {
                 this.newQuizQuestionList.push(createdQuestion);
-                console.log("Created question:", createdQuestion);
                 this.displayMessage('Le quiz a été créé avec succès');
                 this.reloadPageAfterDelay();
               },
@@ -346,7 +330,6 @@ export class QuizAddComponent implements OnInit {
       );
       
       this.closeModal();
-      console.log(newQuiz.id);
       form.resetForm();
     }
   }
@@ -354,7 +337,6 @@ export class QuizAddComponent implements OnInit {
   updateQuestionQuizId(questionId: number, newQuizId: number): void {
     this.questionService.updateQuestionQuizId(questionId, newQuizId).subscribe(
       (updatedQuestion) => {
-        console.log(`Question quizId updated successfully: ${updatedQuestion.quizId}`);
 
       },
       (error) => {

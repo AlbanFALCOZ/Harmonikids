@@ -1,7 +1,9 @@
 // quiz.component.ts
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { QuestionService } from 'src/services/question.service';
+import { MembreService } from 'src/services/membre.service';
 
 @Component({
     selector: 'app-quiz',
@@ -26,17 +28,21 @@ export class QuizComponent implements OnInit {
     @Output()
     quizToDelete: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
-    constructor(private route: ActivatedRoute) { 
+    constructor(private route: ActivatedRoute, private questionService: QuestionService, private membreService: MembreService, private router: Router) { 
 
     }
 
     ngOnInit(): void {
-        console.log(this.quiz);
         this.memberId = this.route.snapshot.params['id'];
     }
 
     selectQuiz(): void {
         this.quizSelected.emit(this.quiz);
+        const quizQuestions = this.quiz.questions;
+        this.questionService.updateQuestionsForQuiz(quizQuestions);
+        const memberId = this.membreService.getMemberId();
+        console.log("memberId : ", memberId);
+        this.router.navigate(['/niveau', this.quiz.id]);
     }
 
     displayModalUpdate() {
