@@ -1,6 +1,7 @@
 const GameModel = require('../../models/game.model');
 
 const saveGame = async (gameData) => {
+    console.log(" In saveGame");
     return await GameModel.create(gameData);
 };
 

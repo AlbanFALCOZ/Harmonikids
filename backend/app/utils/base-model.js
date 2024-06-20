@@ -48,6 +48,7 @@ module.exports = class BaseModel {
   }
 
   create(obj = {}) {
+    console.log("In createObj");
     console.log("OBJ : ", obj)
     const item = { ...obj, id: Date.now() }
     console.log("item : ", item)

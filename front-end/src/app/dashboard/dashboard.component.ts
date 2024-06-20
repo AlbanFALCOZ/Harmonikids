@@ -33,6 +33,7 @@ export class DashboardComponent implements OnInit {
       this.memberId=this.membreService.getMemberId();
       this.route.params.subscribe(params => {
         this.memberId = params['id'];
+        
         this.membreService.setMemberId(this.memberId);
         this.membreService.setImage(this.membreService.getImageById(this.memberId))
         this.membreService.membres$.subscribe(members => {
@@ -52,8 +53,11 @@ export class DashboardComponent implements OnInit {
               }
 
   ngOnInit() {
+    
     this.route.params.subscribe(params => {
       this.memberId = parseInt(params['id']);
+      
+      this.membreService.setMemberId(this.memberId);
       this.membreService.membres$.subscribe(members => {
         if(members.length > 0){
           this.welcomeMessage = this.membreService.getWelcomeMessage(this.memberId)
@@ -61,7 +65,7 @@ export class DashboardComponent implements OnInit {
         
       })
 
-      this.membreService.setMemberId(this.memberId);
+      
       
      
     });

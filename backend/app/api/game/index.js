@@ -5,7 +5,9 @@ const GameManager = require('./manager');
 const router = Router();
 
 router.post('/', async (req, res) => {
+    console.log("In game POST");
     try {
+        console.log("req.body : ", req.body);
         const game = await GameManager.saveGame(req.body);
         res.status(201).send(game);
     } catch (error) {
@@ -14,7 +16,9 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
+    console.log("In game GET");
     try {
+        console.log("req.body : ", req.body);
         const games = await GameManager.getGames();
         res.send(games);
     } catch (error) {
@@ -23,7 +27,9 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
+    console.log("In game GET ID");
     try {
+        console.log("req.body : ", req.body);
         const game = await GameManager.getGame(req.params.id);
         res.send(game);
     } catch (error) {
@@ -32,7 +38,9 @@ router.get('/:id', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
+    console.log("In game PUT ID");
     try {
+        console.log("req.body : ", req.body);
         const game = await GameManager.updateGame(req.params.id, req.body);
         res.send(game);
     } catch (error) {
@@ -41,7 +49,9 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
+    console.log("In game DELETE ID");
     try {
+        console.log("req.body : ", req.body);
         await GameManager.deleteGame(req.params.id);
         res.sendStatus(200);
     } catch (error) {
@@ -50,9 +60,13 @@ router.delete('/:id', async (req, res) => {
 });
 
 router.get('/gamesByChild/:childId', async (req, res) => {
+    console.log("childId: : ", childId);
     try {
+        console.log("req.body : ", req.body);
         const childId = parseInt(req.params.childId);
+        console.log("In game index.js router get : childId : ", childId);
         const childGames = await GameManager.getGamesByChild(childId);
+        console.log("In game index.js router get : childGames : ", childGames);
         res.send(childGames);
     } catch (error) {
         manageAllErrors(res, error);
