@@ -47,25 +47,6 @@
       </label>
     </div>
   </div>
-
-
-    <div class="dropdown-container-theme">
-    <h2>Filtrer les questions</h2>
-  </div>
-  
-  <div class="checkbox-container-question" style="max-height: 62px; overflow-y: auto;">
-    <div *ngFor="let question of questionListTemp">
-      <label>
-        <input type="checkbox" [value]="question.typeOfQuestion" [checked]="isCheckedQuestions(question.typeOfQuestion)" (change)="onChangeQuestion($event, question.typeOfQuestion)">
-        {{ question.typeOfQuestion }}
-      </label>
-    </div>
-  </div>
-
-
-  
-
-</div>
 </div>
 
 <div class = "Personnalisation">
