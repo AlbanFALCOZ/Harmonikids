@@ -1,24 +1,30 @@
 <div class="card" *ngIf="membre">
-  <div class="card-header">
-    <img [src]="membre.image ? membre.image : 'assets/img/no-photo.png'" alt="Member Image">
-    <div>
-      <p>Nom : {{membre.lastName}}</p>
-      <p>Prenom : {{membre.firstName}}</p>
-      <p>Âge : {{membre.age}} ans</p>
-
+  <div (click)="onSelectMember(membre.id)">
+    <div class="card-header">
+      <img [src]="membre.image ? membre.image : 'assets/img/no-photo.png'" alt="Member Image">
+      <div>
+        <p>Nom : {{membre.lastName}}</p>
+        <p>Prénom : {{membre.firstName}}</p>
+        <p>Âge : {{membre.age}} ans</p>
+      </div>
+    </div>
+    <div class="card-footer">
+      <p>{{membre.description}}</p>
     </div>
   </div>
-  <div class="card-footer">
-    <p>{{membre.description}}</p>
-  </div>
-
+  
   <div class="membre-card-button">
-
-    <button (click)="onSelectMembre(membre.id)">
-      <a [routerLink]="['/dashboard', membre.id]">Choisir</a>
-    </button>
-    <button (click)="onDeleteMembre()" *ngIf="!isDisabled">Supprimer</button>
-
+    <button (click)="displayModalUpdate()" *ngIf="!isDisabled">Supprimer</button>
   </div>
+</div>
 
+<div id="myModalUpdate" class="modal_delete">
+  <div class="modal-content-suppression">
+    <span class="close material-icons" (click)="closeModalDelete()">close</span>
+    <p>Êtes vous sûr de vouloir supprimer cet membre ?</p>
+    <div class="delete-btn">
+      <button type="reset" class="btnCancel" (click)="closeModalDelete()">Annuler</button>
+      <button type="submit" class="btnValid" (click)="onDeleteMembre()">Valider</button>
+    </div>
+  </div>
 </div>

@@ -42,17 +42,12 @@ export class StatistiqueService {
 
     getProgressData(): Observable<{ categories: string[], childProgress: number[], averageProgress: number[] }> {
         const categories: string[] = ['Semaine 1', 'Semaine 2', 'Semaine 3', 'Semaine 4'];
-
         const childGames = this.games.filter(game => game.childId === this.memberId);
         const childProgress: number[] = childGames.map(game => game.correctFirstAttemptCount);
 
         const otherGames = this.games.filter(game => game.childId !== this.memberId);
         const totalCorrectFirstAttempts = otherGames.reduce((total, game) => total + game.correctFirstAttemptCount, 0);
         const averageProgress: number[] = Array(categories.length).fill(totalCorrectFirstAttempts / categories.length);
-
-        console.log("Child Progress:", childProgress);
-        console.log("Average Progress:", averageProgress);
-
         return new Observable(observer => {
             observer.next({ categories, childProgress, averageProgress });
             observer.complete();

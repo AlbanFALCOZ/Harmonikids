@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Game } from 'src/models/game.model';
+import { Membre } from 'src/models/membre.model';
 
 @Component({
   selector: 'app-profil-card-stat',
@@ -11,19 +13,22 @@ export class ProfilCardStatComponent {
   memberAge = 8;
   numberOfStars = 1000;  
 
+  @Input() membre!: Membre;
 
-  // membres: Membre[] = [];  
-  // membre: Membre | undefined;
-  // selectedMemberId: number | undefined = 0;
+  @Input() score?: number | undefined;
+
+  constructor() { }
+
+  ngOnInit(): void {
+    if (this.score) {
+    }
+  }
+
+  ngOnChanges(): void {
+    if (this.score) {
+    }
+  }
 
   // constructor(private membreService: MembreService) {
-  //   this.selectedMemberId = this.membreService.getMemberId(); 
-
-  //   this.membreService.membres$.subscribe((membres: Membre[]) => {
-  //     this.membres = membres;
-  //     this.membre = this.membres.find(membre => membre.id === this.selectedMemberId);
-  //     console.log("Membre", this.membre);
-      
-  //   });
-
+  //   this.selectedMemberId = this.membreService.getMemberId(); }
 }

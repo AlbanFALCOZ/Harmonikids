@@ -99,7 +99,7 @@
             </div>
             <div class="display-input">
               <label for="image">Image :</label>
-              <input #inputField type="file" (change)="valueChanged($any($event.target).files)" ngModel name="image" />
+              <input #inputField type="file" accept="image/*" (change)="valueChanged($any($event.target).files)" ngModel name="image" />
               <div (click)="inputField.click()">
                 <ng-content></ng-content>
               </div>
@@ -172,20 +172,25 @@
                   <div *ngIf="answers.length < 4" >
                     <button type="button" (click)="addAnswer()">Ajouter une autre réponse</button><br>
                   </div>
-                 
                   <button type="button" (click)="answerListAdd()">Valider</button><br>
-                
                 </div>
-
               </div>
-
-
             </div>
             <button type="submit" class="btn btn-primary">Ajouter</button>
           </form>
         </div>
       </div>
 
+
+      <div class="display-input">
+        <label for="image">Image :</label>
+        <input #inputField type="file" accept="image/*" (change)="valueChanged($any($event.target).files)" ngModel name="name-changed" />
+        <div (click)="inputField.click()">
+          <ng-content />
+        </div>
+      </div>
+
+      <div>
 
       <div class="display-input">
         <label for="image">Image :</label>
@@ -196,6 +201,5 @@
       </div>
 
       <div>
-
         <button (click)="submitFormQuiz(form)" class="creerQuiz" [disabled]="form.invalid" type="submit">Créer le
           quiz</button>

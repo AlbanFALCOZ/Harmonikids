@@ -18,17 +18,16 @@ export class NiveauCardComponent {
 
   onNiveauSelected(niveauName: string): void {
     niveauName = niveauName.toLocaleLowerCase();
-    console.log("onNiveauSelected : ", niveauName);
     this.niveauSelected.emit(niveauName);
-    this.questions.forEach((question) => console.log(question.name, question.niveau));
-    console.log("Questions length : ", this.questions.length);
     let filteredQuestions = this.questions;
     if (niveauName === 'facile') {
         filteredQuestions = this.questions.filter(question => question.niveau === 'Facile');
     } else if (niveauName === 'moyen') {
         filteredQuestions = this.questions.filter(question => question.niveau === 'Facile' || question.niveau === 'Moyen');
     }
-    console.log("Filtered questions by level length : ", filteredQuestions.length);
+    if (filteredQuestions.length == 0) {
+      filteredQuestions.push(this.questions.at(0));
+    }
     this.quizService.setFilteredQuestions(filteredQuestions);
     this.quizService.setLevel(niveauName);
 }

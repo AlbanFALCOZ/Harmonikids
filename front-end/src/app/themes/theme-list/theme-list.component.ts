@@ -47,15 +47,14 @@ export class ThemeListComponent implements OnInit {
   }
 
   themeSelected(theme: Theme): void {
-  this.router.navigate(['/quiz-list'], { queryParams: { theme: theme.name } });
-}
+    this.router.navigate(['/quiz-list'], { queryParams: { theme: theme.name } });
+  }
 
   editTheme(theme: Theme): void {
     this.router.navigate(['/edit-theme/' + theme.name]);
   }
 
   addThemeToDelete(theme: Theme): void {
-    console.log('theme to delete:', theme);
     this.themeToDelete = theme;
   }
 
@@ -73,6 +72,6 @@ export class ThemeListComponent implements OnInit {
     this.themeListDisplayed = this.themeList.filter(theme => theme.name.toLowerCase().includes(event.target.value.toLowerCase()));
   }
 
-  
+
 
 }

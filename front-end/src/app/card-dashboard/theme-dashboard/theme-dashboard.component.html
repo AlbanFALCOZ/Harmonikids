@@ -1,5 +1,4 @@
-<a routerLink="/quiz-list">
-<div class="theme-card" *ngIf="theme">
+<div class="theme-card" *ngIf="theme" (click)="onThemeSelected()">
     <div class="theme-card-header">
         <img src="{{ theme.image }}" alt="animaux">
         <p>{{ theme.name }}</p>
@@ -9,6 +8,3 @@
     </div>
 
 </div>
-
-
-</a>

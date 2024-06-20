@@ -29,11 +29,8 @@ export class HistoriqueComponent implements OnInit {
 
   ngOnInit(): void {
     this.memberId = this.membreService.getMemberId();
-    console.log("Member ID:", this.memberId);
-
     this.gameService.getGamesByChildId(this.memberId).then(games => {
       this.games = games;
-      console.log("Filtered games:", this.games);
     });
 
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
@@ -42,7 +39,6 @@ export class HistoriqueComponent implements OnInit {
 
     this.questionService.questions$.subscribe(questions => {
       this.questions = questions;
-      console.log("Questions:", this.questions);
     });
   }
 

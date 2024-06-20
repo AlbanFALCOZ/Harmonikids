@@ -9,7 +9,7 @@
     <progress class="progress-bar" [value]="currentQuestionIndex + 1" [max]="questionList.length"></progress>
   </div>
 
-  <div class="countdown-timer" *ngIf="niveau === 'Difficile'">
+  <div class="countdown-timer" *ngIf="niveau === 'difficile'">
     <p class="text-timer">Temps restant pour le quiz : </p>
     <countdown class="timer" [config]="{leftTime: questionList.length > 0 ? (45 * questionList.length) : 30, format: 'm:s'}" (event)="onTimerFinished($event)"></countdown>
   </div>
@@ -66,12 +66,12 @@
     Bravo ! Tu as trouvé la bonne réponse !
   </div>
 
-  <div class="messageFailure" *ngIf="showFailureMessage">
+  <div class="messageFailure" *ngIf="showFailureMessage && !isIndiceActif">
     T'y étais presque ! Courage, des étoiles à gagner t'attendent !
   </div>
 
   <div *ngIf="showFailureMessage && (hintText || hintImageUrl)" class="hint">
-    <p *ngIf="hintText">{{ hintText }}</p>
-    <img *ngIf="hintImageUrl" [src]="hintImageUrl" alt="Indice">
+    <p *ngIf="hintText && isIndiceActif">Indice : {{ hintText }}</p>
+    <img *ngIf="hintImageUrl && isIndiceActif" [src]="hintImageUrl" alt="Indice">
   </div>
 </div>

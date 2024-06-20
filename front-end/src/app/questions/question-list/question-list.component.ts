@@ -42,6 +42,7 @@ export class QuestionListComponent implements OnInit {
   correctAnswersSecondAttempt: number = 0;
   niveau: string;
 
+  isIndiceActif: boolean;
 
   private messageTimeout: any;
   isNavVisible = false;
@@ -62,6 +63,9 @@ export class QuestionListComponent implements OnInit {
     private membreService: MembreService
   ) {
     this.questionList = this.quizService.getFilteredQuestions();
+    this.questionList.forEach((question) => {
+      question.answers = this.shuffle(question.answers);
+    });
     this.niveau = this.quizService.getLevel();
     if (this.indiceService.estIndiceActif() && this.questionList[this.currentQuestionIndex] != undefined) {
       this.indiceService.setIndice(this.questionList[this.currentQuestionIndex].hint);
@@ -69,6 +73,8 @@ export class QuestionListComponent implements OnInit {
       this.indiceService.setIndice(undefined);
     }
     this.hint = this.indiceService.hint;
+
+    this.isIndiceActif = this.indiceService.estIndiceActif();
     this.hintText = this.indiceService.hintText;
     this.hintImageUrl = this.indiceService.hintImageUrl;
     this.hintAudio = new Audio('assets/img/good.mp3');
@@ -79,15 +85,12 @@ export class QuestionListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     const quizId = this.questionService.getCurrentQuizId();
     const childId = this.membreService.getMemberId();
 
     if (childId && quizId) {
       this.gameService.startNewGame(childId, quizId);
     }
-    console.log('Quiz ID:', quizId);
-    console.log('Child ID:', childId);
 
   }
 
@@ -101,18 +104,13 @@ export class QuestionListComponent implements OnInit {
     }
 
     const currentQuestion = this.questionList[this.currentQuestionIndex];
-    console.log(currentQuestion.answers[0]);
-    console.log(this.selectedAnswerCorrect.length);
 
     currentQuestion.answers.forEach((item, index2) => {
       this.selectedAnswerCorrect.forEach((item2) => {
         if (item === item2) {
-          console.log("item", item);
-          console.log("index2", index2);
           const answer = document.getElementById("answer" + index2);
           answer?.classList.add("right-answer");
           answer?.classList.remove("selected");
-          console.log("answer", answer);
         }
       });
     });
@@ -146,7 +144,6 @@ export class QuestionListComponent implements OnInit {
     if (childId) {
       this.gameService.saveChosenAnswers(childId, quizId, questionId, this.selectedAnswer, this.selectedAnswerCorrect.length);
     }
-    console.log("selectedAnswer", this.selectedAnswer);
 
     this.resetMessages();
 
@@ -162,7 +159,6 @@ export class QuestionListComponent implements OnInit {
           } else {
             this.selectedAnswerCorrect.push(item2);
             answer?.classList.add("right-answer");
-            console.log("answer", answer);
           }
         }
       });
@@ -243,18 +239,13 @@ export class QuestionListComponent implements OnInit {
     this.scoreService.updateSelectedAnswersCount(this.selectedAnswerCorrect.length);
     const quizId = this.questionService.getCurrentQuizId();
     const childId = this.membreService.getMemberId();
-    console.log("ChildId in finishQuiz: ", childId);
-    console.log("QuizId in finishQuiz: ", quizId);
+    console.log("childId",childId);
     const game = this.gameService.getGame(childId, quizId);
-    console.log("ChildId in finishQuiz2: ", childId);
-    console.log("QuizId in finishQuiz: ", quizId);
-    console.log('Game:', game);
     this.quizService.updateQuizStatus(quizId, 'Terminé');
     this.gameService.sendGameDataToBackend(game!).subscribe(() => {
       this.gameService.setQuizCompleted(childId, quizId);
       this.router.navigate(['/end-game']);
     });
-    
   }
 
   async onTimerFinished(e: CountdownEvent) {
@@ -267,6 +258,14 @@ export class QuestionListComponent implements OnInit {
   }
 
   delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  shuffle(array: Answer[]): Answer[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
 }

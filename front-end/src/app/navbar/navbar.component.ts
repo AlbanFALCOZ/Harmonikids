@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { unescape } from 'querystring';
+import { Membre } from 'src/models/membre.model';
 import { ColorService } from 'src/services/color-service.service';
 import { MembreService } from 'src/services/membre.service';
 import { ModeService } from 'src/services/mode-ergo.service';
@@ -11,13 +13,20 @@ import { SonService } from 'src/services/sound.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
+
+
 export class NavbarComponent implements OnInit {
+
+
+  
   memberId: number | undefined;
   isNavVisible = false;
-  isDisabled = false;
-  isUserMenuVisible = false;
   showPasswordPrompt = false;
+  memberImage:string|undefined;
   password = '';
+  membre : Membre |undefined
+  isUserMenuVisible: boolean = false;
+  isDisabled: boolean = false;
 
   constructor(
     public colorService: ColorService, 
@@ -25,7 +34,8 @@ export class NavbarComponent implements OnInit {
     private navbarService: NavbarService, 
     private modeService: ModeService, 
     private questionService: QuestionService, 
-    private sonService: SonService
+    private sonService: SonService,
+    firstNameField: ElementRef<HTMLInputElement>
   ) {
     this.navbarService.isNavbarVisible$.subscribe(isVisible => {
       this.isNavVisible = isVisible;
@@ -34,11 +44,21 @@ export class NavbarComponent implements OnInit {
     this.modeService.isDisabled$.subscribe(isDisabled => {
       this.isDisabled = isDisabled;
     });
+   
+    
   }
 
   ngOnInit(): void {
     this.memberId = this.membreService.getMemberId();
+    this.membreService.membres$.subscribe(membre => {
+      this.membre = membre.find(m => m.id == this.memberId)!;
+    });
   }
+
+  resetMemberImage() {
+    this.membreService.setMemberId(0);
+  }
+
 
   toggleNav() {
     this.navbarService.toggleNavbarVisibility();
@@ -57,6 +77,10 @@ export class NavbarComponent implements OnInit {
   }
 
   toggleMode() {
+    if (this.isDisabled && this.showPasswordPrompt) {
+      this.showPasswordPrompt = false;
+      return;
+    }
     if (!this.isDisabled) {
       this.modeService.toggleMode();
     } else {
@@ -69,6 +93,7 @@ export class NavbarComponent implements OnInit {
   }
 
   submitPassword() {
+
     if (this.password === 'admin') {
       this.modeService.toggleMode();
       this.showPasswordPrompt = false;

@@ -59,6 +59,13 @@ export class ConfigurationComponent {
       this.themeList = themes;
       
     });
+
+    if (this.themeService.selectedThemes.length === 0 && this.themeList.length >= 1) {
+      this.themeService.selectedThemes.push(this.themeList[0]);
+      if (this.themeList.length >= 2) {
+        this.themeService.selectedThemes.push(this.themeList[1]);
+      }
+    }
   }
    
 
