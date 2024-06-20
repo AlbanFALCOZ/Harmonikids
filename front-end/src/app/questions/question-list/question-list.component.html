@@ -3,6 +3,9 @@
 <div class="content" [ngClass]="{'nav-visible': isNavVisible}">
 
   <div class="progress-container">
+    <div class="progress-info">
+      Question {{ currentQuestionIndex + 1 }} / {{ questionList.length }}
+    </div>
     <progress class="progress-bar" [value]="currentQuestionIndex + 1" [max]="questionList.length"></progress>
   </div>
 

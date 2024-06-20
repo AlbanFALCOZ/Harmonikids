@@ -31,5 +31,4 @@ export class ProfilCardStatComponent {
 
   // constructor(private membreService: MembreService) {
   //   this.selectedMemberId = this.membreService.getMemberId(); }
-
 }

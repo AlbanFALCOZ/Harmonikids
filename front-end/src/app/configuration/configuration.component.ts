@@ -77,8 +77,6 @@ export class ConfigurationComponent {
       this.memberId = parseInt(params['id']);
       this.membreService.setMemberId(this.memberId);
     });
-
-
   }
 
   toggleSound() {

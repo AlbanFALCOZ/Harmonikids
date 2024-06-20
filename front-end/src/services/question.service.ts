@@ -44,7 +44,6 @@ export class QuestionService {
 
 
   fetchQuestions(quizId: number): Observable<Question[]> {
-
     return this.http.get<Question[]>(`${this.apiUrl}/quizzes/${quizId}/questions`).pipe(
       tap(questions => {
         this.questions = questions;
@@ -61,6 +60,7 @@ export class QuestionService {
 
 
   getQuestion(quizId: number, questionId: number): Observable<Question> {
+    console.log('test');
     return this.http.get<Question>(`${this.apiUrl}/quizzes/${quizId}/questions/${questionId}`);
   }
 
