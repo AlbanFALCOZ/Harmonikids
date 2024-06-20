@@ -1,0 +1,14 @@
+# Étape 1: Build de l'application avec Node.js
+FROM mcr.microsoft.com/playwright:v1.34.3
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN ls -lht
+
+COPY . .
+
+RUN npm install
+
+ENTRYPOINT [ "npx", "playwright", "test", "--config", "playwright.config.e2e.ts"]

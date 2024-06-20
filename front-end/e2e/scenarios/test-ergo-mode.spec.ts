@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { testUrl } from 'e2e/e2e.config';
 import { ErgoModeFixture } from 'src/app/navbar/navbar.fixture';
 import { AddMembreFixture } from 'src/app/membres/membres-liste/member-list.fixture';
 import { ConfigurationFixture } from 'src/app/configuration/configuration.fixture';
@@ -12,7 +13,7 @@ test.describe('Mode Ergo Tests', () => {
     ergoModeFixture = new ErgoModeFixture(page);
     addMembreFixture = new AddMembreFixture(page);
     configurationFixture = new ConfigurationFixture(page);
-    await page.goto('http://localhost:4200');
+    await page.goto(testUrl);
     await page.waitForLoadState('domcontentloaded');
   });
 

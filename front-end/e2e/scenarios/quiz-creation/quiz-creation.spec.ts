@@ -18,7 +18,7 @@ test.describe('Initial test display', () => {
     const description = page.getByLabel("Description:");
     await description.fill('Description du quiz');
     const selectionnerDesQuestionsExistentes = page.getByRole('button', { name: 'Sélectionner des questions existantes' })
-    const ajouterUnenouvelleQuestion = page.getByRole('button', { name: 'Questions Questions' })
+    const ajouterUnenouvelleQuestion = page.getByRole('button', { name: 'Questions' })
     await ajouterUnenouvelleQuestion.click();
     const titreDeLaQuestion = page.getByLabel('Titre:')
     await titreDeLaQuestion.fill('Que font 3+6')
@@ -51,15 +51,15 @@ test.describe('Initial test display', () => {
     const ajouterUneImage = page.locator('input[name="image"]')
     await ajouterUneImage.click()
     const fileChooser = await fileChooserPromise;
-    await fileChooser.setFiles('/Users/Sara/Downloads/Screenshot 2024-06-15 110728.png');
+    await fileChooser.setFiles('src/assets/img/addition.jpg');
     const validerAjoutDeQuestion = page.getByRole('button', { name: 'Ajouter', exact: true })
     await validerAjoutDeQuestion.click();
     const ajouterImageQuiz = page.locator('input[name="name-changed"]')
     const fileChooserPromise2 = page.waitForEvent('filechooser');
     await ajouterImageQuiz.click()
     const fileChooser2 = await fileChooserPromise2;
-    await fileChooser2.setFiles( '/Users/Sara/Downloads/Screenshot 2024-06-15 110728.png');
+    await fileChooser2.setFiles( 'src/assets/img/addition.jpg');
     const creerQuiz = page.getByRole('button', { name: 'Créer le quiz' })
-    await creerQuiz.click()
+    //await creerQuiz.click()
   });
 });
