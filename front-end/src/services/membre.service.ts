@@ -15,7 +15,7 @@ export class MembreService {
     private membre!: Membre; 
     private imageMember:string | undefined ;
     private membreUrl = serverUrl + '/user';
-    private apiUrl = '../../../backend/app/api/user';
+    private apiUrl = serverUrl + '/user';
 
     private httpOptions = httpOptionsBase;
 
