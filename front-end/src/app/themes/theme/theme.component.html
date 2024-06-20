@@ -7,7 +7,6 @@
         <p>{{ theme.description }}</p>
     </div>
     <div class="theme-card-button">
-        <button (click)="selectTheme()">Choisir </button>
         <button (click)="displayModalUpdate()" *ngIf="!isDisabled">Modifier</button>
         <button (click)="displayModalDelete()" *ngIf="!isDisabled">Supprimer</button>
   </div>
