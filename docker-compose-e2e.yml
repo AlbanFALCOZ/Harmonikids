@@ -6,8 +6,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8081:9428"
-    environment:
-      - ENVIRONMENT=production-e2e
     volumes:
       - my_volume:/var/lib/xyz
     healthcheck:
@@ -36,14 +34,13 @@ services:
     build:
       context: ./front-end
       dockerfile: Dockerfile.e2e
-    environment:
-      - FRONT_URL=http://frontend-e2e:80
-      - BACK_URL=http://backend:9428
     depends_on:
       - frontend-e2e
       - backend-e2e
     volumes:
       - test_results:/home/pwuser/xyz
+    environment:
+      - TEST_URL=http://frontend-e2e
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080"]
       interval: 1m30s

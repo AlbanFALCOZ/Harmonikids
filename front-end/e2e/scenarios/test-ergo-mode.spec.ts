@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { testUrl } from 'e2e/e2e.config';
 import { ErgoModeFixture } from 'src/app/navbar/navbar.fixture';
 
 test.describe('Mode Ergo Tests', () => {
@@ -6,7 +7,7 @@ test.describe('Mode Ergo Tests', () => {
 
   test.beforeEach(async ({ page }) => {
     ergoModeFixture = new ErgoModeFixture(page);
-    await page.goto('http://localhost:4200');
+    await page.goto(testUrl);
     await page.waitForLoadState('domcontentloaded');
   });
 

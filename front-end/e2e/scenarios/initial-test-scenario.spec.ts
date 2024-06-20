@@ -4,7 +4,7 @@ import { testUrl , quizListUrl } from 'e2e/e2e.config';
 // This file is here to test the playwright integration.
 test.describe('Initial test display', () => {
   test('Basic test', async ({ page }) => {
-    await page.goto('http://localhost:4200/quiz-list');
+    await page.goto(quizListUrl);
     // Let's try with something you don't have in your page.
     const pageTitle = await page.getByRole('heading', { name: 'AGreatHeadingNameYouDontHave' });
     // It should not be visible as you don't have it in your page.

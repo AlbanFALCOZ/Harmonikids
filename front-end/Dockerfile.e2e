@@ -11,4 +11,4 @@ COPY . .
 
 RUN npm install
 
-ENTRYPOINT [ "npx", "playwright", "test"]
+ENTRYPOINT [ "npx", "playwright", "test", "--config", "playwright.config.e2e.ts"]
