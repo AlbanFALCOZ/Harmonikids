@@ -39,6 +39,8 @@ services:
       - backend-e2e
     volumes:
       - test_results:/home/pwuser/xyz
+    ports:
+      - "9323:9323"
     environment:
       - TEST_URL=http://frontend-e2e
     healthcheck:
