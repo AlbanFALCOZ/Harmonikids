@@ -5,11 +5,13 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --legacy-peer-deps
+RUN npm install
+
+ARG ENVIRONMENT
 
 COPY . .
 
-RUN npm run build
+RUN npm run build:$ENVIRONMENT 
 
 # Étape 2: Serveur Nginx pour servir l'application
 
