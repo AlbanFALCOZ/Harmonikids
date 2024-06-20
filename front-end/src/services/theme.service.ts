@@ -83,12 +83,9 @@ export class ThemeService {
   }
 
   getSelectedThemes(): Theme[] {
-    console.log("this.selectedThemes.length",this.selectedThemes.length);
-    console.log("In selectedThemes : this.themes.length",this.themes.length);
     if (this.selectedThemes.length == 0) {
       this.selectedThemes = this.themes.slice(0, Math.max(2, this.selectedThemes.length));
     }
-    console.log("After this.selectedThemes.length",this.selectedThemes.length);
     return this.selectedThemes;
   }
 
@@ -102,9 +99,7 @@ export class ThemeService {
   }
 
   private initializeSelectedThemes() {
-    console.log("this.themes.length",this.themes.length);
     this.selectedThemes = this.themes.slice(0, Math.max(2, this.selectedThemes.length));
-    console.log("In init : this.selectedThemes.length : ",this.selectedThemes.length)
   }
 
 }

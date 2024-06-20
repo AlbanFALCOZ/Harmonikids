@@ -69,7 +69,6 @@ export class QuizListComponent implements OnInit {
     });
     themeSelect.addEventListener('change', (event) => {
       const themeSelected = (event.target as HTMLSelectElement).value;
-      console.log('Selected theme: ', themeSelected);
       if (themeSelected != "none") {
         this.quizListSortedTheme = this.quizList.filter(quiz => quiz.theme == themeSelected);
       }
@@ -82,15 +81,12 @@ export class QuizListComponent implements OnInit {
   }
 
   quizSelected(quiz: Quiz): void {
-    console.log("QuizQuestions : ", quiz.questions);
-    console.log("QuizQuestionsLength : ", quiz.questions.length);
     const quizQuestions = quiz.questions;
     this.questionService.updateQuestionsForQuiz(quizQuestions);
   }
   
   editQuiz(quiz: Quiz): void {
     this.quizToEdit = quiz;
-    console.log("edit du quizList ", this.quizToEdit);
   }
 
 

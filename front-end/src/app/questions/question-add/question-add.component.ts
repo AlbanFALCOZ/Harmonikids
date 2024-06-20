@@ -59,7 +59,6 @@ export class QuestionAddComponent {
 
   submitForm() {
     this.displayForm = false;
-    console.log(this.question);
     
   }
 

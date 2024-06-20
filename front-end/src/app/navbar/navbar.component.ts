@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit {
     this.modeService.isDisabled$.subscribe(isDisabled => {
       this.isDisabled = isDisabled;
     });
-    console.log("NavBar" + this.membre)
+    console.log("isDisabled", this.isDisabled);
    
     
   }

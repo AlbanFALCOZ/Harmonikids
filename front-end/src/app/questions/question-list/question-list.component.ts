@@ -90,8 +90,7 @@ export class QuestionListComponent implements OnInit {
     if (childId && quizId) {
       this.gameService.startNewGame(childId, quizId);
     }
-    console.log('Quiz ID:', quizId);
-    console.log('Child ID:', childId);
+
 
   }
 
@@ -105,18 +104,13 @@ export class QuestionListComponent implements OnInit {
     }
 
     const currentQuestion = this.questionList[this.currentQuestionIndex];
-    console.log(currentQuestion.answers[0]);
-    console.log(this.selectedAnswerCorrect.length);
 
     currentQuestion.answers.forEach((item, index2) => {
       this.selectedAnswerCorrect.forEach((item2) => {
         if (item === item2) {
-          console.log("item", item);
-          console.log("index2", index2);
           const answer = document.getElementById("answer" + index2);
           answer?.classList.add("right-answer");
           answer?.classList.remove("selected");
-          console.log("answer", answer);
         }
       });
     });
@@ -150,7 +144,6 @@ export class QuestionListComponent implements OnInit {
     if (childId) {
       this.gameService.saveChosenAnswers(childId, quizId, questionId, this.selectedAnswer, this.selectedAnswerCorrect.length);
     }
-    console.log("selectedAnswer", this.selectedAnswer);
 
     this.resetMessages();
 
@@ -166,7 +159,6 @@ export class QuestionListComponent implements OnInit {
           } else {
             this.selectedAnswerCorrect.push(item2);
             answer?.classList.add("right-answer");
-            console.log("answer", answer);
           }
         }
       });
@@ -270,7 +262,6 @@ export class QuestionListComponent implements OnInit {
   }
 
   shuffle(array: Answer[]): Answer[] {
-    console.log("Shuffle ! ");
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];

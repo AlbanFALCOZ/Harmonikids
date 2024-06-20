@@ -16,7 +16,6 @@ export class ThemeDeleteComponent implements OnInit {
   }
 
   themeDelete() {
-    console.log('send delete theme');
     this.deleteTheme.emit();
     this.closeModalDelete()
   }

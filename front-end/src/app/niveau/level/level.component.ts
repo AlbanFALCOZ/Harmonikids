@@ -35,7 +35,6 @@ export class LevelComponent implements OnInit {
       this.questionService.setCurrentQuizId(this.quizId);
     });
     this.quizService.setSelectedQuizId(this.quizId);
-    console.log(this.quizId)
 
   }
 
@@ -43,9 +42,7 @@ export class LevelComponent implements OnInit {
     if (this.quizId !== undefined) {
       this.questionService.fetchQuestions(this.quizId).subscribe((questions) => {
         this.questionList = questions; 
-        console.log(this.questionList);
       });
-      console.log(this.quizId); 
     }
   }
 

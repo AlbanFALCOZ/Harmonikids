@@ -55,7 +55,6 @@ export class ThemeListComponent implements OnInit {
   }
 
   addThemeToDelete(theme: Theme): void {
-    console.log('theme to delete:', theme);
     this.themeToDelete = theme;
   }
 

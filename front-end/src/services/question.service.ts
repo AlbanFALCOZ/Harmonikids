@@ -45,10 +45,8 @@ export class QuestionService {
 
   fetchQuestions(quizId: number): Observable<Question[]> {
 
-    console.log("question service " + quizId);
     return this.http.get<Question[]>(`${this.apiUrl}/quizzes/${quizId}/questions`).pipe(
       tap(questions => {
-        console.log('Fetched questions:', questions);
         this.questions = questions;
         this.questions$.next(this.questions);
         return this.questions;

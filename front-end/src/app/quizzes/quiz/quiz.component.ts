@@ -31,7 +31,6 @@ export class QuizComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.quiz);
         this.memberId = this.route.snapshot.params['id'];
     }
 

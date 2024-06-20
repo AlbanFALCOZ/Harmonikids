@@ -16,7 +16,6 @@ export class QuizDeleteComponent implements OnInit {
   }
 
   quizDelete() {
-    console.log('send delete theme');
     this.deleteQuiz.emit();
     this.closeModalDelete()
   }

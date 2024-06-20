@@ -20,12 +20,10 @@ export class MembreComponent {
 
 
   constructor(private membreService: MembreService, private modeService: ModeService) {
-    console.log("*******Membre component**********")
     this.memberId = this.membreService.getMemberId();
     this.modeService.isDisabled$.subscribe(isDisabled => {
       this.isDisabled = isDisabled;
     });
-    console.log("Membre ID  " + this.memberId)
 
   }
 
@@ -34,10 +32,7 @@ export class MembreComponent {
 
 
   onSelectMembre(id: number): void {
-    console.log("Membre ID 2" + id)
-    console.log("On select membre ID   *****")
     this.membreService.setMemberId(id);
-    console.log("Memeber ID" + this.membreService.getMemberId())
   }
 
   onDeleteMembre() {

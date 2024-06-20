@@ -30,7 +30,6 @@ export class DashboardComponent implements OnInit {
   constructor(private route: ActivatedRoute, private membreService: MembreService, 
 
     private themeService: ThemeService, private quizService: QuizService, private navbarService: NavbarService,private questionService:QuestionService) {
-      console.log("****Dashboard component*****")
       this.memberId=this.membreService.getMemberId();
       this.route.params.subscribe(params => {
         this.memberId = params['id'];
@@ -40,8 +39,6 @@ export class DashboardComponent implements OnInit {
           if(members.length > 0){
             this.welcomeMessage = this.membreService.getWelcomeMessage(this.memberId)
             this.membreService.setImage(this.membreService.getImageById(this.memberId))
-            console.log(this.membreService.getMembre())
-            console.log("**** Fin Dashboard component**")
           }
         })
         
@@ -50,9 +47,6 @@ export class DashboardComponent implements OnInit {
       this.themeList = this.themeService.getSelectedThemes()
       this.quizList = this.quizService.getQuizzes().slice(0, 4); 
       this.memberId=this.membreService.getMemberId();
-  
-      console.log("Membre ID" + this.memberId)
-      console.log("****Dashboard component**")
      
       
               }
@@ -78,14 +72,12 @@ export class DashboardComponent implements OnInit {
   
     
     this.memberId=this.membreService.getMemberId();
-    console.log("Membre ID" + this.memberId)
    
     
   }
 
 
   themeSelected(selected: boolean): void {
-    console.log('event received from child:', selected);
   }
 
   quizSelected(selected: Quiz): void {
