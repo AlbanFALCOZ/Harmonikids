@@ -1,11 +1,13 @@
 version: '3.8'
 services:
-  backend:
+  backend-e2e:
     build:
       context: ./backend
       dockerfile: Dockerfile
     ports:
       - "8081:9428"
+    environment:
+      - ENVIRONMENT=production-e2e
     volumes:
       - my_volume:/var/lib/xyz
     healthcheck:
@@ -14,22 +16,41 @@ services:
       timeout: 10s
       retries: 3
 
-  frontend:
+  frontend-e2e:
     build:
       context: ./front-end
       dockerfile: Dockerfile
       args:
-      - ENVIRONMENT=production
+      - ENVIRONMENT=production-e2e
     ports:
       - "8080:80"
     depends_on:
-      - backend
+      - backend-e2e
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost"]
       interval: 1m30s
       timeout: 10s
       retries: 3
 
+  test-e2e:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile.e2e
+    environment:
+      - FRONT_URL=http://frontend-e2e:80
+      - BACK_URL=http://backend:9428
+    depends_on:
+      - frontend-e2e
+      - backend-e2e
+    volumes:
+      - test_results:/home/pwuser/xyz
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+
 volumes:
   my_volume:
+  test_results:
     
