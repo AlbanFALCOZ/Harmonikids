@@ -41,7 +41,6 @@ export class QuizComponent implements OnInit {
         const quizQuestions = this.quiz.questions;
         this.questionService.updateQuestionsForQuiz(quizQuestions);
         const memberId = this.membreService.getMemberId();
-        console.log("memberId : ", memberId);
         this.router.navigate(['/niveau', this.quiz.id]);
     }
 

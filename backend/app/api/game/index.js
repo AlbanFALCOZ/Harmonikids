@@ -14,7 +14,9 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
+    
     try {
+        
         const games = await GameManager.getGames();
         res.send(games);
     } catch (error) {
@@ -23,7 +25,9 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
+    
     try {
+        
         const game = await GameManager.getGame(req.params.id);
         res.send(game);
     } catch (error) {
@@ -32,7 +36,9 @@ router.get('/:id', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
+    
     try {
+        
         const game = await GameManager.updateGame(req.params.id, req.body);
         res.send(game);
     } catch (error) {
@@ -41,7 +47,9 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
+    
     try {
+        
         await GameManager.deleteGame(req.params.id);
         res.sendStatus(200);
     } catch (error) {

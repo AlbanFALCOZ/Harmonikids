@@ -11,6 +11,7 @@ export class ScoreService {
 
 
   updateSelectedAnswersCount(count: number) {
+    
     this.numberOfCorrectAnswersSubject.next(count);
   }
 

@@ -10,6 +10,8 @@ import { QuestionService } from 'src/services/question.service';
 import { Observable } from 'rxjs';
 import { Membre } from 'src/models/membre.model';
 import { Route } from '@playwright/test';
+import { GameService } from 'src/services/game.service';
+import { Game } from 'src/models/game.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,13 +28,18 @@ export class DashboardComponent implements OnInit {
 
   isNavVisible = false;
 
+  score = 0;
+  games : Game[] = [];
+  gameMap: { [quizId: number]: Game | undefined } = {};
+
 
   constructor(private route: ActivatedRoute, private membreService: MembreService, 
 
-    private themeService: ThemeService, private quizService: QuizService, private navbarService: NavbarService,private questionService:QuestionService) {
+    private themeService: ThemeService, private quizService: QuizService, private navbarService: NavbarService,private questionService:QuestionService, private gameService: GameService) {
       this.memberId=this.membreService.getMemberId();
       this.route.params.subscribe(params => {
         this.memberId = params['id'];
+        
         this.membreService.setMemberId(this.memberId);
         this.membreService.setImage(this.membreService.getImageById(this.memberId))
         this.membreService.membres$.subscribe(members => {
@@ -52,17 +59,17 @@ export class DashboardComponent implements OnInit {
               }
 
   ngOnInit() {
+    
     this.route.params.subscribe(params => {
       this.memberId = parseInt(params['id']);
+      
+      this.membreService.setMemberId(this.memberId);
       this.membreService.membres$.subscribe(members => {
         if(members.length > 0){
           this.welcomeMessage = this.membreService.getWelcomeMessage(this.memberId)
         }
         
       })
-
-      this.membreService.setMemberId(this.memberId);
-      
      
     });
     this.themeService.themes$.subscribe(themes => {
@@ -73,6 +80,16 @@ export class DashboardComponent implements OnInit {
     
     this.memberId=this.membreService.getMemberId();
    
+    this.gameService.games$.subscribe(games => {
+      this.games = games.filter(game => game.childId == this.membreService.getMemberId());
+      this.games.forEach(game => {
+        this.gameMap[game.quizId] = game;
+
+        if (game.score > this.score) {
+          this.score = game.score;
+        }
+      });
+    });
     
   }
 
