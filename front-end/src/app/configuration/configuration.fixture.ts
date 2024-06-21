@@ -34,6 +34,10 @@ export class ConfigurationFixture extends E2EComponentFixture {
         if (!(await themeCheckbox.isChecked())) {
             await themeCheckbox.click();
         }
+        const themeCheckbox2 = this.page.getByText("L'astronomie")
+        if (!(await themeCheckbox2.isChecked())) {
+            await themeCheckbox2.click();
+        }
     }
 
 

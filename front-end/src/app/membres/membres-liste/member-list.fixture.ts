@@ -43,4 +43,12 @@ export class AddMembreFixture extends E2EComponentFixture {
     chooseLeo() {
         return this.page.locator('div').filter({ hasText: 'Nom : VivacePrénom : LéoÂge : 10 ansJe veux gagner !!!' }).nth(2)
     }
+
+    goConfAlice(){
+        return this.page.locator('img').nth(1);
+    }
+
+    goParamAlice(){
+        return this.page.getByRole('link', { name: 'Paramètres' });
+    }
 }
