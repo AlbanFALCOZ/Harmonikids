@@ -68,16 +68,22 @@ test.describe('Mode Ergo Tests', () => {
   });*/
 
   
-  test('should select and deselect themes', async ({ page }) => {
-    await page.goto('http://localhost:4200/configuration/NaN');
+  test('should select themes', async ({ page }) => {
+    await ergoModeFixture.activateErgoMode('admin');
+    await expect(await ergoModeFixture.isErgoModeActivated()).toBeTruthy();
 
+    await addMembreFixture.chooseAlice().click();
+    //await page.goto(testUrl+'/configuration/NaN');
+    await addMembreFixture.goConfAlice().click();
+    await addMembreFixture.goParamAlice().click();
 
     await configurationFixture.selectTheme('Les animaux');
+    await configurationFixture.selectTheme("L'astronomie");
 
-    await ergoModeFixture.goConfig();
+    await addMembreFixture.goConfAlice().click();
     await ergoModeFixture.selectProfile();
 
 
-    //await page.waitForLoadState('domcontentloaded');  
+    await page.waitForLoadState('domcontentloaded');  
   });
 });
