@@ -1325,23 +1325,5 @@
     },
     "isQuizCompleted": false,
     "score": 6
-  },
-  {
-    "id": 1718962478696,
-    "childId": 1718953877146,
-    "quizId": 1718789175970,
-    "correctFirstAttemptCount": 0,
-    "chosenAnswers": {
-      "1718789178585": [
-        {
-          "value": "39",
-          "isCorrect": true,
-          "isSelected": true,
-          "alreadySelected": true
-        }
-      ]
-    },
-    "isQuizCompleted": false,
-    "score": 0
   }
 ]
