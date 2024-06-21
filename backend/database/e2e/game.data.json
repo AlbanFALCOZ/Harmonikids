@@ -1327,7 +1327,7 @@
     "score": 6
   },
   {
-    "id": 1718982133189,
+    "id": 1718988943504,
     "childId": 1718953877146,
     "quizId": 1718789175970,
     "correctFirstAttemptCount": 1,
@@ -1345,7 +1345,43 @@
     "score": 0
   },
   {
-    "id": 1718983605366,
+    "id": 1718988948008,
+    "childId": 1718953877146,
+    "quizId": 1718789175970,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718789178585": [
+        {
+          "value": "39",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718989226736,
+    "childId": 1718953877146,
+    "quizId": 1718789175970,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718789178585": [
+        {
+          "value": "39",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718989228249,
     "childId": 1718953877146,
     "quizId": 1718789175970,
     "correctFirstAttemptCount": 2,
@@ -1363,7 +1399,111 @@
     "score": 0
   },
   {
-    "id": 1718983696458,
+    "id": 1718989241201,
+    "childId": 1718953877146,
+    "quizId": 1718790586373,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718790587046": [
+        {
+          "value": "Goomba",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790588507": [
+        {
+          "value": "Peach",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790588840": [
+        {
+          "value": "Luigi",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790589153": [
+        {
+          "value": "Un champignon",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790589628": [
+        {
+          "value": "Du karting",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Du tennis",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Du ski",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 14
+  },
+  {
+    "id": 1718989254976,
+    "childId": 1718953908173,
+    "quizId": 1718784083213,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718784083555": [
+        {
+          "value": "Vrai",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083691": [
+        {
+          "value": "Roland-garros",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083965": [
+        {
+          "value": "France",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784084140": [
+        {
+          "value": "3",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 7
+  },
+  {
+    "id": 1718989274225,
     "childId": 1718953877146,
     "quizId": 1718789175970,
     "correctFirstAttemptCount": 2,
@@ -1381,7 +1521,25 @@
     "score": 0
   },
   {
-    "id": 1718983802764,
+    "id": 1718989906174,
+    "childId": 1718953877146,
+    "quizId": 1718789175970,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718789178585": [
+        {
+          "value": "39",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718990373728,
     "childId": 1718953877146,
     "quizId": 1718789175970,
     "correctFirstAttemptCount": 2,
@@ -1399,7 +1557,7 @@
     "score": 0
   },
   {
-    "id": 1718984058511,
+    "id": 1718990421322,
     "childId": 1718953877146,
     "quizId": 1718789175970,
     "correctFirstAttemptCount": 2,
@@ -1417,14 +1575,58 @@
     "score": 0
   },
   {
-    "id": 1718984240746,
+    "id": 1718990426331,
     "childId": 1718953877146,
-    "quizId": 1718789175970,
+    "quizId": 1718790586373,
     "correctFirstAttemptCount": 2,
     "chosenAnswers": {
-      "1718789178585": [
+      "1718790587046": [
         {
-          "value": "39",
+          "value": "Goomba",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790588507": [
+        {
+          "value": "Peach",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790588840": [
+        {
+          "value": "Luigi",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790589153": [
+        {
+          "value": "Un champignon",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790589628": [
+        {
+          "value": "Du ski",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Du karting",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Du tennis",
           "isCorrect": true,
           "isSelected": true,
           "alreadySelected": true
@@ -1432,60 +1634,6 @@
       ]
     },
     "isQuizCompleted": false,
-    "score": 0
-  },
-  {
-    "id": 1718984415499,
-    "childId": 1718953877146,
-    "quizId": 1718789175970,
-    "correctFirstAttemptCount": 2,
-    "chosenAnswers": {
-      "1718789178585": [
-        {
-          "value": "39",
-          "isCorrect": true,
-          "isSelected": true,
-          "alreadySelected": true
-        }
-      ]
-    },
-    "isQuizCompleted": false,
-    "score": 0
-  },
-  {
-    "id": 1718987286002,
-    "childId": 1718953877146,
-    "quizId": 1718789175970,
-    "correctFirstAttemptCount": 2,
-    "chosenAnswers": {
-      "1718789178585": [
-        {
-          "value": "39",
-          "isCorrect": true,
-          "isSelected": true,
-          "alreadySelected": true
-        }
-      ]
-    },
-    "isQuizCompleted": false,
-    "score": 0
-  },
-  {
-    "id": 1718987391393,
-    "childId": 1718953877146,
-    "quizId": 1718789175970,
-    "correctFirstAttemptCount": 2,
-    "chosenAnswers": {
-      "1718789178585": [
-        {
-          "value": "39",
-          "isCorrect": true,
-          "isSelected": true,
-          "alreadySelected": true
-        }
-      ]
-    },
-    "isQuizCompleted": false,
-    "score": 0
+    "score": 28
   }
 ]

@@ -6,6 +6,9 @@ export class StatistiqueFixture extends E2EComponentFixture {
     return this.page.locator('.button_history').filter({ hasText: "Voir l'historique des jeux" }).first();
   }
 
+  getPlusButton() {
+    return this.page.locator('.plus').filter({ hasText: "Voir plus" }).first();
+  }
 
 
 }

@@ -9,8 +9,9 @@ import { MultiChoiceFixture } from 'src/app/questions/multi-choice/multi-choice.
 import { QuestionListFixture } from 'src/app/questions/question-list/question-list.fixture';
 import { QuizFixture } from 'src/app/quizzes/quiz/quiz.fixture';
 import { StatThemeFixture } from 'src/app/statistiques/statistique-card/statistique-card.fixture';
+import { StatistiqueFixture } from 'src/app/statistiques/statistique/statistique.fixture';
 
-test('Profil statistiques', async ({ page }) => {
+test('Verifie les statistiques des cartes de thème', async ({ page }) => {
     await page.goto(testUrl + '/membres-liste');
     const membreListeFixture = new AddMembreFixture(page);
     const profil = membreListeFixture.chooseAlice();
@@ -41,7 +42,21 @@ test('Profil statistiques', async ({ page }) => {
 
     await profil.click();
 
+    const stat = new StatistiqueFixture(page);
+
+    const plus = await stat.getPlusButton();
+
+    await expect(plus).toBeVisible();
+    await expect(plus).toBeEnabled();
+    await page.waitForTimeout(1000);
+    
+    await plus.click({ force: true });
+
+    await page.waitForTimeout(1000);
+
     const statThemeFixture = new StatThemeFixture(page);
+
+
     expect(await statThemeFixture.getThemeName()).not.toBeNull();
 
     expect(await statThemeFixture.getCorrectNumberOfQuiz()).toContain('Bonnes réponses du premier coup : 1');

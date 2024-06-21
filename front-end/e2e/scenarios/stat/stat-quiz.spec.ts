@@ -13,8 +13,8 @@ import { QuizFixture } from 'src/app/quizzes/quiz/quiz.fixture';
 import { StatThemeFixture } from 'src/app/statistiques/statistique-card/statistique-card.fixture';
 import { ProgresFixture } from 'src/app/statistiques/progres-circle/progres-circle.fixture';
 
-test.describe('Initial test display', () => {
-    test('Basic test', async ({ page }) => {
+test.describe('Statistiques quiz', () => {
+    test('Verifie les statistiques des cartes de quiz', async ({ page }) => {
         await page.goto(testUrl + '/membres-liste');
         const membreListeFixture = new AddMembreFixture(page);
         const profil = membreListeFixture.chooseAlice();

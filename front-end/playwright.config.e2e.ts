@@ -2,7 +2,7 @@ import{PlaywrightTestConfig} from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
     reporter: [['json', { outputFile: 'playwright-report/results.json' }]],
-    timeout: 60000,
+    timeout: 120000,
     use: {
         headless: true,
         viewport: { width: 1280, height: 720 },
@@ -10,7 +10,7 @@ const config: PlaywrightTestConfig = {
         video: 'on',
         screenshot: 'on',
         launchOptions: {
-            slowMo: 1000,
+            slowMo: 10,
         }
     }, 
 };

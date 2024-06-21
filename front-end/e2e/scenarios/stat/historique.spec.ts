@@ -11,7 +11,7 @@ import { MultiChoiceFixture } from 'src/app/questions/multi-choice/multi-choice.
 import { QuestionListFixture } from 'src/app/questions/question-list/question-list.fixture';
 import { QuizFixture } from 'src/app/quizzes/quiz/quiz.fixture';
 
-test('Basic test', async ({ page }) => {
+test('Historique des jeux', async ({ page }) => {
     await page.goto(testUrl + '/membres-liste');
     const membreListeFixture = new AddMembreFixture(page);
     const profil = membreListeFixture.chooseAlice();

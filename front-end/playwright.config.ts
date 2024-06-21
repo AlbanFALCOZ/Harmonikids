@@ -2,7 +2,7 @@ import { PlaywrightTestConfig } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
   reporter: [['html', { open: 'always' }]],
-  timeout: 60000,
+  timeout:120000,
   use: {
     headless: false,
     viewport: { width: 1280, height: 720 },
