@@ -12,7 +12,7 @@ import { QuizFixture } from 'src/app/quizzes/quiz/quiz.fixture';
 
 test.describe('Initial test display', () => {
     test('Basic test', async ({ page }) => {
-        await page.goto(testUrl+'/membres-liste');
+        await page.goto(testUrl + '/membres-liste');
         const membreListeFixture = new AddMembreFixture(page);
 
         const dashboardFixture = new DashboardFixture(page);
@@ -29,7 +29,9 @@ test.describe('Initial test display', () => {
 
         await page.locator('div').filter({ hasText: 'Le sportEs-tu un vrai sportif ?' }).nth(2).click();
 
-        await levelFixture.getLevelCard().nth(1).click();
+        await page.waitForTimeout(1000);
+
+        await levelFixture.getByText('Moyen').click();
 
         await page.getByRole('button', { name: 'Suivant' }).click();
         await page.getByRole('button', { name: 'Précédent' }).click();
@@ -57,5 +59,5 @@ test.describe('Initial test display', () => {
         await endGameFixture.getButton().click();
     });
 
-    
+
 });

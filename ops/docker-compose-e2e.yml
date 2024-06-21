@@ -35,17 +35,15 @@ services:
     build:
       context: ../front-end
       dockerfile: Dockerfile.e2e
+    volumes:
+      - test_results:/app/test-results
+    environment:
+      - TEST_URL=http://frontend-e2e
     depends_on:
       - frontend-e2e
       - backend-e2e
-    volumes:
-      - test_results:/app/test-results
-    ports:
-      - "9323:9323"
-    environment:
-      - TEST_URL=http://frontend-e2e
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      test: ["CMD", "curl", "-f", "http://localhost:9323"]
       interval: 1m30s
       timeout: 10s
       retries: 3
