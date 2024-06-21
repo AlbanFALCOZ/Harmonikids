@@ -1325,5 +1325,257 @@
     },
     "isQuizCompleted": false,
     "score": 6
+  },
+  {
+    "id": 1718975128758,
+    "childId": 1718953877146,
+    "quizId": 1718790586373,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718790587046": [
+        {
+          "value": "Goomba",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790588507": [
+        {
+          "value": "Peach",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790588840": [
+        {
+          "value": "Luigi",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790589153": [
+        {
+          "value": "Un champignon",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790589628": [
+        {
+          "value": "Du karting",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Du ski",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Du tennis",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 14
+  },
+  {
+    "id": 1718975131133,
+    "childId": 1718953877146,
+    "quizId": 1718789175970,
+    "correctFirstAttemptCount": 0,
+    "chosenAnswers": {
+      "1718789178585": [
+        {
+          "value": "39",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718975136826,
+    "childId": 1718953908173,
+    "quizId": 1718784083213,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718784083555": [
+        {
+          "value": "Vrai",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083691": [
+        {
+          "value": "Roland-garros",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083965": [
+        {
+          "value": "France",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784084140": [
+        {
+          "value": "3",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 7
+  },
+  {
+    "id": 1718977489997,
+    "childId": 1718953908173,
+    "quizId": 1718784083213,
+    "correctFirstAttemptCount": 2,
+    "chosenAnswers": {
+      "1718784083555": [
+        {
+          "value": "Vrai",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083691": [
+        {
+          "value": "Roland-garros",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083965": [
+        {
+          "value": "France",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784084140": [
+        {
+          "value": "3",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 14
+  },
+  {
+    "id": 1718977954135,
+    "childId": 1718953877146,
+    "quizId": 1718780544135,
+    "correctFirstAttemptCount": 3,
+    "chosenAnswers": {
+      "1718780544405": [
+        {
+          "value": "Sphynx",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544498": [
+        {
+          "value": " Pour montrer de l'affection",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Parce qu'ils se souviennent de l'allaitement",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544580": [
+        {
+          "value": "Des croquettes spécialement formulées",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Des proteines animales",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 4
+  },
+  {
+    "id": 1718978526424,
+    "childId": 1718953908173,
+    "quizId": 1718784083213,
+    "correctFirstAttemptCount": 2,
+    "chosenAnswers": {
+      "1718784083555": [
+        {
+          "value": "Vrai",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083691": [
+        {
+          "value": "Roland-garros",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083965": [
+        {
+          "value": "France",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784084140": [
+        {
+          "value": "3",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 14
   }
 ]

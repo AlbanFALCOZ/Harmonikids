@@ -3,6 +3,7 @@ import { testUrl } from 'e2e/e2e.config';
 import { StatThemeFixture } from 'src/app/statistiques/statistique-card/statistique-card.fixture';
 
 
+
 test.describe('Stat Quiz', () => {
     let fixture: StatThemeFixture;
 
