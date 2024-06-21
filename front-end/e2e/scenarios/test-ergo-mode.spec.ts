@@ -69,7 +69,7 @@ test.describe('Mode Ergo Tests', () => {
 
   
   test('should select and deselect themes', async ({ page }) => {
-    await page.goto('http://localhost:4200/configuration/NaN');
+    await page.goto(testUrl + '/configuration/NaN');
 
 
     await configurationFixture.selectTheme('Les animaux');

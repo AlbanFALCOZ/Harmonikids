@@ -2,12 +2,13 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./backend
+      context: ../backend
       dockerfile: Dockerfile
     ports:
       - "8081:9428"
     volumes:
       - my_volume:/app/data
+    entrypoint: [ "npm", "run", "start:production"]
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8081/api/status"]
       interval: 1m30s
@@ -16,7 +17,7 @@ services:
 
   frontend:
     build:
-      context: ./front-end
+      context: ../front-end
       dockerfile: Dockerfile
       args:
       - ENVIRONMENT=production

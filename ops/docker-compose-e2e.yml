@@ -2,12 +2,13 @@ version: '3.8'
 services:
   backend-e2e:
     build:
-      context: ./backend
+      context: ../backend
       dockerfile: Dockerfile
     ports:
       - "8081:9428"
     volumes:
       - my_volume:/app/data
+    entrypoint: [ "npm", "run", "start:e2e"]
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8081/api/status"]
       interval: 1m30s
@@ -16,7 +17,7 @@ services:
 
   frontend-e2e:
     build:
-      context: ./front-end
+      context: ../front-end
       dockerfile: Dockerfile
       args:
       - ENVIRONMENT=production-e2e
@@ -32,7 +33,7 @@ services:
 
   test-e2e:
     build:
-      context: ./front-end
+      context: ../front-end
       dockerfile: Dockerfile.e2e
     depends_on:
       - frontend-e2e
