@@ -7,11 +7,7 @@ import { Membre } from 'src/models/membre.model';
   templateUrl: './profil-card-stat.component.html',
   styleUrl: './profil-card-stat.component.scss'
 })
-export class ProfilCardStatComponent {
-
-  memberName = 'Alice ROUTINE';
-  memberAge = 8;
-  numberOfStars = 1000;  
+export class ProfilCardStatComponent { 
 
   @Input() membre!: Membre;
 

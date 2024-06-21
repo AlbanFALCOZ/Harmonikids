@@ -40,6 +40,7 @@ export class AddMembreFixture extends E2EComponentFixture {
         return this.page.locator('div').filter({ hasText: 'Nom : RoutinePrénom : AliceÂge : 8 ansJ\'aime lire !' }).nth(2)
     }
 
+
     chooseLeo() {
         return this.page.locator('div').filter({ hasText: 'Nom : VivacePrénom : LéoÂge : 10 ansJe veux gagner !!!' }).nth(2)
     }
@@ -50,5 +51,9 @@ export class AddMembreFixture extends E2EComponentFixture {
 
     goParamAlice(){
         return this.page.getByRole('link', { name: 'Paramètres' });
+    }
+
+    getAliceId(){
+        return this.page.locator('div').filter({ hasText: 'Nom : RoutinePrénom : AliceÂge : 8 ansJ\'aime lire !' }).nth(2)
     }
 }

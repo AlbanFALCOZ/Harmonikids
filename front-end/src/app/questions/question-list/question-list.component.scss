@@ -220,3 +220,29 @@
 .text-timer {
   font-size: medium;
 }
+
+.text-timer {
+  font-size: 1em;
+  color: #333;
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.countdown-timer .timer {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ffb347;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ff8c00;
+}
