@@ -255,7 +255,6 @@ export class QuestionListComponent implements OnInit {
   async onTimerFinished(e: CountdownEvent) {
     if (e.action == 'done') {
       alert("Il n'y a plus de temps, c'est la fin du quiz !");
-      this.validateQuestion();
       await this.delay(2000);
       this.finishQuiz();
     }

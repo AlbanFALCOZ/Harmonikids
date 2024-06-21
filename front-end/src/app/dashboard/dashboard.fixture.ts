@@ -6,6 +6,10 @@ export class DashboardFixture extends E2EComponentFixture {
         return this.page.getByRole('link', { name: 'Vers la liste des quizs ➔' })
     }
 
+    getThemes() {
+        return this.page.getByRole('link', { name: 'Vers la liste des thèmes ➔' })
+    }
+
     
 
 }
