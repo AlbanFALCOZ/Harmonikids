@@ -76,9 +76,6 @@ export class GameService {
 
     getGame(childId: number, quizId: number): Game | undefined {
         
-        
-        
-        
         return this.games.find(g => g.quizId === quizId && g.childId === childId);
     }
 
@@ -124,5 +121,9 @@ export class GameService {
         return this.games$.pipe(
             map(games => games.find(game => game.quizId === quizId))
         );
+    }
+
+    getAllGames(): Observable<Game[]> {
+        return this.http.get<Game[]>(this.gameUrl);
     }
 }

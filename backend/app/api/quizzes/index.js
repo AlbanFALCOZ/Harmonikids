@@ -55,7 +55,10 @@ router.delete('/:quizId', (req, res) => {
 
 router.put('/:id/statut', async (req, res) => {
   try {
-    const quiz = await Quiz.update(req.params.id, req.body.statut)
+    const id = req.params.id
+    const quiz = await Quiz.getById(id)
+    quiz.statut = "Terminé"
+    await Quiz.update(id, quiz)
     res.status(200).json(quiz)
   } catch (err) {
     manageAllErrors(res, err)

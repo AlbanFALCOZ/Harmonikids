@@ -1,13 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import * as Highcharts from 'highcharts';
-import { StatistiqueService } from 'src/services/statistique.service';
+import { Game } from 'src/models/game.model';
+import { GameService } from 'src/services/game.service';
+import { MembreService } from 'src/services/membre.service';
 
 @Component({
   selector: 'app-progres-chart',
   templateUrl: './progres-chart.component.html',
-  styleUrl: './progres-chart.component.scss'
+  styleUrls: ['./progres-chart.component.scss'] // Correction de styleUrl en styleUrls
 })
-export class ProgresChartComponent {
+export class ProgresChartComponent implements OnInit, OnChanges {
+
+  categories: string[] = ['Semaine 1', 'Semaine 2', 'Semaine 3', 'Semaine 4'];
+  memberId: number = 0;
+  childGames: Game[] = [];
+  otherGames: Game[] = [];
+
   public options: any = {
     chart: {
       type: 'area',
@@ -16,9 +24,8 @@ export class ProgresChartComponent {
     title: {
       text: 'Progrès de l\'enfant par rapport aux autres'
     },
-
     xAxis: {
-      categories: [],
+      categories: this.categories,
       tickmarkPlacement: 'on',
       title: {
         enabled: false
@@ -33,29 +40,51 @@ export class ProgresChartComponent {
     series: []
   };
 
-  constructor(private progressService: StatistiqueService) { }
+  constructor(
+    private gameService: GameService,
+    private memberService: MembreService
+  ) { }
 
   ngOnInit(): void {
-    this.progressService.getProgressData().subscribe(data => {
-      this.options.xAxis.categories = data.categories;
-      this.options.series = [
-        { name: 'Progrès de l\'enfant', data: data.childProgress },
-        { name: 'Progrès moyen des autres enfants', data: data.averageProgress }
-      ];
-      Highcharts.chart('myChart', this.options);
-    });
+    this.loadChartData();
   }
 
   ngOnChanges(): void {
-    this.progressService.getProgressData().subscribe(data => {
-      this.options.xAxis.categories = data.categories;
-      this.options.series = [
-        { name: 'Progrès de l\'enfant', data: data.childProgress },
-        { name: 'Progrès moyen des autres enfants', data: data.averageProgress }
-      ];
-      Highcharts.chart('myChart', this.options);
+    this.loadChartData();
+  }
+
+  private loadChartData(): void {
+    this.memberId = this.memberService.getMemberId();
+    this.gameService.getGamesByChildId(this.memberId).then(childGames => {
+      this.childGames = childGames;
+      const childProgress = this.calculateWeeklyProgress(this.childGames);
+
+      this.gameService.getAllGames().subscribe(allGames => {
+        this.otherGames = allGames.filter(game => game.childId !== this.memberId);
+        const averageProgress = this.calculateWeeklyProgress(this.otherGames, true);
+
+        this.options.series = [
+          { name: 'Progrès de l\'enfant', data: childProgress },
+          { name: 'Progrès moyen des autres enfants', data: averageProgress }
+        ];
+
+        Highcharts.chart('myChart', this.options);
+      });
     });
   }
 
+  private calculateWeeklyProgress(games: Game[], isAverage: boolean = false): number[] {
+    const weeklyProgress = [0, 0, 0, 0];
 
+    games.forEach((game, index) => {
+      const weekIndex = index % 4;
+      weeklyProgress[weekIndex] += game.correctFirstAttemptCount;
+    });
+
+    if (isAverage && games.length > 0) {
+      return weeklyProgress.map(progress => progress / games.length);
+    }
+
+    return weeklyProgress;
+  }
 }

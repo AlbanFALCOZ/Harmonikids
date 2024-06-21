@@ -245,7 +245,7 @@ export class QuestionListComponent implements OnInit {
     
     const game = this.gameService.getGame(childId, quizId);
     
-    this.quizService.updateQuizStatus(quizId, 'Terminé');
+    this.quizService.updateQuizStatus(quizId);
     this.gameService.sendGameDataToBackend(game!).subscribe(() => {
       this.gameService.setQuizCompleted(childId, quizId);
       this.router.navigate(['/end-game']);
