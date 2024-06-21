@@ -2,36 +2,42 @@ import { test, expect } from '@playwright/test';
 import { testUrl, quizListUrl } from 'e2e/e2e.config';
 import { AppComponent } from 'src/app/app.component';
 import { AppFixtureQuizAdd } from 'src/app/quizzes/quiz-add/quiz-add.fixture';
+import { QuizListFixture } from 'src/app/quizzes/quiz-list/quiz-list.fixture';
 
 test.describe('Initial test display', () => {
   test('Basic test', async ({ page }) => {
     await page.goto(quizListUrl);
     const appComponentFixture = new AppFixtureQuizAdd(page);
     const bouton = appComponentFixture.getAddButton();
+    const quizListFixture = new QuizListFixture(page);
+    const buttonAdmin = quizListFixture.getAdminButton();
+    await buttonAdmin.click();
+
+    const inputPasswordAdmin = quizListFixture.getInputPassword();
+    await inputPasswordAdmin.fill("admin");
+
+    const buttonLogIn = quizListFixture.getButtonLogIn();
+    await buttonLogIn.click();
 
     await bouton.click()
-    appComponentFixture.clickOnShowButton();
+    
     const titre = page.getByLabel('Titre du quiz:')
     await titre.fill('Titre du quiz');
     const theme = page.locator('#addQuizForm #quizTheme');
     await theme.selectOption({ index: 1 })
     const description = page.getByLabel("Description:");
     await description.fill('Description du quiz');
-    const selectionnerDesQuestionsExistentes = page.getByRole('button', { name: 'Sélectionner des questions existantes' })
     const ajouterUnenouvelleQuestion = page.getByRole('button', { name: 'Questions' })
     await ajouterUnenouvelleQuestion.click();
-    const titreDeLaQuestion = page.getByLabel('Titre:')
+    const titreDeLaQuestion = page.getByLabel('Titre :')
     await titreDeLaQuestion.fill('Que font 3+6')
-    const typeDeQuestion = page.getByRole('combobox', { name: 'Type de question:' })
-    await typeDeQuestion.selectOption({ index: 1 });
-    await typeDeQuestion.click();
-    const niveau = page.getByRole('combobox', { name: 'Niveau:' });
+    const niveau = page.getByRole('combobox', { name: 'Niveau :' });
     await niveau.selectOption({ index: 1 });
     const ajouterUnIndice = page.getByRole('button', { name: 'Ajouter un indice' })
     await ajouterUnIndice.click();
-    const indiceTextuel = page.getByLabel('Indice (Texte):')
+    const indiceTextuel = page.getByRole('textbox', { name: 'Indice :' })
     await indiceTextuel.fill('Tu peux compter avec tes doigts')
-    const validerAjoutIndice = page.getByRole('button', { name: 'Ajouter' }).nth(1)
+    const validerAjoutIndice = page.getByRole('button', { name: 'Ajouter' }).first()
     await validerAjoutIndice.click();
     const ajouterDesReponses = page.getByRole('button', { name: 'Ajouter des réponses' })
     await ajouterDesReponses.click();
@@ -45,7 +51,13 @@ test.describe('Initial test display', () => {
     await ajouterUneNouvelleReponse.click();
     const inputReponse3 = page.locator('#ReponseText3')
     await inputReponse3.fill('2')
+    await page.getByText('Correct').nth(2).click();
+    await page.getByText('Correct').nth(2).click();
+    await ajouterUneNouvelleReponse.click();
+    
     const validerAjoutDeReponse = page.getByRole('button', { name: 'Valider' })
+    await validerAjoutDeReponse.click();
+    await page.getByText('×').nth(3).click();
     await validerAjoutDeReponse.click();
     const fileChooserPromise = page.waitForEvent('filechooser');
     const ajouterUneImage = page.locator('input[name="image"]')
@@ -60,6 +72,6 @@ test.describe('Initial test display', () => {
     const fileChooser2 = await fileChooserPromise2;
     await fileChooser2.setFiles( 'src/assets/img/addition.jpg');
     const creerQuiz = page.getByRole('button', { name: 'Créer le quiz' })
-    //await creerQuiz.click()
+    await creerQuiz.click()
   });
 });

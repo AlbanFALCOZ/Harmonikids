@@ -16,7 +16,7 @@ const config: PlaywrightTestConfig = {
     viewport:{width:1280 , height:720},
     ignoreHTTPSErrors:true,
     launchOptions:{
-      slowMo:2000,
+      slowMo:100,
     }
 
   }

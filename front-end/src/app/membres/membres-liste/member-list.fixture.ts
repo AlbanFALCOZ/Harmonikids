@@ -35,4 +35,8 @@ export class AddMembreFixture extends E2EComponentFixture {
         await this.getSubmitButton().click();
         //await this.page.pause();
     }
+
+    chooseMember() {
+        return this.page.locator('div').filter({ hasText: 'Nom : AmaPrénom : WailordÂge : 22 ansAime les peluches pokémon' }).nth(2)
+    }
 }
