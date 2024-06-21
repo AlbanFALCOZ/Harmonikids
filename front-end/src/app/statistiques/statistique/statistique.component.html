@@ -93,7 +93,7 @@
                     </div>
                     <div class="quiz-result-display">
                         <app-statistique-card *ngFor="let theme of displayedThemes"
-                            [theme]="theme" [numberOfQuizzes]="getNumberOfQuizzesOfThemes(theme.name)" [numberOfQuizzesFinished]="getNumberOfQuizzesFinishedOfThemes(theme.name)"></app-statistique-card>
+                            [theme]="theme"></app-statistique-card>
                     </div>
                     <div>
                         <p class="plus" (click)="toggleDisplayTheme()">{{ toggleButtonText }}</p>

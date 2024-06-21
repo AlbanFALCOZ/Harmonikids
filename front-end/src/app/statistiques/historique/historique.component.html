@@ -6,8 +6,6 @@
     </div>
     <div>
         <p>Nombre de bonnes réponses du premier coup: {{ game.correctFirstAttemptCount }}</p>
-        <p *ngIf="game.isQuizCompleted">Statut du quiz: Terminé</p>
-        <p *ngIf="!game.isQuizCompleted">Statut du quiz: En cours</p>
         <div class="game-content">
             <div *ngFor="let questionId of getQuestionIds(game)" class="historique-question">
                 <div>

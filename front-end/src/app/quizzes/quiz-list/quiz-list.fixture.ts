@@ -10,4 +10,16 @@ export class QuizListFixture extends E2EComponentFixture {
         return this.getButtons().click();
     }
 
+    getAdminButton() {
+        return this.page.getByRole('button', { name: 'Mode Ergo : Off' });
+    }
+
+    getInputPassword() {
+        return this.page.getByPlaceholder('Mot de passe');
+    }
+
+    getButtonLogIn() {
+        return this.page.getByRole('button', { name: 'Se connecter' });
+    }
+
 }

@@ -35,4 +35,20 @@ export class AddMembreFixture extends E2EComponentFixture {
         await this.getSubmitButton().click();
         //await this.page.pause();
     }
+
+    chooseAlice() {
+        return this.page.locator('div').filter({ hasText: 'Nom : RoutinePrénom : AliceÂge : 8 ansJ\'aime lire !' }).nth(2)
+    }
+
+    chooseLeo() {
+        return this.page.locator('div').filter({ hasText: 'Nom : VivacePrénom : LéoÂge : 10 ansJe veux gagner !!!' }).nth(2)
+    }
+
+    goConfAlice(){
+        return this.page.locator('img').nth(1);
+    }
+
+    goParamAlice(){
+        return this.page.getByRole('link', { name: 'Paramètres' });
+    }
 }

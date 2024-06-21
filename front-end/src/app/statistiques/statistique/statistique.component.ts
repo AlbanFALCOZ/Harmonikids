@@ -33,6 +33,7 @@ export class StatistiqueComponent implements OnInit {
   memberId: number = 0;
   membre!: Membre;
   score: number = 0;
+  game!: Game;
 
   constructor(
     private router: Router,
@@ -61,56 +62,81 @@ export class StatistiqueComponent implements OnInit {
 
     });
 
-    
+
   }
 
   ngOnInit() {
     this.displayedThemes = this.themeList.slice(0, 4);
     this.displayedQuiz = this.quizList.slice(0, 4);
-    this.gameService.games$.subscribe(games => {
-      this.games = games.filter(game => game.childId == this.membreService.getMemberId());
+
+    this.memberId = this.membreService.getMemberId();
+    this.gameService.getGamesByChildId(this.memberId).then(games => {
+
+      console.log(this.games);
+
+      const bestGameMap = new Map<number, any>();
+
+      console.log("bestGameMap:", bestGameMap);
+
+      games.forEach(game => {
+        const key = game.quizId;
+        if (!bestGameMap.has(key) || game.correctFirstAttemptCount > bestGameMap.get(key).correctFirstAttemptCount) {
+          bestGameMap.set(key, game);
+        }
+      });
+
+      this.games = Array.from(bestGameMap.values());
+
       this.games.forEach(game => {
         this.gameMap[game.quizId] = game;
 
-        if (game.score > this.score) {
-          this.score = game.score;
-        }
       });
+
+      this.score = Math.max(...this.games.map(game => game.score));
     });
 
     this.membreService.membres$.subscribe(membre => {
       this.membre = membre.find(m => m.id == this.memberId)!;
     });
-
   }
 
-    ngOnChanges() {
-      this.displayedThemes = this.themeList.slice(0, 4);
-      this.displayedQuiz = this.quizList.slice(0, 4);
-      this.gameService.games$.subscribe(games => {
-        this.games = games.filter(game => game.childId == this.membreService.getMemberId());
-        this.games.forEach(game => {
-          this.gameMap[game.quizId] = game;
-        });
+
+  ngOnChanges() {
+    this.displayedThemes = this.themeList.slice(0, 4);
+    this.displayedQuiz = this.quizList.slice(0, 4);
+
+    this.memberId = this.membreService.getMemberId();
+    this.gameService.getGamesByChildId(this.memberId).then(games => {
+
+      console.log(this.games);
+
+      const bestGameMap = new Map<number, any>();
+
+      console.log("bestGameMap:", bestGameMap);
+
+      games.forEach(game => {
+        const key = game.quizId;
+        if (!bestGameMap.has(key) || game.correctFirstAttemptCount > bestGameMap.get(key).correctFirstAttemptCount) {
+          bestGameMap.set(key, game);
+        }
       });
 
-      this.membreService.membres$.subscribe(membre => {
-        this.membre = membre.find(m => m.id == this.memberId)!;
+      this.games = Array.from(bestGameMap.values());
+
+      this.games.forEach(game => {
+        this.gameMap[game.quizId] = game;
+
       });
 
-  }
-  
+      this.score = Math.max(...this.games.map(game => game.score));
+    });
 
 
-  getNumberOfQuizzesOfThemes(theme: String): number{
-    const numberOfQuizzes = this.quizList.filter(quiz => quiz.theme == theme).length;
-    return numberOfQuizzes;
+    this.membreService.membres$.subscribe(membre => {
+      this.membre = membre.find(m => m.id == this.memberId)!;
+    });
   }
 
-  getNumberOfQuizzesFinishedOfThemes(theme: String): number {
-    const numberOfQuizzesFinished = this.quizList.filter(quiz => quiz.theme == theme).length;
-    return numberOfQuizzesFinished;
-  }
 
 
   toggleDisplayTheme() {

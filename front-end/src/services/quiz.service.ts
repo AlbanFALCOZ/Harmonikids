@@ -110,17 +110,11 @@ export class QuizService {
     return this.filteredQuestions;
   }
 
-  updateQuizStatus(quizId: number, status: string): void {
-    const quiz = this.http.get(`${this.quizUrl}/${quizId}`)
-      .pipe(
-        map((quiz: any) => {
-          quiz.statut = status;
-          return quiz;
-        })
-      );
-
-    const url = this.quizUrl + '/' + quizId;
-    this.http.put<Quiz>(url, quiz, this.httpOptions);
+  updateQuizStatus(quizId: number): void {
+    const url = this.quizUrl + '/' + quizId + '/statut';
+    this.http.put<Quiz>(url, this.httpOptions);
+    console.log('Quiz status updated');
+    
   }
 
   setLevel(niveauName: string) {

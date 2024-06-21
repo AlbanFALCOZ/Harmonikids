@@ -324,7 +324,7 @@ export class QuizAddComponent implements OnInit {
         theme: quizTheme,
         questions: selectedQuestions,
 
-        statut: 'draft',
+        statut: 'A faire',
         image: quizImage || '',
 
         id: 0

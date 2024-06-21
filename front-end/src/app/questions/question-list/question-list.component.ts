@@ -245,7 +245,7 @@ export class QuestionListComponent implements OnInit {
     
     const game = this.gameService.getGame(childId, quizId);
     
-    this.quizService.updateQuizStatus(quizId, 'Terminé');
+    this.quizService.updateQuizStatus(quizId);
     this.gameService.sendGameDataToBackend(game!).subscribe(() => {
       this.gameService.setQuizCompleted(childId, quizId);
       this.router.navigate(['/end-game']);
@@ -255,7 +255,6 @@ export class QuestionListComponent implements OnInit {
   async onTimerFinished(e: CountdownEvent) {
     if (e.action == 'done') {
       alert("Il n'y a plus de temps, c'est la fin du quiz !");
-      this.validateQuestion();
       await this.delay(2000);
       this.finishQuiz();
     }
