@@ -1,0 +1,1329 @@
+[
+  {
+    "id": 1718888538092,
+    "childId": 1718806145990,
+    "quizId": 1718789175970,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718789176544": [
+        {
+          "value": "Pair",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789176781": [
+        {
+          "value": "28",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178032": [
+        {
+          "value": "2",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178308": [
+        {
+          "value": "5",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178585": [
+        {
+          "value": "39",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 13
+  },
+  {
+    "id": 1718888957234,
+    "childId": 1718806145990,
+    "quizId": 1718789175970,
+    "correctFirstAttemptCount": 5,
+    "chosenAnswers": {
+      "1718789176544": [
+        {
+          "value": "Pair",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789176781": [
+        {
+          "value": "28",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178032": [
+        {
+          "value": "2",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178308": [
+        {
+          "value": "5",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178585": [
+        {
+          "value": "39",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 19
+  },
+  {
+    "id": 1718889205194,
+    "childId": 1718806145990,
+    "quizId": 1718785674920,
+    "correctFirstAttemptCount": 0,
+    "chosenAnswers": {},
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718889241424,
+    "childId": 1718806145990,
+    "quizId": 1718789175970,
+    "correctFirstAttemptCount": 2,
+    "chosenAnswers": {
+      "1718789176544": [
+        {
+          "value": "Pair",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789176781": [
+        {
+          "value": "28",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178032": [
+        {
+          "value": "2",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178308": [
+        {
+          "value": "5",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178585": [
+        {
+          "value": "39",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 13
+  },
+  {
+    "id": 1718889250040,
+    "childId": 1718806145990,
+    "quizId": 1718787385893,
+    "correctFirstAttemptCount": 0,
+    "chosenAnswers": {},
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718889266312,
+    "childId": 1718806145990,
+    "quizId": 1718787385893,
+    "correctFirstAttemptCount": 0,
+    "chosenAnswers": {},
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718889275759,
+    "childId": 1718806145990,
+    "quizId": 1718787385893,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718787386264": [
+        {
+          "value": "Environ 380 000km",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718889306231,
+    "childId": 1718806145990,
+    "quizId": 1718787385893,
+    "correctFirstAttemptCount": 0,
+    "chosenAnswers": {},
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718889352988,
+    "childId": 1718889333624,
+    "quizId": 1718787385893,
+    "correctFirstAttemptCount": 5,
+    "chosenAnswers": {
+      "1718787386264": [
+        {
+          "value": "Environ 380 000km",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718787386471": [
+        {
+          "value": "4",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718787386689": [
+        {
+          "value": "Impact de météorites",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718787386885": [
+        {
+          "value": "Titane",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718787387109": [
+        {
+          "value": "1969",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 10
+  },
+  {
+    "id": 1718889363071,
+    "childId": 1718806145990,
+    "quizId": 1718789175970,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718789176544": [
+        {
+          "value": "Pair",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789176781": [
+        {
+          "value": "28",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178032": [
+        {
+          "value": "2",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178308": [
+        {
+          "value": "5",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178585": [
+        {
+          "value": "39",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 13
+  },
+  {
+    "id": 1718889368353,
+    "childId": 1718806145990,
+    "quizId": 1718784083213,
+    "correctFirstAttemptCount": 0,
+    "chosenAnswers": {},
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718889372795,
+    "childId": 1718806145990,
+    "quizId": 1718784083213,
+    "correctFirstAttemptCount": 0,
+    "chosenAnswers": {},
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718889380873,
+    "childId": 1718806145990,
+    "quizId": 1718784083213,
+    "correctFirstAttemptCount": 0,
+    "chosenAnswers": {
+      "1718784083555": [
+        {
+          "value": "Vrai",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718889473282,
+    "childId": 1718824313208,
+    "quizId": 1718789175970,
+    "correctFirstAttemptCount": 0,
+    "chosenAnswers": {
+      "1718789176544": [
+        {
+          "value": "Impair",
+          "isCorrect": false,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789176781": [
+        {
+          "value": "28",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718889497522,
+    "childId": 1718824313208,
+    "quizId": 1718784083213,
+    "correctFirstAttemptCount": 0,
+    "chosenAnswers": {},
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718889505159,
+    "childId": 1718824313208,
+    "quizId": 1718780544135,
+    "correctFirstAttemptCount": 0,
+    "chosenAnswers": {},
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718889522665,
+    "childId": 1718824313208,
+    "quizId": 1718780544135,
+    "correctFirstAttemptCount": 0,
+    "chosenAnswers": {},
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718889561404,
+    "childId": 1718824313208,
+    "quizId": 1718790586373,
+    "correctFirstAttemptCount": 2,
+    "chosenAnswers": {
+      "1718790588840": [
+        {
+          "value": "Luigi",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790589153": [
+        {
+          "value": "Un champignon",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 1
+  },
+  {
+    "id": 1718889602563,
+    "childId": 1718824313208,
+    "quizId": 1718782359220,
+    "correctFirstAttemptCount": 3,
+    "chosenAnswers": {
+      "1718782359481": [
+        {
+          "value": "Baleine bleue",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718782359589": [
+        {
+          "value": "Manchot empereur",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718782359793": [
+        {
+          "value": "Colibri",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 3
+  },
+  {
+    "id": 1718889692638,
+    "childId": 1718824313208,
+    "quizId": 1718784083213,
+    "correctFirstAttemptCount": 5,
+    "chosenAnswers": {
+      "1718784083555": [
+        {
+          "value": "Vrai",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083691": [
+        {
+          "value": "Roland-garros",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083828": [
+        {
+          "value": "105m x 68m ",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083965": [
+        {
+          "value": "France",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784084140": [
+        {
+          "value": "3",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 15
+  },
+  {
+    "id": 1718889735859,
+    "childId": 1718824313208,
+    "quizId": 1718784083213,
+    "correctFirstAttemptCount": 5,
+    "chosenAnswers": {
+      "1718784083555": [
+        {
+          "value": "Vrai",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083691": [
+        {
+          "value": "Roland-garros",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083828": [
+        {
+          "value": "105m x 68m ",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083965": [
+        {
+          "value": "France",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784084140": [
+        {
+          "value": "3",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 15
+  },
+  {
+    "id": 1718890363233,
+    "childId": 1718824313208,
+    "quizId": 1718784083213,
+    "correctFirstAttemptCount": 4,
+    "chosenAnswers": {
+      "1718784083555": [
+        {
+          "value": "Vrai",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083691": [
+        {
+          "value": "Roland-garros",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083965": [
+        {
+          "value": "France",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784084140": [
+        {
+          "value": "3",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 6
+  },
+  {
+    "id": 1718890428056,
+    "childId": 1718824313208,
+    "quizId": 1718780544135,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718780544405": [
+        {
+          "value": "Sphynx",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544498": [
+        {
+          "value": " Pour montrer de l'affection",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Parce qu'ils se souviennent de l'allaitement",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544580": [
+        {
+          "value": "Des proteines animales",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Des croquettes spécialement formulées",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544658": [
+        {
+          "value": "L'odorat",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "L'ouïe",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "La vue",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544745": [
+        {
+          "value": "En ronronnant",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "En clignant lentement des yeux",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 23
+  },
+  {
+    "id": 1718890466084,
+    "childId": 1718824313208,
+    "quizId": 1718780544135,
+    "correctFirstAttemptCount": 5,
+    "chosenAnswers": {
+      "1718780544405": [
+        {
+          "value": "Sphynx",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544498": [
+        {
+          "value": " Pour montrer de l'affection",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Parce qu'ils se souviennent de l'allaitement",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544580": [
+        {
+          "value": "Des croquettes spécialement formulées",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Des proteines animales",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544658": [
+        {
+          "value": "L'odorat",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "L'ouïe",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "La vue",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544745": [
+        {
+          "value": "En clignant lentement des yeux",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "En ronronnant",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 17
+  },
+  {
+    "id": 1718890768205,
+    "childId": 1718824313208,
+    "quizId": 1718784083213,
+    "correctFirstAttemptCount": 5,
+    "chosenAnswers": {
+      "1718784083555": [
+        {
+          "value": "Vrai",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083691": [
+        {
+          "value": "Roland-garros",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083828": [
+        {
+          "value": "105m x 68m ",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784083965": [
+        {
+          "value": "France",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718784084140": [
+        {
+          "value": "3",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 10
+  },
+  {
+    "id": 1718891299257,
+    "childId": 1718891232677,
+    "quizId": 1718789175970,
+    "correctFirstAttemptCount": 5,
+    "chosenAnswers": {
+      "1718789176544": [
+        {
+          "value": "Pair",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789176781": [
+        {
+          "value": "28",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178032": [
+        {
+          "value": "2",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178308": [
+        {
+          "value": "5",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178585": [
+        {
+          "value": "39",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 10
+  },
+  {
+    "id": 1718891340974,
+    "childId": 1718891232677,
+    "quizId": 1718790586373,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718790586756": [
+        {
+          "value": "Plombier",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790587046": [
+        {
+          "value": "Goomba",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790588507": [
+        {
+          "value": "Peach",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790588840": [
+        {
+          "value": "Luigi",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790589153": [
+        {
+          "value": "Un champignon",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718790589628": [
+        {
+          "value": "Du ski",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Du tennis",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Du karting",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 16
+  },
+  {
+    "id": 1718891517748,
+    "childId": 1718891232677,
+    "quizId": 1718789175970,
+    "correctFirstAttemptCount": 5,
+    "chosenAnswers": {
+      "1718789176544": [
+        {
+          "value": "Pair",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789176781": [
+        {
+          "value": "28",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178032": [
+        {
+          "value": "2",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178308": [
+        {
+          "value": "5",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718789178585": [
+        {
+          "value": "39",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 10
+  },
+  {
+    "id": 1718891536818,
+    "childId": 1718891232677,
+    "quizId": 1718780544135,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718780544405": [
+        {
+          "value": "Sphynx",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544498": [
+        {
+          "value": "Pour étirer leurs muscles",
+          "isCorrect": false,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Parce qu'ils se souviennent de l'allaitement",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544580": [
+        {
+          "value": "Des croquettes spécialement formulées",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Des proteines animales",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544658": [
+        {
+          "value": "La vue",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "L'ouïe",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "L'odorat",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544745": [
+        {
+          "value": "En clignant lentement des yeux",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "En ronronnant",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 14
+  },
+  {
+    "id": 1718892447970,
+    "childId": 1718891232677,
+    "quizId": 1718780544135,
+    "correctFirstAttemptCount": 2,
+    "chosenAnswers": {
+      "1718780544405": [
+        {
+          "value": "Sphynx",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544498": [
+        {
+          "value": "Pour étirer leurs muscles",
+          "isCorrect": false,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Parce qu'ils se souviennent de l'allaitement",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544580": [
+        {
+          "value": "Des croquettes spécialement formulées",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Des proteines animales",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544658": [
+        {
+          "value": "La vue",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "L'ouïe",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "L'odorat",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544745": [
+        {
+          "value": "En clignant lentement des yeux",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "En ronronnant",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 14
+  },
+  {
+    "id": 1718902406663,
+    "childId": 1718889333624,
+    "quizId": 1718902376308,
+    "correctFirstAttemptCount": 2,
+    "chosenAnswers": {
+      "1718902376465": [
+        {
+          "value": "Powder",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718902376899": [
+        {
+          "value": "5",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 1
+  },
+  {
+    "id": 1718902657854,
+    "childId": 1718889333624,
+    "quizId": 1718902376308,
+    "correctFirstAttemptCount": 4,
+    "chosenAnswers": {
+      "1718902376465": [
+        {
+          "value": "Powder",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718902376899": [
+        {
+          "value": "5",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 2
+  },
+  {
+    "id": 1718904239808,
+    "childId": 1718889333624,
+    "quizId": 1718904217883,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718904218363": [
+        {
+          "value": "3",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 0
+  },
+  {
+    "id": 1718904383377,
+    "childId": 1718889333624,
+    "quizId": 1718904362408,
+    "correctFirstAttemptCount": 2,
+    "chosenAnswers": {
+      "1718904362823": [
+        {
+          "value": "24",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718904363183": [
+        {
+          "value": "6",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 1
+  },
+  {
+    "id": 1718906483731,
+    "childId": 1718824313208,
+    "quizId": 1718906452996,
+    "correctFirstAttemptCount": 0,
+    "chosenAnswers": {
+      "1718906453329": [
+        {
+          "value": "Jaune",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718906453899": [
+        {
+          "value": "Torterra",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Wailord",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Tortipouss",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Couafarel",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 10
+  },
+  {
+    "id": 1718953953487,
+    "childId": 1718953877146,
+    "quizId": 1718780544135,
+    "correctFirstAttemptCount": 1,
+    "chosenAnswers": {
+      "1718780544405": [
+        {
+          "value": "Sphynx",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544498": [
+        {
+          "value": "Parce qu'ils se souviennent de l'allaitement",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Pour marquer leur territoire",
+          "isCorrect": false,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": " Pour montrer de l'affection",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ],
+      "1718780544580": [
+        {
+          "value": "Des proteines animales",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        },
+        {
+          "value": "Des croquettes spécialement formulées",
+          "isCorrect": true,
+          "isSelected": true,
+          "alreadySelected": true
+        }
+      ]
+    },
+    "isQuizCompleted": false,
+    "score": 6
+  }
+]
