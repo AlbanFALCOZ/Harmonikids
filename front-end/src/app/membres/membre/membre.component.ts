@@ -7,38 +7,35 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-membre',
   templateUrl: './membre.component.html',
-  styleUrl: './membre.component.scss'
+  styleUrls: ['./membre.component.scss']
 })
-export class MembreComponent {
+export class MembreComponent implements OnInit {
 
-
-  @Input()
-
-
-  membre?: Membre
+  @Input() membre?: Membre;
   memberId: number | undefined;
   isDisabled: boolean = false;
 
-  @Output()
-  membreToDelete: EventEmitter<Membre> = new EventEmitter<Membre>();
+  @Output() membreToDelete: EventEmitter<Membre> = new EventEmitter<Membre>();
 
-
-
-  constructor(private membreService: MembreService, private modeService: ModeService, private router: Router) {
-    this.memberId = this.membreService.getMemberId();
+  constructor(
+    private membreService: MembreService,
+    private modeService: ModeService,
+    private router: Router
+  ) {
     this.modeService.isDisabled$.subscribe(isDisabled => {
       this.isDisabled = isDisabled;
     });
-
   }
 
   ngOnInit(): void {
+    this.memberId = this.membreService.getMemberId();
   }
-
 
   onDeleteMembre() {
     if (this.membre) {
+      this.membreService.deleteMember(this.membre);
       this.membreToDelete.emit(this.membre);
+      this.closeModalDelete();
     }
   }
 
@@ -47,30 +44,24 @@ export class MembreComponent {
     this.router.navigate([this.isDisabled ? '/dashboard' : '/statistiques', id]);
   }
 
-  displayModalUpdate() {
-    // this.membreToDelete.emit(this.membre);
-    var modal = document.getElementById("myModalUpdate");
+  displayModalDelete(membre: Membre) {
+    this.membreToDelete.emit(membre);
+    const modal = document.getElementById("myModalUpdate");
     if (modal) {
       modal.style.display = "block";
 
       window.onclick = function (event) {
-        if (event.target == modal && (modal)) {
+        if (event.target === modal) {
           modal.style.display = "none";
         }
-      }
+      };
     }
   }
 
   closeModalDelete() {
-
-    var modal = document.getElementById("myModalDelete");
+    const modal = document.getElementById("myModalUpdate");
     if (modal) {
       modal.style.display = "none";
     }
-
   }
-
-
 }
-
-

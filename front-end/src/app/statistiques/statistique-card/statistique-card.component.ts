@@ -17,31 +17,43 @@ export class StatistiqueCardComponent {
   @Input() theme!: Theme;
   
   quizList!: Quiz[];
+  quizListSorted!: Quiz[];
   
   numberOfQuizzes!: number;
   numberOfQuizzesFinished!: number;
   numberOfquizzesInProgress: number = 0;
   memberId: number = 0;
+  games: Game[] = [];
 
-  constructor(private quizService: QuizService) {
-    this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
-      this.quizList = quizzes;
-    });
+  constructor(private quizService: QuizService, private gameService: GameService, private membreService: MembreService) {    
 
    }
 
   ngOnInit(): void {
-    console.log(this.quizList);
-    this.numberOfQuizzes = this.quizList.filter(quiz => quiz.theme == this.theme.name).length;
-    this.numberOfQuizzesFinished = this.quizList.filter(quiz => quiz.theme == this.theme.name && quiz.statut == 'Terminé').length;
-
+    this.loadStatTheme();
   }
 
   
   ngOnChanges(): void { 
-    console.log(this.quizList);
-    this.numberOfQuizzes = this.quizList.filter(quiz => quiz.theme == this.theme.name).length;
-    this.numberOfQuizzesFinished = this.quizList.filter(quiz => quiz.theme == this.theme.name && quiz.statut == 'Terminé').length;
+    this.loadStatTheme();
+  }
+
+  loadStatTheme(): void {
+    this.memberId = this.membreService.getMemberId();
+    this.gameService.getGamesByChildId(this.memberId).then(childGames => {
+      this.games = childGames;
+
+      const quizIds = this.games.map(game => game.quizId);
+
+      this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
+        this.quizList = quizzes.filter(quiz => quizIds.includes(quiz.id));
+        this.quizListSorted = this.quizList;
+
+        this.numberOfQuizzes = this.quizList.filter(quiz => quiz.theme == this.theme.name).length;
+        this.numberOfQuizzesFinished = this.quizListSorted.filter(quiz => quiz.theme == this.theme.name && quiz.statut == 'Terminé').length;
+
+      });
+    });
   }
 
 
