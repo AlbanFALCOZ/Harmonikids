@@ -41,8 +41,6 @@ services:
       dockerfile: Dockerfile.e2e
     volumes:
       - test_results:/app/test-results
-    ports:
-      - "9323:9323"
     networks:
       - ps6-network
     environment:
