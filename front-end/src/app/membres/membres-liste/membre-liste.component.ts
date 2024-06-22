@@ -32,6 +32,8 @@ export class MembreListeComponent implements OnInit {
 
   src: string = "../../../assets/img/no-photo.png";
 
+  membreToDelete!: Membre;
+
 
 
   constructor(private router: Router, public membreService: MembreService, public titleService: TitleService, private sonService: SonService, private navbarService: NavbarService, private modeService: ModeService) {
@@ -121,8 +123,15 @@ export class MembreListeComponent implements OnInit {
 
   }
 
-  onDeleteMember(membre: Membre) {
-    this.membreService.deleteMember(membre);
+  onDeleteMember(): void {
+    if (this.membreToDelete) {
+      this.membreService.deleteMember(this.membreToDelete);
+    }
+
+  }
+
+  addMembreToDelete(membre: Membre): void {
+    this.membreToDelete = membre;
   }
 
   
