@@ -40,6 +40,7 @@ import { CommonModule } from '@angular/common';
 import { QuestionAddComponent } from './questions/question-add/question-add.component';
 import { HistoriqueComponent } from './statistiques/historique/historique.component';
 import { CountdownModule } from 'ngx-countdown';
+import { MembreDeleteComponent } from './membres/membre-delete/membre-delete.component';
 
 
 
@@ -79,6 +80,7 @@ import { CountdownModule } from 'ngx-countdown';
     ThemeDashboardComponent,
     QuestionAddComponent,
     HistoriqueComponent,
+    MembreDeleteComponent,
 
 
   ],

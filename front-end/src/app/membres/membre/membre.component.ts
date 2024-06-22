@@ -14,6 +14,7 @@ export class MembreComponent implements OnInit {
   @Input() membre?: Membre;
   memberId: number | undefined;
   isDisabled: boolean = false;
+  selectedMembre: Membre | null = null;
 
   @Output() membreToDelete: EventEmitter<Membre> = new EventEmitter<Membre>();
 
@@ -31,24 +32,18 @@ export class MembreComponent implements OnInit {
     this.memberId = this.membreService.getMemberId();
   }
 
-  onDeleteMembre() {
-    if (this.membre) {
-      this.membreService.deleteMember(this.membre);
-      this.membreToDelete.emit(this.membre);
-      this.closeModalDelete();
-    }
-  }
 
   onSelectMember(id: number) {
     this.membreService.setMemberId(id);
     this.router.navigate([this.isDisabled ? '/dashboard' : '/statistiques', id]);
   }
 
-  displayModalDelete(membre: Membre) {
-    this.membreToDelete.emit(membre);
-    const modal = document.getElementById("myModalUpdate");
+  displayModalDelete() {
+    this.membreToDelete.emit(this.membre);
+    const modal = document.getElementById("myModalDelete");
     if (modal) {
       modal.style.display = "block";
+
 
       window.onclick = function (event) {
         if (event.target === modal) {
@@ -59,9 +54,10 @@ export class MembreComponent implements OnInit {
   }
 
   closeModalDelete() {
-    const modal = document.getElementById("myModalUpdate");
+    const modal = document.getElementById("myModalDelete");
     if (modal) {
       modal.style.display = "none";
     }
   }
+  
 }
