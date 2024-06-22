@@ -16,15 +16,14 @@ export class ProfilCardStatComponent {
   constructor() { }
 
   ngOnInit(): void {
-    if (this.score) {
+    if (this.score === undefined || this.score === null || isNaN(this.score) || this.score < 0) {
+      this.score = 0;
     }
   }
 
   ngOnChanges(): void {
-    if (this.score) {
+    if (this.score === undefined || this.score === null || isNaN(this.score) || this.score < 0) {
+      this.score = 0;
     }
   }
-
-  // constructor(private membreService: MembreService) {
-  //   this.selectedMemberId = this.membreService.getMemberId(); }
 }

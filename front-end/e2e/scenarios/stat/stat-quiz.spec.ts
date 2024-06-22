@@ -30,7 +30,6 @@ test.describe('Statistiques quiz', () => {
         const levelFixture = new LevelFixture(page);
         await levelFixture.getLevelCard().nth(0).click();
 
-
         const multiChoiceFixture = new MultiChoiceFixture(page);
         const questionListFixture = new QuestionListFixture(page);
         await page.getByRole('button', { name: '39' }).click();
@@ -48,6 +47,8 @@ test.describe('Statistiques quiz', () => {
 
         const statQuizFixture = new StatQuizFixture(page);
         expect(await statQuizFixture.getQuizName()).not.toBeNull();
+
+        await page.waitForTimeout(1000);
 
         expect(await statQuizFixture.getCorrectFirstAttemptCount()).toContain('Bonnes réponses du premier coup : 1');
 

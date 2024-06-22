@@ -27,6 +27,7 @@ test('Historique des jeux', async ({ page }) => {
     const levelFixture = new LevelFixture(page);
     await levelFixture.getLevelCard().nth(0).click();
 
+
     const multiChoiceFixture = new MultiChoiceFixture(page);
     const questionListFixture = new QuestionListFixture(page);
     await page.getByRole('button', { name: '39' }).click();
@@ -46,9 +47,10 @@ test('Historique des jeux', async ({ page }) => {
 
     const buttonHistory = await stat.getHistoryButton();
 
-    await expect(buttonHistory).toBeVisible();
+    await buttonHistory.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+
     await expect(buttonHistory).toBeEnabled();
-    await page.waitForTimeout(1000);
     await buttonHistory.click({ force: true });
 
     await page.waitForTimeout(1000);

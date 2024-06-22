@@ -28,9 +28,6 @@ test('Verifie les statistiques des cartes de thème', async ({ page }) => {
     const levelFixture = new LevelFixture(page);
     await levelFixture.getLevelCard().nth(0).click();
 
-    await page.waitForTimeout(1000);
-
-
     const multiChoiceFixture = new MultiChoiceFixture(page);
     const questionListFixture = new QuestionListFixture(page);
     await page.getByRole('button', { name: '39' }).click();
