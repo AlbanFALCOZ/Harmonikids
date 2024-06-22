@@ -8,7 +8,7 @@ export class StatQuizFixture extends E2EComponentFixture {
     }
 
     async getCorrectFirstAttemptCount() {
-        return await this.page.locator('.number-quiz').allInnerTexts();
+        return await this.page.locator('.number-question').allInnerTexts();
     }
 
 }

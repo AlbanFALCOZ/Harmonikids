@@ -8,6 +8,7 @@ import { LevelFixture } from 'src/app/niveau/level/level.fixture';
 import { MultiChoiceFixture } from 'src/app/questions/multi-choice/multi-choice.fixture';
 import { QuestionListFixture } from 'src/app/questions/question-list/question-list.fixture';
 import { QuizFixture } from 'src/app/quizzes/quiz/quiz.fixture';
+import { HistoriqueFixture } from 'src/app/statistiques/historique/historique.fixture';
 import { StatThemeFixture } from 'src/app/statistiques/statistique-card/statistique-card.fixture';
 import { StatistiqueFixture } from 'src/app/statistiques/statistique/statistique.fixture';
 
@@ -26,6 +27,9 @@ test('Verifie les statistiques des cartes de thème', async ({ page }) => {
 
     const levelFixture = new LevelFixture(page);
     await levelFixture.getLevelCard().nth(0).click();
+
+    await page.waitForTimeout(1000);
+
 
     const multiChoiceFixture = new MultiChoiceFixture(page);
     const questionListFixture = new QuestionListFixture(page);
@@ -49,7 +53,7 @@ test('Verifie les statistiques des cartes de thème', async ({ page }) => {
     await expect(plus).toBeVisible();
     await expect(plus).toBeEnabled();
     await page.waitForTimeout(1000);
-    
+
     await plus.click({ force: true });
 
     await page.waitForTimeout(1000);
@@ -59,7 +63,7 @@ test('Verifie les statistiques des cartes de thème', async ({ page }) => {
 
     expect(await statThemeFixture.getThemeName()).not.toBeNull();
 
-    expect(await statThemeFixture.getCorrectNumberOfQuiz()).toContain('Bonnes réponses du premier coup : 1');
+    expect(await statThemeFixture.getCorrectNumberOfQuiz()).toContain('Nombre de quiz terminés/quiz total : 1/1');
 
 });
 

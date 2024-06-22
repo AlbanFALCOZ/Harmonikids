@@ -10,7 +10,7 @@ const config: PlaywrightTestConfig = {
         video: 'on',
         screenshot: 'on',
         launchOptions: {
-            slowMo: 10,
+            slowMo: 1000,
         }
     }, 
 };
