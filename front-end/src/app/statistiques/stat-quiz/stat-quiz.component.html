@@ -2,7 +2,7 @@
     <div class="quiz-result">
         <div class="left-side-quiz-result">
             <p class="quiz-title">Intitulé : {{ quiz.name }}</p>
-            <p class="number-quiz">Bonnes réponses du premier coup : {{ correctFirstAttemptCount }}</p>
+            <p class="number-question">Bonnes réponses du premier coup : {{ correctFirstAttemptCount }}</p>
         </div>
         <app-progres-circle
             [percentage]="calculatePercentage(correctFirstAttemptCount, quiz.questions.length)"></app-progres-circle>

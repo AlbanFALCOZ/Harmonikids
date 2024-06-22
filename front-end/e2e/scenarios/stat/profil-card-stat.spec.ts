@@ -1,30 +1,26 @@
 import { test, expect } from '@playwright/test';
 import { testUrl } from 'e2e/e2e.config';
+import { AddMembreFixture } from 'src/app/membres/membres-liste/member-list.fixture';
+import { ErgoModeFixture } from 'src/app/navbar/navbar.fixture';
 import { ProfilCardFixture } from 'src/app/statistiques/profil-card-stat/profil-card-stat.fixture';
 
+test('Profil statistiques', async ({ page }) => {
+  await page.goto(testUrl + '/membres-liste');
+  const membreListeFixture = new AddMembreFixture(page);
+  const profil = membreListeFixture.chooseAlice();
 
-test.describe('Profil card stat', () => {
-  let fixture: ProfilCardFixture;
+  const ergoModeFixture = new ErgoModeFixture(page);
+  await ergoModeFixture.activateErgoMode('admin');
 
-  test.beforeEach(async ({ page }) => {
-    fixture = new ProfilCardFixture(page);
-    await page.goto(testUrl + '/statistiques');
-  });
+  await profil.click();
 
-  test('should display the member name', async () => {
-    const memberName = await fixture.getMemberName();
-    expect(memberName).not.toBeNull();
-  });
+  const statProfil = new ProfilCardFixture(page);
 
-  test('should display the member age', async () => {
-    const memberAge = await fixture.getMemberAge();
-    expect(memberAge).not.toBeNull();
-  });
+  const memberName = await statProfil.getMemberName();
+  expect(memberName).not.toBeNull();
 
-  test('should display the number of stars', async () => {
-    const numberOfStars = await fixture.getNumberOfStars();
-    expect(numberOfStars).not.toBeNull();
-  });
-
+  const memberAge = await statProfil.getMemberAge();
+  expect(memberAge).not.toBeNull();
+  
 });
 

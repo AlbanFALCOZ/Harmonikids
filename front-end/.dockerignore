@@ -1,2 +1,12 @@
 node_modules
 .dockerignore
+Dockerfile
+Dockerfile-e2e
+
+dist
+
+.angular
+
+test_results
+
+playwright-report

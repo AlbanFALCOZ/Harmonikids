@@ -45,4 +45,8 @@ export class ErgoModeFixture extends E2EComponentFixture {
         const selectProf = this.page.getByRole('link', { name: 'Profil' });
         return await selectProf.click();
     }
+
+    getButtonStat() {
+        return this.page.getByRole('button', { name: 'Statistiques' });
+    }
 }

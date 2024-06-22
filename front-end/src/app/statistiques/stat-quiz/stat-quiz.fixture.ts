@@ -8,13 +8,7 @@ export class StatQuizFixture extends E2EComponentFixture {
     }
 
     async getCorrectFirstAttemptCount() {
-        return await this.page.locator('.number-quiz').allInnerTexts();
-    }
-
-    async getPercentage() {
-        const expectedCorrectFirstAttemptCount = 5;
-        const expectedTotalQuestions = 10; 
-        return (expectedCorrectFirstAttemptCount / expectedTotalQuestions) * 100;
+        return await this.page.locator('.number-question').allInnerTexts();
     }
 
 }

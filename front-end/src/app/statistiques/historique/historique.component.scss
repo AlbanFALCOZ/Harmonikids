@@ -46,3 +46,21 @@
     list-style-type: square;
     margin-bottom: 25px;
 }
+
+
+.retour_stat {
+    margin: auto;
+    margin-top: 30px;
+    width: 500px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid #FAA300;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #F4538A;
+    color: white;
+    cursor: pointer;
+
+}

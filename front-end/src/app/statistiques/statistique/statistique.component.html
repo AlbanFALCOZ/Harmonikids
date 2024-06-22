@@ -105,7 +105,7 @@
                         <p>Taux de bonnes réponses par quiz</p>
                     </div>
                     <div class="question-result-display">
-                        <app-stat-quiz *ngFor="let quiz of quizList" [quiz]="quiz" [game]="gameMap[quiz.id]"></app-stat-quiz>
+                        <app-stat-quiz *ngFor="let quiz of displayedQuiz" [quiz]="quiz" [game]="gameMap[quiz.id]"></app-stat-quiz>
                     </div>
                     <div>
                         <p class="plus" (click)="toggleDisplayQuiz()">{{ toggleButtonTextQuiz }}</p>
