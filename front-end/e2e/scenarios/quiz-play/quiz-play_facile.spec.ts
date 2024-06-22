@@ -27,7 +27,6 @@ test.describe('Initial test display', () => {
         const levelFixture = new LevelFixture(page);
         await levelFixture.getLevelCard().nth(0).click();
 
-
         const multiChoiceFixture = new MultiChoiceFixture(page);
         const questionListFixture = new QuestionListFixture(page);
         await page.getByRole('button', { name: '30' }).click();

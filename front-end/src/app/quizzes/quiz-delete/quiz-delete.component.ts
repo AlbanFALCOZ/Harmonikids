@@ -26,6 +26,7 @@ export class QuizDeleteComponent implements OnInit {
     if (modal) {
       modal.style.display = "none";
     }
+    
 
   }
 }
