@@ -12,7 +12,7 @@ export class  IndiceService {
   public hintAudio: HTMLAudioElement | null = null;
 
   constructor() {
-    this.hint = JSON.parse(localStorage.getItem('hint') ?? 'true');
+    this.hint = JSON.parse(localStorage.getItem('hint') ?? 'false');
   }
 
 
