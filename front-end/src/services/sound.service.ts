@@ -12,8 +12,8 @@ export class SonService {
 
 
   constructor() {
-    this.sonActif = JSON.parse(localStorage.getItem('sonActif') ?? 'true');
-    this.musicActif = JSON.parse(localStorage.getItem('musicActif') ?? 'true');
+    this.sonActif = JSON.parse(localStorage.getItem('sonActif') ?? 'false');
+    this.musicActif = JSON.parse(localStorage.getItem('musicActif') ?? 'false');
     this.audio = new Audio();
     
     

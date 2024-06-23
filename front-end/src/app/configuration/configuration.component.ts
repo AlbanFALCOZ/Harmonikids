@@ -32,9 +32,9 @@ export class ConfigurationComponent {
 
   themeList: Theme[] = [];
   showDropdown: boolean = false;
-  isSoundOn: boolean ;
-  isMusicOn: boolean ;
-  isIndiceOn:boolean ;
+  isSoundOn: boolean = false ;
+  isMusicOn: boolean = false ;
+  isIndiceOn:boolean = false;
   selectedOption: string = 'option1';
   selectedQuestionTypes: QuestionType[];
   questionList = this.questionService.getQuestionsFromLocalStorage();
